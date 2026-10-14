@@ -1,0 +1,2 @@
+python WSNSimulation.py
+pause

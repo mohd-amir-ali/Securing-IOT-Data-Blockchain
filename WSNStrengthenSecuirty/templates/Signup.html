@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operator Registration — Amir Ali | Blockchain WSN Security</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
+  <script>
+    function validate() {
+      var x = document.forms["f1"]["t1"].value;
+      var y = document.forms["f1"]["t2"].value;
+      var a1 = document.forms["f1"]["t3"].value;
+      var a2 = document.forms["f1"]["t4"].value;
+      var a3 = document.forms["f1"]["t5"].value;
+      if (!x || x.trim() === "") {
+        window.alert("Username must be entered");
+        document.f1.t1.focus();
+        return false;
+      }
+      if (!y || y === "") {
+        window.alert("Password must be entered");
+        document.f1.t2.focus();
+        return false;
+      }
+      if (!a1 || !a1.match(/^\d{10}$/)) {
+        window.alert("Please enter a valid 10-digit contact number");
+        document.f1.t3.focus();
+        return false;
+      }
+      if (!a2 || a2.indexOf("@") === -1) {
+        window.alert("Please enter a valid email address");
+        document.f1.t4.focus();
+        return false;
+      }
+      if (!a3 || a3.trim() === "") {
+        window.alert("Please enter your address or lab location");
+        document.f1.t5.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index" class="brand-lockup">
+        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="brand-text">
+          <span class="brand-name">Amir Ali</span>
+          <span class="brand-tagline">Engineering × Blockchain Security</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="/index" class="nav-link">Overview</a>
+        <a href="/Simulator" class="nav-link">WSN Simulator</a>
+        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
+        <a href="/Signup" class="nav-link active">Register</a>
+        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="eyebrow-bar">
+      <div class="eyebrow-left">
+        <span class="burgundy-dot"></span>
+        <span>02 / ON-CHAIN IDENTITY PROVISIONING</span>
+      </div>
+      <div class="eyebrow-right">
+        Commits new operator credentials to WSNSecurity.addUser()
+      </div>
+    </div>
+
+    <div class="auth-wrapper" style="max-width: 600px;">
+      <div class="editorial-card">
+        <div class="auth-header">
+          <span class="eyebrow-label">SMART CONTRACT REGISTRATION</span>
+          <h1 class="auth-title">New Operator Signup</h1>
+          <p class="auth-subtitle">Register an authorized identity on the blockchain ledger to query WSN telemetry.</p>
+        </div>
+
+        <script>
+          var serverMsg = "{{ msg }}";
+          if (serverMsg && serverMsg.trim() !== "") {
+            document.write('<div class="alert-banner">' + serverMsg + '</div>');
+          }
+        </script>
+
+        <form name="f1" method="post" action="/SignupAction" onsubmit="return validate();">
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input class="form-input" type="text" name="t1" placeholder="e.g. amir_node_admin" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input class="form-input" type="password" name="t2" placeholder="Create operator password" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Contact Number (10 Digits)</label>
+            <input class="form-input" type="text" name="t3" placeholder="e.g. 9059173902" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" name="t4" placeholder="e.g. amir@techwithamir.com" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Organization / Node Location</label>
+            <input class="form-input" type="text" name="t5" placeholder="e.g. Himayath Sagar, Hyderabad" />
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 28px; flex-wrap: wrap; gap: 12px;">
+            <button type="submit" class="btn-primary-editorial">
+              <span>Commit Identity to Blockchain</span>
+              <span>↗</span>
+            </button>
+            <a href="/Login" class="btn-secondary-editorial">Already Registered? Login ↗</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div>CONTRACT: {{ contract_address }} · NETWORK ID {{ network_id }}</div>
+      <div>MOHD AMIR ALI (160920733019)</div>
+    </footer>
+  </main>
+
+</body>
+</html>

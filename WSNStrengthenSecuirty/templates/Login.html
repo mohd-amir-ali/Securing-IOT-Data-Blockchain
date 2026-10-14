@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operator Login — Amir Ali | Blockchain WSN Security</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
+  <script>
+    function validate() {
+      var x = document.forms["f1"]["t1"].value;
+      var y = document.forms["f1"]["t2"].value;
+      if (!x || x.trim() === "") {
+        window.alert("Username must be entered");
+        document.f1.t1.focus();
+        return false;
+      }
+      if (!y || y === "") {
+        window.alert("Password must be entered");
+        document.f1.t2.focus();
+        return false;
+      }
+      return true;
+    }
+    function fillDemo() {
+      document.forms["f1"]["t1"].value = "Amir";
+      document.forms["f1"]["t2"].value = "amir123";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index" class="brand-lockup">
+        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="brand-text">
+          <span class="brand-name">Amir Ali</span>
+          <span class="brand-tagline">Engineering × Blockchain Security</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="/index" class="nav-link">Overview</a>
+        <a href="/Simulator" class="nav-link">WSN Simulator</a>
+        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
+        <a href="/Signup" class="nav-link">Register</a>
+        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="eyebrow-bar">
+      <div class="eyebrow-left">
+        <span class="burgundy-dot"></span>
+        <span>01 / BLOCKCHAIN OPERATOR AUTHENTICATION</span>
+      </div>
+      <div class="eyebrow-right">
+        Verified against on-chain credentials in WSNSecurity.sol
+      </div>
+    </div>
+
+    <div class="auth-wrapper">
+      <div class="editorial-card">
+        <div class="auth-header">
+          <span class="eyebrow-label">ACCESS CONTROL LEDGER</span>
+          <h1 class="auth-title">Operator Login</h1>
+          <p class="auth-subtitle">Authenticate to inspect wireless sensor telemetry and run node simulations.</p>
+        </div>
+
+        <div id="msg-box">
+          <script>
+            var serverMsg = "{{ msg }}";
+            if (serverMsg && serverMsg.trim() !== "") {
+              document.write('<div class="alert-banner">' + serverMsg + '</div>');
+            }
+          </script>
+        </div>
+
+        <form name="f1" method="post" action="/LoginAction" onsubmit="return validate();">
+          <div class="form-group">
+            <label class="form-label">Operator Username</label>
+            <input class="form-input" type="text" name="t1" placeholder="e.g. Amir" value="Amir" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cryptographic Passkey / Password</label>
+            <input class="form-input" type="password" name="t2" placeholder="Enter your password" value="amir123" />
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; flex-wrap: wrap;">
+            <button type="submit" class="btn-primary-editorial">
+              <span>Authenticate Operator</span>
+              <span>↗</span>
+            </button>
+            <button type="button" onclick="fillDemo()" class="btn-secondary-editorial">
+              <span>Auto-Fill Demo (Amir)</span>
+            </button>
+          </div>
+        </form>
+
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--slate-muted);">
+          <span>Need a new blockchain operator identity?</span>
+          <a href="/Signup" style="color: var(--burgundy); font-weight: 600;">Register Here ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div>CONTRACT: {{ contract_address }} · NETWORK ID {{ network_id }}</div>
+      <div>MOHD AMIR ALI (160920733019)</div>
+    </footer>
+  </main>
+
+</body>
+</html>

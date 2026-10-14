@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amir Ali — Securing IoT Data in the Cloud with Blockchain Technology</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
+</head>
+<body>
+
+  <!-- Editorial Header matching techwithamir.com -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index" class="brand-lockup">
+        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="brand-text">
+          <span class="brand-name">Amir Ali</span>
+          <span class="brand-tagline">Engineering × Blockchain Security</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="/index" class="nav-link active">Overview</a>
+        <a href="/Simulator" class="nav-link">WSN Simulator</a>
+        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
+        <a href="/Signup" class="nav-link">Register</a>
+        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- Eyebrow Meta Row -->
+    <div class="eyebrow-bar">
+      <div class="eyebrow-left">
+        <span class="burgundy-dot"></span>
+        <span>DECENTRALIZED WSN TELEMETRY. ENGINEERED AT HEART.</span>
+      </div>
+      <div class="eyebrow-right">
+        A cryptographic ledger for wireless sensor networks &amp; cloud integrity.
+      </div>
+    </div>
+
+    <!-- Massive Stacked Display Headline (Matches "BUILDING WHAT'S NEXT *") -->
+    <section class="hero-headline-block">
+      <h1 class="hero-display">
+        <span class="hero-line-dark">SECURING IOT</span>
+        <span class="hero-line-burgundy">
+          CLOUD DATA
+          <!-- 8-spoke geometric asterisk matching techwithamir.com -->
+          <svg class="hero-asterisk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="32" y1="4" x2="32" y2="60" stroke="#6E2634" stroke-width="3.2"/>
+            <line x1="4" y1="32" x2="60" y2="32" stroke="#6E2634" stroke-width="3.2"/>
+            <line x1="12.2" y1="12.2" x2="51.8" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+            <line x1="51.8" y1="12.2" x2="12.2" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+          </svg>
+        </span>
+      </h1>
+    </section>
+
+    <!-- Editorial Split Section -->
+    <section class="editorial-split">
+      <div>
+        <p class="editorial-lead">
+          I’m <strong>Mohd Amir Ali.</strong> This platform bridges the space between
+          <em>wireless sensor networks</em> and <em>immutable blockchain ledgers.</em>
+        </p>
+        <p class="editorial-body">
+          Traditional cloud-connected IoT sensor networks rely on a single centralized repository, leaving environmental and medical telemetry vulnerable to tampering. By routing 20 autonomous sensor nodes through a Mobile Database Node (MDN) with <strong>SHA-512 cryptographic hashing</strong> and an <strong>Ethereum Smart Contract (WSNSecurity.sol)</strong>, every temperature reading is permanently verifiable.
+        </p>
+        <div class="editorial-actions">
+          <a href="/Simulator" class="link-underline-cta">
+            <span>Launch Live WSN Simulator</span>
+            <span>↗</span>
+          </a>
+          <a href="/AccessData" class="btn-secondary-editorial">
+            <span>Inspect Blockchain Ledger</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Intersecting Venn Diagram on Dot-Grid (Matches "HUMAN + MACHINE" diagram) -->
+      <div class="diagram-box">
+        <svg width="360" height="200" viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left Circle: WSN SENSORS -->
+          <circle cx="135" cy="100" r="78" stroke="#6E2634" stroke-width="1.5" fill="rgba(110, 38, 52, 0.03)"/>
+          <!-- Right Circle: BLOCKCHAIN -->
+          <circle cx="225" cy="100" r="78" stroke="#5B6B7C" stroke-width="1.5" fill="rgba(91, 107, 124, 0.04)"/>
+          <!-- Intersection shading -->
+          <path d="M180 35.8 A78 78 0 0 1 180 164.2 A78 78 0 0 1 180 35.8 Z" fill="rgba(110, 38, 52, 0.06)"/>
+          <!-- Labels -->
+          <text x="98" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">IOT WSN</text>
+          <text x="180" y="105" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#6E2634" text-anchor="middle">+</text>
+          <text x="262" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">SHA-512</text>
+        </svg>
+        <div class="venn-caption">
+          01 / THE INTERSECTION OF TELEMETRY &amp; CRYPTOGRAPHIC TRUST.
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Blockchain Metrics Strip -->
+    <section class="metrics-strip">
+      <div class="metric-item">
+        <div class="metric-label">01 / ACTIVE TOPOLOGY</div>
+        <div class="metric-value">20 Nodes</div>
+        <div class="metric-sub">Autonomous WSN Cluster (IOT-0 – IOT-19)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">02 / MINED BLOCKS</div>
+        <div class="metric-value accent">{{ total_blocks }}</div>
+        <div class="metric-sub">Network ID {{ network_id }} (Local RPC :9545)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">03 / VERIFIED TELEMETRY</div>
+        <div class="metric-value">{{ total_readings }} Records</div>
+        <div class="metric-sub">{{ integrity_pct }}% SHA-512 Hash Integrity</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">04 / AVG COMMIT LATENCY</div>
+        <div class="metric-value">{{ avg_tx_ms }} ms</div>
+        <div class="metric-sub">Smart Contract: {{ contract_address }}</div>
+      </div>
+    </section>
+
+    <!-- Architecture Overview Cards -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+      <div class="editorial-card" style="margin-bottom: 0;">
+        <span class="eyebrow-label">STEP 01 / EDGE SENSING</span>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Wireless Sensor Nodes</h3>
+        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+          Twenty distributed IoT sensor nodes continuously sample ambient temperature readings and transmit raw telemetry to the Mobile Database Node (MDN) gateway.
+        </p>
+      </div>
+      <div class="editorial-card" style="margin-bottom: 0;">
+        <span class="eyebrow-label">STEP 02 / SHA-512 DIGEST</span>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Cryptographic Hashing</h3>
+        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+          Each sensor payload is hashed with a 512-bit SHA-512 digest before storage, making any unauthorized modification across the cloud immediately detectable.
+        </p>
+      </div>
+      <div class="editorial-card" style="margin-bottom: 0;">
+        <span class="eyebrow-label">STEP 03 / SOLIDITY CONTRACT</span>
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Immutable Ledger Storage</h3>
+        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+          The deployed <code>WSNSecurity.sol</code> smart contract records both operator access credentials and sensor hashes on-chain with sub-10ms local commit times.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
+      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Node / Truffle dependencies
+node_modules/
+hello-eth/node_modules/
+npm-debug.log*
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# macOS & IDE metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+.vscode/
+.idea/
+
+# Temporary runtime files
+*.tmp

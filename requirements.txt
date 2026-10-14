@@ -1,0 +1,6 @@
+# Optional packages (the project runs out-of-the-box on Python 3.8+ standard library,
+# and automatically upgrades to Flask / Web3 / Matplotlib when installed)
+flask>=2.2.0
+web3>=6.0.0
+matplotlib>=3.6.0
+numpy>=1.23.0

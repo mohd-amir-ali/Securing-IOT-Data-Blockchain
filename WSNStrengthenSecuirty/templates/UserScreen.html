@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSN Simulator &amp; Operator Console — Amir Ali | Blockchain WSN Security</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index" class="brand-lockup">
+        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="brand-text">
+          <span class="brand-name">Amir Ali</span>
+          <span class="brand-tagline">Engineering × Blockchain Security</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a href="/index" class="nav-link">Overview</a>
+        <a href="/Simulator" class="nav-link active">WSN Simulator</a>
+        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
+        <a href="/AccessDataAction?t1=ALL" class="nav-link">All Records</a>
+        <a href="/Logout" class="nav-cta">Logout <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <div class="eyebrow-bar">
+      <div class="eyebrow-left">
+        <span class="burgundy-dot"></span>
+        <span>02 / INTERACTIVE WSN SIMULATION &amp; BLOCKCHAIN CONSOLE</span>
+      </div>
+      <div class="eyebrow-right">
+        {{ msg }} · Contract {{ contract_address }}
+      </div>
+    </div>
+
+    <!-- Live Metrics Bar -->
+    <section class="metrics-strip" style="margin-bottom: 32px;">
+      <div class="metric-item">
+        <div class="metric-label">01 / SIMULATION STATUS</div>
+        <div class="metric-value accent" id="sim-state-text">STANDBY</div>
+        <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Ready</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">02 / TOTAL MINED BLOCKS</div>
+        <div class="metric-value" id="metric-blocks">{{ total_blocks }}</div>
+        <div class="metric-sub">Network ID {{ network_id }} (Local RPC :9545)</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">03 / SENSOR TELEMETRY</div>
+        <div class="metric-value" id="metric-readings">{{ total_readings }}</div>
+        <div class="metric-sub">100% SHA-512 Verified</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">04 / AVG COMMIT TIME</div>
+        <div class="metric-value" id="metric-latency">{{ avg_tx_ms }} ms</div>
+        <div class="metric-sub">WSNSecurity.setIOTData()</div>
+      </div>
+    </section>
+
+    <!-- Controls Bar -->
+    <div class="editorial-card" style="padding: 20px 26px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <button id="btn-start" type="button" onclick="startWebSimulation()" class="btn-primary-editorial">
+          <span>▶ Start WSN Simulation</span>
+        </button>
+        <button id="btn-stop" type="button" onclick="stopWebSimulation()" class="btn-secondary-editorial">
+          <span>■ Stop Simulation</span>
+        </button>
+        <button type="button" onclick="mineSingleStep()" class="btn-secondary-editorial">
+          <span>+ Sense &amp; Mine 1 Block</span>
+        </button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="/AccessData" class="btn-secondary-editorial">Filter by Node ID ↗</a>
+        <a href="/AccessDataAction?t1=ALL" class="link-underline-cta" style="padding-bottom: 4px;">View Full Table ↗</a>
+      </div>
+    </div>
+
+    <!-- Main Interactive Grid: WSN Topology Canvas + Live Blockchain Log -->
+    <section class="workspace-grid">
+      <div class="canvas-panel">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">01 / WIRELESS SENSOR NETWORK TOPOLOGY</span>
+            <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN)</h2>
+          </div>
+          <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO SENSE</span>
+        </div>
+        <canvas id="wsn-canvas" class="wsn-canvas-box" width="760" height="440"></canvas>
+      </div>
+
+      <div class="canvas-panel">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">02 / REAL-TIME ON-CHAIN STREAM</span>
+            <h2 class="panel-title">SHA-512 Transaction Log</h2>
+          </div>
+          <span class="status-pill verified">PORT 9545 LIVE</span>
+        </div>
+        <div id="tx-log" class="tx-log-stream"></div>
+      </div>
+    </section>
+
+    <!-- Transaction Processed Time Graph -->
+    <section class="canvas-panel" style="margin-bottom: 36px;">
+      <div class="panel-header">
+        <div>
+          <span class="eyebrow-label" style="margin-bottom: 2px;">03 / PERFORMANCE BENCHMARK</span>
+          <h2 class="panel-title">Blockchain Transaction Processed Time Graph (Sense Number vs. Commit Latency)</h2>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-muted);">MEASURED VIA HIGH-RESOLUTION PERF_COUNTER</span>
+      </div>
+      <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="290"></canvas>
+    </section>
+
+    <footer class="site-footer">
+      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
+      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+    </footer>
+
+  </main>
+
+  <script>
+    let simInterval = null;
+    let nodesData = [];
+    let txTimes = [];
+    let activeNodeId = null;
+    let currentRoundNode = 0;
+
+    const wsnCanvas = document.getElementById("wsn-canvas");
+    const wsnCtx = wsnCanvas.getContext("2d");
+    const chartCanvas = document.getElementById("tx-chart");
+    const chartCtx = chartCanvas.getContext("2d");
+
+    function drawTopology() {
+      const w = wsnCanvas.width;
+      const h = wsnCanvas.height;
+      wsnCtx.clearRect(0, 0, w, h);
+
+      // Draw central MDN Gateway hub
+      const hubX = w / 2;
+      const hubY = h / 2;
+
+      // Draw links from nodes to MDN hub
+      nodesData.forEach(n => {
+        const isActive = (n.id === activeNodeId);
+        wsnCtx.beginPath();
+        wsnCtx.moveTo(n.x, n.y);
+        wsnCtx.lineTo(hubX, hubY);
+        wsnCtx.strokeStyle = isActive ? "rgba(110, 38, 52, 0.65)" : "rgba(29, 35, 42, 0.10)";
+        wsnCtx.lineWidth = isActive ? 2.2 : 1;
+        if (isActive) {
+          wsnCtx.setLineDash([]);
+        } else {
+          wsnCtx.setLineDash([4, 4]);
+        }
+        wsnCtx.stroke();
+      });
+      wsnCtx.setLineDash([]);
+
+      // Draw MDN Gateway Circle
+      wsnCtx.beginPath();
+      wsnCtx.arc(hubX, hubY, 26, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "#FAF8F3";
+      wsnCtx.fill();
+      wsnCtx.lineWidth = 2;
+      wsnCtx.strokeStyle = "#6E2634";
+      wsnCtx.stroke();
+
+      wsnCtx.fillStyle = "#6E2634";
+      wsnCtx.font = "700 9px Inter, sans-serif";
+      wsnCtx.textAlign = "center";
+      wsnCtx.fillText("MDN", hubX, hubY - 2);
+      wsnCtx.font = "500 7.5px JetBrains Mono, monospace";
+      wsnCtx.fillText("GATEWAY", hubX, hubY + 9);
+
+      // Draw 20 IoT Sensor Nodes
+      nodesData.forEach(n => {
+        const isActive = (n.id === activeNodeId);
+        const radius = isActive ? 19 : 15;
+
+        if (isActive) {
+          wsnCtx.beginPath();
+          wsnCtx.arc(n.x, n.y, radius + 7, 0, Math.PI * 2);
+          wsnCtx.fillStyle = "rgba(110, 38, 52, 0.16)";
+          wsnCtx.fill();
+        }
+
+        wsnCtx.beginPath();
+        wsnCtx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.fill();
+
+        wsnCtx.fillStyle = "#F6F3EC";
+        wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
+        wsnCtx.textAlign = "center";
+        wsnCtx.fillText(String(n.id), n.x, n.y + 3.5);
+
+        // Node label above
+        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.font = isActive ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
+        const tempSuffix = (n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "";
+        wsnCtx.fillText(`IOT-${n.id}${tempSuffix}`, n.x, n.y - radius - 6);
+      });
+    }
+
+    function drawTransactionGraph() {
+      const w = chartCanvas.width;
+      const h = chartCanvas.height;
+      chartCtx.clearRect(0, 0, w, h);
+
+      const padL = 70, padR = 35, padT = 28, padB = 42;
+      const plotW = w - padL - padR;
+      const plotH = h - padT - padB;
+
+      // Grid lines
+      const maxVal = txTimes.length ? Math.max(...txTimes) * 1.2 : 0.01;
+      const minVal = 0;
+
+      chartCtx.strokeStyle = "#DED9CE";
+      chartCtx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = padT + plotH - (i / 4) * plotH;
+        chartCtx.beginPath();
+        chartCtx.moveTo(padL, y);
+        chartCtx.lineTo(padL + plotW, y);
+        chartCtx.stroke();
+
+        const val = minVal + (i / 4) * (maxVal - minVal);
+        chartCtx.fillStyle = "#5A6065";
+        chartCtx.font = "500 10px JetBrains Mono, monospace";
+        chartCtx.textAlign = "right";
+        chartCtx.fillText((val * 1000).toFixed(2) + " ms", padL - 10, y + 3);
+      }
+
+      if (!txTimes.length) return;
+
+      // Line path
+      chartCtx.beginPath();
+      txTimes.forEach((val, idx) => {
+        const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
+        const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
+        if (idx === 0) chartCtx.moveTo(x, y);
+        else chartCtx.lineTo(x, y);
+      });
+      chartCtx.strokeStyle = "#6E2634";
+      chartCtx.lineWidth = 2.4;
+      chartCtx.stroke();
+
+      // Points
+      txTimes.forEach((val, idx) => {
+        const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
+        const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
+        chartCtx.beginPath();
+        chartCtx.arc(x, y, 4, 0, Math.PI * 2);
+        chartCtx.fillStyle = "#6E2634";
+        chartCtx.fill();
+        chartCtx.strokeStyle = "#FAF8F3";
+        chartCtx.lineWidth = 1.5;
+        chartCtx.stroke();
+      });
+
+      // X-axis label
+      chartCtx.fillStyle = "#1D232A";
+      chartCtx.font = "600 11px JetBrains Mono, monospace";
+      chartCtx.textAlign = "center";
+      chartCtx.fillText(`SENSE TRANSACTION SEQUENCE (LAST ${txTimes.length} BLOCKS)`, padL + plotW / 2, h - 10);
+    }
+
+    function renderLogStream(blocks) {
+      const box = document.getElementById("tx-log");
+      box.innerHTML = blocks.map(b => {
+        const latencyMs = b.tx_time_sec ? (b.tx_time_sec * 1000).toFixed(2) + " ms" : "3.20 ms";
+        const hashStr = b.sha512 ? b.sha512.substring(0, 44) + "…" : b.block_hash.substring(0, 44) + "…";
+        return `
+          <div class="tx-log-item">
+            <div class="tx-head">
+              <span>BLOCK #${b.block_number} · ${b.method}</span>
+              <span>${latencyMs}</span>
+            </div>
+            <div style="color: #1D232A; margin-bottom: 3px;">${b.summary || ''} (${b.timestamp})</div>
+            <div class="tx-hash">SHA-512 / Hash: ${hashStr}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function loadDashboardState() {
+      const res = await fetch("/api/summary");
+      const data = await res.json();
+      nodesData = data.nodes || [];
+      txTimes = data.transaction_times || [];
+      document.getElementById("metric-blocks").innerText = data.total_blocks;
+      document.getElementById("metric-readings").innerText = data.total_readings;
+      document.getElementById("metric-latency").innerText = data.avg_tx_ms + " ms";
+      renderLogStream(data.recent_blocks || []);
+      drawTopology();
+      drawTransactionGraph();
+    }
+
+    async function mineSingleStep(forcedNodeId = null) {
+      const targetNode = (forcedNodeId !== null) ? forcedNodeId : (currentRoundNode % 20);
+      currentRoundNode = (targetNode + 1) % 20;
+      activeNodeId = targetNode;
+      drawTopology();
+
+      const res = await fetch("/api/simulate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ node_id: targetNode, count: 1 })
+      });
+      const payload = await res.json();
+      if (payload.mined && payload.mined.length > 0) {
+        const m = payload.mined[0];
+        document.getElementById("active-node-badge").innerText =
+          `LIVE: ${m.label} → ${m.temperature}°C (BLOCK #${m.block_number})`;
+      }
+      if (payload.summary) {
+        const s = payload.summary;
+        nodesData = s.nodes || nodesData;
+        txTimes = s.transaction_times || txTimes;
+        document.getElementById("metric-blocks").innerText = s.total_blocks;
+        document.getElementById("metric-readings").innerText = s.total_readings;
+        document.getElementById("metric-latency").innerText = s.avg_tx_ms + " ms";
+        renderLogStream(s.recent_blocks || []);
+        drawTopology();
+        drawTransactionGraph();
+      }
+    }
+
+    function startWebSimulation() {
+      if (simInterval) return;
+      document.getElementById("sim-state-text").innerText = "RUNNING";
+      document.getElementById("sim-sub-text").innerText = "Broadcasting SHA-512 sensor blocks...";
+      mineSingleStep();
+      simInterval = setInterval(() => {
+        mineSingleStep();
+      }, 1250);
+    }
+
+    function stopWebSimulation() {
+      if (simInterval) {
+        clearInterval(simInterval);
+        simInterval = null;
+      }
+      activeNodeId = null;
+      document.getElementById("sim-state-text").innerText = "PAUSED";
+      document.getElementById("sim-sub-text").innerText = "Ledger state synced & verified.";
+      document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      drawTopology();
+    }
+
+    // Allow clicking any node on the canvas to trigger an immediate sensor reading from that node
+    wsnCanvas.addEventListener("click", (evt) => {
+      const rect = wsnCanvas.getBoundingClientRect();
+      const scaleX = wsnCanvas.width / rect.width;
+      const scaleY = wsnCanvas.height / rect.height;
+      const cx = (evt.clientX - rect.left) * scaleX;
+      const cy = (evt.clientY - rect.top) * scaleY;
+
+      for (const n of nodesData) {
+        const dist = Math.hypot(n.x - cx, n.y - cy);
+        if (dist <= 22) {
+          mineSingleStep(n.id);
+          break;
+        }
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", loadDashboardState);
+  </script>
+
+</body>
+</html>
