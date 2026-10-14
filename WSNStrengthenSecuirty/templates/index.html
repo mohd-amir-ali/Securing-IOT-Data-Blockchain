@@ -3,28 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amir Ali — Securing IoT Data in the Cloud with Blockchain Technology</title>
+  <title>WSN-CHAIN // Securing IoT Data in the Cloud with Blockchain Technology</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
 </head>
 <body>
 
-  <!-- Editorial Header matching techwithamir.com -->
+  <!-- Optional Admin Session Bar if already logged in -->
+  {{ admin_bar | safe }}
+
+  <!-- Major Project Header (Distinct from personal portfolio) -->
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+            <line x1="12" y1="2" x2="12" y2="9"></line>
+            <line x1="21" y1="17" x2="14.6" y2="13.5"></line>
+            <line x1="3" y1="17" x2="9.4" y2="13.5"></line>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link active">Overview</a>
-        <a href="/Simulator" class="nav-link">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
-        <a href="/Signup" class="nav-link">Register</a>
-        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -35,68 +42,67 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>DECENTRALIZED WSN TELEMETRY. ENGINEERED AT HEART.</span>
+        <span>CRYPTOGRAPHIC WSN TELEMETRY · SHA-512 + ETHEREUM SMART CONTRACT</span>
       </div>
       <div class="eyebrow-right">
-        A cryptographic ledger for wireless sensor networks &amp; cloud integrity.
+        NETWORK ID {{ network_id }} · CONTRACT {{ contract_address }}
       </div>
     </div>
 
-    <!-- Massive Stacked Display Headline (Matches "BUILDING WHAT'S NEXT *") -->
+    <!-- Hero Display Headline -->
     <section class="hero-headline-block">
       <h1 class="hero-display">
         <span class="hero-line-dark">SECURING IOT</span>
         <span class="hero-line-burgundy">
           CLOUD DATA
-          <!-- 8-spoke geometric asterisk matching techwithamir.com -->
           <svg class="hero-asterisk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="32" y1="4" x2="32" y2="60" stroke="#6E2634" stroke-width="3.2"/>
-            <line x1="4" y1="32" x2="60" y2="32" stroke="#6E2634" stroke-width="3.2"/>
-            <line x1="12.2" y1="12.2" x2="51.8" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
-            <line x1="51.8" y1="12.2" x2="12.2" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+            <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#0D7463" stroke-width="3" fill="rgba(13,116,99,0.08)"/>
+            <circle cx="32" cy="32" r="8" stroke="#0F1C24" stroke-width="3"/>
+            <line x1="32" y1="4" x2="32" y2="24" stroke="#0D7463" stroke-width="2.5"/>
+            <line x1="32" y1="40" x2="32" y2="60" stroke="#0D7463" stroke-width="2.5"/>
+            <line x1="8" y1="18" x2="25" y2="28" stroke="#0D7463" stroke-width="2.5"/>
+            <line x1="39" y1="36" x2="56" y2="46" stroke="#0D7463" stroke-width="2.5"/>
+            <line x1="56" y1="18" x2="39" y2="28" stroke="#0D7463" stroke-width="2.5"/>
+            <line x1="25" y1="36" x2="8" y2="46" stroke="#0D7463" stroke-width="2.5"/>
           </svg>
         </span>
       </h1>
     </section>
 
-    <!-- Editorial Split Section -->
+    <!-- Split Section: Project Architecture Thesis + Interactive Cyber-Mesh Web Canvas -->
     <section class="editorial-split">
       <div>
         <p class="editorial-lead">
-          I’m <strong>Mohd Amir Ali.</strong> This platform bridges the space between
-          <em>wireless sensor networks</em> and <em>immutable blockchain ledgers.</em>
+          A decentralized <strong>cryptographic defense framework</strong> engineered to protect
+          <em>wireless sensor networks</em> against cloud data tampering.
         </p>
         <p class="editorial-body">
-          Traditional cloud-connected IoT sensor networks rely on a single centralized repository, leaving environmental and medical telemetry vulnerable to tampering. By routing 20 autonomous sensor nodes through a Mobile Database Node (MDN) with <strong>SHA-512 cryptographic hashing</strong> and an <strong>Ethereum Smart Contract (WSNSecurity.sol)</strong>, every temperature reading is permanently verifiable.
+          Conventional IoT sensor deployments forward environmental and clinical telemetry to a single centralized server, creating a critical single point of failure. This system routes 20 autonomous wireless sensor nodes through a Mobile Database Node (MDN) gateway, sealing every packet with a <strong>512-bit SHA-512 hash</strong> and committing it to the on-chain <strong>WSNSecurity.sol</strong> smart contract.
         </p>
+
+        <div class="author-credit-box">
+          <div>
+            <strong>DEVELOPED BY:</strong> MOHD AMIR ALI (160920733019)<br/>
+            <span style="color: var(--slate-muted);">Dept. of CSE · Lords Institute of Engineering &amp; Technology</span>
+          </div>
+          <span class="status-pill verified">● LEDGER ONLINE</span>
+        </div>
+
         <div class="editorial-actions">
-          <a href="/Simulator" class="link-underline-cta">
-            <span>Launch Live WSN Simulator</span>
-            <span>↗</span>
-          </a>
-          <a href="/AccessData" class="btn-secondary-editorial">
-            <span>Inspect Blockchain Ledger</span>
-            <span>↗</span>
-          </a>
+          {{ hero_actions | safe }}
         </div>
       </div>
 
-      <!-- Intersecting Venn Diagram on Dot-Grid (Matches "HUMAN + MACHINE" diagram) -->
-      <div class="diagram-box">
-        <svg width="360" height="200" viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Left Circle: WSN SENSORS -->
-          <circle cx="135" cy="100" r="78" stroke="#6E2634" stroke-width="1.5" fill="rgba(110, 38, 52, 0.03)"/>
-          <!-- Right Circle: BLOCKCHAIN -->
-          <circle cx="225" cy="100" r="78" stroke="#5B6B7C" stroke-width="1.5" fill="rgba(91, 107, 124, 0.04)"/>
-          <!-- Intersection shading -->
-          <path d="M180 35.8 A78 78 0 0 1 180 164.2 A78 78 0 0 1 180 35.8 Z" fill="rgba(110, 38, 52, 0.06)"/>
-          <!-- Labels -->
-          <text x="98" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">IOT WSN</text>
-          <text x="180" y="105" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#6E2634" text-anchor="middle">+</text>
-          <text x="262" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">SHA-512</text>
-        </svg>
+      <!-- Interactive Cybersecurity Mesh / Cryptographic Web Canvas -->
+      <div class="cyber-mesh-container">
+        <div class="cyber-mesh-header">
+          <span>01 // LIVE CRYPTOGRAPHIC CYBER-MESH TOPOLOGY</span>
+          <span id="mesh-hover-status" style="color: var(--burgundy); font-weight: 600;">MOVE CURSOR TO INSPECT · CLICK TO PULSE</span>
+        </div>
+        <canvas id="cyber-web-canvas" class="cyber-mesh-canvas" width="580" height="280"></canvas>
         <div class="venn-caption">
-          01 / THE INTERSECTION OF TELEMETRY &amp; CRYPTOGRAPHIC TRUST.
+          <span>SHA-512 PACKET VERIFICATION WEB</span>
+          <span>20 ACTIVE SENSOR NODES → MDN CORE</span>
         </div>
       </div>
     </section>
@@ -104,58 +110,244 @@
     <!-- Live Blockchain Metrics Strip -->
     <section class="metrics-strip">
       <div class="metric-item">
-        <div class="metric-label">01 / ACTIVE TOPOLOGY</div>
+        <div class="metric-label">01 / WSN CLUSTER</div>
         <div class="metric-value">20 Nodes</div>
-        <div class="metric-sub">Autonomous WSN Cluster (IOT-0 – IOT-19)</div>
+        <div class="metric-sub">Autonomous Sensors (IOT-0 – IOT-19)</div>
       </div>
       <div class="metric-item">
-        <div class="metric-label">02 / MINED BLOCKS</div>
+        <div class="metric-label">02 / ON-CHAIN BLOCKS</div>
         <div class="metric-value accent">{{ total_blocks }}</div>
-        <div class="metric-sub">Network ID {{ network_id }} (Local RPC :9545)</div>
+        <div class="metric-sub">Ethereum RPC :9545 (Net {{ network_id }})</div>
       </div>
       <div class="metric-item">
-        <div class="metric-label">03 / VERIFIED TELEMETRY</div>
+        <div class="metric-label">03 / VERIFIED PACKETS</div>
         <div class="metric-value">{{ total_readings }} Records</div>
-        <div class="metric-sub">{{ integrity_pct }}% SHA-512 Hash Integrity</div>
+        <div class="metric-sub">{{ integrity_pct }}% SHA-512 Hash Match</div>
       </div>
       <div class="metric-item">
         <div class="metric-label">04 / AVG COMMIT LATENCY</div>
         <div class="metric-value">{{ avg_tx_ms }} ms</div>
-        <div class="metric-sub">Smart Contract: {{ contract_address }}</div>
+        <div class="metric-sub">WSNSecurity Smart Contract</div>
       </div>
     </section>
 
     <!-- Architecture Overview Cards -->
     <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
       <div class="editorial-card" style="margin-bottom: 0;">
-        <span class="eyebrow-label">STEP 01 / EDGE SENSING</span>
-        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Wireless Sensor Nodes</h3>
-        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-          Twenty distributed IoT sensor nodes continuously sample ambient temperature readings and transmit raw telemetry to the Mobile Database Node (MDN) gateway.
+        <span class="eyebrow-label">LAYER 01 // EDGE SENSING</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Distributed WSN Cluster</h3>
+        <p style="color: var(--slate-muted); font-size: 0.94rem;">
+          Twenty simulated IoT micro-sensor nodes sample real-time environmental telemetry and broadcast packets to the Mobile Database Node (MDN) gateway.
         </p>
       </div>
       <div class="editorial-card" style="margin-bottom: 0;">
-        <span class="eyebrow-label">STEP 02 / SHA-512 DIGEST</span>
-        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Cryptographic Hashing</h3>
-        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-          Each sensor payload is hashed with a 512-bit SHA-512 digest before storage, making any unauthorized modification across the cloud immediately detectable.
+        <span class="eyebrow-label">LAYER 02 // CRYPTOGRAPHIC SEAL</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Modified SHA-512 Digest</h3>
+        <p style="color: var(--slate-muted); font-size: 0.94rem;">
+          Before any telemetry leaves the edge gateway, it is sealed with a 512-bit SHA-512 cryptographic signature so any cloud tampering triggers an instant hash mismatch.
         </p>
       </div>
       <div class="editorial-card" style="margin-bottom: 0;">
-        <span class="eyebrow-label">STEP 03 / SOLIDITY CONTRACT</span>
-        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Immutable Ledger Storage</h3>
-        <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-          The deployed <code>WSNSecurity.sol</code> smart contract records both operator access credentials and sensor hashes on-chain with sub-10ms local commit times.
+        <span class="eyebrow-label">LAYER 03 // ACCESS CONTROL</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Role-Gated Smart Contract</h3>
+        <p style="color: var(--slate-muted); font-size: 0.94rem;">
+          Only authenticated operators registered in <code>WSNSecurity.sol</code> can unlock the Admin Security Console, trigger node simulations, or audit raw sensor blocks.
         </p>
       </div>
     </section>
 
     <footer class="site-footer">
-      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
-      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+      <div>SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN TECHNOLOGY</div>
+      <div>MOHD AMIR ALI (160920733019) · B.E. CSE MAJOR PROJECT</div>
     </footer>
 
   </main>
+
+  <!-- Interactive Cyber-Mesh Constellation Script -->
+  <script>
+    (function() {
+      const canvas = document.getElementById("cyber-web-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const statusEl = document.getElementById("mesh-hover-status");
+      const W = canvas.width;
+      const H = canvas.height;
+
+      const mouse = { x: -999, y: -999, active: false };
+      const pulses = [];
+      const nodes = [];
+      const hashes = ["0x8f3a..c91e", "0x4d12..a70b", "0x9c4e..e112", "0x1b77..f04a", "0x6e09..d38c", "0x3a91..b82d"];
+
+      for (let i = 0; i < 18; i++) {
+        const angle = (i / 18) * Math.PI * 2;
+        const radius = 58 + (i % 3) * 34;
+        nodes.push({
+          id: i,
+          x: W / 2 + Math.cos(angle) * radius * 1.35,
+          y: H / 2 + Math.sin(angle) * radius * 0.82,
+          vx: (Math.random() - 0.5) * 0.55,
+          vy: (Math.random() - 0.5) * 0.55,
+          hash: hashes[i % hashes.length],
+          temp: 20 + (i % 15)
+        });
+      }
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * (W / rect.width);
+        mouse.y = (e.clientY - rect.top) * (H / rect.height);
+        mouse.active = true;
+      });
+
+      canvas.addEventListener("mouseleave", () => {
+        mouse.active = false;
+        statusEl.innerText = "MOVE CURSOR TO INSPECT · CLICK TO PULSE";
+      });
+
+      canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const cx = (e.clientX - rect.left) * (W / rect.width);
+        const cy = (e.clientY - rect.top) * (H / rect.height);
+        pulses.push({ x: cx, y: cy, r: 6, alpha: 1.0 });
+        statusEl.innerText = "⚡ BROADCASTING SHA-512 VERIFICATION PULSE...";
+      });
+
+      let tick = 0;
+      function animate() {
+        tick += 0.02;
+        ctx.clearRect(0, 0, W, H);
+        const centerX = W / 2;
+        const centerY = H / 2;
+
+        // Update node positions gently
+        nodes.forEach(n => {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 28 || n.x > W - 28) n.vx *= -1;
+          if (n.y < 24 || n.y > H - 24) n.vy *= -1;
+        });
+
+        // Draw cyber mesh edges between nearby nodes
+        for (let i = 0; i < nodes.length; i++) {
+          // Link to central SHA-512 Ledger Core
+          const dCenter = Math.hypot(nodes[i].x - centerX, nodes[i].y - centerY);
+          if (dCenter < 170) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(centerX, centerY);
+            ctx.strokeStyle = "rgba(13, 116, 99, 0.14)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Animated data packet dot moving toward core
+            const t = ((tick * 0.6 + i * 0.17) % 1);
+            const px = nodes[i].x + (centerX - nodes[i].x) * t;
+            const py = nodes[i].y + (centerY - nodes[i].y) * t;
+            ctx.beginPath();
+            ctx.arc(px, py, 2, 0, Math.PI * 2);
+            ctx.fillStyle = "#0D7463";
+            ctx.fill();
+          }
+
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+            if (dist < 115) {
+              const alpha = (1 - dist / 115) * 0.35;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = `rgba(15, 28, 36, ${alpha})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Interactive cursor cyber-web inspection
+        let hoveredNode = null;
+        if (mouse.active) {
+          nodes.forEach(n => {
+            const dMouse = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+            if (dMouse < 130) {
+              ctx.beginPath();
+              ctx.moveTo(mouse.x, mouse.y);
+              ctx.lineTo(n.x, n.y);
+              ctx.strokeStyle = `rgba(13, 116, 99, ${(1 - dMouse / 130) * 0.75})`;
+              ctx.lineWidth = 1.4;
+              ctx.stroke();
+              if (dMouse < 35) hoveredNode = n;
+            }
+          });
+          if (hoveredNode) {
+            statusEl.innerText = `INSPECTING IOT-${hoveredNode.id} | ${hoveredNode.temp}°C | SHA512: ${hoveredNode.hash}`;
+          }
+        }
+
+        // Draw click pulse waves
+        for (let p = pulses.length - 1; p >= 0; p--) {
+          const pulse = pulses[p];
+          pulse.r += 3.2;
+          pulse.alpha -= 0.022;
+          if (pulse.alpha <= 0) {
+            pulses.splice(p, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.arc(pulse.x, pulse.y, pulse.r, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(13, 116, 99, ${pulse.alpha})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        // Draw sensor nodes
+        nodes.forEach(n => {
+          const isHov = (hoveredNode && hoveredNode.id === n.id);
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, isHov ? 7 : 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = isHov ? "#0D7463" : "#0F1C24";
+          ctx.fill();
+          ctx.strokeStyle = "#F7FBFA";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = isHov ? "#0D7463" : "#4A606A";
+          ctx.font = isHov ? "700 9px JetBrains Mono, monospace" : "500 8px JetBrains Mono, monospace";
+          ctx.textAlign = "center";
+          ctx.fillText(`IOT-${n.id}`, n.x, n.y - 8);
+        });
+
+        // Draw Central Hexagonal Ledger Shield Core
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.beginPath();
+        for (let k = 0; k < 6; k++) {
+          const a = (k * Math.PI) / 3 - Math.PI / 6;
+          const rx = Math.cos(a) * 28;
+          const ry = Math.sin(a) * 28;
+          if (k === 0) ctx.moveTo(rx, ry);
+          else ctx.lineTo(rx, ry);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "#0F1C24";
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#0D7463";
+        ctx.stroke();
+
+        ctx.fillStyle = "#5EEAD4";
+        ctx.font = "700 8px JetBrains Mono, monospace";
+        ctx.textAlign = "center";
+        ctx.fillText("SHA-512", 0, -2);
+        ctx.fillStyle = "#F7FBFA";
+        ctx.font = "500 7px JetBrains Mono, monospace";
+        ctx.fillText("CORE", 0, 8);
+        ctx.restore();
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
 
 </body>
 </html>

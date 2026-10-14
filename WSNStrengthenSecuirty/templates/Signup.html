@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operator Registration — Amir Ali | Blockchain WSN Security</title>
+  <title>Operator Registration — WSN-CHAIN // Secure Cloud</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
   <script>
     function validate() {
@@ -43,22 +43,25 @@
 </head>
 <body>
 
+  {{ admin_bar | safe }}
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link">Overview</a>
-        <a href="/Simulator" class="nav-link">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
-        <a href="/Signup" class="nav-link active">Register</a>
-        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -67,19 +70,19 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>02 / ON-CHAIN IDENTITY PROVISIONING</span>
+        <span>02 // ON-CHAIN OPERATOR IDENTITY PROVISIONING</span>
       </div>
       <div class="eyebrow-right">
-        Commits new operator credentials to WSNSecurity.addUser()
+        Commits to WSNSecurity.addUser()
       </div>
     </div>
 
     <div class="auth-wrapper" style="max-width: 600px;">
       <div class="editorial-card">
         <div class="auth-header">
-          <span class="eyebrow-label">SMART CONTRACT REGISTRATION</span>
-          <h1 class="auth-title">New Operator Signup</h1>
-          <p class="auth-subtitle">Register an authorized identity on the blockchain ledger to query WSN telemetry.</p>
+          <span class="eyebrow-label">SMART CONTRACT ACL REGISTRATION</span>
+          <h1 class="auth-title">Register New Operator</h1>
+          <p class="auth-subtitle">Provision an authorized operator credential on the blockchain ledger.</p>
         </div>
 
         <script>
@@ -91,12 +94,12 @@
 
         <form name="f1" method="post" action="/SignupAction" onsubmit="return validate();">
           <div class="form-group">
-            <label class="form-label">Username</label>
-            <input class="form-input" type="text" name="t1" placeholder="e.g. amir_node_admin" />
+            <label class="form-label">Operator Username</label>
+            <input class="form-input" type="text" name="t1" placeholder="e.g. amir_sec_admin" />
           </div>
 
           <div class="form-group">
-            <label class="form-label">Password</label>
+            <label class="form-label">Passkey / Password</label>
             <input class="form-input" type="password" name="t2" placeholder="Create operator password" />
           </div>
 
@@ -106,13 +109,13 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Email Address</label>
+            <label class="form-label">Official Email ID</label>
             <input class="form-input" type="email" name="t4" placeholder="e.g. amir@techwithamir.com" />
           </div>
 
           <div class="form-group">
-            <label class="form-label">Organization / Node Location</label>
-            <input class="form-input" type="text" name="t5" placeholder="e.g. Himayath Sagar, Hyderabad" />
+            <label class="form-label">Department / Node Location</label>
+            <input class="form-input" type="text" name="t5" placeholder="e.g. CSE Dept, Lords Institute, Hyderabad" />
           </div>
 
           <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 28px; flex-wrap: wrap; gap: 12px;">
@@ -120,7 +123,7 @@
               <span>Commit Identity to Blockchain</span>
               <span>↗</span>
             </button>
-            <a href="/Login" class="btn-secondary-editorial">Already Registered? Login ↗</a>
+            <a href="/Login" class="btn-secondary-editorial">Proceed to Admin Login ↗</a>
           </div>
         </form>
       </div>

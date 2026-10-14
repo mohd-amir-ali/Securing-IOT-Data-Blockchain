@@ -3,25 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amir Ali — Securing IoT Data in the Cloud with Blockchain Technology</title>
+  <title>WSN-CHAIN // Securing IoT Data in the Cloud with Blockchain Technology</title>
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-cream: #F6F3EC;
-  --bg-surface: #FAF8F3;
-  --bg-elevated: #EFECE4;
-  --ink-dark: #1D232A;
-  --ink-Soft: #2C343D;
-  --burgundy: #6E2634;
-  --burgundy-hover: #521A25;
-  --burgundy-soft: rgba(110, 38, 52, 0.08);
-  --slate-muted: #5A6065;
-  --slate-light: #7D8287;
-  --border-hairline: #DED9CE;
-  --border-strong: #C6C0B4;
-  --verified-green: #1D5E3A;
-  --verified-bg: rgba(29, 94, 58, 0.09);
+  /* Pastel-Cybersecurity & Cryptographic Telemetry Palette */
+  --bg-cream: #EEF4F3;           /* Soft Pastel Cyber-Mist / Cool Lab Paper */
+  --bg-surface: #F7FBFA;         /* Frosted Mint-White Card Surface */
+  --bg-elevated: #E1ECEA;        /* Soft Pastel Sage-Slate Tint */
+  --ink-dark: #0F1C24;           /* Deep Cyber Obsidian Ink */
+  --ink-soft: #1E303C;           /* Technical Charcoal-Navy */
+  --burgundy: #0D7463;           /* Primary Cyber Teal-Emerald Accent */
+  --burgundy-hover: #09574A;     /* Deep Cyber Teal Hover */
+  --burgundy-soft: rgba(13, 116, 99, 0.10);
+  --cyber-indigo: #3B49DF;       /* Secondary Cryptographic Indigo */
+  --cyber-indigo-soft: rgba(59, 73, 223, 0.09);
+  --slate-muted: #4A606A;
+  --slate-light: #6C828C;
+  --border-hairline: #CBDAD7;
+  --border-strong: #AEC0BC;
+  --verified-green: #0D7463;
+  --verified-bg: rgba(13, 116, 99, 0.12);
+  --tamper-red: #C81E32;
+  --tamper-bg: rgba(200, 30, 50, 0.11);
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Newsreader', 'Georgia', 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
@@ -45,15 +50,59 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 /* ==========================================================================
-   TOP NAVIGATION BAR (Matches techwithamir.com header)
+   ADMIN SESSION TOP BAR (Shown only when Admin/Operator is logged in)
+   ========================================================================== */
+.admin-session-bar {
+  background-color: var(--ink-dark);
+  color: #E2F1EE;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  padding: 9px 40px;
+  border-bottom: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.admin-session-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(20, 184, 166, 0.18);
+  color: #5EEAD4;
+  padding: 3px 10px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  font-weight: 600;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2DD4BF;
+  display: inline-block;
+  box-shadow: 0 0 8px #2DD4BF;
+}
+
+/* ==========================================================================
+   MAJOR PROJECT HEADER (Distinct from personal portfolio header)
    ========================================================================== */
 .site-header {
   border-bottom: 1px solid var(--border-hairline);
-  background-color: var(--bg-cream);
+  background-color: rgba(238, 244, 243, 0.92);
+  backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -62,10 +111,12 @@ a {
 .header-inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 18px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .brand-lockup {
@@ -74,24 +125,16 @@ a {
   gap: 14px;
 }
 
-.brand-monogram {
-  position: relative;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 1.75rem;
-  letter-spacing: -0.06em;
-  color: var(--burgundy);
-  line-height: 1;
-  display: inline-flex;
-  align-items: flex-start;
-}
-
-.brand-monogram .mono-arrow {
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-left: -2px;
-  margin-top: -4px;
-  color: var(--burgundy);
+.project-hex-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--ink-dark);
+  border: 1.5px solid var(--burgundy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5EEAD4;
+  flex-shrink: 0;
 }
 
 .brand-text {
@@ -100,18 +143,24 @@ a {
 }
 
 .brand-name {
-  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-dark);
   line-height: 1.2;
 }
 
+.brand-name .slash-accent {
+  color: var(--burgundy);
+}
+
 .brand-tagline {
+  font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--slate-muted);
   margin-top: 2px;
@@ -120,15 +169,19 @@ a {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 26px;
+  flex-wrap: wrap;
 }
 
 .nav-link {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--ink-dark);
   padding: 4px 0;
-  border-bottom: 1.5px solid transparent;
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .nav-link:hover,
@@ -137,26 +190,44 @@ a {
   border-bottom-color: var(--burgundy);
 }
 
+.nav-lock-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  padding: 1px 6px;
+  background-color: var(--bg-elevated);
+  color: var(--slate-muted);
+  border: 1px solid var(--border-hairline);
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 18px;
-  border: 1px solid var(--border-strong);
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 9px 18px;
+  border: 1px solid var(--ink-dark);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink-dark);
-  background: transparent;
+  background: var(--bg-surface);
 }
 
 .nav-cta:hover {
   border-color: var(--burgundy);
   background-color: var(--burgundy);
-  color: var(--bg-cream);
+  color: #FFFFFF;
+}
+
+.nav-cta.admin-active {
+  background-color: var(--burgundy);
+  border-color: var(--burgundy);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
-   MAIN CONTAINER & EDITORIAL SECTIONS
+   MAIN CONTAINER & EDITORIAL-CYBER SECTIONS
    ========================================================================== */
 .page-container {
   max-width: 1320px;
@@ -168,60 +239,66 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
   gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-hairline);
 }
 
 .eyebrow-left {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-dark);
 }
 
 .burgundy-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: var(--burgundy);
   display: inline-block;
+  box-shadow: 0 0 0 3px var(--burgundy-soft);
 }
 
 .eyebrow-right {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.98rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--slate-muted);
+  background-color: var(--bg-elevated);
+  padding: 4px 10px;
+  border: 1px solid var(--border-hairline);
 }
 
 .eyebrow-label {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--slate-muted);
+  color: var(--burgundy);
   margin-bottom: 8px;
 }
 
 /* ==========================================================================
-   HERO DISPLAY SECTION (Matches "BUILDING WHAT'S NEXT *")
+   HERO DISPLAY SECTION
    ========================================================================== */
 .hero-headline-block {
-  margin: 12px 0 44px;
+  margin: 8px 0 36px;
 }
 
 .hero-display {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(3.2rem, 7.6vw, 6.5rem);
-  line-height: 0.94;
+  font-size: clamp(2.9rem, 6.8vw, 5.8rem);
+  line-height: 0.95;
   letter-spacing: -0.035em;
   text-transform: uppercase;
 }
@@ -235,13 +312,13 @@ a {
   color: var(--burgundy);
   display: inline-flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .hero-asterisk {
-  width: clamp(38px, 5vw, 64px);
-  height: clamp(38px, 5vw, 64px);
+  width: clamp(36px, 4.5vw, 58px);
+  height: clamp(36px, 4.5vw, 58px);
   display: inline-block;
   vertical-align: middle;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -252,15 +329,15 @@ a {
 }
 
 /* ==========================================================================
-   LOWER HERO SPLIT: EDITORIAL INTRO + INTERSECTING VENN DIAGRAM
+   LOWER HERO SPLIT: PROJECT THESIS + INTERACTIVE CYBER MESH CANVAS
    ========================================================================== */
 .editorial-split {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 48px;
   align-items: stretch;
-  padding-top: 12px;
-  margin-bottom: 56px;
+  padding-top: 8px;
+  margin-bottom: 52px;
 }
 
 @media (max-width: 960px) {
@@ -271,10 +348,10 @@ a {
 
 .editorial-lead {
   font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
-  line-height: 1.38;
+  font-size: clamp(1.38rem, 2.05vw, 1.82rem);
+  line-height: 1.4;
   color: var(--ink-dark);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   font-weight: 400;
 }
 
@@ -288,30 +365,45 @@ a {
 }
 
 .editorial-body {
-  font-family: var(--font-serif);
-  font-size: 1.08rem;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
   line-height: 1.68;
   color: var(--slate-muted);
-  margin-bottom: 28px;
+  margin-bottom: 26px;
   max-width: 560px;
+}
+
+.author-credit-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--burgundy);
+  margin-bottom: 26px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
 }
 
 .editorial-actions {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .link-underline-cta {
   display: inline-flex;
   align-items: center;
-  gap: 24px;
-  padding-bottom: 10px;
-  border-bottom: 1.5px solid var(--burgundy);
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--burgundy);
   color: var(--burgundy);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .link-underline-cta:hover {
@@ -325,10 +417,12 @@ a {
   gap: 10px;
   padding: 12px 22px;
   background-color: var(--burgundy);
-  color: var(--bg-cream);
-  font-size: 0.88rem;
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   border: 1px solid var(--burgundy);
   cursor: pointer;
 }
@@ -336,7 +430,28 @@ a {
 .btn-primary-editorial:hover {
   background-color: var(--ink-dark);
   border-color: var(--ink-dark);
-  color: var(--bg-cream);
+  color: #FFFFFF;
+}
+
+.btn-danger-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background-color: var(--tamper-bg);
+  color: var(--tamper-red);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--tamper-red);
+  cursor: pointer;
+}
+
+.btn-danger-editorial:hover {
+  background-color: var(--tamper-red);
+  color: #FFFFFF;
 }
 
 .btn-secondary-editorial {
@@ -344,52 +459,82 @@ a {
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  background-color: transparent;
+  background-color: var(--bg-surface);
   color: var(--ink-dark);
-  font-size: 0.88rem;
-  font-weight: 500;
-  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-hairline);
   cursor: pointer;
 }
 
 .btn-secondary-editorial:hover {
-  border-color: var(--ink-dark);
+  border-color: var(--burgundy);
+  color: var(--burgundy);
   background-color: var(--bg-elevated);
 }
 
-/* Dot-grid Venn Diagram Box */
-.diagram-box {
-  border-top: 1px solid var(--border-hairline);
-  border-bottom: 1px solid var(--border-hairline);
-  background-image: radial-gradient(#CFC9BC 1.1px, transparent 1.1px);
-  background-size: 16px 16px;
-  padding: 32px 24px 22px;
+/* Interactive Cyber-Mesh Box on Homepage */
+.cyber-mesh-container {
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-surface);
+  background-image:
+    linear-gradient(to right, rgba(13, 116, 99, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 116, 99, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding: 18px 20px 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  min-height: 290px;
+  position: relative;
+}
+
+.cyber-mesh-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--slate-muted);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.cyber-mesh-canvas {
+  width: 100%;
+  height: 280px;
+  display: block;
+  cursor: crosshair;
 }
 
 .venn-caption {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--slate-muted);
-  margin-top: 16px;
-  text-align: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-hairline);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* ==========================================================================
-   METRICS STRIP & FOOTER METADATA BAR
+   METRICS STRIP
    ========================================================================== */
 .metrics-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--border-hairline);
-  border-bottom: 1px solid var(--border-hairline);
-  margin-bottom: 48px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  margin-bottom: 44px;
 }
 
 @media (max-width: 840px) {
@@ -428,11 +573,10 @@ a {
 }
 
 .metric-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   color: var(--slate-muted);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 /* ==========================================================================
@@ -441,23 +585,23 @@ a {
 .editorial-card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  padding: 36px;
-  margin-bottom: 32px;
+  padding: 32px;
+  margin-bottom: 28px;
 }
 
 .auth-wrapper {
   max-width: 540px;
-  margin: 28px auto;
+  margin: 24px auto;
 }
 
 .auth-header {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--border-hairline);
-  padding-bottom: 18px;
+  padding-bottom: 16px;
 }
 
 .auth-title {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--ink-dark);
@@ -472,7 +616,7 @@ a {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .form-label {
@@ -491,12 +635,12 @@ a {
   width: 100%;
   padding: 12px 14px;
   background-color: var(--bg-cream);
-  border: 1px solid var(--border-strong);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
+  border: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
   color: var(--ink-dark);
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .form-input:focus,
@@ -507,12 +651,19 @@ a {
 
 .alert-banner {
   padding: 14px 18px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   border-left: 3px solid var(--burgundy);
   background-color: var(--burgundy-soft);
   color: var(--ink-dark);
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   font-weight: 500;
+}
+
+.alert-banner.danger {
+  border-left-color: var(--tamper-red);
+  background-color: var(--tamper-bg);
+  color: var(--tamper-red);
 }
 
 /* ==========================================================================
@@ -522,7 +673,7 @@ a {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
   gap: 28px;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 @media (max-width: 1024px) {
@@ -549,7 +700,7 @@ a {
 }
 
 .panel-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink-dark);
 }
@@ -557,7 +708,7 @@ a {
 .wsn-canvas-box {
   width: 100%;
   background-color: var(--bg-cream);
-  background-image: radial-gradient(#CFC9BC 1.1px, transparent 1.1px);
+  background-image: radial-gradient(#B8CCC8 1.2px, transparent 1.2px);
   background-size: 18px 18px;
   border: 1px solid var(--border-hairline);
   display: block;
@@ -566,17 +717,18 @@ a {
 .tx-log-stream {
   background-color: var(--bg-cream);
   border: 1px solid var(--border-hairline);
-  padding: 16px;
+  padding: 14px;
   height: 420px;
   overflow-y: auto;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   line-height: 1.55;
 }
 
 .tx-log-item {
   padding: 10px 12px;
   border-bottom: 1px solid var(--border-hairline);
+  border-left: 2.5px solid var(--burgundy);
   margin-bottom: 8px;
   background-color: var(--bg-surface);
 }
@@ -592,11 +744,11 @@ a {
 .tx-log-item .tx-hash {
   color: var(--slate-muted);
   word-break: break-all;
-  font-size: 0.72rem;
+  font-size: 0.71rem;
 }
 
 /* ==========================================================================
-   EDITORIAL DATA TABLE (ViewData.html & AccessData.html)
+   EDITORIAL DATA TABLE
    ========================================================================== */
 .ledger-results-header {
   display: flex;
@@ -610,7 +762,7 @@ a {
 }
 
 .results-heading {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--ink-dark);
 }
@@ -623,12 +775,13 @@ a {
 
 .results-count {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--verified-green);
   background-color: var(--verified-bg);
   padding: 6px 12px;
+  border: 1px solid rgba(13, 116, 99, 0.25);
 }
 
 .table-responsive {
@@ -645,32 +798,32 @@ a {
 
 .editorial-table th {
   text-align: left;
-  padding: 14px 16px;
+  padding: 13px 16px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--slate-muted);
+  color: var(--ink-soft);
   background-color: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-hairline);
 }
 
 .editorial-table td {
-  padding: 14px 16px;
+  padding: 13px 16px;
   border-bottom: 1px solid var(--border-hairline);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--ink-dark);
   vertical-align: middle;
 }
 
 .editorial-table tr:hover td {
-  background-color: rgba(110, 38, 52, 0.03);
+  background-color: rgba(13, 116, 99, 0.04);
 }
 
 .mono-cell {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 
 .temp-val {
@@ -683,11 +836,11 @@ a {
 
 .hash-cell code {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--slate-muted);
   word-break: break-all;
   display: block;
-  max-width: 460px;
+  max-width: 450px;
 }
 
 .status-pill {
@@ -706,8 +859,8 @@ a {
 }
 
 .status-pill.tampered {
-  color: #9E1C28;
-  background-color: rgba(158, 28, 40, 0.12);
+  color: var(--tamper-red);
+  background-color: var(--tamper-bg);
 }
 
 .node-pills-grid {
@@ -719,9 +872,9 @@ a {
 
 .node-pill {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   padding: 6px 12px;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border-hairline);
   background-color: var(--bg-cream);
   color: var(--ink-dark);
   cursor: pointer;
@@ -731,7 +884,7 @@ a {
 .node-pill.active {
   background-color: var(--burgundy);
   border-color: var(--burgundy);
-  color: var(--bg-cream);
+  color: #FFFFFF;
 }
 
 .site-footer {
@@ -743,7 +896,7 @@ a {
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--slate-muted);
   flex-wrap: wrap;
@@ -757,38 +910,54 @@ a {
 </head>
 <body>
 
-  <!-- Editorial Header matching techwithamir.com -->
+  <!-- Admin Session Top Bar (Hidden until Admin logs in) -->
+  <div id="admin-top-bar" class="admin-session-bar" style="display: none;">
+    <div class="admin-session-inner">
+      <div>
+        <span class="admin-badge-pill"><span class="pulse-dot"></span> ADMIN SESSION ACTIVE</span>
+        &nbsp;OPERATOR: <strong id="bar-operator-name">AMIR</strong> &nbsp;|&nbsp; ROLE: WSN NETWORK ADMINISTRATOR &nbsp;|&nbsp; CLEARANCE: SHA-512 READ/WRITE
+      </div>
+      <div>
+        CONTRACT: 0x745978a62d1e4293… &nbsp;|&nbsp;
+        <a onclick="handleLogout()" style="color:#5EEAD4; text-decoration:underline; cursor:pointer;">LOCK &amp; LOGOUT ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Major Project Header (Distinct from personal portfolio) -->
   <header class="site-header">
     <div class="header-inner">
       <a onclick="switchTab('overview')" class="brand-lockup" style="cursor:pointer;">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+            <line x1="12" y1="2" x2="12" y2="9"></line>
+            <line x1="21" y1="17" x2="14.6" y2="13.5"></line>
+            <line x1="3" y1="17" x2="9.4" y2="13.5"></line>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
-      <nav class="site-nav">
-        <a id="nav-overview" onclick="switchTab('overview')" class="nav-link active">Overview</a>
-        <a id="nav-simulator" onclick="switchTab('simulator')" class="nav-link">WSN Simulator</a>
-        <a id="nav-ledger" onclick="switchTab('ledger')" class="nav-link">Sensor Ledger</a>
-        <a id="nav-signup" onclick="switchTab('signup')" class="nav-link">Register</a>
-        <a id="nav-login" onclick="switchTab('login')" class="nav-cta">Operator: <span id="current-operator">Amir</span> <span>↗</span></a>
-      </nav>
+      <nav class="site-nav" id="dynamic-navbar"></nav>
     </div>
   </header>
 
   <main class="page-container">
 
-    <!-- ================= TAB 1: OVERVIEW ================= -->
+    <!-- ================= TAB 1: OVERVIEW (PUBLIC & ADMIN) ================= -->
     <div id="tab-overview" class="tab-section active">
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>DECENTRALIZED WSN TELEMETRY. ENGINEERED AT HEART.</span>
+          <span>CRYPTOGRAPHIC WSN TELEMETRY · SHA-512 + ETHEREUM SMART CONTRACT</span>
         </div>
         <div class="eyebrow-right">
-          A cryptographic ledger for wireless sensor networks &amp; cloud integrity.
+          NETWORK ID 5777 · CONTRACT 0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620
         </div>
       </div>
 
@@ -798,10 +967,14 @@ a {
           <span class="hero-line-burgundy">
             CLOUD DATA
             <svg class="hero-asterisk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="32" y1="4" x2="32" y2="60" stroke="#6E2634" stroke-width="3.2"/>
-              <line x1="4" y1="32" x2="60" y2="32" stroke="#6E2634" stroke-width="3.2"/>
-              <line x1="12.2" y1="12.2" x2="51.8" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
-              <line x1="51.8" y1="12.2" x2="12.2" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+              <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#0D7463" stroke-width="3" fill="rgba(13,116,99,0.08)"/>
+              <circle cx="32" cy="32" r="8" stroke="#0F1C24" stroke-width="3"/>
+              <line x1="32" y1="4" x2="32" y2="24" stroke="#0D7463" stroke-width="2.5"/>
+              <line x1="32" y1="40" x2="32" y2="60" stroke="#0D7463" stroke-width="2.5"/>
+              <line x1="8" y1="18" x2="25" y2="28" stroke="#0D7463" stroke-width="2.5"/>
+              <line x1="39" y1="36" x2="56" y2="46" stroke="#0D7463" stroke-width="2.5"/>
+              <line x1="56" y1="18" x2="39" y2="28" stroke="#0D7463" stroke-width="2.5"/>
+              <line x1="25" y1="36" x2="8" y2="46" stroke="#0D7463" stroke-width="2.5"/>
             </svg>
           </span>
         </h1>
@@ -810,104 +983,122 @@ a {
       <section class="editorial-split">
         <div>
           <p class="editorial-lead">
-            I’m <strong>Mohd Amir Ali.</strong> This platform bridges the space between
-            <em>wireless sensor networks</em> and <em>immutable blockchain ledgers.</em>
+            A decentralized <strong>cryptographic defense framework</strong> engineered to protect
+            <em>wireless sensor networks</em> against cloud data tampering.
           </p>
           <p class="editorial-body">
-            Traditional cloud-connected IoT sensor networks rely on a single centralized repository, leaving environmental and medical telemetry vulnerable to tampering. By routing 20 autonomous sensor nodes through a Mobile Database Node (MDN) with <strong>SHA-512 cryptographic hashing</strong> and an <strong>Ethereum Smart Contract (WSNSecurity.sol)</strong>, every temperature reading is permanently verifiable.
+            Conventional IoT sensor deployments forward environmental and clinical telemetry to a single centralized server, creating a critical single point of failure. This system routes 20 autonomous wireless sensor nodes through a Mobile Database Node (MDN) gateway, sealing every packet with a <strong>512-bit SHA-512 hash</strong> and committing it to the on-chain <strong>WSNSecurity.sol</strong> smart contract.
           </p>
-          <div class="editorial-actions">
-            <a onclick="switchTab('simulator')" class="link-underline-cta" style="cursor:pointer;">
-              <span>Launch Live WSN Simulator</span>
-              <span>↗</span>
-            </a>
-            <a onclick="switchTab('ledger')" class="btn-secondary-editorial">
-              <span>Inspect Blockchain Ledger</span>
-              <span>↗</span>
-            </a>
+
+          <div class="author-credit-box">
+            <div>
+              <strong>DEVELOPED BY:</strong> MOHD AMIR ALI (160920733019)<br/>
+              <span style="color: var(--slate-muted);">Dept. of CSE · Lords Institute of Engineering &amp; Technology</span>
+            </div>
+            <span class="status-pill verified">● LEDGER ONLINE</span>
           </div>
+
+          <div class="editorial-actions" id="hero-dynamic-actions"></div>
         </div>
 
-        <div class="diagram-box">
-          <svg width="360" height="200" viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="135" cy="100" r="78" stroke="#6E2634" stroke-width="1.5" fill="rgba(110, 38, 52, 0.03)"/>
-            <circle cx="225" cy="100" r="78" stroke="#5B6B7C" stroke-width="1.5" fill="rgba(91, 107, 124, 0.04)"/>
-            <path d="M180 35.8 A78 78 0 0 1 180 164.2 A78 78 0 0 1 180 35.8 Z" fill="rgba(110, 38, 52, 0.06)"/>
-            <text x="98" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">IOT WSN</text>
-            <text x="180" y="105" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#6E2634" text-anchor="middle">+</text>
-            <text x="262" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">SHA-512</text>
-          </svg>
+        <!-- Interactive Cybersecurity Mesh / Cryptographic Web Canvas -->
+        <div class="cyber-mesh-container">
+          <div class="cyber-mesh-header">
+            <span>01 // LIVE CRYPTOGRAPHIC CYBER-MESH TOPOLOGY</span>
+            <span id="mesh-hover-status" style="color: var(--burgundy); font-weight: 600;">MOVE CURSOR TO INSPECT · CLICK TO PULSE</span>
+          </div>
+          <canvas id="cyber-web-canvas" class="cyber-mesh-canvas" width="580" height="280"></canvas>
           <div class="venn-caption">
-            01 / THE INTERSECTION OF TELEMETRY &amp; CRYPTOGRAPHIC TRUST.
+            <span>SHA-512 PACKET VERIFICATION WEB</span>
+            <span>20 ACTIVE SENSOR NODES → MDN CORE</span>
           </div>
         </div>
       </section>
 
       <section class="metrics-strip">
         <div class="metric-item">
-          <div class="metric-label">01 / ACTIVE TOPOLOGY</div>
+          <div class="metric-label">01 / WSN CLUSTER</div>
           <div class="metric-value">20 Nodes</div>
-          <div class="metric-sub">Autonomous WSN Cluster (IOT-0 – IOT-19)</div>
+          <div class="metric-sub">Autonomous Sensors (IOT-0 – IOT-19)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">02 / MINED BLOCKS</div>
+          <div class="metric-label">02 / ON-CHAIN BLOCKS</div>
           <div class="metric-value accent" id="ov-blocks">27</div>
-          <div class="metric-sub">Network ID 5777 (Local RPC :9545)</div>
+          <div class="metric-sub">Ethereum RPC :9545 (Net 5777)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">03 / VERIFIED TELEMETRY</div>
+          <div class="metric-label">03 / VERIFIED PACKETS</div>
           <div class="metric-value" id="ov-readings">25 Records</div>
-          <div class="metric-sub">100.0% SHA-512 Hash Integrity</div>
+          <div class="metric-sub">100.0% SHA-512 Hash Match</div>
         </div>
         <div class="metric-item">
           <div class="metric-label">04 / AVG COMMIT LATENCY</div>
           <div class="metric-value" id="ov-latency">6.09 ms</div>
-          <div class="metric-sub">Contract: 0x745978a62d1e4293…</div>
+          <div class="metric-sub">WSNSecurity Smart Contract</div>
         </div>
       </section>
 
       <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
         <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">STEP 01 / EDGE SENSING</span>
-          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Wireless Sensor Nodes</h3>
-          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-            Twenty distributed IoT sensor nodes continuously sample ambient temperature readings and transmit raw telemetry to the Mobile Database Node (MDN) gateway.
+          <span class="eyebrow-label">LAYER 01 // EDGE SENSING</span>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Distributed WSN Cluster</h3>
+          <p style="color: var(--slate-muted); font-size: 0.94rem;">
+            Twenty simulated IoT micro-sensor nodes sample real-time environmental telemetry and broadcast packets to the Mobile Database Node (MDN) gateway.
           </p>
         </div>
         <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">STEP 02 / SHA-512 DIGEST</span>
-          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Cryptographic Hashing</h3>
-          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-            Each sensor payload is hashed with a 512-bit SHA-512 digest before storage, making any unauthorized modification across the cloud immediately detectable.
+          <span class="eyebrow-label">LAYER 02 // CRYPTOGRAPHIC SEAL</span>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Modified SHA-512 Digest</h3>
+          <p style="color: var(--slate-muted); font-size: 0.94rem;">
+            Before any telemetry leaves the edge gateway, it is sealed with a 512-bit SHA-512 cryptographic signature so any cloud tampering triggers an instant hash mismatch.
           </p>
         </div>
         <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">STEP 03 / SOLIDITY CONTRACT</span>
-          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Immutable Ledger Storage</h3>
-          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
-            The deployed <code>WSNSecurity.sol</code> smart contract records both operator access credentials and sensor hashes on-chain with sub-10ms local commit times.
+          <span class="eyebrow-label">LAYER 03 // ACCESS CONTROL</span>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Role-Gated Smart Contract</h3>
+          <p style="color: var(--slate-muted); font-size: 0.94rem;">
+            Only authenticated operators registered in <code>WSNSecurity.sol</code> can unlock the Admin Security Console, trigger node simulations, or audit raw sensor blocks.
           </p>
         </div>
       </section>
     </div>
 
-    <!-- ================= TAB 2: WSN SIMULATOR ================= -->
+    <!-- ================= TAB 2: ADMIN COMMAND CONSOLE & WSN SIMULATOR (RESTRICTED) ================= -->
     <div id="tab-simulator" class="tab-section">
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>02 / INTERACTIVE WSN SIMULATION &amp; BLOCKCHAIN CONSOLE</span>
+          <span>02 // AUTHENTICATED ADMIN COMMAND CENTER &amp; WSN SIMULATOR</span>
         </div>
         <div class="eyebrow-right">
-          Contract: 0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620 · Network ID 5777
+          CLEARANCE: FULL READ/WRITE · OPERATOR: <span id="sim-operator-label">AMIR</span>
+        </div>
+      </div>
+
+      <!-- Admin Security Welcome Banner -->
+      <div class="editorial-card" style="border-left: 4px solid var(--burgundy); background-color: var(--bg-surface); padding: 24px 28px; margin-bottom: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span class="eyebrow-label" style="margin-bottom: 4px;">🛡️ RESTRICTED ADMIN VIEW UNLOCKED</span>
+            <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--ink-dark);">
+              Welcome, Administrator <span id="welcome-admin-name" style="color: var(--burgundy);">Amir</span>
+            </h2>
+            <p style="font-size: 0.92rem; color: var(--slate-muted); margin-top: 4px;">
+              You are viewing the authenticated WSN Command Console. Public visitors cannot access this simulator, the tamper-detection lab, or the operator ACL table below.
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" onclick="switchTab('ledger')" class="btn-primary-editorial">Inspect Full Sensor Ledger ↗</button>
+            <button type="button" onclick="handleLogout()" class="btn-secondary-editorial">Lock &amp; Logout ↗</button>
+          </div>
         </div>
       </div>
 
       <section class="metrics-strip" style="margin-bottom: 28px;">
         <div class="metric-item">
           <div class="metric-label">01 / SIMULATION STATUS</div>
-          <div class="metric-value accent" id="sim-state-text">STANDBY</div>
-          <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Ready</div>
+          <div class="metric-value accent" id="sim-state-text">READY</div>
+          <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Online</div>
         </div>
         <div class="metric-item">
           <div class="metric-label">02 / TOTAL MINED BLOCKS</div>
@@ -915,9 +1106,9 @@ a {
           <div class="metric-sub">Network ID 5777 (Local RPC :9545)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">03 / SENSOR TELEMETRY</div>
-          <div class="metric-value" id="metric-readings">25</div>
-          <div class="metric-sub">100% SHA-512 Verified</div>
+          <div class="metric-label">03 / LEDGER INTEGRITY</div>
+          <div class="metric-value" id="metric-integrity">100.0%</div>
+          <div class="metric-sub" id="metric-readings">25 SHA-512 Verified Packets</div>
         </div>
         <div class="metric-item">
           <div class="metric-label">04 / AVG COMMIT TIME</div>
@@ -938,16 +1129,23 @@ a {
             <span>+ Sense &amp; Mine 1 Block</span>
           </button>
         </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <a onclick="switchTab('ledger')" class="btn-secondary-editorial">Filter by Node ID ↗</a>
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <button type="button" onclick="simulateTamperAttack()" class="btn-danger-editorial">
+            <span>⚡ Simulate Cyber Tamper Attack</span>
+          </button>
+          <button id="btn-restore" type="button" onclick="restoreTamperedNode()" class="btn-secondary-editorial" style="display: none;">
+            <span>🛡️ Restore &amp; Re-Verify Ledger</span>
+          </button>
         </div>
       </div>
+
+      <div id="tamper-alert-box" style="display: none;" class="alert-banner danger"></div>
 
       <section class="workspace-grid">
         <div class="canvas-panel">
           <div class="panel-header">
             <div>
-              <span class="eyebrow-label" style="margin-bottom: 2px;">01 / WIRELESS SENSOR NETWORK TOPOLOGY</span>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">01 // WIRELESS SENSOR NETWORK TOPOLOGY</span>
               <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN)</h2>
             </div>
             <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO SENSE</span>
@@ -958,7 +1156,7 @@ a {
         <div class="canvas-panel">
           <div class="panel-header">
             <div>
-              <span class="eyebrow-label" style="margin-bottom: 2px;">02 / REAL-TIME ON-CHAIN STREAM</span>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">02 // REAL-TIME ON-CHAIN STREAM</span>
               <h2 class="panel-title">SHA-512 Transaction Log</h2>
             </div>
             <span class="status-pill verified">SHA-512 ENGINE LIVE</span>
@@ -967,24 +1165,50 @@ a {
         </div>
       </section>
 
-      <section class="canvas-panel" style="margin-bottom: 36px;">
+      <section class="canvas-panel" style="margin-bottom: 32px;">
         <div class="panel-header">
           <div>
-            <span class="eyebrow-label" style="margin-bottom: 2px;">03 / PERFORMANCE BENCHMARK</span>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">03 // PERFORMANCE BENCHMARK</span>
             <h2 class="panel-title">Blockchain Transaction Processed Time Graph (Sense Number vs. Commit Latency)</h2>
           </div>
           <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-muted);">HIGH-RESOLUTION LATENCY SERIES</span>
         </div>
-        <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="290"></canvas>
+        <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="280"></canvas>
+      </section>
+
+      <!-- Admin-Only Section: Registered On-Chain Operators Table -->
+      <section class="editorial-card">
+        <div class="ledger-results-header">
+          <div>
+            <span class="eyebrow-label">04 // ADMIN-ONLY ACCESS CONTROL AUDIT</span>
+            <h3 class="results-heading">Authorized Blockchain Operators (<code>WSNSecurity.getUser()</code>)</h3>
+          </div>
+          <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial" style="padding: 8px 14px;">+ Provision New Operator ↗</button>
+        </div>
+        <div class="table-responsive">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Operator Username</th>
+                <th>Contact Number</th>
+                <th>Email Address</th>
+                <th>Node / Lab Location</th>
+                <th>On-Chain Clearance</th>
+              </tr>
+            </thead>
+            <tbody id="operators-tbody"></tbody>
+          </table>
+        </div>
       </section>
     </div>
 
-    <!-- ================= TAB 3: SENSOR LEDGER ================= -->
+    <!-- ================= TAB 3: SENSOR LEDGER (RESTRICTED) ================= -->
     <div id="tab-ledger" class="tab-section">
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>03 / ON-CHAIN SENSOR TELEMETRY LEDGER</span>
+          <span>03 // ADMIN-RESTRICTED SENSOR TELEMETRY LEDGER</span>
         </div>
         <div class="eyebrow-right">
           Cryptographic verification via WSNSecurity.getIOTData()
@@ -1008,6 +1232,9 @@ a {
               <span>+ Mine New Sensor Block</span>
               <span>↗</span>
             </button>
+            <button type="button" onclick="switchTab('simulator')" class="btn-secondary-editorial" style="padding: 9px 16px;">
+              <span>Back to Admin Console ↗</span>
+            </button>
           </div>
         </div>
         <div class="node-pills-grid" id="ledger-pills"></div>
@@ -1016,7 +1243,7 @@ a {
       <div class="editorial-card">
         <div class="ledger-results-header">
           <div>
-            <span class="eyebrow-label">03 / FILTERED LEDGER STREAM</span>
+            <span class="eyebrow-label">03 // FILTERED LEDGER STREAM</span>
             <h3 class="results-heading">Telemetry Records for <em id="ledger-filter-title">All 20 WSN Nodes</em></h3>
           </div>
           <div class="results-count" id="ledger-count-badge">0 Records</div>
@@ -1040,25 +1267,41 @@ a {
 
     <!-- ================= TAB 4: LOGIN ================= -->
     <div id="tab-login" class="tab-section">
+      <div class="eyebrow-bar">
+        <div class="eyebrow-left">
+          <span class="burgundy-dot"></span>
+          <span>01 // ROLE-GATED BLOCKCHAIN AUTHENTICATION</span>
+        </div>
+        <div class="eyebrow-right">
+          On-Chain Verification via WSNSecurity.getUser()
+        </div>
+      </div>
+
       <div class="auth-wrapper">
         <div class="editorial-card">
           <div class="auth-header">
-            <span class="eyebrow-label">ACCESS CONTROL LEDGER</span>
-            <h1 class="auth-title">Operator Login</h1>
-            <p class="auth-subtitle">Authenticate against WSNSecurity.getUser() to access WSN telemetry.</p>
+            <span class="eyebrow-label">RESTRICTED COMMAND CONSOLE</span>
+            <h1 class="auth-title">Admin &amp; Operator Login</h1>
+            <p class="auth-subtitle">Authenticate to unlock the Admin Security Audit Console, Live WSN Simulator, and Sensor Ledger.</p>
           </div>
           <div id="login-alert"></div>
           <div class="form-group">
-            <label class="form-label">Operator Username</label>
+            <label class="form-label">Administrator / Operator ID</label>
             <input id="login-user" class="form-input" type="text" value="Amir" />
           </div>
           <div class="form-group">
-            <label class="form-label">Password</label>
+            <label class="form-label">Cryptographic Passkey</label>
             <input id="login-pass" class="form-input" type="password" value="amir123" />
           </div>
-          <div style="display: flex; gap: 12px; margin-top: 24px;">
-            <button type="button" onclick="handleLogin()" class="btn-primary-editorial">Authenticate Operator ↗</button>
-            <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial">Register New Operator ↗</button>
+          <div style="background-color: var(--bg-elevated); padding: 12px 14px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">
+            <strong>🔓 ADMIN PRIVILEGES UNLOCKED UPON LOGIN:</strong><br/>
+            • Full 20-Node WSN Simulator &amp; Live Latency Graph<br/>
+            • SHA-512 Tamper-Attack Simulation &amp; Security Audit Lab<br/>
+            • On-Chain Registered Operators Directory &amp; Raw Sensor Ledger
+          </div>
+          <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
+            <button type="button" onclick="handleLogin()" class="btn-primary-editorial">🔓 Authenticate &amp; Unlock Admin Console ↗</button>
+            <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial">Register Operator ↗</button>
           </div>
         </div>
       </div>
@@ -1066,20 +1309,30 @@ a {
 
     <!-- ================= TAB 5: SIGNUP ================= -->
     <div id="tab-signup" class="tab-section">
+      <div class="eyebrow-bar">
+        <div class="eyebrow-left">
+          <span class="burgundy-dot"></span>
+          <span>02 // ON-CHAIN OPERATOR IDENTITY PROVISIONING</span>
+        </div>
+        <div class="eyebrow-right">
+          Commits to WSNSecurity.addUser()
+        </div>
+      </div>
+
       <div class="auth-wrapper" style="max-width: 600px;">
         <div class="editorial-card">
           <div class="auth-header">
-            <span class="eyebrow-label">SMART CONTRACT REGISTRATION</span>
-            <h1 class="auth-title">New Operator Signup</h1>
+            <span class="eyebrow-label">SMART CONTRACT ACL REGISTRATION</span>
+            <h1 class="auth-title">Register New Operator</h1>
             <p class="auth-subtitle">Commits operator credentials to WSNSecurity.addUser() on the blockchain.</p>
           </div>
           <div id="signup-alert"></div>
           <div class="form-group">
-            <label class="form-label">Username</label>
-            <input id="su-user" class="form-input" type="text" placeholder="e.g. amir_admin" />
+            <label class="form-label">Operator Username</label>
+            <input id="su-user" class="form-input" type="text" placeholder="e.g. amir_sec_admin" />
           </div>
           <div class="form-group">
-            <label class="form-label">Password</label>
+            <label class="form-label">Passkey / Password</label>
             <input id="su-pass" class="form-input" type="password" placeholder="Create operator password" />
           </div>
           <div class="form-group">
@@ -1087,21 +1340,24 @@ a {
             <input id="su-phone" class="form-input" type="text" placeholder="e.g. 9059173902" />
           </div>
           <div class="form-group">
-            <label class="form-label">Email Address</label>
+            <label class="form-label">Official Email ID</label>
             <input id="su-email" class="form-input" type="email" placeholder="e.g. amir@techwithamir.com" />
           </div>
           <div class="form-group">
-            <label class="form-label">Location / Lab Address</label>
-            <input id="su-addr" class="form-input" type="text" placeholder="e.g. Himayath Sagar, Hyderabad" />
+            <label class="form-label">Department / Node Location</label>
+            <input id="su-addr" class="form-input" type="text" placeholder="e.g. CSE Dept, Lords Institute, Hyderabad" />
           </div>
-          <button type="button" onclick="handleSignup()" class="btn-primary-editorial">Commit Identity to Blockchain ↗</button>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button type="button" onclick="handleSignup()" class="btn-primary-editorial">Commit Identity to Blockchain ↗</button>
+            <button type="button" onclick="switchTab('login')" class="btn-secondary-editorial">Proceed to Admin Login ↗</button>
+          </div>
         </div>
       </div>
     </div>
 
     <footer class="site-footer">
-      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
-      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+      <div>SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN TECHNOLOGY</div>
+      <div>MOHD AMIR ALI (160920733019) · B.E. CSE MAJOR PROJECT</div>
     </footer>
 
   </main>
@@ -1111,24 +1367,142 @@ a {
     let appSummary = INITIAL_DATA.summary;
     let allRecords = INITIAL_DATA.records;
     let allUsers = INITIAL_DATA.users;
+    let isAdminLoggedIn = false;
+    let currentOperator = "Amir";
+    let currentTab = "overview";
     let currentFilter = "ALL";
     let simInterval = null;
     let activeNodeId = null;
+    let tamperedNodeId = null;
     let currentRoundNode = 0;
 
+    function renderNavigation() {
+      const nav = document.getElementById("dynamic-navbar");
+      const topBar = document.getElementById("admin-top-bar");
+      const heroActions = document.getElementById("hero-dynamic-actions");
+
+      if (isAdminLoggedIn) {
+        topBar.style.display = "block";
+        document.getElementById("bar-operator-name").innerText = currentOperator.toUpperCase();
+        document.getElementById("sim-operator-label").innerText = currentOperator.toUpperCase();
+        document.getElementById("welcome-admin-name").innerText = currentOperator;
+
+        nav.innerHTML = `
+          <a onclick="switchTab('overview')" class="nav-link ${currentTab === 'overview' ? 'active' : ''}">System Overview</a>
+          <a onclick="switchTab('simulator')" class="nav-link ${currentTab === 'simulator' ? 'active' : ''}">🛡️ Admin Console &amp; Simulator</a>
+          <a onclick="switchTab('ledger')" class="nav-link ${currentTab === 'ledger' ? 'active' : ''}">🗄️ Sensor Ledger</a>
+          <a onclick="switchTab('signup')" class="nav-link ${currentTab === 'signup' ? 'active' : ''}">Provision Operator</a>
+          <a onclick="handleLogout()" class="nav-cta admin-active">● Admin: ${currentOperator} (Logout) <span>↗</span></a>
+        `;
+        if (heroActions) {
+          heroActions.innerHTML = `
+            <a onclick="switchTab('simulator')" class="btn-primary-editorial"><span>🛡️ Open Admin Command Console</span><span>↗</span></a>
+            <a onclick="switchTab('ledger')" class="btn-secondary-editorial"><span>Inspect Sensor Ledger</span><span>↗</span></a>
+          `;
+        }
+      } else {
+        topBar.style.display = "none";
+        nav.innerHTML = `
+          <a onclick="switchTab('overview')" class="nav-link ${currentTab === 'overview' ? 'active' : ''}">System Overview</a>
+          <a onclick="requireLogin('simulator')" class="nav-link">WSN Simulator <span class="nav-lock-tag">🔒 ADMIN</span></a>
+          <a onclick="requireLogin('ledger')" class="nav-link">Sensor Ledger <span class="nav-lock-tag">🔒 ADMIN</span></a>
+          <a onclick="switchTab('signup')" class="nav-link ${currentTab === 'signup' ? 'active' : ''}">Register Operator</a>
+          <a onclick="switchTab('login')" class="nav-cta">🔒 Admin Login <span>↗</span></a>
+        `;
+        if (heroActions) {
+          heroActions.innerHTML = `
+            <a onclick="switchTab('login')" class="btn-primary-editorial"><span>🔒 Login as Admin to Launch Simulator</span><span>↗</span></a>
+            <a onclick="switchTab('signup')" class="btn-secondary-editorial"><span>Register New Operator</span><span>↗</span></a>
+          `;
+        }
+      }
+    }
+
+    function requireLogin(intendedTab) {
+      document.getElementById("login-alert").innerHTML =
+        `<div class="alert-banner">🔒 <strong>Administrator Authentication Required:</strong> Please log in below to unlock the Admin Security Console, Live WSN Simulator, and Sensor Ledger.</div>`;
+      switchTab("login");
+    }
+
     function switchTab(tabId) {
+      if ((tabId === "simulator" || tabId === "ledger") && !isAdminLoggedIn) {
+        requireLogin(tabId);
+        return;
+      }
+      currentTab = tabId;
       document.querySelectorAll(".tab-section").forEach(el => el.classList.remove("active"));
-      document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
       const target = document.getElementById("tab-" + tabId);
       if (target) target.classList.add("active");
-      const nav = document.getElementById("nav-" + tabId);
-      if (nav) nav.classList.add("active");
+      renderNavigation();
+
       if (tabId === "simulator") {
         drawTopology();
         drawTransactionGraph();
+        renderOperatorsTable();
       } else if (tabId === "ledger") {
         renderLedgerTable();
       }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function handleLogin() {
+      const u = document.getElementById("login-user").value.trim();
+      const p = document.getElementById("login-pass").value;
+      const found = allUsers.find(x => x.username.toLowerCase() === u.toLowerCase() && x.password === p);
+      if (found || (u.toLowerCase() === "amir" && p === "amir123")) {
+        isAdminLoggedIn = true;
+        currentOperator = found ? found.username : "Amir";
+        document.getElementById("login-alert").innerHTML = "";
+        switchTab("simulator");
+      } else {
+        document.getElementById("login-alert").innerHTML =
+          `<div class="alert-banner danger">Invalid credentials. Try default Admin account: <strong>Amir</strong> / <strong>amir123</strong></div>`;
+      }
+    }
+
+    function handleLogout() {
+      stopWebSimulation();
+      isAdminLoggedIn = false;
+      switchTab("overview");
+    }
+
+    function handleSignup() {
+      const u = document.getElementById("su-user").value.trim();
+      const p = document.getElementById("su-pass").value;
+      const ph = document.getElementById("su-phone").value.trim() || "9059173902";
+      const em = document.getElementById("su-email").value.trim() || (u + "@wsnchain.io");
+      const ad = document.getElementById("su-addr").value.trim() || "CSE Lab, Hyderabad";
+      if (!u || !p) {
+        document.getElementById("signup-alert").innerHTML =
+          `<div class="alert-banner danger">Please enter both an operator username and password.</div>`;
+        return;
+      }
+      allUsers.push({ username: u, password: p, phone: ph, email: em, address: ad });
+      appSummary.total_blocks += 1;
+      updateCounters();
+      renderOperatorsTable();
+      document.getElementById("signup-alert").innerHTML =
+        `<div class="alert-banner">● Operator <strong>"${u}"</strong> committed to WSNSecurity.sol (Block #${appSummary.total_blocks - 1}). You can now log in with this account!</div>`;
+    }
+
+    function renderOperatorsTable() {
+      const tbody = document.getElementById("operators-tbody");
+      if (!tbody) return;
+      tbody.innerHTML = allUsers.map((u, idx) => {
+        const badge = (u.username.toLowerCase() === "amir")
+          ? `<span class="status-pill verified">● PRIMARY ADMIN</span>`
+          : `<span class="status-pill verified">● AUTHORIZED OPERATOR</span>`;
+        return `
+          <tr>
+            <td class="mono-cell">#0${idx + 1}</td>
+            <td class="mono-cell"><strong>${u.username}</strong></td>
+            <td class="mono-cell">${u.phone}</td>
+            <td class="mono-cell">${u.email}</td>
+            <td>${u.address}</td>
+            <td>${badge}</td>
+          </tr>
+        `;
+      }).join("");
     }
 
     async function sha512Hex(str) {
@@ -1136,7 +1510,6 @@ a {
         const buf = await crypto.subtle.digest("SHA-512", new TextEncoder().encode(str));
         return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
       }
-      // Fallback deterministic hex hash if subtle crypto unavailable
       let h = "";
       for (let i = 0; i < 128; i++) {
         const c = (str.charCodeAt(i % str.length) * 31 + i * 17) % 16;
@@ -1161,53 +1534,66 @@ a {
 
       nodesData.forEach(n => {
         const isActive = (n.id === activeNodeId);
+        const isTampered = (n.id === tamperedNodeId);
         wsnCtx.beginPath();
         wsnCtx.moveTo(n.x, n.y);
         wsnCtx.lineTo(hubX, hubY);
-        wsnCtx.strokeStyle = isActive ? "rgba(110, 38, 52, 0.65)" : "rgba(29, 35, 42, 0.10)";
-        wsnCtx.lineWidth = isActive ? 2.2 : 1;
-        wsnCtx.setLineDash(isActive ? [] : [4, 4]);
+        if (isTampered) {
+          wsnCtx.strokeStyle = "rgba(200, 30, 50, 0.85)";
+          wsnCtx.lineWidth = 2.5;
+          wsnCtx.setLineDash([3, 3]);
+        } else if (isActive) {
+          wsnCtx.strokeStyle = "rgba(13, 116, 99, 0.75)";
+          wsnCtx.lineWidth = 2.2;
+          wsnCtx.setLineDash([]);
+        } else {
+          wsnCtx.strokeStyle = "rgba(15, 28, 36, 0.12)";
+          wsnCtx.lineWidth = 1;
+          wsnCtx.setLineDash([4, 4]);
+        }
         wsnCtx.stroke();
       });
       wsnCtx.setLineDash([]);
 
       wsnCtx.beginPath();
-      wsnCtx.arc(hubX, hubY, 26, 0, Math.PI * 2);
-      wsnCtx.fillStyle = "#FAF8F3";
+      wsnCtx.arc(hubX, hubY, 27, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "#0F1C24";
       wsnCtx.fill();
-      wsnCtx.lineWidth = 2;
-      wsnCtx.strokeStyle = "#6E2634";
+      wsnCtx.lineWidth = 2.5;
+      wsnCtx.strokeStyle = "#0D7463";
       wsnCtx.stroke();
 
-      wsnCtx.fillStyle = "#6E2634";
-      wsnCtx.font = "700 9px Inter, sans-serif";
+      wsnCtx.fillStyle = "#5EEAD4";
+      wsnCtx.font = "700 9px JetBrains Mono, monospace";
       wsnCtx.textAlign = "center";
       wsnCtx.fillText("MDN", hubX, hubY - 2);
+      wsnCtx.fillStyle = "#F7FBFA";
       wsnCtx.font = "500 7.5px JetBrains Mono, monospace";
       wsnCtx.fillText("GATEWAY", hubX, hubY + 9);
 
       nodesData.forEach(n => {
         const isActive = (n.id === activeNodeId);
-        const radius = isActive ? 19 : 15;
-        if (isActive) {
+        const isTampered = (n.id === tamperedNodeId);
+        const radius = (isActive || isTampered) ? 19 : 15;
+        if (isActive || isTampered) {
           wsnCtx.beginPath();
           wsnCtx.arc(n.x, n.y, radius + 7, 0, Math.PI * 2);
-          wsnCtx.fillStyle = "rgba(110, 38, 52, 0.16)";
+          wsnCtx.fillStyle = isTampered ? "rgba(200, 30, 50, 0.22)" : "rgba(13, 116, 99, 0.18)";
           wsnCtx.fill();
         }
         wsnCtx.beginPath();
         wsnCtx.arc(n.x, n.y, radius, 0, Math.PI * 2);
-        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
         wsnCtx.fill();
 
-        wsnCtx.fillStyle = "#F6F3EC";
+        wsnCtx.fillStyle = "#F7FBFA";
         wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
         wsnCtx.textAlign = "center";
         wsnCtx.fillText(String(n.id), n.x, n.y + 3.5);
 
-        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
-        wsnCtx.font = isActive ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
-        const tempSuffix = (n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "";
+        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
+        wsnCtx.font = (isActive || isTampered) ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
+        const tempSuffix = isTampered ? " (TAMPER!)" : ((n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "");
         wsnCtx.fillText(`IOT-${n.id}${tempSuffix}`, n.x, n.y - radius - 6);
       });
     }
@@ -1224,7 +1610,7 @@ a {
       const maxVal = txTimes.length ? Math.max(...txTimes) * 1.2 : 0.01;
       const minVal = 0;
 
-      chartCtx.strokeStyle = "#DED9CE";
+      chartCtx.strokeStyle = "#CBDAD7";
       chartCtx.lineWidth = 1;
       for (let i = 0; i <= 4; i++) {
         const y = padT + plotH - (i / 4) * plotH;
@@ -1234,7 +1620,7 @@ a {
         chartCtx.stroke();
 
         const val = minVal + (i / 4) * (maxVal - minVal);
-        chartCtx.fillStyle = "#5A6065";
+        chartCtx.fillStyle = "#4A606A";
         chartCtx.font = "500 10px JetBrains Mono, monospace";
         chartCtx.textAlign = "right";
         chartCtx.fillText((val * 1000).toFixed(2) + " ms", padL - 10, y + 3);
@@ -1249,7 +1635,7 @@ a {
         if (idx === 0) chartCtx.moveTo(x, y);
         else chartCtx.lineTo(x, y);
       });
-      chartCtx.strokeStyle = "#6E2634";
+      chartCtx.strokeStyle = "#0D7463";
       chartCtx.lineWidth = 2.4;
       chartCtx.stroke();
 
@@ -1258,14 +1644,14 @@ a {
         const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
         chartCtx.beginPath();
         chartCtx.arc(x, y, 4, 0, Math.PI * 2);
-        chartCtx.fillStyle = "#6E2634";
+        chartCtx.fillStyle = "#0D7463";
         chartCtx.fill();
-        chartCtx.strokeStyle = "#FAF8F3";
+        chartCtx.strokeStyle = "#F7FBFA";
         chartCtx.lineWidth = 1.5;
         chartCtx.stroke();
       });
 
-      chartCtx.fillStyle = "#1D232A";
+      chartCtx.fillStyle = "#0F1C24";
       chartCtx.font = "600 11px JetBrains Mono, monospace";
       chartCtx.textAlign = "center";
       chartCtx.fillText(`SENSE TRANSACTION SEQUENCE (LAST ${txTimes.length} BLOCKS)`, padL + plotW / 2, h - 10);
@@ -1283,16 +1669,42 @@ a {
               <span>BLOCK #${b.block_number} · ${b.method}</span>
               <span>${latencyMs}</span>
             </div>
-            <div style="color: #1D232A; margin-bottom: 3px;">${b.summary || ""} (${b.timestamp})</div>
+            <div style="color: #0F1C24; margin-bottom: 3px;">${b.summary || ""} (${b.timestamp})</div>
             <div class="tx-hash">SHA-512 / Hash: ${hashStr}</div>
           </div>
         `;
       }).join("");
     }
 
+    function simulateTamperAttack() {
+      tamperedNodeId = 3;
+      const alertBox = document.getElementById("tamper-alert-box");
+      alertBox.style.display = "block";
+      alertBox.innerHTML =
+        "<strong>▲ SECURITY ALERT — UNAUTHORIZED PACKET MODIFICATION DETECTED ON NODE IOT-3!</strong><br/>" +
+        "Injected Payload: <code>3#99°C</code> | Expected On-Chain SHA-512 Digest: <code>f83c91a4...92b1</code> | Computed Digest: <code>01d47e22...88a0</code> (MISMATCH — BLOCK REJECTED BY CONSENSUS)";
+      document.getElementById("metric-integrity").innerText = "96.2% (ALERT)";
+      document.getElementById("metric-integrity").style.color = "#C81E32";
+      document.getElementById("active-node-badge").className = "status-pill tampered";
+      document.getElementById("active-node-badge").innerText = "▲ TAMPER BLOCKED ON IOT-3";
+      document.getElementById("btn-restore").style.display = "inline-flex";
+      drawTopology();
+    }
+
+    function restoreTamperedNode() {
+      tamperedNodeId = null;
+      document.getElementById("tamper-alert-box").style.display = "none";
+      document.getElementById("metric-integrity").innerText = "100.0%";
+      document.getElementById("metric-integrity").style.color = "";
+      document.getElementById("active-node-badge").className = "status-pill verified";
+      document.getElementById("active-node-badge").innerText = "● LEDGER RESTORED & VERIFIED";
+      document.getElementById("btn-restore").style.display = "none";
+      drawTopology();
+    }
+
     function updateCounters() {
       document.getElementById("metric-blocks").innerText = appSummary.total_blocks;
-      document.getElementById("metric-readings").innerText = appSummary.total_readings;
+      document.getElementById("metric-readings").innerText = appSummary.total_readings + " SHA-512 Verified Packets";
       document.getElementById("metric-latency").innerText = appSummary.avg_tx_ms + " ms";
       document.getElementById("ov-blocks").innerText = appSummary.total_blocks;
       document.getElementById("ov-readings").innerText = appSummary.total_readings + " Records";
@@ -1343,8 +1755,10 @@ a {
         verified: true
       });
 
-      document.getElementById("active-node-badge").innerText =
-        `LIVE: IOT-${targetNode} → ${temp}°C (BLOCK #${newBlockNum})`;
+      if (tamperedNodeId === null) {
+        document.getElementById("active-node-badge").innerText =
+          `LIVE: IOT-${targetNode} → ${temp}°C (BLOCK #${newBlockNum})`;
+      }
 
       updateCounters();
       renderLogStream();
@@ -1368,7 +1782,9 @@ a {
       activeNodeId = null;
       document.getElementById("sim-state-text").innerText = "PAUSED";
       document.getElementById("sim-sub-text").innerText = "Ledger state synced & verified.";
-      document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      if (tamperedNodeId === null) {
+        document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      }
       drawTopology();
     }
 
@@ -1408,38 +1824,6 @@ a {
       pillsBox.innerHTML = pillsHtml;
     }
 
-    function handleLogin() {
-      const u = document.getElementById("login-user").value.trim();
-      const p = document.getElementById("login-pass").value;
-      const found = allUsers.find(x => x.username.toLowerCase() === u.toLowerCase() && x.password === p);
-      if (found || (u.toLowerCase() === "amir" && p === "amir123")) {
-        document.getElementById("current-operator").innerText = u;
-        document.getElementById("login-alert").innerHTML = "";
-        switchTab("simulator");
-      } else {
-        document.getElementById("login-alert").innerHTML =
-          `<div class="alert-banner">Invalid credentials. Use demo account: Amir / amir123</div>`;
-      }
-    }
-
-    function handleSignup() {
-      const u = document.getElementById("su-user").value.trim();
-      const p = document.getElementById("su-pass").value;
-      const ph = document.getElementById("su-phone").value.trim();
-      const em = document.getElementById("su-email").value.trim();
-      const ad = document.getElementById("su-addr").value.trim();
-      if (!u || !p) {
-        document.getElementById("signup-alert").innerHTML =
-          `<div class="alert-banner">Please enter both a username and password.</div>`;
-        return;
-      }
-      allUsers.push({ username: u, password: p, phone: ph, email: em, address: ad });
-      appSummary.total_blocks += 1;
-      updateCounters();
-      document.getElementById("signup-alert").innerHTML =
-        `<div class="alert-banner">Operator "${u}" registered on WSNSecurity contract (Block #${appSummary.total_blocks - 1}).</div>`;
-    }
-
     wsnCanvas.addEventListener("click", (evt) => {
       const rect = wsnCanvas.getBoundingClientRect();
       const scaleX = wsnCanvas.width / rect.width;
@@ -1454,11 +1838,170 @@ a {
       }
     });
 
+    // Homepage Interactive Cyber-Mesh Constellation
+    (function initCyberWeb() {
+      const canvas = document.getElementById("cyber-web-canvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const statusEl = document.getElementById("mesh-hover-status");
+      const W = canvas.width;
+      const H = canvas.height;
+      const mouse = { x: -999, y: -999, active: false };
+      const pulses = [];
+      const nodes = [];
+      const hashes = ["0x8f3a..c91e", "0x4d12..a70b", "0x9c4e..e112", "0x1b77..f04a", "0x6e09..d38c", "0x3a91..b82d"];
+
+      for (let i = 0; i < 18; i++) {
+        const angle = (i / 18) * Math.PI * 2;
+        const radius = 58 + (i % 3) * 34;
+        nodes.push({
+          id: i,
+          x: W / 2 + Math.cos(angle) * radius * 1.35,
+          y: H / 2 + Math.sin(angle) * radius * 0.82,
+          vx: (Math.random() - 0.5) * 0.55,
+          vy: (Math.random() - 0.5) * 0.55,
+          hash: hashes[i % hashes.length],
+          temp: 20 + (i % 15)
+        });
+      }
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * (W / rect.width);
+        mouse.y = (e.clientY - rect.top) * (H / rect.height);
+        mouse.active = true;
+      });
+      canvas.addEventListener("mouseleave", () => {
+        mouse.active = false;
+        statusEl.innerText = "MOVE CURSOR TO INSPECT · CLICK TO PULSE";
+      });
+      canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        pulses.push({
+          x: (e.clientX - rect.left) * (W / rect.width),
+          y: (e.clientY - rect.top) * (H / rect.height),
+          r: 6,
+          alpha: 1.0
+        });
+        statusEl.innerText = "⚡ BROADCASTING SHA-512 VERIFICATION PULSE...";
+      });
+
+      let tick = 0;
+      function animate() {
+        tick += 0.02;
+        ctx.clearRect(0, 0, W, H);
+        const centerX = W / 2, centerY = H / 2;
+
+        nodes.forEach(n => {
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 28 || n.x > W - 28) n.vx *= -1;
+          if (n.y < 24 || n.y > H - 24) n.vy *= -1;
+        });
+
+        for (let i = 0; i < nodes.length; i++) {
+          const dCenter = Math.hypot(nodes[i].x - centerX, nodes[i].y - centerY);
+          if (dCenter < 170) {
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(centerX, centerY);
+            ctx.strokeStyle = "rgba(13, 116, 99, 0.14)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            const t = ((tick * 0.6 + i * 0.17) % 1);
+            ctx.beginPath();
+            ctx.arc(nodes[i].x + (centerX - nodes[i].x) * t, nodes[i].y + (centerY - nodes[i].y) * t, 2, 0, Math.PI * 2);
+            ctx.fillStyle = "#0D7463";
+            ctx.fill();
+          }
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+            if (dist < 115) {
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = `rgba(15, 28, 36, ${(1 - dist / 115) * 0.35})`;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        let hoveredNode = null;
+        if (mouse.active) {
+          nodes.forEach(n => {
+            const dMouse = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+            if (dMouse < 130) {
+              ctx.beginPath();
+              ctx.moveTo(mouse.x, mouse.y);
+              ctx.lineTo(n.x, n.y);
+              ctx.strokeStyle = `rgba(13, 116, 99, ${(1 - dMouse / 130) * 0.75})`;
+              ctx.lineWidth = 1.4;
+              ctx.stroke();
+              if (dMouse < 35) hoveredNode = n;
+            }
+          });
+          if (hoveredNode) {
+            statusEl.innerText = `INSPECTING IOT-${hoveredNode.id} | ${hoveredNode.temp}°C | SHA512: ${hoveredNode.hash}`;
+          }
+        }
+
+        for (let p = pulses.length - 1; p >= 0; p--) {
+          const pulse = pulses[p];
+          pulse.r += 3.2; pulse.alpha -= 0.022;
+          if (pulse.alpha <= 0) { pulses.splice(p, 1); continue; }
+          ctx.beginPath();
+          ctx.arc(pulse.x, pulse.y, pulse.r, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(13, 116, 99, ${pulse.alpha})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+
+        nodes.forEach(n => {
+          const isHov = (hoveredNode && hoveredNode.id === n.id);
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, isHov ? 7 : 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = isHov ? "#0D7463" : "#0F1C24";
+          ctx.fill();
+          ctx.strokeStyle = "#F7FBFA";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = isHov ? "#0D7463" : "#4A606A";
+          ctx.font = isHov ? "700 9px JetBrains Mono, monospace" : "500 8px JetBrains Mono, monospace";
+          ctx.textAlign = "center";
+          ctx.fillText(`IOT-${n.id}`, n.x, n.y - 8);
+        });
+
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.beginPath();
+        for (let k = 0; k < 6; k++) {
+          const a = (k * Math.PI) / 3 - Math.PI / 6;
+          if (k === 0) ctx.moveTo(Math.cos(a) * 28, Math.sin(a) * 28);
+          else ctx.lineTo(Math.cos(a) * 28, Math.sin(a) * 28);
+        }
+        ctx.closePath();
+        ctx.fillStyle = "#0F1C24"; ctx.fill();
+        ctx.lineWidth = 2; ctx.strokeStyle = "#0D7463"; ctx.stroke();
+        ctx.fillStyle = "#5EEAD4"; ctx.font = "700 8px JetBrains Mono, monospace"; ctx.textAlign = "center";
+        ctx.fillText("SHA-512", 0, -2);
+        ctx.fillStyle = "#F7FBFA"; ctx.font = "500 7px JetBrains Mono, monospace";
+        ctx.fillText("CORE", 0, 8);
+        ctx.restore();
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
     window.addEventListener("DOMContentLoaded", () => {
+      renderNavigation();
       renderLogStream();
       drawTopology();
       drawTransactionGraph();
       renderLedgerTable();
+      renderOperatorsTable();
     });
   </script>
 </body>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operator Login — Amir Ali | Blockchain WSN Security</title>
+  <title>Administrator Login — WSN-CHAIN // Secure Cloud</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
   <script>
     function validate() {
       var x = document.forms["f1"]["t1"].value;
       var y = document.forms["f1"]["t2"].value;
       if (!x || x.trim() === "") {
-        window.alert("Username must be entered");
+        window.alert("Administrator username must be entered");
         document.f1.t1.focus();
         return false;
       }
@@ -29,22 +29,25 @@
 </head>
 <body>
 
+  {{ admin_bar | safe }}
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link">Overview</a>
-        <a href="/Simulator" class="nav-link">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
-        <a href="/Signup" class="nav-link">Register</a>
-        <a href="/Login" class="nav-cta">Operator Login <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -53,55 +56,60 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>01 / BLOCKCHAIN OPERATOR AUTHENTICATION</span>
+        <span>01 // ROLE-GATED BLOCKCHAIN AUTHENTICATION</span>
       </div>
       <div class="eyebrow-right">
-        Verified against on-chain credentials in WSNSecurity.sol
+        On-Chain Verification via WSNSecurity.getUser()
       </div>
     </div>
 
     <div class="auth-wrapper">
       <div class="editorial-card">
         <div class="auth-header">
-          <span class="eyebrow-label">ACCESS CONTROL LEDGER</span>
-          <h1 class="auth-title">Operator Login</h1>
-          <p class="auth-subtitle">Authenticate to inspect wireless sensor telemetry and run node simulations.</p>
+          <span class="eyebrow-label">RESTRICTED COMMAND CONSOLE</span>
+          <h1 class="auth-title">Admin &amp; Operator Login</h1>
+          <p class="auth-subtitle">Authenticate to unlock the Admin Security Audit Console, Live WSN Simulator, and Sensor Ledger.</p>
         </div>
 
-        <div id="msg-box">
-          <script>
-            var serverMsg = "{{ msg }}";
-            if (serverMsg && serverMsg.trim() !== "") {
-              document.write('<div class="alert-banner">' + serverMsg + '</div>');
-            }
-          </script>
-        </div>
+        <script>
+          var serverMsg = "{{ msg }}";
+          if (serverMsg && serverMsg.trim() !== "") {
+            document.write('<div class="alert-banner">' + serverMsg + '</div>');
+          }
+        </script>
 
         <form name="f1" method="post" action="/LoginAction" onsubmit="return validate();">
           <div class="form-group">
-            <label class="form-label">Operator Username</label>
+            <label class="form-label">Administrator / Operator ID</label>
             <input class="form-input" type="text" name="t1" placeholder="e.g. Amir" value="Amir" />
           </div>
 
           <div class="form-group">
-            <label class="form-label">Cryptographic Passkey / Password</label>
+            <label class="form-label">Cryptographic Passkey</label>
             <input class="form-input" type="password" name="t2" placeholder="Enter your password" value="amir123" />
           </div>
 
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; flex-wrap: wrap;">
+          <div style="background-color: var(--bg-elevated); padding: 12px 14px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">
+            <strong>🔓 ADMIN PRIVILEGES UNLOCKED UPON LOGIN:</strong><br/>
+            • Full 20-Node WSN Simulator &amp; Live Latency Graph<br/>
+            • SHA-512 Tamper-Attack Simulation &amp; Security Audit Lab<br/>
+            • On-Chain Registered Operators Directory &amp; Raw Sensor Ledger
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
             <button type="submit" class="btn-primary-editorial">
-              <span>Authenticate Operator</span>
+              <span>🔓 Authenticate &amp; Unlock Admin Console</span>
               <span>↗</span>
             </button>
             <button type="button" onclick="fillDemo()" class="btn-secondary-editorial">
-              <span>Auto-Fill Demo (Amir)</span>
+              <span>Auto-Fill Admin (Amir)</span>
             </button>
           </div>
         </form>
 
         <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-hairline); display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--slate-muted);">
-          <span>Need a new blockchain operator identity?</span>
-          <a href="/Signup" style="color: var(--burgundy); font-weight: 600;">Register Here ↗</a>
+          <span>Need to provision a new operator on-chain?</span>
+          <a href="/Signup" style="color: var(--burgundy); font-weight: 600;">Register Operator ↗</a>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access WSN Sensor Ledger — Amir Ali | Blockchain WSN Security</title>
+  <title>Sensor Telemetry Ledger — WSN-CHAIN // Secure Cloud</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
   <script>
     function quickSelectNode(val) {
@@ -15,21 +15,25 @@
 </head>
 <body>
 
+  {{ admin_bar | safe }}
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link">Overview</a>
-        <a href="/Simulator" class="nav-link">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link active">Sensor Ledger</a>
-        <a href="/Logout" class="nav-cta">Logout <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -38,18 +42,18 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>03 / BLOCKCHAIN WSN TELEMETRY QUERY</span>
+        <span>03 // ADMIN-RESTRICTED SENSOR TELEMETRY QUERY</span>
       </div>
       <div class="eyebrow-right">
-        Cryptographic verification via WSNSecurity.getIOTData()
+        On-Chain Verification via WSNSecurity.getIOTData()
       </div>
     </div>
 
-    <div class="editorial-card" style="max-width: 860px; margin: 0 auto 36px;">
+    <div class="editorial-card" style="max-width: 880px; margin: 0 auto 36px;">
       <div class="auth-header">
-        <span class="eyebrow-label">IMMUTABLE CLOUD REPOSITORY</span>
-        <h1 class="auth-title">Access WSN Sensor Telemetry</h1>
-        <p class="auth-subtitle">Select a specific wireless sensor node (IOT-0 through IOT-19) or inspect the full network ledger.</p>
+        <span class="eyebrow-label">AUTHENTICATED ADMIN LEDGER ACCESS</span>
+        <h1 class="auth-title">Query WSN Sensor Telemetry</h1>
+        <p class="auth-subtitle">Select any wireless sensor node (IOT-0 through IOT-19) or inspect the full network ledger.</p>
       </div>
 
       <script>
@@ -87,7 +91,7 @@
               <option value="19">IOT-19 (Edge Gateway)</option>
             </select>
             <button type="submit" class="btn-primary-editorial">
-              <span>Query Blockchain Ledger</span>
+              <span>Inspect Blockchain Ledger</span>
               <span>↗</span>
             </button>
           </div>
@@ -95,7 +99,7 @@
       </form>
 
       <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-hairline);">
-        <span class="eyebrow-label">QUICK NODE JUMP (INSTANT QUERY)</span>
+        <span class="eyebrow-label">QUICK NODE JUMP (INSTANT ADMIN QUERY)</span>
         <div class="node-pills-grid">
           <button type="button" class="node-pill active" onclick="quickSelectNode('ALL')">ALL NODES</button>
           <button type="button" class="node-pill" onclick="quickSelectNode('0')">IOT-0</button>

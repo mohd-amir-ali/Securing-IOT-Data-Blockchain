@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WSN Blockchain Telemetry — Amir Ali | Blockchain WSN Security</title>
+  <title>WSN Blockchain Telemetry — WSN-CHAIN // Secure Cloud</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
   <script>
     async function mineNewReading() {
       var btn = document.getElementById("mine-btn");
-      btn.innerText = "Mining SHA-512 Block...";
+      btn.innerText = "Mining SHA-512 Blocks...";
       btn.disabled = true;
       try {
         await fetch("/api/simulate", {
@@ -18,7 +18,7 @@
         });
         window.location.reload();
       } catch (e) {
-        btn.innerText = "Mine +3 Sensor Blocks ↗";
+        btn.innerText = "+ Mine 3 New Sensor Blocks ↗";
         btn.disabled = false;
       }
     }
@@ -26,21 +26,25 @@
 </head>
 <body>
 
+  {{ admin_bar | safe }}
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link">Overview</a>
-        <a href="/Simulator" class="nav-link">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link active">Sensor Ledger</a>
-        <a href="/Logout" class="nav-cta">Logout <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -49,40 +53,23 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>03 / ON-CHAIN SENSOR TELEMETRY LEDGER</span>
+        <span>03 // ON-CHAIN SENSOR TELEMETRY LEDGER (ADMIN VIEW)</span>
       </div>
       <div class="eyebrow-right">
         Contract: {{ contract_address }} · Network ID {{ network_id }}
       </div>
     </div>
 
-    <!-- Action & Filter Bar -->
     <div class="editorial-card" style="padding: 22px 28px; margin-bottom: 24px;">
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
         <form method="post" action="/AccessDataAction" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
           <span class="eyebrow-label" style="margin-bottom: 0;">FILTER BY SENSOR:</span>
           <select name="t1" class="form-select" style="width: 220px; padding: 8px 12px;">
             <option value="ALL">ALL NODES (IOT-0 – IOT-19)</option>
-            <option value="0">IOT-0</option>
-            <option value="1">IOT-1</option>
-            <option value="2">IOT-2</option>
-            <option value="3">IOT-3</option>
-            <option value="4">IOT-4</option>
-            <option value="5">IOT-5</option>
-            <option value="6">IOT-6</option>
-            <option value="7">IOT-7</option>
-            <option value="8">IOT-8</option>
-            <option value="9">IOT-9</option>
-            <option value="10">IOT-10</option>
-            <option value="11">IOT-11</option>
-            <option value="12">IOT-12</option>
-            <option value="13">IOT-13</option>
-            <option value="14">IOT-14</option>
-            <option value="15">IOT-15</option>
-            <option value="16">IOT-16</option>
-            <option value="17">IOT-17</option>
-            <option value="18">IOT-18</option>
-            <option value="19">IOT-19</option>
+            <option value="0">IOT-0</option><option value="1">IOT-1</option><option value="2">IOT-2</option><option value="3">IOT-3</option><option value="4">IOT-4</option>
+            <option value="5">IOT-5</option><option value="6">IOT-6</option><option value="7">IOT-7</option><option value="8">IOT-8</option><option value="9">IOT-9</option>
+            <option value="10">IOT-10</option><option value="11">IOT-11</option><option value="12">IOT-12</option><option value="13">IOT-13</option><option value="14">IOT-14</option>
+            <option value="15">IOT-15</option><option value="16">IOT-16</option><option value="17">IOT-17</option><option value="18">IOT-18</option><option value="19">IOT-19</option>
           </select>
           <button type="submit" class="btn-secondary-editorial" style="padding: 9px 16px;">Apply Filter ↗</button>
         </form>
@@ -92,12 +79,11 @@
             <span>+ Mine 3 New Sensor Blocks</span>
             <span>↗</span>
           </button>
-          <a href="/Simulator" class="btn-secondary-editorial" style="padding: 9px 16px;">Open Live Simulator ↗</a>
+          <a href="/Simulator" class="btn-secondary-editorial" style="padding: 9px 16px;">Open Admin Console &amp; Simulator ↗</a>
         </div>
       </div>
     </div>
 
-    <!-- Rendered Blockchain Records Table -->
     <div class="editorial-card">
       {{ msg | safe }}
     </div>

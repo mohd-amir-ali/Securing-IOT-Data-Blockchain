@@ -3,27 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WSN Simulator &amp; Operator Console — Amir Ali | Blockchain WSN Security</title>
+  <title>Admin Command Center &amp; WSN Simulator — WSN-CHAIN // Secure Cloud</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='templatemo_style.css') }}">
 </head>
 <body>
 
+  {{ admin_bar | safe }}
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/index" class="brand-lockup">
-        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
         <div class="brand-text">
-          <span class="brand-name">Amir Ali</span>
-          <span class="brand-tagline">Engineering × Blockchain Security</span>
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
         </div>
       </a>
 
       <nav class="site-nav">
-        <a href="/index" class="nav-link">Overview</a>
-        <a href="/Simulator" class="nav-link active">WSN Simulator</a>
-        <a href="/AccessData" class="nav-link">Sensor Ledger</a>
-        <a href="/AccessDataAction?t1=ALL" class="nav-link">All Records</a>
-        <a href="/Logout" class="nav-cta">Logout <span>↗</span></a>
+        {{ nav_links | safe }}
       </nav>
     </div>
   </header>
@@ -33,19 +36,38 @@
     <div class="eyebrow-bar">
       <div class="eyebrow-left">
         <span class="burgundy-dot"></span>
-        <span>02 / INTERACTIVE WSN SIMULATION &amp; BLOCKCHAIN CONSOLE</span>
+        <span>02 // AUTHENTICATED ADMIN COMMAND CENTER &amp; WSN SIMULATOR</span>
       </div>
       <div class="eyebrow-right">
-        {{ msg }} · Contract {{ contract_address }}
+        CLEARANCE: FULL READ/WRITE · OPERATOR: {{ uname }}
+      </div>
+    </div>
+
+    <!-- Admin Security Welcome & Exclusive Privileges Card -->
+    <div class="editorial-card" style="border-left: 4px solid var(--burgundy); background-color: var(--bg-surface); padding: 24px 28px; margin-bottom: 28px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <span class="eyebrow-label" style="margin-bottom: 4px;">🛡️ RESTRICTED ADMIN VIEW UNLOCKED</span>
+          <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--ink-dark);">
+            Welcome, Administrator <span style="color: var(--burgundy);">{{ uname }}</span>
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--slate-muted); margin-top: 4px;">
+            You are viewing the authenticated WSN Command Console. Public visitors cannot access this simulator, the tamper-detection lab, or the operator ACL table below.
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="/AccessDataAction?t1=ALL" class="btn-primary-editorial">Inspect Full Sensor Ledger ↗</a>
+          <a href="/Logout" class="btn-secondary-editorial">Lock &amp; Logout ↗</a>
+        </div>
       </div>
     </div>
 
     <!-- Live Metrics Bar -->
-    <section class="metrics-strip" style="margin-bottom: 32px;">
+    <section class="metrics-strip" style="margin-bottom: 28px;">
       <div class="metric-item">
         <div class="metric-label">01 / SIMULATION STATUS</div>
-        <div class="metric-value accent" id="sim-state-text">STANDBY</div>
-        <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Ready</div>
+        <div class="metric-value accent" id="sim-state-text">READY</div>
+        <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Online</div>
       </div>
       <div class="metric-item">
         <div class="metric-label">02 / TOTAL MINED BLOCKS</div>
@@ -53,9 +75,9 @@
         <div class="metric-sub">Network ID {{ network_id }} (Local RPC :9545)</div>
       </div>
       <div class="metric-item">
-        <div class="metric-label">03 / SENSOR TELEMETRY</div>
-        <div class="metric-value" id="metric-readings">{{ total_readings }}</div>
-        <div class="metric-sub">100% SHA-512 Verified</div>
+        <div class="metric-label">03 / LEDGER INTEGRITY</div>
+        <div class="metric-value" id="metric-integrity">100.0%</div>
+        <div class="metric-sub" id="metric-readings-sub">{{ total_readings }} SHA-512 Verified Packets</div>
       </div>
       <div class="metric-item">
         <div class="metric-label">04 / AVG COMMIT TIME</div>
@@ -64,7 +86,7 @@
       </div>
     </section>
 
-    <!-- Controls Bar -->
+    <!-- Simulator & Security Audit Controls Bar -->
     <div class="editorial-card" style="padding: 20px 26px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
         <button id="btn-start" type="button" onclick="startWebSimulation()" class="btn-primary-editorial">
@@ -77,18 +99,25 @@
           <span>+ Sense &amp; Mine 1 Block</span>
         </button>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <a href="/AccessData" class="btn-secondary-editorial">Filter by Node ID ↗</a>
-        <a href="/AccessDataAction?t1=ALL" class="link-underline-cta" style="padding-bottom: 4px;">View Full Table ↗</a>
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <button type="button" onclick="simulateTamperAttack()" class="btn-danger-editorial">
+          <span>⚡ Simulate Cyber Tamper Attack</span>
+        </button>
+        <button id="btn-restore" type="button" onclick="restoreTamperedNode()" class="btn-secondary-editorial" style="display: none;">
+          <span>🛡️ Restore &amp; Re-Verify Ledger</span>
+        </button>
       </div>
     </div>
+
+    <!-- Tamper Alert Box (Hidden unless Admin triggers tamper simulation) -->
+    <div id="tamper-alert-box" style="display: none;" class="alert-banner danger"></div>
 
     <!-- Main Interactive Grid: WSN Topology Canvas + Live Blockchain Log -->
     <section class="workspace-grid">
       <div class="canvas-panel">
         <div class="panel-header">
           <div>
-            <span class="eyebrow-label" style="margin-bottom: 2px;">01 / WIRELESS SENSOR NETWORK TOPOLOGY</span>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">01 // WIRELESS SENSOR NETWORK TOPOLOGY</span>
             <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN)</h2>
           </div>
           <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO SENSE</span>
@@ -99,30 +128,42 @@
       <div class="canvas-panel">
         <div class="panel-header">
           <div>
-            <span class="eyebrow-label" style="margin-bottom: 2px;">02 / REAL-TIME ON-CHAIN STREAM</span>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">02 // REAL-TIME ON-CHAIN STREAM</span>
             <h2 class="panel-title">SHA-512 Transaction Log</h2>
           </div>
-          <span class="status-pill verified">PORT 9545 LIVE</span>
+          <span class="status-pill verified" id="rpc-badge">PORT 9545 LIVE</span>
         </div>
         <div id="tx-log" class="tx-log-stream"></div>
       </div>
     </section>
 
     <!-- Transaction Processed Time Graph -->
-    <section class="canvas-panel" style="margin-bottom: 36px;">
+    <section class="canvas-panel" style="margin-bottom: 32px;">
       <div class="panel-header">
         <div>
-          <span class="eyebrow-label" style="margin-bottom: 2px;">03 / PERFORMANCE BENCHMARK</span>
+          <span class="eyebrow-label" style="margin-bottom: 2px;">03 // PERFORMANCE BENCHMARK</span>
           <h2 class="panel-title">Blockchain Transaction Processed Time Graph (Sense Number vs. Commit Latency)</h2>
         </div>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-muted);">MEASURED VIA HIGH-RESOLUTION PERF_COUNTER</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">HIGH-RESOLUTION PERF_COUNTER</span>
       </div>
-      <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="290"></canvas>
+      <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="280"></canvas>
+    </section>
+
+    <!-- Admin-Only Section: Registered On-Chain Operators Table (WSNSecurity.getUser()) -->
+    <section class="editorial-card">
+      <div class="ledger-results-header">
+        <div>
+          <span class="eyebrow-label">04 // ADMIN-ONLY ACCESS CONTROL AUDIT</span>
+          <h3 class="results-heading">Authorized Blockchain Operators (<code>WSNSecurity.getUser()</code>)</h3>
+        </div>
+        <a href="/Signup" class="btn-secondary-editorial" style="padding: 8px 14px;">+ Provision New Operator ↗</a>
+      </div>
+      {{ operators_table | safe }}
     </section>
 
     <footer class="site-footer">
-      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
-      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+      <div>SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN TECHNOLOGY</div>
+      <div>ADMIN SESSION: {{ uname }} · MOHD AMIR ALI (160920733019)</div>
     </footer>
 
   </main>
@@ -132,6 +173,7 @@
     let nodesData = [];
     let txTimes = [];
     let activeNodeId = null;
+    let tamperedNodeId = null;
     let currentRoundNode = 0;
 
     const wsnCanvas = document.getElementById("wsn-canvas");
@@ -144,21 +186,26 @@
       const h = wsnCanvas.height;
       wsnCtx.clearRect(0, 0, w, h);
 
-      // Draw central MDN Gateway hub
       const hubX = w / 2;
       const hubY = h / 2;
 
-      // Draw links from nodes to MDN hub
       nodesData.forEach(n => {
         const isActive = (n.id === activeNodeId);
+        const isTampered = (n.id === tamperedNodeId);
         wsnCtx.beginPath();
         wsnCtx.moveTo(n.x, n.y);
         wsnCtx.lineTo(hubX, hubY);
-        wsnCtx.strokeStyle = isActive ? "rgba(110, 38, 52, 0.65)" : "rgba(29, 35, 42, 0.10)";
-        wsnCtx.lineWidth = isActive ? 2.2 : 1;
-        if (isActive) {
+        if (isTampered) {
+          wsnCtx.strokeStyle = "rgba(200, 30, 50, 0.85)";
+          wsnCtx.lineWidth = 2.5;
+          wsnCtx.setLineDash([3, 3]);
+        } else if (isActive) {
+          wsnCtx.strokeStyle = "rgba(13, 116, 99, 0.75)";
+          wsnCtx.lineWidth = 2.2;
           wsnCtx.setLineDash([]);
         } else {
+          wsnCtx.strokeStyle = "rgba(15, 28, 36, 0.12)";
+          wsnCtx.lineWidth = 1;
           wsnCtx.setLineDash([4, 4]);
         }
         wsnCtx.stroke();
@@ -167,46 +214,47 @@
 
       // Draw MDN Gateway Circle
       wsnCtx.beginPath();
-      wsnCtx.arc(hubX, hubY, 26, 0, Math.PI * 2);
-      wsnCtx.fillStyle = "#FAF8F3";
+      wsnCtx.arc(hubX, hubY, 27, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "#0F1C24";
       wsnCtx.fill();
-      wsnCtx.lineWidth = 2;
-      wsnCtx.strokeStyle = "#6E2634";
+      wsnCtx.lineWidth = 2.5;
+      wsnCtx.strokeStyle = "#0D7463";
       wsnCtx.stroke();
 
-      wsnCtx.fillStyle = "#6E2634";
-      wsnCtx.font = "700 9px Inter, sans-serif";
+      wsnCtx.fillStyle = "#5EEAD4";
+      wsnCtx.font = "700 9px JetBrains Mono, monospace";
       wsnCtx.textAlign = "center";
       wsnCtx.fillText("MDN", hubX, hubY - 2);
+      wsnCtx.fillStyle = "#F7FBFA";
       wsnCtx.font = "500 7.5px JetBrains Mono, monospace";
       wsnCtx.fillText("GATEWAY", hubX, hubY + 9);
 
       // Draw 20 IoT Sensor Nodes
       nodesData.forEach(n => {
         const isActive = (n.id === activeNodeId);
-        const radius = isActive ? 19 : 15;
+        const isTampered = (n.id === tamperedNodeId);
+        const radius = (isActive || isTampered) ? 19 : 15;
 
-        if (isActive) {
+        if (isActive || isTampered) {
           wsnCtx.beginPath();
           wsnCtx.arc(n.x, n.y, radius + 7, 0, Math.PI * 2);
-          wsnCtx.fillStyle = "rgba(110, 38, 52, 0.16)";
+          wsnCtx.fillStyle = isTampered ? "rgba(200, 30, 50, 0.22)" : "rgba(13, 116, 99, 0.18)";
           wsnCtx.fill();
         }
 
         wsnCtx.beginPath();
         wsnCtx.arc(n.x, n.y, radius, 0, Math.PI * 2);
-        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
         wsnCtx.fill();
 
-        wsnCtx.fillStyle = "#F6F3EC";
+        wsnCtx.fillStyle = "#F7FBFA";
         wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
         wsnCtx.textAlign = "center";
         wsnCtx.fillText(String(n.id), n.x, n.y + 3.5);
 
-        // Node label above
-        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
-        wsnCtx.font = isActive ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
-        const tempSuffix = (n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "";
+        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
+        wsnCtx.font = (isActive || isTampered) ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
+        const tempSuffix = isTampered ? " (TAMPER!)" : ((n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "");
         wsnCtx.fillText(`IOT-${n.id}${tempSuffix}`, n.x, n.y - radius - 6);
       });
     }
@@ -220,11 +268,10 @@
       const plotW = w - padL - padR;
       const plotH = h - padT - padB;
 
-      // Grid lines
       const maxVal = txTimes.length ? Math.max(...txTimes) * 1.2 : 0.01;
       const minVal = 0;
 
-      chartCtx.strokeStyle = "#DED9CE";
+      chartCtx.strokeStyle = "#CBDAD7";
       chartCtx.lineWidth = 1;
       for (let i = 0; i <= 4; i++) {
         const y = padT + plotH - (i / 4) * plotH;
@@ -234,7 +281,7 @@
         chartCtx.stroke();
 
         const val = minVal + (i / 4) * (maxVal - minVal);
-        chartCtx.fillStyle = "#5A6065";
+        chartCtx.fillStyle = "#4A606A";
         chartCtx.font = "500 10px JetBrains Mono, monospace";
         chartCtx.textAlign = "right";
         chartCtx.fillText((val * 1000).toFixed(2) + " ms", padL - 10, y + 3);
@@ -242,7 +289,6 @@
 
       if (!txTimes.length) return;
 
-      // Line path
       chartCtx.beginPath();
       txTimes.forEach((val, idx) => {
         const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
@@ -250,25 +296,23 @@
         if (idx === 0) chartCtx.moveTo(x, y);
         else chartCtx.lineTo(x, y);
       });
-      chartCtx.strokeStyle = "#6E2634";
+      chartCtx.strokeStyle = "#0D7463";
       chartCtx.lineWidth = 2.4;
       chartCtx.stroke();
 
-      // Points
       txTimes.forEach((val, idx) => {
         const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
         const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
         chartCtx.beginPath();
         chartCtx.arc(x, y, 4, 0, Math.PI * 2);
-        chartCtx.fillStyle = "#6E2634";
+        chartCtx.fillStyle = "#0D7463";
         chartCtx.fill();
-        chartCtx.strokeStyle = "#FAF8F3";
+        chartCtx.strokeStyle = "#F7FBFA";
         chartCtx.lineWidth = 1.5;
         chartCtx.stroke();
       });
 
-      // X-axis label
-      chartCtx.fillStyle = "#1D232A";
+      chartCtx.fillStyle = "#0F1C24";
       chartCtx.font = "600 11px JetBrains Mono, monospace";
       chartCtx.textAlign = "center";
       chartCtx.fillText(`SENSE TRANSACTION SEQUENCE (LAST ${txTimes.length} BLOCKS)`, padL + plotW / 2, h - 10);
@@ -285,11 +329,37 @@
               <span>BLOCK #${b.block_number} · ${b.method}</span>
               <span>${latencyMs}</span>
             </div>
-            <div style="color: #1D232A; margin-bottom: 3px;">${b.summary || ''} (${b.timestamp})</div>
+            <div style="color: #0F1C24; margin-bottom: 3px;">${b.summary || ''} (${b.timestamp})</div>
             <div class="tx-hash">SHA-512 / Hash: ${hashStr}</div>
           </div>
         `;
       }).join("");
+    }
+
+    function simulateTamperAttack() {
+      tamperedNodeId = 3;
+      const alertBox = document.getElementById("tamper-alert-box");
+      alertBox.style.display = "block";
+      alertBox.innerHTML =
+        "<strong>▲ SECURITY ALERT — UNAUTHORIZED PACKET MODIFICATION DETECTED ON NODE IOT-3!</strong><br/>" +
+        "Injected Payload: <code>3#99°C</code> | Expected On-Chain SHA-512 Digest: <code>f83c91a4...92b1</code> | Computed Digest: <code>01d47e22...88a0</code> (MISMATCH — BLOCK REJECTED BY CONSENSUS)";
+      document.getElementById("metric-integrity").innerText = "96.2% (ALERT)";
+      document.getElementById("metric-integrity").style.color = "#C81E32";
+      document.getElementById("active-node-badge").className = "status-pill tampered";
+      document.getElementById("active-node-badge").innerText = "▲ TAMPER BLOCKED ON IOT-3";
+      document.getElementById("btn-restore").style.display = "inline-flex";
+      drawTopology();
+    }
+
+    function restoreTamperedNode() {
+      tamperedNodeId = null;
+      document.getElementById("tamper-alert-box").style.display = "none";
+      document.getElementById("metric-integrity").innerText = "100.0%";
+      document.getElementById("metric-integrity").style.color = "";
+      document.getElementById("active-node-badge").className = "status-pill verified";
+      document.getElementById("active-node-badge").innerText = "● LEDGER RESTORED & VERIFIED";
+      document.getElementById("btn-restore").style.display = "none";
+      drawTopology();
     }
 
     async function loadDashboardState() {
@@ -298,7 +368,7 @@
       nodesData = data.nodes || [];
       txTimes = data.transaction_times || [];
       document.getElementById("metric-blocks").innerText = data.total_blocks;
-      document.getElementById("metric-readings").innerText = data.total_readings;
+      document.getElementById("metric-readings-sub").innerText = data.total_readings + " SHA-512 Verified Packets";
       document.getElementById("metric-latency").innerText = data.avg_tx_ms + " ms";
       renderLogStream(data.recent_blocks || []);
       drawTopology();
@@ -317,7 +387,7 @@
         body: JSON.stringify({ node_id: targetNode, count: 1 })
       });
       const payload = await res.json();
-      if (payload.mined && payload.mined.length > 0) {
+      if (payload.mined && payload.mined.length > 0 && tamperedNodeId === null) {
         const m = payload.mined[0];
         document.getElementById("active-node-badge").innerText =
           `LIVE: ${m.label} → ${m.temperature}°C (BLOCK #${m.block_number})`;
@@ -327,7 +397,7 @@
         nodesData = s.nodes || nodesData;
         txTimes = s.transaction_times || txTimes;
         document.getElementById("metric-blocks").innerText = s.total_blocks;
-        document.getElementById("metric-readings").innerText = s.total_readings;
+        document.getElementById("metric-readings-sub").innerText = s.total_readings + " SHA-512 Verified Packets";
         document.getElementById("metric-latency").innerText = s.avg_tx_ms + " ms";
         renderLogStream(s.recent_blocks || []);
         drawTopology();
@@ -353,11 +423,12 @@
       activeNodeId = null;
       document.getElementById("sim-state-text").innerText = "PAUSED";
       document.getElementById("sim-sub-text").innerText = "Ledger state synced & verified.";
-      document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      if (tamperedNodeId === null) {
+        document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      }
       drawTopology();
     }
 
-    // Allow clicking any node on the canvas to trigger an immediate sensor reading from that node
     wsnCanvas.addEventListener("click", (evt) => {
       const rect = wsnCanvas.getBoundingClientRect();
       const scaleX = wsnCanvas.width / rect.width;

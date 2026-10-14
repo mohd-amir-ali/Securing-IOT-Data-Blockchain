@@ -12,6 +12,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 uname = "Amir"
+logged_in = False
 details = ""
 
 
@@ -28,6 +29,46 @@ def saveDataBlockChain(currentData, contract_type):
     return receipt
 
 
+def build_operators_table_html() -> str:
+    """Build the Admin-Only table of registered blockchain operators from WSNSecurity.getUser()."""
+    users = bridge.get_parsed_users()
+    if not users:
+        return '<p style="color: var(--slate-muted);">No operators registered yet.</p>'
+
+    rows = []
+    for idx, u in enumerate(users, 1):
+        role_badge = (
+            '<span class="status-pill verified">● PRIMARY ADMIN</span>'
+            if u["username"].lower() == "amir"
+            else '<span class="status-pill verified">● AUTHORIZED OPERATOR</span>'
+        )
+        rows.append(
+            f"<tr>"
+            f'<td class="mono-cell">#{idx:02d}</td>'
+            f'<td class="mono-cell"><strong>{u["username"]}</strong></td>'
+            f'<td class="mono-cell">{u["phone"]}</td>'
+            f'<td class="mono-cell">{u["email"]}</td>'
+            f"<td>{u['address']}</td>"
+            f"<td>{role_badge}</td>"
+            f"</tr>"
+        )
+
+    return (
+        '<div class="table-responsive">'
+        '<table class="editorial-table">'
+        "<thead><tr>"
+        "<th>ID</th>"
+        "<th>Operator Username</th>"
+        "<th>Contact Number</th>"
+        "<th>Email Address</th>"
+        "<th>Node / Lab Location</th>"
+        "<th>On-Chain Clearance</th>"
+        "</tr></thead>"
+        f'<tbody>{"".join(rows)}</tbody>'
+        "</table></div>"
+    )
+
+
 def build_records_table_html(iot_id: str) -> str:
     """Build the editorial table HTML for ViewData.html while keeping backward compatibility."""
     records = bridge.get_parsed_iot_records(iot_id)
@@ -36,9 +77,9 @@ def build_records_table_html(iot_id: str) -> str:
     if not records:
         return (
             f'<div class="empty-state">'
-            f'<div class="eyebrow-label">03 / QUERY RESULT — {filter_title}</div>'
+            f'<div class="eyebrow-label">03 // QUERY RESULT — {filter_title}</div>'
             f'<h4>No sensor blocks found for {filter_title} yet.</h4>'
-            f'<p>Use the Live WSN Simulator to generate and mine new SHA-512 sensor transactions.</p>'
+            f'<p>Use the Admin WSN Simulator to generate and mine new SHA-512 sensor transactions.</p>'
             f'</div>'
         )
 
@@ -61,8 +102,8 @@ def build_records_table_html(iot_id: str) -> str:
 
     return (
         f'<div class="ledger-results-header">'
-        f'<div><span class="eyebrow-label">03 / FILTERED LEDGER STREAM</span>'
-        f'<h3 class="results-heading"> Telemetry Records for <em>{filter_title}</em></h3></div>'
+        f'<div><span class="eyebrow-label">03 // FILTERED LEDGER STREAM</span>'
+        f'<h3 class="results-heading">Telemetry Records for <em>{filter_title}</em></h3></div>'
         f'<div class="results-count">{len(records)} Immutable Records Retrieved</div>'
         f"</div>"
         f'<div class="table-responsive">'
@@ -79,12 +120,56 @@ def build_records_table_html(iot_id: str) -> str:
     )
 
 
-def render_page(template_name: str, **context) -> str:
-    """Render template using Flask if active, or lightweight Jinja-compatible renderer."""
+def build_navigation_context(active_page: str, is_admin: bool, current_user: str, contract_addr: str):
+    if is_admin:
+        admin_bar = (
+            f'<div class="admin-session-bar">'
+            f'<div class="admin-session-inner">'
+            f'<div><span class="admin-badge-pill"><span class="pulse-dot"></span> ADMIN SESSION ACTIVE</span> '
+            f'&nbsp;OPERATOR: <strong>{current_user.upper()}</strong> &nbsp;|&nbsp; ROLE: WSN NETWORK ADMINISTRATOR &nbsp;|&nbsp; CLEARANCE: SHA-512 READ/WRITE</div>'
+            f'<div>CONTRACT: {contract_addr[:18]}… &nbsp;|&nbsp; <a href="/Logout" style="color:#5EEAD4; text-decoration:underline;">LOCK &amp; LOGOUT ↗</a></div>'
+            f"</div></div>"
+        )
+        nav_links = (
+            f'<a href="/index" class="nav-link {"active" if active_page == "index" else ""}">System Overview</a>'
+            f'<a href="/Simulator" class="nav-link {"active" if active_page == "simulator" else ""}">🛡️ Admin Console &amp; Simulator</a>'
+            f'<a href="/AccessData" class="nav-link {"active" if active_page == "ledger" else ""}">🗄️ Sensor Ledger</a>'
+            f'<a href="/Signup" class="nav-link {"active" if active_page == "signup" else ""}">Provision Operator</a>'
+            f'<a href="/Logout" class="nav-cta admin-active">● Admin: {current_user} (Logout) <span>↗</span></a>'
+        )
+        hero_actions = (
+            '<a href="/Simulator" class="btn-primary-editorial"><span>🛡️ Open Admin Command Console</span><span>↗</span></a>'
+            '<a href="/AccessData" class="btn-secondary-editorial"><span>Inspect Sensor Ledger</span><span>↗</span></a>'
+        )
+    else:
+        admin_bar = ""
+        nav_links = (
+            f'<a href="/index" class="nav-link {"active" if active_page == "index" else ""}">System Overview</a>'
+            f'<a href="/Login" class="nav-link">WSN Simulator <span class="nav-lock-tag">🔒 ADMIN</span></a>'
+            f'<a href="/Login" class="nav-link">Sensor Ledger <span class="nav-lock-tag">🔒 ADMIN</span></a>'
+            f'<a href="/Signup" class="nav-link {"active" if active_page == "signup" else ""}">Register Operator</a>'
+            f'<a href="/Login" class="nav-cta">🔒 Admin Login <span>↗</span></a>'
+        )
+        hero_actions = (
+            '<a href="/Login" class="btn-primary-editorial"><span>🔒 Login as Admin to Launch Simulator</span><span>↗</span></a>'
+            '<a href="/Signup" class="btn-secondary-editorial"><span>Register New Operator</span><span>↗</span></a>'
+        )
+    return admin_bar, nav_links, hero_actions
+
+
+def render_page(template_name: str, active_page: str = "index", **context) -> str:
+    """Render template with role-based navigation and live blockchain metrics."""
     summary = bridge.get_dashboard_summary()
+    admin_bar, nav_links, hero_actions = build_navigation_context(
+        active_page, logged_in, uname, summary["contract_address"]
+    )
     merged = {
         "msg": "",
         "uname": uname,
+        "admin_bar": admin_bar,
+        "nav_links": nav_links,
+        "hero_actions": hero_actions,
+        "operators_table": build_operators_table_html(),
         "summary": summary,
         "contract_address": summary["contract_address"],
         "network_id": summary["network_id"],
@@ -99,13 +184,11 @@ def render_page(template_name: str, **context) -> str:
     with open(tpl_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # Replace url_for('static', filename='...')
     html = re.sub(
         r"\{\{\s*url_for\(\s*['\"]static['\"]\s*,\s*filename\s*=\s*['\"]([^'\"]+)['\"]\s*\)\s*\}\}",
         r"/static/\1",
         html,
     )
-    # Replace {{ var | safe }} and {{ var }}
     for k, v in merged.items():
         if isinstance(v, (str, int, float)):
             html = re.sub(r"\{\{\s*" + re.escape(k) + r"\s*\|\s*safe\s*\}\}", str(v), html)
@@ -113,9 +196,8 @@ def render_page(template_name: str, **context) -> str:
     return html
 
 
-# Try loading Flask if installed; otherwise use built-in HTTP server seamlessly
 try:
-    from flask import Flask, render_template, request, jsonify, send_from_directory
+    from flask import Flask, request, jsonify
 
     app = Flask(__name__, template_folder=TEMPLATES_DIR, static_folder=STATIC_DIR)
     app.secret_key = "welcome"
@@ -124,36 +206,49 @@ try:
     @app.route("/", methods=["GET", "POST"])
     @app.route("/index", methods=["GET", "POST"])
     def index():
-        return render_page("index.html", msg="")
+        return render_page("index.html", active_page="index", msg="")
 
     @app.route("/Login", methods=["GET", "POST"])
     def Login():
-        return render_page("Login.html", msg="")
+        return render_page("Login.html", active_page="login", msg="")
 
     @app.route("/Signup", methods=["GET", "POST"])
     def Signup():
-        return render_page("Signup.html", msg="")
+        return render_page("Signup.html", active_page="signup", msg="")
 
     @app.route("/UserScreen", methods=["GET", "POST"])
     @app.route("/Simulator", methods=["GET", "POST"])
     def UserScreen():
-        return render_page("UserScreen.html", msg=f"Welcome {uname}")
+        if not logged_in:
+            return render_page(
+                "Login.html",
+                active_page="login",
+                msg="🔒 Administrator Authentication Required — Please log in to unlock the WSN Simulator & Security Console.",
+            )
+        return render_page("UserScreen.html", active_page="simulator", msg=f"Authenticated as {uname}")
 
     @app.route("/AccessData", methods=["GET", "POST"])
     def AccessData():
-        return render_page("AccessData.html", msg="")
+        if not logged_in:
+            return render_page(
+                "Login.html",
+                active_page="login",
+                msg="🔒 Administrator Authentication Required — Please log in to query the WSN Sensor Ledger.",
+            )
+        return render_page("AccessData.html", active_page="ledger", msg="")
 
     @app.route("/LoginAction", methods=["GET", "POST"])
     def LoginAction():
-        global uname
+        global uname, logged_in
         if request.method == "POST":
             user = request.form.get("t1", "").strip()
             password = request.form.get("t2", "")
             if bridge.authenticate_user(user, password):
                 uname = user
-                return render_page("UserScreen.html", msg=f"Authenticated as {uname}")
-            return render_page("Login.html", msg="Invalid login credentials. Try demo account: Amir / amir123")
-        return render_page("Login.html", msg="")
+                logged_in = True
+                return render_page("UserScreen.html", active_page="simulator", msg=f"Authenticated as {uname}")
+            return render_page("Login.html", active_page="login", msg="Invalid login credentials. Try Admin account: Amir / amir123")
+        return render_page("Login.html", active_page="login", msg="")
 
     @app.route("/SignupAction", methods=["GET", "POST"])
     def SignupAction():
@@ -168,20 +263,29 @@ try:
                 tx_short = receipt.get("tx_hash", "")[:22] + "..."
                 return render_page(
                     "Signup.html",
+                    active_page="signup",
                     msg=f"{message} (Block #{receipt.get('block_number')} | Tx: {tx_short})",
                 )
-            return render_page("Signup.html", msg=message)
-        return render_page("Signup.html", msg="")
+            return render_page("Signup.html", active_page="signup", msg=message)
+        return render_page("Signup.html", active_page="signup", msg="")
 
     @app.route("/AccessDataAction", methods=["GET", "POST"])
     def AccessDataAction():
+        if not logged_in:
+            return render_page(
+                "Login.html",
+                active_page="login",
+                msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+            )
         iot_id = request.form.get("t1", request.args.get("t1", "ALL"))
         output = build_records_table_html(iot_id)
-        return render_page("ViewData.html", msg=output, selected_iot=str(iot_id))
+        return render_page("ViewData.html", active_page="ledger", msg=output, selected_iot=str(iot_id))
 
     @app.route("/Logout")
     def Logout():
-        return render_page("index.html", msg="")
+        global logged_in
+        logged_in = False
+        return render_page("index.html", active_page="index", msg="")
 
     @app.route("/api/summary", methods=["GET"])
     def api_summary():
@@ -237,6 +341,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def do_GET(self):
+        global logged_in
         parsed = urlparse(self.path)
         path = parsed.path
         query = parse_qs(parsed.query)
@@ -257,30 +362,60 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
             self.send_error(404, "Static file not found")
             return
 
-        if path in ("/", "/index", "/Logout"):
-            self._send_html(render_page("index.html", msg=""))
+        if path == "/Logout":
+            logged_in = False
+            self._send_html(render_page("index.html", active_page="index", msg=""))
+        elif path in ("/", "/index"):
+            self._send_html(render_page("index.html", active_page="index", msg=""))
         elif path == "/Login":
-            self._send_html(render_page("Login.html", msg=""))
+            self._send_html(render_page("Login.html", active_page="login", msg=""))
         elif path == "/Signup":
-            self._send_html(render_page("Signup.html", msg=""))
+            self._send_html(render_page("Signup.html", active_page="signup", msg=""))
         elif path in ("/UserScreen", "/Simulator"):
-            self._send_html(render_page("UserScreen.html", msg=f"Welcome {uname}"))
+            if not logged_in:
+                self._send_html(
+                    render_page(
+                        "Login.html",
+                        active_page="login",
+                        msg="🔒 Administrator Authentication Required — Please log in to unlock the WSN Simulator & Security Console.",
+                    )
+                )
+            else:
+                self._send_html(render_page("UserScreen.html", active_page="simulator", msg=f"Authenticated as {uname}"))
         elif path == "/AccessData":
-            self._send_html(render_page("AccessData.html", msg=""))
+            if not logged_in:
+                self._send_html(
+                    render_page(
+                        "Login.html",
+                        active_page="login",
+                        msg="🔒 Administrator Authentication Required — Please log in to query the WSN Sensor Ledger.",
+                    )
+                )
+            else:
+                self._send_html(render_page("AccessData.html", active_page="ledger", msg=""))
         elif path == "/AccessDataAction":
-            iot_id = query.get("t1", ["ALL"])[0]
-            output = build_records_table_html(iot_id)
-            self._send_html(render_page("ViewData.html", msg=output, selected_iot=str(iot_id)))
+            if not logged_in:
+                self._send_html(
+                    render_page(
+                        "Login.html",
+                        active_page="login",
+                        msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+                    )
+                )
+            else:
+                iot_id = query.get("t1", ["ALL"])[0]
+                output = build_records_table_html(iot_id)
+                self._send_html(render_page("ViewData.html", active_page="ledger", msg=output, selected_iot=str(iot_id)))
         elif path == "/api/summary":
             self._send_json(bridge.get_dashboard_summary())
         elif path == "/api/records":
             iot_id = query.get("iot_id", ["ALL"])[0]
             self._send_json({"iot_id": iot_id, "records": bridge.get_parsed_iot_records(iot_id)})
         else:
-            self._send_html(render_page("index.html", msg=""))
+            self._send_html(render_page("index.html", active_page="index", msg=""))
 
     def do_POST(self):
-        global uname
+        global uname, logged_in
         parsed = urlparse(self.path)
         path = parsed.path
         length = int(self.headers.get("Content-Length", 0))
@@ -311,9 +446,10 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
             password = form.get("t2", "")
             if bridge.authenticate_user(user, password):
                 uname = user
-                self._send_html(render_page("UserScreen.html", msg=f"Authenticated as {uname}"))
+                logged_in = True
+                self._send_html(render_page("UserScreen.html", active_page="simulator", msg=f"Authenticated as {uname}"))
             else:
-                self._send_html(render_page("Login.html", msg="Invalid login credentials. Try demo account: Amir / amir123"))
+                self._send_html(render_page("Login.html", active_page="login", msg="Invalid login credentials. Try Admin account: Amir / amir123"))
         elif path == "/SignupAction":
             u = form.get("t1", "").strip()
             pw = form.get("t2", "")
@@ -326,24 +462,34 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
                 self._send_html(
                     render_page(
                         "Signup.html",
+                        active_page="signup",
                         msg=f"{message} (Block #{receipt.get('block_number')} | Tx: {tx_short})",
                     )
                 )
             else:
-                self._send_html(render_page("Signup.html", msg=message))
+                self._send_html(render_page("Signup.html", active_page="signup", msg=message))
         elif path == "/AccessDataAction":
-            iot_id = form.get("t1", "ALL")
-            output = build_records_table_html(iot_id)
-            self._send_html(render_page("ViewData.html", msg=output, selected_iot=str(iot_id)))
+            if not logged_in:
+                self._send_html(
+                    render_page(
+                        "Login.html",
+                        active_page="login",
+                        msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+                    )
+                )
+            else:
+                iot_id = form.get("t1", "ALL")
+                output = build_records_table_html(iot_id)
+                self._send_html(render_page("ViewData.html", active_page="ledger", msg=output, selected_iot=str(iot_id)))
         else:
-            self._send_html(render_page("index.html", msg=""))
+            self._send_html(render_page("index.html", active_page="index", msg=""))
 
 
 def run_server(host: str = "127.0.0.1", port: int = 5050):
     rpc_status = ensure_local_rpc_server(9545)
     summary = bridge.get_dashboard_summary()
     print("=" * 72)
-    print("  AMIR ALI — SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN")
+    print("  WSN-CHAIN // SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN")
     print("=" * 72)
     print(f"  [Blockchain] {rpc_status}")
     print(f"  [Contract]   {summary['contract_address']} (Network ID: {summary['network_id']})")
