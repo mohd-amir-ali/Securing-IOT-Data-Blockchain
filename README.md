@@ -72,7 +72,7 @@ cd WSNStrengthenSecuirty
 python3 Main.py
 ```
 
-Then open **[http://127.0.0.1:5000/index](http://127.0.0.1:5000/index)** in your browser:
+Then open **[http://127.0.0.1:5050/index](http://127.0.0.1:5050/index)** in your browser:
 - **Demo Operator Login:** Username `Amir` / Password `amir123` (or register a new operator via **Register**).
 - **Interactive Web Simulator:** Navigate to **WSN Simulator** (`/Simulator`) and click **▶ Start WSN Simulation** to watch the 20 sensor nodes broadcast SHA-512 blocks in real time.
 - **Sensor Telemetry Ledger:** Navigate to **Sensor Ledger** (`/AccessData`) to filter verified records across `IOT-0` through `IOT-19`.

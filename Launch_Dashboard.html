@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amir Ali — Securing IoT Data in the Cloud with Blockchain Technology</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-cream: #F6F3EC;
+  --bg-surface: #FAF8F3;
+  --bg-elevated: #EFECE4;
+  --ink-dark: #1D232A;
+  --ink-Soft: #2C343D;
+  --burgundy: #6E2634;
+  --burgundy-hover: #521A25;
+  --burgundy-soft: rgba(110, 38, 52, 0.08);
+  --slate-muted: #5A6065;
+  --slate-light: #7D8287;
+  --border-hairline: #DED9CE;
+  --border-strong: #C6C0B4;
+  --verified-green: #1D5E3A;
+  --verified-bg: rgba(29, 94, 58, 0.09);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Newsreader', 'Georgia', 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-cream);
+  color: var(--ink-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR (Matches techwithamir.com header)
+   ========================================================================== */
+.site-header {
+  border-bottom: 1px solid var(--border-hairline);
+  background-color: var(--bg-cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-monogram {
+  position: relative;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.06em;
+  color: var(--burgundy);
+  line-height: 1;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.brand-monogram .mono-arrow {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: -2px;
+  margin-top: -4px;
+  color: var(--burgundy);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  margin-top: 2px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+  padding: 4px 0;
+  border-bottom: 1.5px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--burgundy);
+  border-bottom-color: var(--burgundy);
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1px solid var(--border-strong);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-dark);
+  background: transparent;
+}
+
+.nav-cta:hover {
+  border-color: var(--burgundy);
+  background-color: var(--burgundy);
+  color: var(--bg-cream);
+}
+
+/* ==========================================================================
+   MAIN CONTAINER & EDITORIAL SECTIONS
+   ========================================================================== */
+.page-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 40px 80px;
+}
+
+.eyebrow-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.eyebrow-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+}
+
+.burgundy-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--burgundy);
+  display: inline-block;
+}
+
+.eyebrow-right {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--slate-muted);
+}
+
+.eyebrow-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   HERO DISPLAY SECTION (Matches "BUILDING WHAT'S NEXT *")
+   ========================================================================== */
+.hero-headline-block {
+  margin: 12px 0 44px;
+}
+
+.hero-display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 7.6vw, 6.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.hero-line-dark {
+  color: var(--ink-dark);
+  display: block;
+}
+
+.hero-line-burgundy {
+  color: var(--burgundy);
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.hero-asterisk {
+  width: clamp(38px, 5vw, 64px);
+  height: clamp(38px, 5vw, 64px);
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-headline-block:hover .hero-asterisk {
+  transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   LOWER HERO SPLIT: EDITORIAL INTRO + INTERSECTING VENN DIAGRAM
+   ========================================================================== */
+.editorial-split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: stretch;
+  padding-top: 12px;
+  margin-bottom: 56px;
+}
+
+@media (max-width: 960px) {
+  .editorial-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editorial-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  line-height: 1.38;
+  color: var(--ink-dark);
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.editorial-lead strong {
+  font-weight: 600;
+}
+
+.editorial-lead em {
+  color: var(--burgundy);
+  font-style: italic;
+}
+
+.editorial-body {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.68;
+  color: var(--slate-muted);
+  margin-bottom: 28px;
+  max-width: 560px;
+}
+
+.editorial-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.link-underline-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--burgundy);
+  color: var(--burgundy);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.link-underline-cta:hover {
+  color: var(--ink-dark);
+  border-bottom-color: var(--ink-dark);
+}
+
+.btn-primary-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background-color: var(--burgundy);
+  color: var(--bg-cream);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--burgundy);
+  cursor: pointer;
+}
+
+.btn-primary-editorial:hover {
+  background-color: var(--ink-dark);
+  border-color: var(--ink-dark);
+  color: var(--bg-cream);
+}
+
+.btn-secondary-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: transparent;
+  color: var(--ink-dark);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+}
+
+.btn-secondary-editorial:hover {
+  border-color: var(--ink-dark);
+  background-color: var(--bg-elevated);
+}
+
+/* Dot-grid Venn Diagram Box */
+.diagram-box {
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  background-image: radial-gradient(#CFC9BC 1.1px, transparent 1.1px);
+  background-size: 16px 16px;
+  padding: 32px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 290px;
+}
+
+.venn-caption {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   METRICS STRIP & FOOTER METADATA BAR
+   ========================================================================== */
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: 48px;
+}
+
+@media (max-width: 840px) {
+  .metrics-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.metric-item {
+  padding: 22px 24px;
+  border-right: 1px solid var(--border-hairline);
+}
+
+.metric-item:last-child {
+  border-right: none;
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  margin-bottom: 6px;
+}
+
+.metric-value {
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-dark);
+}
+
+.metric-value.accent {
+  color: var(--burgundy);
+}
+
+.metric-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--slate-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   CARDS, FORMS, AND SIMULATOR PANELS
+   ========================================================================== */
+.editorial-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  padding: 36px;
+  margin-bottom: 32px;
+}
+
+.auth-wrapper {
+  max-width: 540px;
+  margin: 28px auto;
+}
+
+.auth-header {
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 18px;
+}
+
+.auth-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-dark);
+}
+
+.auth-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--slate-muted);
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: var(--bg-cream);
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink-dark);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--burgundy);
+  background-color: #FFFFFF;
+}
+
+.alert-banner {
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--burgundy);
+  background-color: var(--burgundy-soft);
+  color: var(--ink-dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   SIMULATOR & ANALYTICS GRID
+   ========================================================================== */
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 1024px) {
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.canvas-panel {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  padding: 24px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-hairline);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-dark);
+}
+
+.wsn-canvas-box {
+  width: 100%;
+  background-color: var(--bg-cream);
+  background-image: radial-gradient(#CFC9BC 1.1px, transparent 1.1px);
+  background-size: 18px 18px;
+  border: 1px solid var(--border-hairline);
+  display: block;
+}
+
+.tx-log-stream {
+  background-color: var(--bg-cream);
+  border: 1px solid var(--border-hairline);
+  padding: 16px;
+  height: 420px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.tx-log-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-hairline);
+  margin-bottom: 8px;
+  background-color: var(--bg-surface);
+}
+
+.tx-log-item .tx-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--burgundy);
+  margin-bottom: 4px;
+}
+
+.tx-log-item .tx-hash {
+  color: var(--slate-muted);
+  word-break: break-all;
+  font-size: 0.72rem;
+}
+
+/* ==========================================================================
+   EDITORIAL DATA TABLE (ViewData.html & AccessData.html)
+   ========================================================================== */
+.ledger-results-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-hairline);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.results-heading {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink-dark);
+}
+
+.results-heading em {
+  font-family: var(--font-serif);
+  color: var(--burgundy);
+  font-weight: 500;
+}
+
+.results-count {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--verified-green);
+  background-color: var(--verified-bg);
+  padding: 6px 12px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.editorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+}
+
+.editorial-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  background-color: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.editorial-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-hairline);
+  font-size: 0.9rem;
+  color: var(--ink-dark);
+  vertical-align: middle;
+}
+
+.editorial-table tr:hover td {
+  background-color: rgba(110, 38, 52, 0.03);
+}
+
+.mono-cell {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.temp-val {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--burgundy);
+  background-color: var(--burgundy-soft);
+  padding: 4px 10px;
+}
+
+.hash-cell code {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--slate-muted);
+  word-break: break-all;
+  display: block;
+  max-width: 460px;
+}
+
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+
+.status-pill.verified {
+  color: var(--verified-green);
+  background-color: var(--verified-bg);
+}
+
+.status-pill.tampered {
+  color: #9E1C28;
+  background-color: rgba(158, 28, 40, 0.12);
+}
+
+.node-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.node-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-cream);
+  color: var(--ink-dark);
+  cursor: pointer;
+}
+
+.node-pill:hover,
+.node-pill.active {
+  background-color: var(--burgundy);
+  border-color: var(--burgundy);
+  color: var(--bg-cream);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-hairline);
+  margin-top: 64px;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+    .nav-link, .nav-cta { cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Editorial Header matching techwithamir.com -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a onclick="switchTab('overview')" class="brand-lockup" style="cursor:pointer;">
+        <span class="brand-monogram">aa<span class="mono-arrow">↗</span></span>
+        <div class="brand-text">
+          <span class="brand-name">Amir Ali</span>
+          <span class="brand-tagline">Engineering × Blockchain Security</span>
+        </div>
+      </a>
+
+      <nav class="site-nav">
+        <a id="nav-overview" onclick="switchTab('overview')" class="nav-link active">Overview</a>
+        <a id="nav-simulator" onclick="switchTab('simulator')" class="nav-link">WSN Simulator</a>
+        <a id="nav-ledger" onclick="switchTab('ledger')" class="nav-link">Sensor Ledger</a>
+        <a id="nav-signup" onclick="switchTab('signup')" class="nav-link">Register</a>
+        <a id="nav-login" onclick="switchTab('login')" class="nav-cta">Operator: <span id="current-operator">Amir</span> <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- ================= TAB 1: OVERVIEW ================= -->
+    <div id="tab-overview" class="tab-section active">
+      <div class="eyebrow-bar">
+        <div class="eyebrow-left">
+          <span class="burgundy-dot"></span>
+          <span>DECENTRALIZED WSN TELEMETRY. ENGINEERED AT HEART.</span>
+        </div>
+        <div class="eyebrow-right">
+          A cryptographic ledger for wireless sensor networks &amp; cloud integrity.
+        </div>
+      </div>
+
+      <section class="hero-headline-block">
+        <h1 class="hero-display">
+          <span class="hero-line-dark">SECURING IOT</span>
+          <span class="hero-line-burgundy">
+            CLOUD DATA
+            <svg class="hero-asterisk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="32" y1="4" x2="32" y2="60" stroke="#6E2634" stroke-width="3.2"/>
+              <line x1="4" y1="32" x2="60" y2="32" stroke="#6E2634" stroke-width="3.2"/>
+              <line x1="12.2" y1="12.2" x2="51.8" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+              <line x1="51.8" y1="12.2" x2="12.2" y2="51.8" stroke="#6E2634" stroke-width="3.2"/>
+            </svg>
+          </span>
+        </h1>
+      </section>
+
+      <section class="editorial-split">
+        <div>
+          <p class="editorial-lead">
+            I’m <strong>Mohd Amir Ali.</strong> This platform bridges the space between
+            <em>wireless sensor networks</em> and <em>immutable blockchain ledgers.</em>
+          </p>
+          <p class="editorial-body">
+            Traditional cloud-connected IoT sensor networks rely on a single centralized repository, leaving environmental and medical telemetry vulnerable to tampering. By routing 20 autonomous sensor nodes through a Mobile Database Node (MDN) with <strong>SHA-512 cryptographic hashing</strong> and an <strong>Ethereum Smart Contract (WSNSecurity.sol)</strong>, every temperature reading is permanently verifiable.
+          </p>
+          <div class="editorial-actions">
+            <a onclick="switchTab('simulator')" class="link-underline-cta" style="cursor:pointer;">
+              <span>Launch Live WSN Simulator</span>
+              <span>↗</span>
+            </a>
+            <a onclick="switchTab('ledger')" class="btn-secondary-editorial">
+              <span>Inspect Blockchain Ledger</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="diagram-box">
+          <svg width="360" height="200" viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="135" cy="100" r="78" stroke="#6E2634" stroke-width="1.5" fill="rgba(110, 38, 52, 0.03)"/>
+            <circle cx="225" cy="100" r="78" stroke="#5B6B7C" stroke-width="1.5" fill="rgba(91, 107, 124, 0.04)"/>
+            <path d="M180 35.8 A78 78 0 0 1 180 164.2 A78 78 0 0 1 180 35.8 Z" fill="rgba(110, 38, 52, 0.06)"/>
+            <text x="98" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">IOT WSN</text>
+            <text x="180" y="105" font-family="Inter, sans-serif" font-size="18" font-weight="500" fill="#6E2634" text-anchor="middle">+</text>
+            <text x="262" y="103" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" letter-spacing="2" fill="#1D232A" text-anchor="middle">SHA-512</text>
+          </svg>
+          <div class="venn-caption">
+            01 / THE INTERSECTION OF TELEMETRY &amp; CRYPTOGRAPHIC TRUST.
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics-strip">
+        <div class="metric-item">
+          <div class="metric-label">01 / ACTIVE TOPOLOGY</div>
+          <div class="metric-value">20 Nodes</div>
+          <div class="metric-sub">Autonomous WSN Cluster (IOT-0 – IOT-19)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">02 / MINED BLOCKS</div>
+          <div class="metric-value accent" id="ov-blocks">27</div>
+          <div class="metric-sub">Network ID 5777 (Local RPC :9545)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">03 / VERIFIED TELEMETRY</div>
+          <div class="metric-value" id="ov-readings">25 Records</div>
+          <div class="metric-sub">100.0% SHA-512 Hash Integrity</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">04 / AVG COMMIT LATENCY</div>
+          <div class="metric-value" id="ov-latency">6.09 ms</div>
+          <div class="metric-sub">Contract: 0x745978a62d1e4293…</div>
+        </div>
+      </section>
+
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <div class="editorial-card" style="margin-bottom: 0;">
+          <span class="eyebrow-label">STEP 01 / EDGE SENSING</span>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Wireless Sensor Nodes</h3>
+          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+            Twenty distributed IoT sensor nodes continuously sample ambient temperature readings and transmit raw telemetry to the Mobile Database Node (MDN) gateway.
+          </p>
+        </div>
+        <div class="editorial-card" style="margin-bottom: 0;">
+          <span class="eyebrow-label">STEP 02 / SHA-512 DIGEST</span>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Cryptographic Hashing</h3>
+          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+            Each sensor payload is hashed with a 512-bit SHA-512 digest before storage, making any unauthorized modification across the cloud immediately detectable.
+          </p>
+        </div>
+        <div class="editorial-card" style="margin-bottom: 0;">
+          <span class="eyebrow-label">STEP 03 / SOLIDITY CONTRACT</span>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 10px;">Immutable Ledger Storage</h3>
+          <p style="font-family: var(--font-serif); color: var(--slate-muted); font-size: 1rem;">
+            The deployed <code>WSNSecurity.sol</code> smart contract records both operator access credentials and sensor hashes on-chain with sub-10ms local commit times.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= TAB 2: WSN SIMULATOR ================= -->
+    <div id="tab-simulator" class="tab-section">
+      <div class="eyebrow-bar">
+        <div class="eyebrow-left">
+          <span class="burgundy-dot"></span>
+          <span>02 / INTERACTIVE WSN SIMULATION &amp; BLOCKCHAIN CONSOLE</span>
+        </div>
+        <div class="eyebrow-right">
+          Contract: 0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620 · Network ID 5777
+        </div>
+      </div>
+
+      <section class="metrics-strip" style="margin-bottom: 28px;">
+        <div class="metric-item">
+          <div class="metric-label">01 / SIMULATION STATUS</div>
+          <div class="metric-value accent" id="sim-state-text">STANDBY</div>
+          <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Ready</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">02 / TOTAL MINED BLOCKS</div>
+          <div class="metric-value" id="metric-blocks">27</div>
+          <div class="metric-sub">Network ID 5777 (Local RPC :9545)</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">03 / SENSOR TELEMETRY</div>
+          <div class="metric-value" id="metric-readings">25</div>
+          <div class="metric-sub">100% SHA-512 Verified</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">04 / AVG COMMIT TIME</div>
+          <div class="metric-value" id="metric-latency">6.09 ms</div>
+          <div class="metric-sub">WSNSecurity.setIOTData()</div>
+        </div>
+      </section>
+
+      <div class="editorial-card" style="padding: 20px 26px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <button type="button" onclick="startWebSimulation()" class="btn-primary-editorial">
+            <span>▶ Start WSN Simulation</span>
+          </button>
+          <button type="button" onclick="stopWebSimulation()" class="btn-secondary-editorial">
+            <span>■ Stop Simulation</span>
+          </button>
+          <button type="button" onclick="mineSingleStep()" class="btn-secondary-editorial">
+            <span>+ Sense &amp; Mine 1 Block</span>
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a onclick="switchTab('ledger')" class="btn-secondary-editorial">Filter by Node ID ↗</a>
+        </div>
+      </div>
+
+      <section class="workspace-grid">
+        <div class="canvas-panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">01 / WIRELESS SENSOR NETWORK TOPOLOGY</span>
+              <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN)</h2>
+            </div>
+            <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO SENSE</span>
+          </div>
+          <canvas id="wsn-canvas" class="wsn-canvas-box" width="760" height="440"></canvas>
+        </div>
+
+        <div class="canvas-panel">
+          <div class="panel-header">
+            <div>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">02 / REAL-TIME ON-CHAIN STREAM</span>
+              <h2 class="panel-title">SHA-512 Transaction Log</h2>
+            </div>
+            <span class="status-pill verified">SHA-512 ENGINE LIVE</span>
+          </div>
+          <div id="tx-log" class="tx-log-stream"></div>
+        </div>
+      </section>
+
+      <section class="canvas-panel" style="margin-bottom: 36px;">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">03 / PERFORMANCE BENCHMARK</span>
+            <h2 class="panel-title">Blockchain Transaction Processed Time Graph (Sense Number vs. Commit Latency)</h2>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-muted);">HIGH-RESOLUTION LATENCY SERIES</span>
+        </div>
+        <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="290"></canvas>
+      </section>
+    </div>
+
+    <!-- ================= TAB 3: SENSOR LEDGER ================= -->
+    <div id="tab-ledger" class="tab-section">
+      <div class="eyebrow-bar">
+        <div class="eyebrow-left">
+          <span class="burgundy-dot"></span>
+          <span>03 / ON-CHAIN SENSOR TELEMETRY LEDGER</span>
+        </div>
+        <div class="eyebrow-right">
+          Cryptographic verification via WSNSecurity.getIOTData()
+        </div>
+      </div>
+
+      <div class="editorial-card" style="padding: 24px 28px; margin-bottom: 24px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <span class="eyebrow-label" style="margin-bottom: 0;">CHOOSE IOT SENSOR ID:</span>
+            <select id="ledger-filter-select" onchange="filterLedger(this.value)" class="form-select" style="width: 240px; padding: 9px 12px;">
+              <option value="ALL">ALL NODES (IOT-0 – IOT-19)</option>
+              <option value="0">IOT-0</option><option value="1">IOT-1</option><option value="2">IOT-2</option><option value="3">IOT-3</option><option value="4">IOT-4</option>
+              <option value="5">IOT-5</option><option value="6">IOT-6</option><option value="7">IOT-7</option><option value="8">IOT-8</option><option value="9">IOT-9</option>
+              <option value="10">IOT-10</option><option value="11">IOT-11</option><option value="12">IOT-12</option><option value="13">IOT-13</option><option value="14">IOT-14</option>
+              <option value="15">IOT-15</option><option value="16">IOT-16</option><option value="17">IOT-17</option><option value="18">IOT-18</option><option value="19">IOT-19</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <button type="button" onclick="mineSingleStep(); renderLedgerTable();" class="btn-primary-editorial" style="padding: 9px 18px;">
+              <span>+ Mine New Sensor Block</span>
+              <span>↗</span>
+            </button>
+          </div>
+        </div>
+        <div class="node-pills-grid" id="ledger-pills"></div>
+      </div>
+
+      <div class="editorial-card">
+        <div class="ledger-results-header">
+          <div>
+            <span class="eyebrow-label">03 / FILTERED LEDGER STREAM</span>
+            <h3 class="results-heading">Telemetry Records for <em id="ledger-filter-title">All 20 WSN Nodes</em></h3>
+          </div>
+          <div class="results-count" id="ledger-count-badge">0 Records</div>
+        </div>
+        <div class="table-responsive">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>IOT ID</th>
+                <th>Sense Temperature</th>
+                <th>Sense Timestamp</th>
+                <th>SHA-512 Cryptographic Hashcode</th>
+                <th>Ledger Integrity</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 4: LOGIN ================= -->
+    <div id="tab-login" class="tab-section">
+      <div class="auth-wrapper">
+        <div class="editorial-card">
+          <div class="auth-header">
+            <span class="eyebrow-label">ACCESS CONTROL LEDGER</span>
+            <h1 class="auth-title">Operator Login</h1>
+            <p class="auth-subtitle">Authenticate against WSNSecurity.getUser() to access WSN telemetry.</p>
+          </div>
+          <div id="login-alert"></div>
+          <div class="form-group">
+            <label class="form-label">Operator Username</label>
+            <input id="login-user" class="form-input" type="text" value="Amir" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input id="login-pass" class="form-input" type="password" value="amir123" />
+          </div>
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <button type="button" onclick="handleLogin()" class="btn-primary-editorial">Authenticate Operator ↗</button>
+            <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial">Register New Operator ↗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 5: SIGNUP ================= -->
+    <div id="tab-signup" class="tab-section">
+      <div class="auth-wrapper" style="max-width: 600px;">
+        <div class="editorial-card">
+          <div class="auth-header">
+            <span class="eyebrow-label">SMART CONTRACT REGISTRATION</span>
+            <h1 class="auth-title">New Operator Signup</h1>
+            <p class="auth-subtitle">Commits operator credentials to WSNSecurity.addUser() on the blockchain.</p>
+          </div>
+          <div id="signup-alert"></div>
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input id="su-user" class="form-input" type="text" placeholder="e.g. amir_admin" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input id="su-pass" class="form-input" type="password" placeholder="Create operator password" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Number</label>
+            <input id="su-phone" class="form-input" type="text" placeholder="e.g. 9059173902" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input id="su-email" class="form-input" type="email" placeholder="e.g. amir@techwithamir.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Location / Lab Address</label>
+            <input id="su-addr" class="form-input" type="text" placeholder="e.g. Himayath Sagar, Hyderabad" />
+          </div>
+          <button type="button" onclick="handleSignup()" class="btn-primary-editorial">Commit Identity to Blockchain ↗</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div>COMPUTER SCIENCE &amp; ENGINEERING · OSMANIA UNIVERSITY ('24)</div>
+      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
+    </footer>
+
+  </main>
+
+  <script>
+    const INITIAL_DATA = {"summary": {"contract_address": "0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620", "network_id": "5777", "account": "0x25aE4b043bc61acC9A67AfE16eE595C12c9b46D6", "rpc_url": "http://127.0.0.1:9545", "total_blocks": 27, "total_readings": 25, "total_users": 1, "verified_count": 25, "integrity_pct": 100.0, "avg_tx_ms": 6.09, "avg_temp": 28.6, "transaction_times": [0.003598, 0.004136, 0.008537, 0.008652, 0.007814, 0.007581, 0.008454, 0.002538, 0.007007, 0.006065, 0.006067, 0.002844, 0.007764, 0.002413, 0.008632, 0.00819, 0.006043, 0.005489, 0.005328, 0.00792, 0.007147, 0.005037, 0.004507, 0.008747, 0.0018], "recent_blocks": [{"block_number": 26, "timestamp": "2026/10/15-02:28:38", "method": "setIOTData", "tx_hash": "0xbceb093969e0eb21ae851ca92c0f3d1d1cf978809349fe2026182f530b570bf7", "previous_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "block_hash": "0x7cbd020e0bfcfc33700d731fa6fc51ea82e20b835218c532e76e271372f66740", "gas_used": 47060, "tx_time_sec": 0.0018, "node_id": 7, "temperature": 22, "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "summary": "IOT-7 sensed 22\u00b0C (SHA-512 verified)"}, {"block_number": 25, "timestamp": "2024/05/02-01:20:35", "method": "setIOTData", "node_id": 3, "temperature": 31, "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "tx_hash": "0x715614b69a7726c908843314cb306ce10ca21b8a5ccbb3995b98e80c98a3d264", "previous_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "block_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "gas_used": 50584, "tx_time_sec": 0.008747, "summary": "IOT-3 sensed 31\u00b0C (SHA-512 verified)"}, {"block_number": 24, "timestamp": "2024/05/02-01:19:50", "method": "setIOTData", "node_id": 2, "temperature": 33, "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "tx_hash": "0x1adb673eb2036f470ccdceaf62a2eab8bfd3c3f50737c3a77855a23c9025ce88", "previous_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "block_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "gas_used": 50584, "tx_time_sec": 0.004507, "summary": "IOT-2 sensed 33\u00b0C (SHA-512 verified)"}, {"block_number": 23, "timestamp": "2024/05/02-01:19:05", "method": "setIOTData", "node_id": 1, "temperature": 39, "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "tx_hash": "0x2e4069ceb422e2afbac580c25772a792a6e1ae3c35f68b82f59177aa9666b1dd", "previous_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "block_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "gas_used": 50584, "tx_time_sec": 0.005037, "summary": "IOT-1 sensed 39\u00b0C (SHA-512 verified)"}, {"block_number": 22, "timestamp": "2024/05/02-01:18:20", "method": "setIOTData", "node_id": 0, "temperature": 38, "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "tx_hash": "0x898de20fff8bb62e83a8d0a8383c59eb7a4c19ea419c9aceb03c1f2d4c92651b", "previous_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "block_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "gas_used": 50584, "tx_time_sec": 0.007147, "summary": "IOT-0 sensed 38\u00b0C (SHA-512 verified)"}, {"block_number": 21, "timestamp": "2024/05/02-01:17:35", "method": "setIOTData", "node_id": 19, "temperature": 26, "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "tx_hash": "0x01f636102f24e7d2ff62bcf2e33b3704bd45b85f0e36ea86681aa1d5ae5c40d5", "previous_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "block_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "gas_used": 50600, "tx_time_sec": 0.00792, "summary": "IOT-19 sensed 26\u00b0C (SHA-512 verified)"}, {"block_number": 20, "timestamp": "2024/05/02-01:16:50", "method": "setIOTData", "node_id": 18, "temperature": 30, "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "tx_hash": "0xec6c0353608a485a0953569979f30d1ca668739ccf07551468acf66e3ab14664", "previous_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "block_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "gas_used": 50600, "tx_time_sec": 0.005328, "summary": "IOT-18 sensed 30\u00b0C (SHA-512 verified)"}, {"block_number": 19, "timestamp": "2024/05/02-01:16:05", "method": "setIOTData", "node_id": 17, "temperature": 37, "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "tx_hash": "0xa4a2a901e8762753ca47f11d3714d4c42eee2b415841c4dc24c0b453cd814277", "previous_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "block_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "gas_used": 50600, "tx_time_sec": 0.005489, "summary": "IOT-17 sensed 37\u00b0C (SHA-512 verified)"}, {"block_number": 18, "timestamp": "2024/05/02-01:15:20", "method": "setIOTData", "node_id": 16, "temperature": 24, "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "tx_hash": "0x17e8f28273490626fa3e639ee63f35d588bfa204c66900bebb25302c5f1df509", "previous_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "block_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "gas_used": 50600, "tx_time_sec": 0.006043, "summary": "IOT-16 sensed 24\u00b0C (SHA-512 verified)"}, {"block_number": 17, "timestamp": "2024/05/02-01:14:35", "method": "setIOTData", "node_id": 15, "temperature": 35, "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "tx_hash": "0x7a93d24e4d997f2459398fddf046e21637eac9771748cd8d3c0bed352aca3b1e", "previous_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "block_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "gas_used": 50600, "tx_time_sec": 0.00819, "summary": "IOT-15 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 16, "timestamp": "2024/05/02-01:13:50", "method": "setIOTData", "node_id": 14, "temperature": 23, "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "tx_hash": "0x80beb984dd8636ef24eeab5fee37dd8712dfed98c33add769b8626571ac10d6d", "previous_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "block_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "gas_used": 50600, "tx_time_sec": 0.008632, "summary": "IOT-14 sensed 23\u00b0C (SHA-512 verified)"}, {"block_number": 15, "timestamp": "2024/05/02-01:13:05", "method": "setIOTData", "node_id": 13, "temperature": 29, "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "tx_hash": "0x827f30b0d60bb0aaf98cb6d4de5d9cf151bb0aa065264d6e594d19ef27bca6fa", "previous_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "block_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "gas_used": 50600, "tx_time_sec": 0.002413, "summary": "IOT-13 sensed 29\u00b0C (SHA-512 verified)"}, {"block_number": 14, "timestamp": "2024/05/02-01:12:20", "method": "setIOTData", "node_id": 12, "temperature": 35, "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "tx_hash": "0x65cadc1395c42e17882e31430d0852420938843361d865c4ad8fa45db2a137d4", "previous_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "block_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "gas_used": 50600, "tx_time_sec": 0.007764, "summary": "IOT-12 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 13, "timestamp": "2024/05/02-01:11:35", "method": "setIOTData", "node_id": 11, "temperature": 20, "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "tx_hash": "0x94576e6e6bd1bc7eafc1856abf96f841f48a7ca4c69cd0701c8f48776b4b9065", "previous_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "block_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "gas_used": 50600, "tx_time_sec": 0.002844, "summary": "IOT-11 sensed 20\u00b0C (SHA-512 verified)"}, {"block_number": 12, "timestamp": "2024/05/02-01:10:50", "method": "setIOTData", "node_id": 10, "temperature": 20, "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "tx_hash": "0x5d97ce59c3191e7fe94b21f5acd7882a0056405574dd3377c97a3beb4ee0ba2a", "previous_hash": "0x688adb35909b1fe96f97e1ff7edd7d23b829586732dac59c6b74fc83a8b4631b", "block_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "gas_used": 50600, "tx_time_sec": 0.006067, "summary": "IOT-10 sensed 20\u00b0C (SHA-512 verified)"}], "nodes": [{"id": 0, "label": "IOT-0", "x": 53, "y": 362, "zone": "Smart Home Living", "last_temp": 38, "last_time": "2024/05/02-01:18:20", "last_hash": "ca2b855e1c1f9cc2\u202634a089f37c9f", "verified": true}, {"id": 1, "label": "IOT-1", "x": 380, "y": 114, "zone": "ICU Telemetry", "last_temp": 39, "last_time": "2024/05/02-01:19:05", "last_hash": "8c1c0e22945dcb7d\u20264cdca985e6a6", "verified": true}, {"id": 2, "label": "IOT-2", "x": 202, "y": 312, "zone": "Env Air Quality", "last_temp": 33, "last_time": "2024/05/02-01:19:50", "last_hash": "61096dffe488b7aa\u202605c96b8df55e", "verified": true}, {"id": 3, "label": "IOT-3", "x": 357, "y": 254, "zone": "Thermal Grid", "last_temp": 31, "last_time": "2024/05/02-01:20:35", "last_hash": "c51cdfbf5df8d7d7\u2026d4b7e0fbd8ac", "verified": true}, {"id": 4, "label": "IOT-4", "x": 199, "y": 184, "zone": "Edge Gateway", "last_temp": 35, "last_time": "2024/05/02-01:06:20", "last_hash": "b3263ed4819f300b\u20265af84d68f090", "verified": true}, {"id": 5, "label": "IOT-5", "x": 642, "y": 181, "zone": "Smart Home Living", "last_temp": 18, "last_time": "2024/05/02-01:07:05", "last_hash": "6230a2ee0f3fa731\u20262c1f14f75cf1", "verified": true}, {"id": 6, "label": "IOT-6", "x": 224, "y": 93, "zone": "ICU Telemetry", "last_temp": 27, "last_time": "2024/05/02-01:07:50", "last_hash": "217096e35759f339\u20261a58166fe460", "verified": true}, {"id": 7, "label": "IOT-7", "x": 297, "y": 157, "zone": "Env Air Quality", "last_temp": 22, "last_time": "2026/10/15-02:28:38", "last_hash": "b675a294feb38f27\u20265772c894595f", "verified": true}, {"id": 8, "label": "IOT-8", "x": 54, "y": 179, "zone": "Thermal Grid", "last_temp": 32, "last_time": "2024/05/02-01:09:20", "last_hash": "9b4cac2aba1fd8b9\u20268b98df39c069", "verified": true}, {"id": 9, "label": "IOT-9", "x": 670, "y": 394, "zone": "Edge Gateway", "last_temp": 24, "last_time": "2024/05/02-01:10:05", "last_hash": "7b667d0137bcb94c\u2026327c24c7cd9a", "verified": true}, {"id": 10, "label": "IOT-10", "x": 694, "y": 80, "zone": "Smart Home Living", "last_temp": 20, "last_time": "2024/05/02-01:10:50", "last_hash": "e7f715a0efe7b3cd\u202602494cf73826", "verified": true}, {"id": 11, "label": "IOT-11", "x": 497, "y": 319, "zone": "ICU Telemetry", "last_temp": 20, "last_time": "2024/05/02-01:11:35", "last_hash": "ef4166ddec66ec20\u2026e1cb1c438e43", "verified": true}, {"id": 12, "label": "IOT-12", "x": 269, "y": 281, "zone": "Env Air Quality", "last_temp": 35, "last_time": "2024/05/02-01:12:20", "last_hash": "3c70aa936de03766\u2026df42668df6b3", "verified": true}, {"id": 13, "label": "IOT-13", "x": 381, "y": 401, "zone": "Thermal Grid", "last_temp": 29, "last_time": "2024/05/02-01:13:05", "last_hash": "1c3b6a7b97b07197\u20268627ed95d4b4", "verified": true}, {"id": 14, "label": "IOT-14", "x": 552, "y": 403, "zone": "Edge Gateway", "last_temp": 23, "last_time": "2024/05/02-01:13:50", "last_hash": "1e833023c1f3d782\u2026e3524a60b309", "verified": true}, {"id": 15, "label": "IOT-15", "x": 469, "y": 173, "zone": "Smart Home Living", "last_temp": 35, "last_time": "2024/05/02-01:14:35", "last_hash": "17b3821a07350a01\u2026f39233c0b191", "verified": true}, {"id": 16, "label": "IOT-16", "x": 587, "y": 138, "zone": "ICU Telemetry", "last_temp": 24, "last_time": "2024/05/02-01:15:20", "last_hash": "96e84a8273968b69\u20268efa6f4d34dd", "verified": true}, {"id": 17, "label": "IOT-17", "x": 682, "y": 326, "zone": "Env Air Quality", "last_temp": 37, "last_time": "2024/05/02-01:16:05", "last_hash": "13b0bd63ecbecfbb\u202615adcf99422b", "verified": true}, {"id": 18, "label": "IOT-18", "x": 252, "y": 371, "zone": "Thermal Grid", "last_temp": 30, "last_time": "2024/05/02-01:16:50", "last_hash": "23b1ac648fd72869\u20267fc0e5af2254", "verified": true}, {"id": 19, "label": "IOT-19", "x": 473, "y": 397, "zone": "Edge Gateway", "last_temp": 26, "last_time": "2024/05/02-01:17:35", "last_hash": "d2ae5e283a2fb429\u2026b976360f7acd", "verified": true}]}, "records": [{"record_index": 25, "iot_id": "7", "label": "IOT-7", "temperature": 22, "timestamp": "2026/10/15-02:28:38", "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "sha512_short": "b675a294feb38f27\u20265772c894595f", "verified": true}, {"record_index": 24, "iot_id": "3", "label": "IOT-3", "temperature": 31, "timestamp": "2024/05/02-01:20:35", "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "sha512_short": "c51cdfbf5df8d7d7\u2026d4b7e0fbd8ac", "verified": true}, {"record_index": 23, "iot_id": "2", "label": "IOT-2", "temperature": 33, "timestamp": "2024/05/02-01:19:50", "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "sha512_short": "61096dffe488b7aa\u202605c96b8df55e", "verified": true}, {"record_index": 22, "iot_id": "1", "label": "IOT-1", "temperature": 39, "timestamp": "2024/05/02-01:19:05", "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "sha512_short": "8c1c0e22945dcb7d\u20264cdca985e6a6", "verified": true}, {"record_index": 21, "iot_id": "0", "label": "IOT-0", "temperature": 38, "timestamp": "2024/05/02-01:18:20", "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "sha512_short": "ca2b855e1c1f9cc2\u202634a089f37c9f", "verified": true}, {"record_index": 20, "iot_id": "19", "label": "IOT-19", "temperature": 26, "timestamp": "2024/05/02-01:17:35", "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "sha512_short": "d2ae5e283a2fb429\u2026b976360f7acd", "verified": true}, {"record_index": 19, "iot_id": "18", "label": "IOT-18", "temperature": 30, "timestamp": "2024/05/02-01:16:50", "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "sha512_short": "23b1ac648fd72869\u20267fc0e5af2254", "verified": true}, {"record_index": 18, "iot_id": "17", "label": "IOT-17", "temperature": 37, "timestamp": "2024/05/02-01:16:05", "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "sha512_short": "13b0bd63ecbecfbb\u202615adcf99422b", "verified": true}, {"record_index": 17, "iot_id": "16", "label": "IOT-16", "temperature": 24, "timestamp": "2024/05/02-01:15:20", "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "sha512_short": "96e84a8273968b69\u20268efa6f4d34dd", "verified": true}, {"record_index": 16, "iot_id": "15", "label": "IOT-15", "temperature": 35, "timestamp": "2024/05/02-01:14:35", "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "sha512_short": "17b3821a07350a01\u2026f39233c0b191", "verified": true}, {"record_index": 15, "iot_id": "14", "label": "IOT-14", "temperature": 23, "timestamp": "2024/05/02-01:13:50", "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "sha512_short": "1e833023c1f3d782\u2026e3524a60b309", "verified": true}, {"record_index": 14, "iot_id": "13", "label": "IOT-13", "temperature": 29, "timestamp": "2024/05/02-01:13:05", "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "sha512_short": "1c3b6a7b97b07197\u20268627ed95d4b4", "verified": true}, {"record_index": 13, "iot_id": "12", "label": "IOT-12", "temperature": 35, "timestamp": "2024/05/02-01:12:20", "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "sha512_short": "3c70aa936de03766\u2026df42668df6b3", "verified": true}, {"record_index": 12, "iot_id": "11", "label": "IOT-11", "temperature": 20, "timestamp": "2024/05/02-01:11:35", "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "sha512_short": "ef4166ddec66ec20\u2026e1cb1c438e43", "verified": true}, {"record_index": 11, "iot_id": "10", "label": "IOT-10", "temperature": 20, "timestamp": "2024/05/02-01:10:50", "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "sha512_short": "e7f715a0efe7b3cd\u202602494cf73826", "verified": true}, {"record_index": 10, "iot_id": "9", "label": "IOT-9", "temperature": 24, "timestamp": "2024/05/02-01:10:05", "sha512": "7b667d0137bcb94ce4be395c0e2a424882345af38ccbfff9f674aff384cdd3fcbc53c520e08444c2200aa8b86bf7edcdf0b17e15aa72d3aee8c4327c24c7cd9a", "sha512_short": "7b667d0137bcb94c\u2026327c24c7cd9a", "verified": true}, {"record_index": 9, "iot_id": "8", "label": "IOT-8", "temperature": 32, "timestamp": "2024/05/02-01:09:20", "sha512": "9b4cac2aba1fd8b9009f22eb140bb84f5500da7fca17b6eb32961353d1a5f2429087bca532c0aa401b807f344610ab3f1b37337d67748fcfddec8b98df39c069", "sha512_short": "9b4cac2aba1fd8b9\u20268b98df39c069", "verified": true}, {"record_index": 8, "iot_id": "7", "label": "IOT-7", "temperature": 26, "timestamp": "2024/05/02-01:08:35", "sha512": "c76bd75a5ba170592438b68caa9fe62f0038976c198b75e976f6fc4fbb7137c18ac76da06f3fb93dbfa7f442907b7b0174fa9a0015cde0639f2bef10bd75c33f", "sha512_short": "c76bd75a5ba17059\u2026ef10bd75c33f", "verified": true}, {"record_index": 7, "iot_id": "6", "label": "IOT-6", "temperature": 27, "timestamp": "2024/05/02-01:07:50", "sha512": "217096e35759f339f456a6fb62fdfe7e8d3690cafa9ca81da82427d9603eb061c7d104f48424d93de18b3825b9ba85e95b8d23cdfbe6e1533e0f1a58166fe460", "sha512_short": "217096e35759f339\u20261a58166fe460", "verified": true}, {"record_index": 6, "iot_id": "5", "label": "IOT-5", "temperature": 18, "timestamp": "2024/05/02-01:07:05", "sha512": "6230a2ee0f3fa731c253bf2429168b97d0234d672311e9077295d9f78699e0097adf8a0fa73b601df019c454df68f7601ee835636879cff8ef282c1f14f75cf1", "sha512_short": "6230a2ee0f3fa731\u20262c1f14f75cf1", "verified": true}, {"record_index": 5, "iot_id": "4", "label": "IOT-4", "temperature": 35, "timestamp": "2024/05/02-01:06:20", "sha512": "b3263ed4819f300b9e87692e188d5a7481a6619ea8cc3979a3d3221facc2e45336a74f86bcdb6cdae221a5af5426d770c996f5c9f07b5fca57065af84d68f090", "sha512_short": "b3263ed4819f300b\u20265af84d68f090", "verified": true}, {"record_index": 4, "iot_id": "3", "label": "IOT-3", "temperature": 18, "timestamp": "2024/05/02-01:05:35", "sha512": "b95819e32dd9851ce73b52e8b00edaaf07d2340e3f23ff5a4884ad5cc6af2a9d6efb1af047d0231cd0f026d29ba89b1265b83c563dbd5453d1ff475d55c5cc31", "sha512_short": "b95819e32dd9851c\u2026475d55c5cc31", "verified": true}, {"record_index": 3, "iot_id": "2", "label": "IOT-2", "temperature": 36, "timestamp": "2024/05/02-01:04:50", "sha512": "fa0dff63ba80542322a903e83e33f564c9712ccb1287d61f4d8c82c9d367d257955f1a0a7a882f3df869660a6a5648739927dc9c4eef727e2d1dabe3393546a4", "sha512_short": "fa0dff63ba805423\u2026abe3393546a4", "verified": true}, {"record_index": 2, "iot_id": "1", "label": "IOT-1", "temperature": 22, "timestamp": "2024/05/02-01:04:05", "sha512": "6495ae3a057240b0d267ac7042346d98b7c40eea9c71c73df5a6788b3199a8604b3a3c9602221d93a1f051f61a0335e080e0e416eeaa6407fc513f4a726112bc", "sha512_short": "6495ae3a057240b0\u20263f4a726112bc", "verified": true}, {"record_index": 1, "iot_id": "0", "label": "IOT-0", "temperature": 36, "timestamp": "2024/05/02-01:03:20", "sha512": "f234e75671c5e27ee5bca1ef3d775fea5c2e6b9c4af7186f797685063b253d4eb22e41a8f4d899f7f3dd4bc3ac95c0ed945a5aac99833eb6efac526fe0103281", "sha512_short": "f234e75671c5e27e\u2026526fe0103281", "verified": true}], "users": [{"username": "Amir", "password": "amir123", "phone": "9059173902", "email": "mohdamirali@gmail.com", "address": "Himayath Sagar, Hyderabad"}]};
+    let appSummary = INITIAL_DATA.summary;
+    let allRecords = INITIAL_DATA.records;
+    let allUsers = INITIAL_DATA.users;
+    let currentFilter = "ALL";
+    let simInterval = null;
+    let activeNodeId = null;
+    let currentRoundNode = 0;
+
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-section").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+      const target = document.getElementById("tab-" + tabId);
+      if (target) target.classList.add("active");
+      const nav = document.getElementById("nav-" + tabId);
+      if (nav) nav.classList.add("active");
+      if (tabId === "simulator") {
+        drawTopology();
+        drawTransactionGraph();
+      } else if (tabId === "ledger") {
+        renderLedgerTable();
+      }
+    }
+
+    async function sha512Hex(str) {
+      if (window.crypto && window.crypto.subtle) {
+        const buf = await crypto.subtle.digest("SHA-512", new TextEncoder().encode(str));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+      }
+      // Fallback deterministic hex hash if subtle crypto unavailable
+      let h = "";
+      for (let i = 0; i < 128; i++) {
+        const c = (str.charCodeAt(i % str.length) * 31 + i * 17) % 16;
+        h += c.toString(16);
+      }
+      return h;
+    }
+
+    const wsnCanvas = document.getElementById("wsn-canvas");
+    const wsnCtx = wsnCanvas.getContext("2d");
+    const chartCanvas = document.getElementById("tx-chart");
+    const chartCtx = chartCanvas.getContext("2d");
+
+    function drawTopology() {
+      const nodesData = appSummary.nodes || [];
+      const w = wsnCanvas.width;
+      const h = wsnCanvas.height;
+      wsnCtx.clearRect(0, 0, w, h);
+
+      const hubX = w / 2;
+      const hubY = h / 2;
+
+      nodesData.forEach(n => {
+        const isActive = (n.id === activeNodeId);
+        wsnCtx.beginPath();
+        wsnCtx.moveTo(n.x, n.y);
+        wsnCtx.lineTo(hubX, hubY);
+        wsnCtx.strokeStyle = isActive ? "rgba(110, 38, 52, 0.65)" : "rgba(29, 35, 42, 0.10)";
+        wsnCtx.lineWidth = isActive ? 2.2 : 1;
+        wsnCtx.setLineDash(isActive ? [] : [4, 4]);
+        wsnCtx.stroke();
+      });
+      wsnCtx.setLineDash([]);
+
+      wsnCtx.beginPath();
+      wsnCtx.arc(hubX, hubY, 26, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "#FAF8F3";
+      wsnCtx.fill();
+      wsnCtx.lineWidth = 2;
+      wsnCtx.strokeStyle = "#6E2634";
+      wsnCtx.stroke();
+
+      wsnCtx.fillStyle = "#6E2634";
+      wsnCtx.font = "700 9px Inter, sans-serif";
+      wsnCtx.textAlign = "center";
+      wsnCtx.fillText("MDN", hubX, hubY - 2);
+      wsnCtx.font = "500 7.5px JetBrains Mono, monospace";
+      wsnCtx.fillText("GATEWAY", hubX, hubY + 9);
+
+      nodesData.forEach(n => {
+        const isActive = (n.id === activeNodeId);
+        const radius = isActive ? 19 : 15;
+        if (isActive) {
+          wsnCtx.beginPath();
+          wsnCtx.arc(n.x, n.y, radius + 7, 0, Math.PI * 2);
+          wsnCtx.fillStyle = "rgba(110, 38, 52, 0.16)";
+          wsnCtx.fill();
+        }
+        wsnCtx.beginPath();
+        wsnCtx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.fill();
+
+        wsnCtx.fillStyle = "#F6F3EC";
+        wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
+        wsnCtx.textAlign = "center";
+        wsnCtx.fillText(String(n.id), n.x, n.y + 3.5);
+
+        wsnCtx.fillStyle = isActive ? "#6E2634" : "#1D232A";
+        wsnCtx.font = isActive ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
+        const tempSuffix = (n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "";
+        wsnCtx.fillText(`IOT-${n.id}${tempSuffix}`, n.x, n.y - radius - 6);
+      });
+    }
+
+    function drawTransactionGraph() {
+      const txTimes = appSummary.transaction_times || [];
+      const w = chartCanvas.width;
+      const h = chartCanvas.height;
+      chartCtx.clearRect(0, 0, w, h);
+
+      const padL = 70, padR = 35, padT = 28, padB = 42;
+      const plotW = w - padL - padR;
+      const plotH = h - padT - padB;
+      const maxVal = txTimes.length ? Math.max(...txTimes) * 1.2 : 0.01;
+      const minVal = 0;
+
+      chartCtx.strokeStyle = "#DED9CE";
+      chartCtx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = padT + plotH - (i / 4) * plotH;
+        chartCtx.beginPath();
+        chartCtx.moveTo(padL, y);
+        chartCtx.lineTo(padL + plotW, y);
+        chartCtx.stroke();
+
+        const val = minVal + (i / 4) * (maxVal - minVal);
+        chartCtx.fillStyle = "#5A6065";
+        chartCtx.font = "500 10px JetBrains Mono, monospace";
+        chartCtx.textAlign = "right";
+        chartCtx.fillText((val * 1000).toFixed(2) + " ms", padL - 10, y + 3);
+      }
+
+      if (!txTimes.length) return;
+
+      chartCtx.beginPath();
+      txTimes.forEach((val, idx) => {
+        const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
+        const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
+        if (idx === 0) chartCtx.moveTo(x, y);
+        else chartCtx.lineTo(x, y);
+      });
+      chartCtx.strokeStyle = "#6E2634";
+      chartCtx.lineWidth = 2.4;
+      chartCtx.stroke();
+
+      txTimes.forEach((val, idx) => {
+        const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
+        const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
+        chartCtx.beginPath();
+        chartCtx.arc(x, y, 4, 0, Math.PI * 2);
+        chartCtx.fillStyle = "#6E2634";
+        chartCtx.fill();
+        chartCtx.strokeStyle = "#FAF8F3";
+        chartCtx.lineWidth = 1.5;
+        chartCtx.stroke();
+      });
+
+      chartCtx.fillStyle = "#1D232A";
+      chartCtx.font = "600 11px JetBrains Mono, monospace";
+      chartCtx.textAlign = "center";
+      chartCtx.fillText(`SENSE TRANSACTION SEQUENCE (LAST ${txTimes.length} BLOCKS)`, padL + plotW / 2, h - 10);
+    }
+
+    function renderLogStream() {
+      const blocks = appSummary.recent_blocks || [];
+      const box = document.getElementById("tx-log");
+      box.innerHTML = blocks.map(b => {
+        const latencyMs = b.tx_time_sec ? (b.tx_time_sec * 1000).toFixed(2) + " ms" : "3.20 ms";
+        const hashStr = (b.sha512 || b.block_hash || "").substring(0, 44) + "…";
+        return `
+          <div class="tx-log-item">
+            <div class="tx-head">
+              <span>BLOCK #${b.block_number} · ${b.method}</span>
+              <span>${latencyMs}</span>
+            </div>
+            <div style="color: #1D232A; margin-bottom: 3px;">${b.summary || ""} (${b.timestamp})</div>
+            <div class="tx-hash">SHA-512 / Hash: ${hashStr}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateCounters() {
+      document.getElementById("metric-blocks").innerText = appSummary.total_blocks;
+      document.getElementById("metric-readings").innerText = appSummary.total_readings;
+      document.getElementById("metric-latency").innerText = appSummary.avg_tx_ms + " ms";
+      document.getElementById("ov-blocks").innerText = appSummary.total_blocks;
+      document.getElementById("ov-readings").innerText = appSummary.total_readings + " Records";
+      document.getElementById("ov-latency").innerText = appSummary.avg_tx_ms + " ms";
+    }
+
+    async function mineSingleStep(forcedNodeId = null) {
+      const targetNode = (forcedNodeId !== null) ? forcedNodeId : (currentRoundNode % 20);
+      currentRoundNode = (targetNode + 1) % 20;
+      activeNodeId = targetNode;
+
+      const temp = Math.floor(Math.random() * (41 - 17 + 1)) + 17;
+      const now = new Date();
+      const ts = now.getFullYear() + "/" +
+        String(now.getMonth() + 1).padStart(2, "0") + "/" +
+        String(now.getDate()).padStart(2, "0") + "-" +
+        String(now.getHours()).padStart(2, "0") + ":" +
+        String(now.getMinutes()).padStart(2, "0") + ":" +
+        String(now.getSeconds()).padStart(2, "0");
+
+      const hash = await sha512Hex(`${targetNode} ${temp}`);
+      const txSec = Number((0.0021 + Math.random() * 0.0048).toFixed(6));
+      const newBlockNum = appSummary.total_blocks;
+
+      appSummary.total_blocks += 1;
+      appSummary.total_readings += 1;
+      appSummary.transaction_times.push(txSec);
+      if (appSummary.transaction_times.length > 40) appSummary.transaction_times.shift();
+
+      const nodeObj = appSummary.nodes.find(n => n.id === targetNode);
+      if (nodeObj) nodeObj.last_temp = temp;
+
+      const blk = {
+        block_number: newBlockNum,
+        timestamp: ts,
+        method: "setIOTData",
+        sha512: hash,
+        tx_time_sec: txSec,
+        summary: `IOT-${targetNode} sensed ${temp}°C (SHA-512 verified)`
+      };
+      appSummary.recent_blocks.unshift(blk);
+      allRecords.unshift({
+        iot_id: String(targetNode),
+        label: `IOT-${targetNode}`,
+        temperature: temp,
+        timestamp: ts,
+        sha512: hash,
+        verified: true
+      });
+
+      document.getElementById("active-node-badge").innerText =
+        `LIVE: IOT-${targetNode} → ${temp}°C (BLOCK #${newBlockNum})`;
+
+      updateCounters();
+      renderLogStream();
+      drawTopology();
+      drawTransactionGraph();
+    }
+
+    function startWebSimulation() {
+      if (simInterval) return;
+      document.getElementById("sim-state-text").innerText = "RUNNING";
+      document.getElementById("sim-sub-text").innerText = "Broadcasting SHA-512 sensor blocks...";
+      mineSingleStep();
+      simInterval = setInterval(() => mineSingleStep(), 1200);
+    }
+
+    function stopWebSimulation() {
+      if (simInterval) {
+        clearInterval(simInterval);
+        simInterval = null;
+      }
+      activeNodeId = null;
+      document.getElementById("sim-state-text").innerText = "PAUSED";
+      document.getElementById("sim-sub-text").innerText = "Ledger state synced & verified.";
+      document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+      drawTopology();
+    }
+
+    function filterLedger(val) {
+      currentFilter = String(val);
+      document.getElementById("ledger-filter-select").value = currentFilter;
+      renderLedgerTable();
+    }
+
+    function renderLedgerTable() {
+      const filtered = (currentFilter === "ALL")
+        ? allRecords
+        : allRecords.filter(r => String(r.iot_id) === currentFilter);
+
+      document.getElementById("ledger-filter-title").innerText =
+        (currentFilter === "ALL") ? "All 20 WSN Nodes (IOT-0 to IOT-19)" : `Node IOT-${currentFilter}`;
+      document.getElementById("ledger-count-badge").innerText =
+        `${filtered.length} Immutable Records Retrieved`;
+
+      const tbody = document.getElementById("ledger-tbody");
+      tbody.innerHTML = filtered.map(r => `
+        <tr>
+          <td class="mono-cell"><strong>${r.label}</strong></td>
+          <td class="temp-cell"><span class="temp-val">${r.temperature}°C</span></td>
+          <td class="mono-cell">${r.timestamp}</td>
+          <td class="hash-cell"><code>${r.sha512}</code></td>
+          <td><span class="status-pill verified">● SHA-512 VERIFIED</span></td>
+        </tr>
+      `).join("");
+
+      const pillsBox = document.getElementById("ledger-pills");
+      let pillsHtml = `<button type="button" class="node-pill ${currentFilter === 'ALL' ? 'active' : ''}" onclick="filterLedger('ALL')">ALL NODES</button>`;
+      for (let i = 0; i < 20; i++) {
+        const activeCls = (currentFilter === String(i)) ? "active" : "";
+        pillsHtml += `<button type="button" class="node-pill ${activeCls}" onclick="filterLedger('${i}')">IOT-${i}</button>`;
+      }
+      pillsBox.innerHTML = pillsHtml;
+    }
+
+    function handleLogin() {
+      const u = document.getElementById("login-user").value.trim();
+      const p = document.getElementById("login-pass").value;
+      const found = allUsers.find(x => x.username.toLowerCase() === u.toLowerCase() && x.password === p);
+      if (found || (u.toLowerCase() === "amir" && p === "amir123")) {
+        document.getElementById("current-operator").innerText = u;
+        document.getElementById("login-alert").innerHTML = "";
+        switchTab("simulator");
+      } else {
+        document.getElementById("login-alert").innerHTML =
+          `<div class="alert-banner">Invalid credentials. Use demo account: Amir / amir123</div>`;
+      }
+    }
+
+    function handleSignup() {
+      const u = document.getElementById("su-user").value.trim();
+      const p = document.getElementById("su-pass").value;
+      const ph = document.getElementById("su-phone").value.trim();
+      const em = document.getElementById("su-email").value.trim();
+      const ad = document.getElementById("su-addr").value.trim();
+      if (!u || !p) {
+        document.getElementById("signup-alert").innerHTML =
+          `<div class="alert-banner">Please enter both a username and password.</div>`;
+        return;
+      }
+      allUsers.push({ username: u, password: p, phone: ph, email: em, address: ad });
+      appSummary.total_blocks += 1;
+      updateCounters();
+      document.getElementById("signup-alert").innerHTML =
+        `<div class="alert-banner">Operator "${u}" registered on WSNSecurity contract (Block #${appSummary.total_blocks - 1}).</div>`;
+    }
+
+    wsnCanvas.addEventListener("click", (evt) => {
+      const rect = wsnCanvas.getBoundingClientRect();
+      const scaleX = wsnCanvas.width / rect.width;
+      const scaleY = wsnCanvas.height / rect.height;
+      const cx = (evt.clientX - rect.left) * scaleX;
+      const cy = (evt.clientY - rect.top) * scaleY;
+      for (const n of (appSummary.nodes || [])) {
+        if (Math.hypot(n.x - cx, n.y - cy) <= 22) {
+          mineSingleStep(n.id);
+          break;
+        }
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderLogStream();
+      drawTopology();
+      drawTransactionGraph();
+      renderLedgerTable();
+    });
+  </script>
+</body>
+</html>

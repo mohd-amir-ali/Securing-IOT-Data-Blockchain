@@ -339,7 +339,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
             self._send_html(render_page("index.html", msg=""))
 
 
-def run_server(host: str = "127.0.0.1", port: int = 5000):
+def run_server(host: str = "127.0.0.1", port: int = 5050):
     rpc_status = ensure_local_rpc_server(9545)
     summary = bridge.get_dashboard_summary()
     print("=" * 72)
