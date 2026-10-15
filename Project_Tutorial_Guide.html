@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSN-CHAIN // Complete Project Architecture &amp; Developer Tutorial</title>
+  <link rel="stylesheet" href="WSNStrengthenSecuirty/static/templatemo_style.css">
+  <style>
+    .guide-section { margin-bottom: 40px; }
+    .code-block {
+      background-color: #0F1C24;
+      color: #E2F1EE;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 18px 22px;
+      overflow-x: auto;
+      margin: 14px 0;
+      border-left: 4px solid #0D7463;
+      line-height: 1.6;
+    }
+    .code-block .comment { color: #5EEAD4; }
+    .step-badge {
+      display: inline-block;
+      background-color: var(--burgundy);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-lockup">
+        <div class="project-hex-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> DEVELOPER HANDBOOK</span>
+          <span class="brand-tagline">Architecture, Folder Map &amp; Customization Tutorial</span>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a href="#how-it-works" class="nav-link">1. How It Works</a>
+        <a href="#folder-map" class="nav-link">2. File &amp; Folder Map</a>
+        <a href="#frontend-backend" class="nav-link">3. Frontend vs. Backend</a>
+        <a href="#customization" class="nav-link">4. How to Edit</a>
+        <a href="Launch_Dashboard.html" class="nav-cta">Launch Live App <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <div class="eyebrow-bar">
+      <div class="eyebrow-left">
+        <span class="burgundy-dot"></span>
+        <span>COMPLETE PROJECT DOCUMENTATION · MOHD AMIR ALI (160920733019)</span>
+      </div>
+      <div class="eyebrow-right">
+        B.E. CSE MAJOR PROJECT · OSMANIA UNIVERSITY
+      </div>
+    </div>
+
+    <div class="editorial-card guide-section" id="how-it-works">
+      <span class="eyebrow-label">SECTION 01 // SYSTEM ARCHITECTURE</span>
+      <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 14px;">How the Whole Project Works (End-to-End Flow)</h1>
+      <p style="color: var(--slate-muted); margin-bottom: 20px;">
+        Traditional Wireless Sensor Networks (WSNs) send sensor readings to a single centralized server. If an attacker alters a record inside that database (for example, changing a patient or environmental temperature from <code>24°C</code> to <code>99°C</code>), a traditional server cannot prove whether the data was modified. Your project solves this using a <strong>4-stage cryptographic blockchain pipeline</strong>:
+      </p>
+
+      <div class="code-block">[20 IoT Sensor Nodes (IOT-0 to IOT-19)]
+        │  1. Senses ambient temperature (15°C – 42°C) + Timestamp
+        ▼
+[Mobile Database Node (MDN) Gateway]
+        │  2. Computes 512-bit SHA-512 Digest: SHA512("node_id temperature")
+        │     Packages record as: "iot_id#temp#timestamp#sha512_hash\n"
+        ▼
+[WSNSecurity.sol Ethereum Smart Contract (Port 9545 / Net ID 5777)]
+        │  3. Calls setIOTData() &amp; addUser() on-chain (Contract: 0x7459...7620)
+        ▼
+[Role-Gated Admin Console &amp; Sensor Ledger (Port 5050 / Web UI)]
+        │  4. Authenticates Admin via getUser() &amp; recomputes SHA-512 on every read
+        └──► Matches = "● SHA-512 VERIFIED" | Altered = "▲ TAMPER BLOCKED"</div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 24px;">
+        <div style="padding: 18px; background: var(--bg-cream); border: 1px solid var(--border-hairline);">
+          <span class="step-badge">STAGE 01</span>
+          <h4 style="margin-bottom: 6px;">Edge Sensing (20 WSN Nodes)</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-muted);">Twenty autonomous sensor nodes (<code>IOT-0</code> to <code>IOT-19</code>) sample temperature readings across five functional zones and send them to the MDN gateway.</p>
+        </div>
+        <div style="padding: 18px; background: var(--bg-cream); border: 1px solid var(--border-hairline);">
+          <span class="step-badge">STAGE 02</span>
+          <h4 style="margin-bottom: 6px;">SHA-512 Cryptographic Seal</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-muted);">The gateway hashes <code>f"{node_id} {sense}"</code> using Python's <code>hashlib.sha512()</code> (or Web Crypto SHA-512 in the browser) to create an unforgeable 128-character hex signature.</p>
+        </div>
+        <div style="padding: 18px; background: var(--bg-cream); border: 1px solid var(--border-hairline);">
+          <span class="step-badge">STAGE 03</span>
+          <h4 style="margin-bottom: 6px;">Smart Contract Commit</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-muted);"><code>WSNSecurity.sol</code> stores operator accounts via <code>addUser()</code> and sensor records via <code>setIOTData()</code> on-chain, logging block numbers and commit latency in milliseconds.</p>
+        </div>
+        <div style="padding: 18px; background: var(--bg-cream); border: 1px solid var(--border-hairline);">
+          <span class="step-badge">STAGE 04</span>
+          <h4 style="margin-bottom: 6px;">Role-Gated Audit &amp; Verification</h4>
+          <p style="font-size: 0.88rem; color: var(--slate-muted);">Only authenticated operators can unlock the Simulator and Sensor Ledger. On every query, the system re-hashes the temperature to verify 100% data integrity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: FILE & FOLDER MAP -->
+    <div class="editorial-card guide-section" id="folder-map">
+      <span class="eyebrow-label">SECTION 02 // DIRECTORY BREAKDOWN</span>
+      <h2 style="font-size: 1.65rem; font-weight: 800; margin-bottom: 16px;">Every File Inside Your <code>Blockchain A15</code> Folder</h2>
+
+      <div class="table-responsive">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>File / Folder Path</th>
+              <th>Layer</th>
+              <th>What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mono-cell"><strong>index.html</strong> &amp; <strong>Launch_Dashboard.html</strong></td>
+              <td><span class="status-pill verified">STANDALONE WEB APP</span></td>
+              <td>Self-contained single-file web application used by <strong>GitHub Pages</strong> (<code>index.html</code>) and local instant launch (<code>Launch_Dashboard.html</code>) so anyone can run the entire project without installing Python.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>Run_Project.command</strong> &amp; <strong>start.sh</strong></td>
+              <td><span class="status-pill verified">MAC LAUNCHERS</span></td>
+              <td>Double-clickable macOS script and CLI launcher that start the Python backend on port <code>5050</code> and local blockchain RPC on port <code>9545</code>.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/Main.py</strong></td>
+              <td><span class="status-pill verified">PYTHON BACKEND</span></td>
+              <td>The web server (runs on <code>http://127.0.0.1:5050</code>). Manages all page routes, the Admin login gate (<code>logged_in</code>), and JSON APIs (<code>/api/summary</code>, <code>/api/simulate</code>, <code>/api/records</code>).</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/blockchain_engine.py</strong></td>
+              <td><span class="status-pill verified">BLOCKCHAIN ENGINE</span></td>
+              <td>The core bridge that auto-loads the contract ABI/address from <code>WSNSecurity.json</code>, connects to Truffle on port <code>9545</code> (or runs the embedded JSON-RPC 2.0 server), computes SHA-512 hashes, and saves blocks to <code>blockchain_ledger.json</code>.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/WSNSimulation.py</strong></td>
+              <td><span class="status-pill verified">DESKTOP GUI</span></td>
+              <td>Standalone Python <code>tkinter</code> desktop window for simulating the 20 WSN nodes and plotting the Transaction Time Graph on your Mac desktop.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/WSNSecurity.sol</strong></td>
+              <td><span class="status-pill verified">SMART CONTRACT</span></td>
+              <td>Solidity smart contract source code (<code>pragma solidity 0.8.11</code>) with <code>addUser</code>, <code>getUser</code>, <code>setIOTData</code>, and <code>getIOTData</code>.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/static/templatemo_style.css</strong></td>
+              <td><span class="status-pill verified">FRONTEND CSS</span></td>
+              <td>Master stylesheet controlling the Pastel-Cybersecurity color palette, fonts, header, cards, and tables.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>WSNStrengthenSecuirty/templates/*.html</strong></td>
+              <td><span class="status-pill verified">FRONTEND HTML</span></td>
+              <td>The 6 HTML templates served by <code>Main.py</code>: <code>index.html</code>, <code>Login.html</code>, <code>Signup.html</code>, <code>UserScreen.html</code>, <code>AccessData.html</code>, and <code>ViewData.html</code>.</td>
+            </tr>
+            <tr>
+              <td class="mono-cell"><strong>hello-eth/</strong></td>
+              <td><span class="status-pill verified">TRUFFLE SUITE</span></td>
+              <td>Contains <code>contracts/WSNSecurity.sol</code>, <code>migrations/2_deploy_contracts.js</code>, and <code>truffle-config.js</code> for compiling/migrating with Truffle.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SECTION 3 & 4: FRONTEND VS BACKEND & HOW TO EDIT -->
+    <div class="editorial-card guide-section" id="customization">
+      <span class="eyebrow-label">SECTION 03 // CUSTOMIZATION CHEAT SHEET</span>
+      <h2 style="font-size: 1.65rem; font-weight: 800; margin-bottom: 16px;">Where to Make Frontend &amp; Backend Changes</h2>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 20px; margin-bottom: 8px;">1. How to Change Colors or Fonts (Frontend Styling)</h3>
+      <p style="color: var(--slate-muted); font-size: 0.94rem;">
+        Open <code>WSNStrengthenSecuirty/static/templatemo_style.css</code> (lines 3–23) and edit the <code>:root</code> variables:
+      </p>
+      <div class="code-block">:root {
+  --bg-cream: #EEF4F3;       <span class="comment">/* Main page background */</span>
+  --bg-surface: #F7FBFA;     <span class="comment">/* Card surface background */</span>
+  --ink-dark: #0F1C24;       <span class="comment">/* Primary dark text &amp; node color */</span>
+  --burgundy: #0D7463;       <span class="comment">/* Primary accent (buttons, active nodes, chart line) */</span>
+  --tamper-red: #C81E32;     <span class="comment">/* Alert red when tamper attack is simulated */</span>
+}</div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px;">2. How to Change Text, Headings, or Credits on the Homepage</h3>
+      <p style="color: var(--slate-muted); font-size: 0.94rem;">
+        Open <code>WSNStrengthenSecuirty/templates/index.html</code> (and root <code>index.html</code> for GitHub Pages):
+      </p>
+      <div class="code-block"><span class="comment">&lt;!-- Top Header Title --&gt;</span>
+&lt;span class="brand-name"&gt;WSN-CHAIN &lt;span class="slash-accent"&gt;//&lt;/span&gt; SECURE CLOUD&lt;/span&gt;
+
+<span class="comment">&lt;!-- Big Hero Display Headline --&gt;</span>
+&lt;span class="hero-line-dark"&gt;SECURING IOT&lt;/span&gt;
+&lt;span class="hero-line-burgundy"&gt;CLOUD DATA&lt;/span&gt;</div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px;">3. How to Change Sensor Temperature Range or Simulation Speed</h3>
+      <p style="color: var(--slate-muted); font-size: 0.94rem;">
+        • <strong>Temperature Range:</strong> In <code>WSNStrengthenSecuirty/blockchain_engine.py</code> inside <code>simulate_sensor_reading()</code>, edit <code>sense = random.randint(15, 42)</code>.<br/>
+        • <strong>Simulation Speed:</strong> In <code>WSNStrengthenSecuirty/templates/UserScreen.html</code> inside <code>startWebSimulation()</code>, edit <code>setInterval(..., 1250)</code> (in milliseconds).
+      </p>
+
+      <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px;">4. Remember the Two Frontend Locations</h3>
+      <p style="color: var(--slate-muted); font-size: 0.94rem;">
+        • When running via Python (<code>Run_Project.command</code> on <code>http://127.0.0.1:5050</code>), the server reads from <strong><code>WSNStrengthenSecuirty/templates/*.html</code></strong> and <strong><code>WSNStrengthenSecuirty/static/templatemo_style.css</code></strong>.<br/>
+        • When running via GitHub Pages or without Python, the browser reads the all-in-one file at <strong><code>index.html</code></strong> (and <strong><code>Launch_Dashboard.html</code></strong>) in your main project folder.
+      </p>
+    </div>
+
+    <footer class="site-footer">
+      <div>WSN-CHAIN // DEVELOPER DOCUMENTATION &amp; TUTORIAL</div>
+      <div>MOHD AMIR ALI (160920733019)</div>
+    </footer>
+
+  </main>
+</body>
+</html>
