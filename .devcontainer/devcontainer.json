@@ -1,0 +1,17 @@
+{
+  "name": "WSN-CHAIN // IoT Blockchain Security",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install -r requirements.txt",
+  "postAttachCommand": "cd WSNStrengthenSecuirty && python3 Main.py",
+  "forwardPorts": [5050, 9545],
+  "portsAttributes": {
+    "5050": {
+      "label": "WSN-CHAIN Web Application",
+      "onAutoForward": "openBrowser"
+    },
+    "9545": {
+      "label": "Ethereum Local RPC (Net 5777)",
+      "onAutoForward": "silent"
+    }
+  }
+}
