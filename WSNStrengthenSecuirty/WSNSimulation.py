@@ -179,7 +179,7 @@ def startSimulation():
         iot_labels.append(lbl_id)
 
     if status_label:
-        status_label.config(text="● SIMULATION RUNNING — Mining SHA-512 sensor blocks to ledger...", fg=VERIFIED_GREEN)
+        status_label.config(text="● SIMULATION RUNNING  -  Mining SHA-512 sensor blocks to ledger...", fg=VERIFIED_GREEN)
     startIOTDataGenerate(iot_x, iot_y, canvas, text)
 
 
@@ -187,7 +187,7 @@ def stopSimulation():
     global simulation_status
     simulation_status = False
     if status_label:
-        status_label.config(text="● SIMULATION PAUSED — Blockchain ledger state preserved.", fg=SLATE_MUTED)
+        status_label.config(text="● SIMULATION PAUSED  -  Blockchain ledger state preserved.", fg=SLATE_MUTED)
 
 
 def showNativeGraphWindow(times_data):
@@ -270,7 +270,7 @@ def Main():
 
     root = tk.Tk()
     root.geometry("1260x780")
-    root.title("AMIR ALI — Securing IoT Data in the Cloud with Blockchain Technology (WSN Simulator)")
+    root.title("AMIR ALI  -  Securing IoT Data in the Cloud with Blockchain Technology (WSN Simulator)")
     root.configure(bg=BG_CREAM)
     root.resizable(True, True)
 
@@ -342,7 +342,7 @@ def Main():
 
     status_label = Label(
         ctrl_bar,
-        text="● READY — Click 'Start WSN Simulation' to broadcast SHA-512 sensor transactions.",
+        text="● READY  -  Click 'Start WSN Simulation' to broadcast SHA-512 sensor transactions.",
         bg=BG_CREAM,
         fg=SLATE_MUTED,
         font=("Helvetica", 11),

@@ -3,32 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WSN-CHAIN // Securing IoT Data in the Cloud with Blockchain Technology</title>
+  <title>BLOCKCHAIN WSN - SECURE CLOUD · Securing IoT Data in Cloud using Blockchain</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='2' width='60' height='60' rx='12' fill='%23090E17' stroke='%2310B981' stroke-width='3.5'/%3E%3Cpolygon points='32,9 53,21 53,43 32,55 11,43 11,21' fill='%23111C2D' stroke='%2306B6D4' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpolyline points='11,21 32,32 53,21' fill='none' stroke='%2310B981' stroke-width='2.8' stroke-linejoin='round'/%3E%3Cline x1='32' y1='32' x2='32' y2='55' stroke='%2310B981' stroke-width='2.8' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='5.5' fill='%23F59E0B' stroke='%23090E17' stroke-width='2'/%3E%3Ccircle cx='32' cy='9' r='3.2' fill='%2310B981'/%3E%3Ccircle cx='53' cy='21' r='3.2' fill='%2306B6D4'/%3E%3Ccircle cx='11' cy='21' r='3.2' fill='%2306B6D4'/%3E%3C/svg%3E" />
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Pastel-Cybersecurity & Cryptographic Telemetry Palette */
-  --bg-cream: #EEF4F3;           /* Soft Pastel Cyber-Mist / Cool Lab Paper */
-  --bg-surface: #F7FBFA;         /* Frosted Mint-White Card Surface */
-  --bg-elevated: #E1ECEA;        /* Soft Pastel Sage-Slate Tint */
-  --ink-dark: #0F1C24;           /* Deep Cyber Obsidian Ink */
-  --ink-soft: #1E303C;           /* Technical Charcoal-Navy */
-  --burgundy: #0D7463;           /* Primary Cyber Teal-Emerald Accent */
-  --burgundy-hover: #09574A;     /* Deep Cyber Teal Hover */
-  --burgundy-soft: rgba(13, 116, 99, 0.10);
-  --cyber-indigo: #3B49DF;       /* Secondary Cryptographic Indigo */
-  --cyber-indigo-soft: rgba(59, 73, 223, 0.09);
-  --slate-muted: #4A606A;
-  --slate-light: #6C828C;
-  --border-hairline: #CBDAD7;
-  --border-strong: #AEC0BC;
-  --verified-green: #0D7463;
-  --verified-bg: rgba(13, 116, 99, 0.12);
-  --tamper-red: #C81E32;
-  --tamper-bg: rgba(200, 30, 50, 0.11);
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Newsreader', 'Georgia', 'Times New Roman', serif;
+  /* Web3 Cryptographic Blueprint & Cyber-Slate Command Palette (Distinct from Iris Optical Studio) */
+  --bg-cream: #EDF2F6;           /* Cool Technical Slate-Alabaster Blueprint Surface */
+  --bg-surface: #FFFFFF;         /* Crisp Architectural Panel Surface */
+  --bg-elevated: #E1E8F0;        /* Cool Steel-Slate Secondary Surface */
+  --cyber-obsidian: #080D16;     /* Deep Midnight Web3 Terminal Obsidian */
+  --cyber-panel: #101929;        /* Elevated Dark Telemetry HUD Surface */
+  --ink-dark: #0B1324;           /* Deep Slate-Navy Ink */
+  --ink-soft: #1E293B;           /* Technical Slate Body Ink */
+  --burgundy: #059669;           /* Primary Electric Blockchain Emerald */
+  --burgundy-hover: #047857;     /* Deep Emerald Hover */
+  --burgundy-soft: rgba(16, 185, 129, 0.12);
+  --emerald-neon: #10B981;       /* High-Contrast On-Chain Emerald */
+  --cyber-cyan: #06B6D4;         /* WSN Radio Telemetry Cyan */
+  --cyber-amber: #F59E0B;        /* Smart Contract & MDN Gateway Amber */
+  --slate-muted: #475569;
+  --slate-light: #64748B;
+  --border-hairline: #CBD5E1;
+  --border-strong: #94A3B8;
+  --verified-green: #059669;
+  --verified-bg: rgba(16, 185, 129, 0.13);
+  --tamper-red: #E11D48;
+  --tamper-bg: rgba(225, 29, 72, 0.12);
+  --radius-panel: 8px;           /* Crisp Architectural 8px Corners (No 999px Capsules or 18px Bento!) */
+  --radius-tag: 4px;
+  --shadow-panel: 0 4px 16px -4px rgba(11, 19, 36, 0.07), 0 1px 3px rgba(11, 19, 36, 0.05);
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
 }
 
@@ -38,8 +45,16 @@
   padding: 0;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 html, body {
   background-color: var(--bg-cream);
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
   color: var(--ink-dark);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -50,24 +65,32 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
+}
+
+.inline-svg-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
-   ADMIN SESSION TOP BAR (Shown only when Admin/Operator is logged in)
+   ADMIN SESSION TOP BAR
    ========================================================================== */
 .admin-session-bar {
-  background-color: var(--ink-dark);
-  color: #E2F1EE;
+  background: #050911;
+  color: #E2E8F0;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
-  padding: 9px 40px;
-  border-bottom: 1px solid rgba(20, 184, 166, 0.3);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 8px 32px;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.4);
 }
 
 .admin-session-inner {
-  max-width: 1320px;
+  max-width: 1340px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -80,10 +103,11 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: rgba(20, 184, 166, 0.18);
-  color: #5EEAD4;
+  background-color: rgba(16, 185, 129, 0.18);
+  color: #34D399;
   padding: 3px 10px;
-  border: 1px solid rgba(94, 234, 212, 0.35);
+  border-radius: var(--radius-tag);
+  border: 1px solid rgba(52, 211, 153, 0.45);
   font-weight: 600;
 }
 
@@ -91,50 +115,69 @@ a {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: #2DD4BF;
+  background-color: #10B981;
   display: inline-block;
-  box-shadow: 0 0 8px #2DD4BF;
+  box-shadow: 0 0 8px #10B981;
 }
 
 /* ==========================================================================
-   MAJOR PROJECT HEADER (Distinct from personal portfolio header)
+   FULL-BLEED DARK WEB3 ARCHITECTURAL COMMAND HEADER (Distinct from Iris Capsule!)
    ========================================================================== */
 .site-header {
-  border-bottom: 1px solid var(--border-hairline);
-  background-color: rgba(238, 244, 243, 0.92);
-  backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 100;
+  background: linear-gradient(180deg, #090F1B 0%, #0D1526 100%);
+  border-bottom: 2px solid #10B981;
+  box-shadow: 0 8px 24px rgba(8, 13, 22, 0.35);
 }
 
 .header-inner {
-  max-width: 1320px;
+  max-width: 1340px;
+  width: 100%;
+  min-height: 70px;
   margin: 0 auto;
-  padding: 18px 40px;
+  padding: 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-wrap: nowrap;
+  gap: 18px;
+}
+
+@media (max-width: 1060px) {
+  .header-inner {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
 }
 
 .brand-lockup {
   display: flex;
   align-items: center;
   gap: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 10px 0;
 }
 
 .project-hex-icon {
-  width: 40px;
-  height: 40px;
-  background-color: var(--ink-dark);
-  border: 1.5px solid var(--burgundy);
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: #111C2D;
+  border: 1.5px solid #10B981;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #5EEAD4;
   flex-shrink: 0;
+  box-shadow: inset 0 0 12px rgba(16, 185, 129, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.brand-lockup:hover .project-hex-icon {
+  transform: translateY(-1px);
+  border-color: #38BDF8;
 }
 
 .brand-text {
@@ -143,17 +186,21 @@ a {
 }
 
 .brand-name {
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-family: var(--font-display);
+  font-size: 1.0rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--ink-dark);
-  line-height: 1.2;
+  color: #F8FAFC;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .brand-name .slash-accent {
-  color: var(--burgundy);
+  color: #10B981;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  margin: 0 3px;
 }
 
 .brand-tagline {
@@ -162,88 +209,136 @@ a {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--slate-muted);
-  margin-top: 2px;
+  color: #94A3B8;
+  margin-top: 3px;
+  white-space: nowrap;
 }
 
 .site-nav {
   display: flex;
-  align-items: center;
-  gap: 26px;
-  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 1060px) {
+  .site-nav {
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 
 .nav-link {
-  font-size: 0.86rem;
-  font-weight: 500;
-  color: var(--ink-dark);
-  padding: 4px 0;
-  border-bottom: 2px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 0.77rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #CBD5E1;
+  padding: 0 15px;
+  height: 70px;
+  border-bottom: 3px solid transparent;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
 }
 
-.nav-link:hover,
+@media (max-width: 1060px) {
+  .nav-link {
+    height: 42px;
+  }
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+}
+
 .nav-link.active {
-  color: var(--burgundy);
-  border-bottom-color: var(--burgundy);
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #34D399;
+  border-bottom-color: #10B981;
 }
 
 .nav-lock-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
-  padding: 1px 6px;
-  background-color: var(--bg-elevated);
-  color: var(--slate-muted);
-  border: 1px solid var(--border-hairline);
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background-color: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #FBBF24;
+  line-height: 1;
+}
+
+.nav-lock-tag.unlocked {
+  background-color: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: #34D399;
 }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 18px;
-  border: 1px solid var(--ink-dark);
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 16px;
+  height: 40px;
+  min-width: 166px;
+  align-self: center;
+  margin-left: 8px;
+  border-radius: 6px;
+  border: 1px solid #10B981;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--ink-dark);
-  background: var(--bg-surface);
+  color: #06101E;
+  background: #10B981;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.nav-cta:hover {
-  border-color: var(--burgundy);
-  background-color: var(--burgundy);
-  color: #FFFFFF;
-}
-
-.nav-cta.admin-active {
-  background-color: var(--burgundy);
-  border-color: var(--burgundy);
-  color: #FFFFFF;
+.nav-cta:hover,
+.nav-cta.admin-active,
+.nav-cta.login-tab-active {
+  background-color: #F59E0B;
+  border-color: #F59E0B;
+  color: #06101E;
 }
 
 /* ==========================================================================
-   MAIN CONTAINER & EDITORIAL-CYBER SECTIONS
+   MAIN CONTAINER & ARCHITECTURAL BLUEPRINT PANELS
    ========================================================================== */
 .page-container {
-  max-width: 1320px;
+  max-width: 1340px;
   margin: 0 auto;
-  padding: 36px 40px 80px;
+  padding: 26px 32px 80px;
 }
 
+/* Top Telemetry Status Ribbon (Sharp Architectural Bar) */
 .eyebrow-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
-  gap: 12px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border-hairline);
+  gap: 10px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-left: 4px solid var(--burgundy);
+  border-radius: 6px;
+  padding: 9px 16px;
+  box-shadow: var(--shadow-panel);
 }
 
 .eyebrow-left {
@@ -252,8 +347,8 @@ a {
   gap: 10px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-dark);
 }
@@ -261,192 +356,186 @@ a {
 .burgundy-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background-color: var(--burgundy);
+  border-radius: 2px;
+  background-color: var(--emerald-neon);
   display: inline-block;
   box-shadow: 0 0 0 3px var(--burgundy-soft);
 }
 
 .eyebrow-right {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--slate-muted);
-  background-color: var(--bg-elevated);
-  padding: 4px 10px;
-  border: 1px solid var(--border-hairline);
+  font-size: 0.71rem;
+  color: #34D399;
+  background-color: var(--cyber-obsidian);
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.35);
 }
 
 .eyebrow-label {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--burgundy);
-  margin-bottom: 8px;
-}
-
-/* ==========================================================================
-   HERO DISPLAY SECTION
-   ========================================================================== */
-.hero-headline-block {
-  margin: 8px 0 36px;
-}
-
-.hero-display {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(2.9rem, 6.8vw, 5.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
-}
-
-.hero-line-dark {
-  color: var(--ink-dark);
-  display: block;
-}
-
-.hero-line-burgundy {
-  color: var(--burgundy);
   display: inline-flex;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 6px;
 }
 
-.hero-asterisk {
-  width: clamp(36px, 4.5vw, 58px);
-  height: clamp(36px, 4.5vw, 58px);
-  display: inline-block;
-  vertical-align: middle;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-headline-block:hover .hero-asterisk {
-  transform: rotate(90deg);
-}
-
-/* ==========================================================================
-   LOWER HERO SPLIT: PROJECT THESIS + INTERACTIVE CYBER MESH CANVAS
-   ========================================================================== */
+/* Asymmetric Architectural Split */
 .editorial-split {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 48px;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 22px;
   align-items: stretch;
-  padding-top: 8px;
-  margin-bottom: 52px;
+  margin-bottom: 22px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 980px) {
   .editorial-split {
     grid-template-columns: 1fr;
   }
 }
 
-.editorial-lead {
-  font-family: var(--font-serif);
-  font-size: clamp(1.38rem, 2.05vw, 1.82rem);
-  line-height: 1.4;
+.hero-bento-left {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--burgundy);
+  border-radius: var(--radius-panel);
+  padding: 30px 32px;
+  box-shadow: var(--shadow-panel);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hero-display-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.05rem, 3.4vw, 2.85rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
   color: var(--ink-dark);
-  margin-bottom: 20px;
-  font-weight: 400;
+  margin-bottom: 14px;
 }
 
-.editorial-lead strong {
-  font-weight: 600;
-}
-
-.editorial-lead em {
+.hero-display-title .emerald-highlight {
   color: var(--burgundy);
-  font-style: italic;
+  border-bottom: 3px solid rgba(16, 185, 129, 0.35);
+}
+
+.editorial-lead {
+  font-family: var(--font-sans);
+  font-size: 1.02rem;
+  line-height: 1.52;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+  border-left: 3px solid var(--cyber-cyan);
+  padding-left: 12px;
 }
 
 .editorial-body {
   font-family: var(--font-sans);
-  font-size: 0.98rem;
-  line-height: 1.68;
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: var(--slate-muted);
-  margin-bottom: 26px;
-  max-width: 560px;
+  margin-bottom: 18px;
 }
 
 .author-credit-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  background-color: var(--bg-surface);
+  padding: 12px 15px;
+  background-color: #F8FAFC;
   border: 1px solid var(--border-hairline);
-  border-left: 3px solid var(--burgundy);
-  margin-bottom: 26px;
+  border-left: 3.5px solid var(--cyber-obsidian);
+  border-radius: 6px;
+  margin-bottom: 20px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--ink-soft);
 }
 
 .editorial-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-.link-underline-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--burgundy);
-  color: var(--burgundy);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.link-underline-cta:hover {
-  color: var(--ink-dark);
-  border-bottom-color: var(--ink-dark);
-}
-
+/* Sharp Architectural Web3 Buttons (6px radius instead of 999px pills) */
 .btn-primary-editorial {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 22px;
-  background-color: var(--burgundy);
-  color: #FFFFFF;
+  gap: 9px;
+  padding: 11px 20px;
+  background-color: var(--cyber-obsidian);
+  color: #34D399;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  border: 1px solid var(--burgundy);
+  border-radius: 6px;
+  border: 1px solid #10B981;
   cursor: pointer;
+  transition: all 0.18s ease;
 }
 
 .btn-primary-editorial:hover {
-  background-color: var(--ink-dark);
-  border-color: var(--ink-dark);
+  background-color: var(--burgundy);
+  border-color: var(--burgundy);
   color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-secondary-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 18px;
+  background-color: var(--bg-surface);
+  color: var(--ink-dark);
+  font-family: var(--font-mono);
+  font-size: 0.77rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-secondary-editorial:hover {
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+  background-color: var(--burgundy-soft);
+  transform: translateY(-1px);
 }
 
 .btn-danger-editorial {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
+  gap: 9px;
+  padding: 10px 16px;
+  border-radius: 6px;
   background-color: var(--tamper-bg);
   color: var(--tamper-red);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   border: 1px solid var(--tamper-red);
   cursor: pointer;
+  transition: all 0.18s ease;
 }
 
 .btn-danger-editorial:hover {
@@ -454,37 +543,17 @@ a {
   color: #FFFFFF;
 }
 
-.btn-secondary-editorial {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background-color: var(--bg-surface);
-  color: var(--ink-dark);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border: 1px solid var(--border-hairline);
-  cursor: pointer;
-}
-
-.btn-secondary-editorial:hover {
-  border-color: var(--burgundy);
-  color: var(--burgundy);
-  background-color: var(--bg-elevated);
-}
-
-/* Interactive Cyber-Mesh Box on Homepage */
+/* ==========================================================================
+   DARK CYBER-OBSIDIAN MESH CONTAINER (Organic Field + High-Opacity Green Lines)
+   ========================================================================== */
 .cyber-mesh-container {
-  border: 1px solid var(--border-hairline);
-  background-color: var(--bg-surface);
-  background-image:
-    linear-gradient(to right, rgba(13, 116, 99, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(13, 116, 99, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
-  padding: 18px 20px 16px;
+  border: 1px solid #1E293B;
+  border-top: 3px solid #10B981;
+  border-radius: var(--radius-panel);
+  background: radial-gradient(circle at 50% 50%, #101C2E 0%, #070B12 100%);
+  color: #F1F5F9;
+  padding: 18px 20px 14px;
+  box-shadow: var(--shadow-panel);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -496,17 +565,19 @@ a {
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--slate-muted);
-  border-bottom: 1px solid var(--border-hairline);
+  font-size: 0.69rem;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.22);
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .cyber-mesh-canvas {
   width: 100%;
-  height: 280px;
+  height: 325px;
   display: block;
   cursor: crosshair;
 }
@@ -514,12 +585,12 @@ a {
 .venn-caption {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--slate-muted);
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-hairline);
+  color: #94A3B8;
+  margin-top: 8px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -527,14 +598,18 @@ a {
 }
 
 /* ==========================================================================
-   METRICS STRIP
+   UNIFIED DARK OBSIDIAN ON-CHAIN TELEMETRY RIBBON (Distinct from Iris 4-Cards!)
    ========================================================================== */
 .metrics-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-hairline);
-  margin-bottom: 44px;
+  background: linear-gradient(90deg, #090F1B 0%, #111C2E 100%);
+  border: 1px solid #1E293B;
+  border-left: 4px solid #10B981;
+  border-radius: var(--radius-panel);
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-panel);
+  overflow: hidden;
 }
 
 @media (max-width: 840px) {
@@ -544,8 +619,9 @@ a {
 }
 
 .metric-item {
-  padding: 22px 24px;
-  border-right: 1px solid var(--border-hairline);
+  padding: 18px 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+  background: transparent;
 }
 
 .metric-item:last-child {
@@ -554,29 +630,126 @@ a {
 
 .metric-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--slate-muted);
-  margin-bottom: 6px;
+  color: #94A3B8;
+  margin-bottom: 5px;
 }
 
 .metric-value {
+  font-family: var(--font-display);
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--ink-dark);
+  color: #F8FAFC;
 }
 
 .metric-value.accent {
-  color: var(--burgundy);
+  color: #34D399;
 }
 
 .metric-sub {
   font-family: var(--font-mono);
+  font-size: 0.71rem;
+  color: #38BDF8;
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   LIVE SHA-512 CRYPTOGRAPHIC AVALANCHE SANDBOX CARD
+   ========================================================================== */
+.sha-sandbox-card {
+  background: var(--bg-surface);
+  color: var(--ink-dark);
+  border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--cyber-cyan);
+  border-radius: var(--radius-panel);
+  padding: 24px 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-panel);
+}
+
+.sha-sandbox-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+@media (max-width: 920px) {
+  .sha-sandbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sha-digest-box {
+  background-color: var(--cyber-obsidian);
+  border: 1px solid #1E293B;
+  border-left: 3.5px solid #10B981;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: var(--slate-muted);
-  margin-top: 4px;
+  line-height: 1.65;
+  word-break: break-all;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL STAGE CARDS & VISIBLE WORD-BY-WORD CODE REVEAL
+   ========================================================================== */
+.stage-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.stage-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--cyber-obsidian);
+  border: 1px solid #10B981;
+  color: #34D399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scroll-code-snippet {
+  margin-top: 14px;
+  padding: 13px 15px;
+  border-radius: 6px;
+  background-color: var(--cyber-obsidian);
+  border: 1px solid #1E293B;
+  border-left: 3px solid #10B981;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: #E2E8F0;
+}
+
+.scroll-code-snippet .code-word-token {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  filter: blur(4px);
+  color: #34D399;
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.42s ease,
+    color 0.65s ease;
+}
+
+.scroll-code-snippet.revealed .code-word-token {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  color: #E2E8F0;
 }
 
 /* ==========================================================================
@@ -585,78 +758,84 @@ a {
 .editorial-card {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  padding: 32px;
-  margin-bottom: 28px;
+  border-top: 3px solid var(--ink-dark);
+  border-radius: var(--radius-panel);
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-panel);
 }
 
 .auth-wrapper {
-  max-width: 540px;
+  max-width: 580px;
   margin: 24px auto;
 }
 
 .auth-header {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--border-hairline);
-  padding-bottom: 16px;
+  padding-bottom: 14px;
 }
 
 .auth-title {
+  font-family: var(--font-display);
   font-size: 1.65rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink-dark);
 }
 
 .auth-subtitle {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-sans);
   color: var(--slate-muted);
-  font-size: 1rem;
+  font-size: 0.93rem;
   margin-top: 4px;
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .form-label {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-dark);
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 
 .form-input,
 .form-select {
   width: 100%;
-  padding: 12px 14px;
-  background-color: var(--bg-cream);
-  border: 1px solid var(--border-hairline);
+  padding: 11px 14px;
+  border-radius: 6px;
+  background-color: #F8FAFC;
+  border: 1px solid var(--border-strong);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--ink-dark);
   outline: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
 }
 
 .form-input:focus,
 .form-select:focus {
   border-color: var(--burgundy);
   background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px var(--burgundy-soft);
 }
 
 .alert-banner {
   padding: 14px 18px;
-  margin-bottom: 22px;
-  border-left: 3px solid var(--burgundy);
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border-left: 4px solid var(--burgundy);
   background-color: var(--burgundy-soft);
   color: var(--ink-dark);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.81rem;
   font-weight: 500;
 }
 
@@ -671,9 +850,9 @@ a {
    ========================================================================== */
 .workspace-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 28px;
-  margin-bottom: 32px;
+  grid-template-columns: 1.28fr 0.72fr;
+  gap: 22px;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 1024px) {
@@ -685,14 +864,17 @@ a {
 .canvas-panel {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  padding: 24px;
+  border-top: 3px solid var(--burgundy);
+  border-radius: var(--radius-panel);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-panel);
 }
 
 .panel-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-hairline);
   flex-wrap: wrap;
@@ -700,61 +882,79 @@ a {
 }
 
 .panel-title {
-  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--ink-dark);
 }
 
 .wsn-canvas-box {
   width: 100%;
-  background-color: var(--bg-cream);
-  background-image: radial-gradient(#B8CCC8 1.2px, transparent 1.2px);
-  background-size: 18px 18px;
+  background: radial-gradient(circle at 50% 50%, #101C2E 0%, #070B12 100%);
+  border: 1px solid #1E293B;
+  border-radius: 6px;
+  display: block;
+}
+
+.wsn-chart-box {
+  width: 100%;
+  background-color: #F8FAFC;
   border: 1px solid var(--border-hairline);
+  border-radius: 6px;
   display: block;
 }
 
 .tx-log-stream {
-  background-color: var(--bg-cream);
-  border: 1px solid var(--border-hairline);
+  background-color: var(--cyber-obsidian);
+  border: 1px solid #1E293B;
+  border-radius: 6px;
   padding: 14px;
-  height: 420px;
+  height: 460px;
   overflow-y: auto;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   line-height: 1.55;
+  color: #E2E8F0;
 }
 
 .tx-log-item {
   padding: 10px 12px;
-  border-bottom: 1px solid var(--border-hairline);
-  border-left: 2.5px solid var(--burgundy);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--emerald-neon);
   margin-bottom: 8px;
-  background-color: var(--bg-surface);
+  background-color: var(--cyber-panel);
+  cursor: pointer;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.tx-log-item:hover {
+  border-color: var(--cyber-amber);
+  transform: translateX(2px);
 }
 
 .tx-log-item .tx-head {
   display: flex;
   justify-content: space-between;
-  font-weight: 600;
-  color: var(--burgundy);
+  font-weight: 700;
+  color: #34D399;
   margin-bottom: 4px;
 }
 
 .tx-log-item .tx-hash {
-  color: var(--slate-muted);
+  color: #94A3B8;
   word-break: break-all;
-  font-size: 0.71rem;
+  font-size: 0.7rem;
 }
 
 /* ==========================================================================
-   EDITORIAL DATA TABLE
+   ARCHITECTURAL DATA TABLE
    ========================================================================== */
 .ledger-results-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border-hairline);
   flex-wrap: wrap;
@@ -762,26 +962,28 @@ a {
 }
 
 .results-heading {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 1.32rem;
+  font-weight: 700;
   color: var(--ink-dark);
 }
 
 .results-heading em {
-  font-family: var(--font-serif);
+  font-style: normal;
   color: var(--burgundy);
-  font-weight: 500;
 }
 
 .results-count {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--verified-green);
   background-color: var(--verified-bg);
   padding: 6px 12px;
-  border: 1px solid rgba(13, 116, 99, 0.25);
+  border-radius: 4px;
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .table-responsive {
@@ -793,6 +995,8 @@ a {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--bg-surface);
+  border-radius: 6px;
+  overflow: hidden;
   border: 1px solid var(--border-hairline);
 }
 
@@ -801,12 +1005,12 @@ a {
   padding: 13px 16px;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  background-color: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-hairline);
+  color: #F8FAFC;
+  background-color: var(--cyber-obsidian);
+  border-bottom: 2px solid #10B981;
 }
 
 .editorial-table td {
@@ -817,8 +1021,13 @@ a {
   vertical-align: middle;
 }
 
-.editorial-table tr:hover td {
-  background-color: rgba(13, 116, 99, 0.04);
+.editorial-table tr.ledger-row {
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.editorial-table tr.ledger-row:hover td {
+  background-color: var(--burgundy-soft);
 }
 
 .mono-cell {
@@ -828,10 +1037,12 @@ a {
 
 .temp-val {
   font-family: var(--font-mono);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--burgundy);
   background-color: var(--burgundy-soft);
   padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .hash-cell code {
@@ -844,68 +1055,134 @@ a {
 }
 
 .status-pill {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   padding: 4px 10px;
+  border-radius: 4px;
   text-transform: uppercase;
 }
 
 .status-pill.verified {
   color: var(--verified-green);
   background-color: var(--verified-bg);
+  border: 1px solid rgba(5, 150, 105, 0.25);
 }
 
 .status-pill.tampered {
   color: var(--tamper-red);
   background-color: var(--tamper-bg);
+  border: 1px solid rgba(225, 29, 72, 0.3);
 }
 
 .node-pills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-top: 14px;
 }
 
 .node-pill {
   font-family: var(--font-mono);
-  font-size: 0.73rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   padding: 6px 12px;
-  border: 1px solid var(--border-hairline);
-  background-color: var(--bg-cream);
+  border-radius: 4px;
+  border: 1px solid var(--border-strong);
+  background-color: #F8FAFC;
   color: var(--ink-dark);
   cursor: pointer;
+  transition: all 0.16s ease;
 }
 
 .node-pill:hover,
 .node-pill.active {
-  background-color: var(--burgundy);
-  border-color: var(--burgundy);
-  color: #FFFFFF;
+  background-color: var(--cyber-obsidian);
+  border-color: #10B981;
+  color: #34D399;
+}
+
+.keypair-gate-box {
+  background-color: var(--cyber-obsidian);
+  color: #F1F5F9;
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #1E293B;
+  border-left: 3.5px solid #10B981;
+}
+
+/* Popup Modals */
+.bc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(8, 13, 22, 0.80);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.bc-modal-backdrop.open {
+  display: flex;
+}
+
+.bc-modal-window {
+  width: 100%;
+  max-width: 680px;
+  background-color: var(--cyber-obsidian);
+  color: #F8FAFC;
+  border: 1px solid #10B981;
+  border-radius: 10px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  animation: bcModalPop 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bcModalPop {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.bc-modal-header {
+  padding: 16px 24px;
+  background-color: var(--cyber-panel);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bc-modal-body {
+  padding: 24px 26px;
 }
 
 .site-footer {
-  border-top: 1px solid var(--border-hairline);
-  margin-top: 64px;
+  border-top: 2px solid var(--border-hairline);
+  margin-top: 56px;
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--slate-muted);
   flex-wrap: wrap;
   gap: 12px;
 }
 
-    .tab-section { display: none; }
-    .tab-section.active { display: block; }
-    .nav-link, .nav-cta { cursor: pointer; }
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+.nav-link, .nav-cta { cursor: pointer; }
+
   </style>
 </head>
 <body>
@@ -918,28 +1195,30 @@ a {
         &nbsp;OPERATOR: <strong id="bar-operator-name">AMIR</strong> &nbsp;|&nbsp; ROLE: WSN NETWORK ADMINISTRATOR &nbsp;|&nbsp; CLEARANCE: SHA-512 READ/WRITE
       </div>
       <div>
-        CONTRACT: 0x745978a62d1e4293… &nbsp;|&nbsp;
-        <a onclick="handleLogout()" style="color:#5EEAD4; text-decoration:underline; cursor:pointer;">LOCK &amp; LOGOUT ↗</a>
+        CONTRACT: 0x745978a62d1e4293...7620 &nbsp;|&nbsp;
+        <a onclick="handleLogout()" style="color:#34D399; text-decoration:underline; cursor:pointer;">LOCK &amp; LOGOUT ↗</a>
       </div>
     </div>
   </div>
 
-  <!-- Major Project Header (Distinct from personal portfolio) -->
+  <!-- Locked Floating Capsule Header -->
   <header class="site-header">
     <div class="header-inner">
-      <a onclick="switchTab('overview')" class="brand-lockup" style="cursor:pointer;">
+      <a onclick="switchTab('overview')" class="brand-lockup">
         <div class="project-hex-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
-            <circle cx="12" cy="12" r="3"></circle>
-            <line x1="12" y1="2" x2="12" y2="9"></line>
-            <line x1="21" y1="17" x2="14.6" y2="13.5"></line>
-            <line x1="3" y1="17" x2="9.4" y2="13.5"></line>
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+            <polygon points="32,8 54,20 54,44 32,56 10,44 10,20" fill="#131C2E" stroke="#06B6D4" stroke-width="3.5" stroke-linejoin="round"/>
+            <polyline points="10,20 32,32 54,20" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linejoin="round"/>
+            <line x1="32" y1="32" x2="32" y2="56" stroke="#10B981" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="5.5" fill="#F59E0B"/>
+            <circle cx="32" cy="8" r="3.5" fill="#10B981"/>
+            <circle cx="54" cy="20" r="3.5" fill="#06B6D4"/>
+            <circle cx="10" cy="20" r="3.5" fill="#06B6D4"/>
           </svg>
         </div>
         <div class="brand-text">
-          <span class="brand-name">WSN-CHAIN <span class="slash-accent">//</span> SECURE CLOUD</span>
-          <span class="brand-tagline">IoT Blockchain Telemetry · B.E. CSE Major Project</span>
+          <span class="brand-name">BLOCKCHAIN WSN <span class="slash-accent">-</span> SECURE CLOUD</span>
+          <span class="brand-tagline">IoT Cryptographic Telemetry · Osmania University</span>
         </div>
       </a>
 
@@ -949,7 +1228,7 @@ a {
 
   <main class="page-container">
 
-    <!-- ================= TAB 1: OVERVIEW (PUBLIC & ADMIN) ================= -->
+    <!-- ================= TAB 1: SYSTEM OVERVIEW ================= -->
     <div id="tab-overview" class="tab-section active">
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
@@ -961,104 +1240,199 @@ a {
         </div>
       </div>
 
-      <section class="hero-headline-block">
-        <h1 class="hero-display">
-          <span class="hero-line-dark">SECURING IOT</span>
-          <span class="hero-line-burgundy">
-            CLOUD DATA
-            <svg class="hero-asterisk" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" stroke="#0D7463" stroke-width="3" fill="rgba(13,116,99,0.08)"/>
-              <circle cx="32" cy="32" r="8" stroke="#0F1C24" stroke-width="3"/>
-              <line x1="32" y1="4" x2="32" y2="24" stroke="#0D7463" stroke-width="2.5"/>
-              <line x1="32" y1="40" x2="32" y2="60" stroke="#0D7463" stroke-width="2.5"/>
-              <line x1="8" y1="18" x2="25" y2="28" stroke="#0D7463" stroke-width="2.5"/>
-              <line x1="39" y1="36" x2="56" y2="46" stroke="#0D7463" stroke-width="2.5"/>
-              <line x1="56" y1="18" x2="39" y2="28" stroke="#0D7463" stroke-width="2.5"/>
-              <line x1="25" y1="36" x2="8" y2="46" stroke="#0D7463" stroke-width="2.5"/>
-            </svg>
-          </span>
-        </h1>
-      </section>
-
+      <!-- Bento Hero Split (Clean Space Grotesk Typography, Zero Rotating Hexagon, Dark Flowing Mesh) -->
       <section class="editorial-split">
-        <div>
-          <p class="editorial-lead">
-            A decentralized <strong>cryptographic defense framework</strong> engineered to protect
-            <em>wireless sensor networks</em> against cloud data tampering.
-          </p>
-          <p class="editorial-body">
-            Conventional IoT sensor deployments forward environmental and clinical telemetry to a single centralized server, creating a critical single point of failure. This system routes 20 autonomous wireless sensor nodes through a Mobile Database Node (MDN) gateway, sealing every packet with a <strong>512-bit SHA-512 hash</strong> and committing it to the on-chain <strong>WSNSecurity.sol</strong> smart contract.
-          </p>
-
-          <div class="author-credit-box">
-            <div>
-              <strong>DEVELOPED BY:</strong> MOHD AMIR ALI (160920733019)<br/>
-              <span style="color: var(--slate-muted);">Dept. of CSE · Lords Institute of Engineering &amp; Technology</span>
-            </div>
-            <span class="status-pill verified">● LEDGER ONLINE</span>
+        <div class="hero-bento-left">
+          <div>
+            <span class="eyebrow-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              DECENTRALIZED IOT CLOUD SECURITY ARCHITECTURE
+            </span>
+            <h1 class="hero-display-title">
+              Securing IoT Cloud Data with <span class="emerald-highlight">SHA-512 &amp; Blockchain.</span>
+            </h1>
+            <p class="editorial-lead">
+              A decentralized cryptographic defense framework engineered to protect wireless sensor networks against cloud data tampering.
+            </p>
+            <p class="editorial-body">
+              Conventional IoT sensor deployments forward environmental and clinical telemetry to a single centralized server, creating a critical single point of failure. This system routes <strong>20 autonomous wireless sensor nodes</strong> through a <strong>Mobile Database Node (MDN) gateway</strong>, sealing every packet with a <strong>512-bit SHA-512 hash</strong> and committing it to the on-chain <strong>WSNSecurity.sol</strong> Ethereum smart contract.
+            </p>
           </div>
 
-          <div class="editorial-actions" id="hero-dynamic-actions"></div>
+          <div>
+            <div class="author-credit-box">
+              <div>
+                <strong>DEVELOPED BY:</strong> MOHD AMIR ALI (160920733019)<br/>
+                <span style="color: var(--slate-muted);">Dept. of CSE · Lords Institute of Engineering &amp; Technology (Osmania University)</span>
+              </div>
+              <span class="status-pill verified"><span class="pulse-dot" style="width:6px;height:6px;"></span> LEDGER ONLINE</span>
+            </div>
+
+            <div class="editorial-actions" id="hero-dynamic-actions"></div>
+          </div>
         </div>
 
-        <!-- Interactive Cybersecurity Mesh / Cryptographic Web Canvas -->
+        <!-- Dark Cyber-Obsidian Mesh Viewport with Flowing Interconnected Lines -->
         <div class="cyber-mesh-container">
           <div class="cyber-mesh-header">
-            <span>01 // LIVE CRYPTOGRAPHIC CYBER-MESH TOPOLOGY</span>
-            <span id="mesh-hover-status" style="color: var(--burgundy); font-weight: 600;">MOVE CURSOR TO INSPECT · CLICK TO PULSE</span>
+            <span style="color: #34D399; font-weight: 700;">01 - LIVE WSN-TO-SHA512 FLOWING CYBER-MESH TOPOLOGY</span>
+            <span id="mesh-hover-status" style="color: #34D399; font-weight: 600;">20 WSN NODES ACTIVE · SHA-512 STREAM</span>
           </div>
-          <canvas id="cyber-web-canvas" class="cyber-mesh-canvas" width="580" height="280"></canvas>
+          <canvas id="cyber-web-canvas" class="cyber-mesh-canvas" width="600" height="310"></canvas>
           <div class="venn-caption">
-            <span>SHA-512 PACKET VERIFICATION WEB</span>
-            <span>20 ACTIVE SENSOR NODES → MDN CORE</span>
+            <span><strong style="color:#10B981;">●</strong> FLOWING SHA-512 PACKET LINKS</span>
+            <span><strong style="color:#06B6D4;">●</strong> 20 DISTRIBUTED FIELD NODES → MDN CORE</span>
           </div>
         </div>
       </section>
 
+      <!-- Rounded Bento Metrics Strip -->
       <section class="metrics-strip">
         <div class="metric-item">
-          <div class="metric-label">01 / WSN CLUSTER</div>
+          <div class="metric-label">01 - WSN CLUSTER</div>
           <div class="metric-value">20 Nodes</div>
-          <div class="metric-sub">Autonomous Sensors (IOT-0 – IOT-19)</div>
+          <div class="metric-sub">Autonomous Sensors (IOT-0 to IOT-19)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">02 / ON-CHAIN BLOCKS</div>
+          <div class="metric-label">02 - ON-CHAIN BLOCKS</div>
           <div class="metric-value accent" id="ov-blocks">27</div>
           <div class="metric-sub">Ethereum RPC :9545 (Net 5777)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">03 / VERIFIED PACKETS</div>
+          <div class="metric-label">03 - VERIFIED PACKETS</div>
           <div class="metric-value" id="ov-readings">25 Records</div>
           <div class="metric-sub">100.0% SHA-512 Hash Match</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">04 / AVG COMMIT LATENCY</div>
+          <div class="metric-label">04 - AVG COMMIT LATENCY</div>
           <div class="metric-value" id="ov-latency">6.09 ms</div>
           <div class="metric-sub">WSNSecurity Smart Contract</div>
         </div>
       </section>
 
-      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-        <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">LAYER 01 // EDGE SENSING</span>
-          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Distributed WSN Cluster</h3>
-          <p style="color: var(--slate-muted); font-size: 0.94rem;">
-            Twenty simulated IoT micro-sensor nodes sample real-time environmental telemetry and broadcast packets to the Mobile Database Node (MDN) gateway.
-          </p>
+      <!-- Interactive Live SHA-512 Cryptographic Avalanche & Cloud Tamper Sandbox -->
+      <section class="sha-sandbox-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px;">
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: #34D399; letter-spacing: 0.1em;">
+              02 - INTERACTIVE SHA-512 AVALANCHE &amp; CLOUD TAMPER SANDBOX
+            </span>
+            <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #FFFFFF; margin-top: 2px;">
+              Test Real-Time 512-Bit Packet Sealing &amp; 1-Bit Cloud Tamper Detection
+            </h3>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span id="sandbox-status-pill" class="status-pill verified" style="background: rgba(16,185,129,0.2); color: #34D399;">
+              ● ON-CHAIN DIGEST MATCH (100% VALID)
+            </span>
+            <button type="button" id="sandbox-tamper-btn" onclick="toggleSandboxTamper()" class="btn-danger-editorial" style="padding: 7px 14px; font-size: 0.72rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Simulate 1-Bit Cloud Tamper</span>
+            </button>
+          </div>
         </div>
-        <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">LAYER 02 // CRYPTOGRAPHIC SEAL</span>
-          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Modified SHA-512 Digest</h3>
-          <p style="color: var(--slate-muted); font-size: 0.94rem;">
-            Before any telemetry leaves the edge gateway, it is sealed with a 512-bit SHA-512 cryptographic signature so any cloud tampering triggers an instant hash mismatch.
-          </p>
+
+        <div class="sha-sandbox-grid">
+          <div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+              <div>
+                <label style="font-family: var(--font-mono); font-size: 0.68rem; color: #94A3B8; display: block; margin-bottom: 5px;">SELECT WSN SENSOR NODE</label>
+                <select id="sb-node-select" onchange="updateShaSandbox()" style="width:100%; padding:9px 12px; border-radius:10px; background:#131C2E; color:#F8FAFC; border:1px solid rgba(255,255,255,0.18); font-family:var(--font-mono); font-size:0.8rem;">
+                  <option value="0">IOT-0 (Smart Home Living)</option>
+                  <option value="1">IOT-1 (ICU Clinical Telemetry)</option>
+                  <option value="3" selected>IOT-3 (Industrial Thermal Core)</option>
+                  <option value="7">IOT-7 (Environmental Air Grid)</option>
+                  <option value="12">IOT-12 (Edge Gateway Cluster)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-family: var(--font-mono); font-size: 0.68rem; color: #94A3B8; display: block; margin-bottom: 5px;">
+                  SENSED TEMPERATURE: <strong id="sb-temp-label" style="color:#FBBF24;">28°C</strong>
+                </label>
+                <input id="sb-temp-slider" type="range" min="16" max="44" step="1" value="28" oninput="updateShaSandbox()" style="width:100%; margin-top:8px; accent-color:#10B981; cursor:pointer;" />
+              </div>
+            </div>
+            <div style="background: #131C2E; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 14px; font-family: var(--font-mono); font-size: 0.74rem;">
+              <div style="display:flex; justify-content:space-between; color:#94A3B8; margin-bottom:4px;">
+                <span>MDN GATEWAY RAW PACKET:</span>
+                <span id="sb-avalanche-pct" style="color:#34D399; font-weight:700;">Avalanche Bit Flip: 0.0%</span>
+              </div>
+              <div id="sb-packet-str" style="color:#F8FAFC; font-weight:600;">Payload: "3 28" → WSNSecurity.setIOTData("3#28#SHA512")</div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: #94A3B8; margin-bottom: 6px; display: flex; justify-content: space-between;">
+              <span>LIVE 512-BIT SHA-512 HEXADECIMAL DIGEST (128 CHARS)</span>
+              <span id="sb-contract-verdict" style="color: #34D399; font-weight: 700;">WSNSecurity.sol: ACCEPTED</span>
+            </div>
+            <div id="sb-hash-output" class="sha-digest-box" style="color: #34D399;">
+              Computing 512-bit cryptographic digest...
+            </div>
+          </div>
         </div>
-        <div class="editorial-card" style="margin-bottom: 0;">
-          <span class="eyebrow-label">LAYER 03 // ACCESS CONTROL</span>
-          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;">Role-Gated Smart Contract</h3>
-          <p style="color: var(--slate-muted); font-size: 0.94rem;">
-            Only authenticated operators registered in <code>WSNSecurity.sol</code> can unlock the Admin Security Console, trigger node simulations, or audit raw sensor blocks.
-          </p>
+      </section>
+
+      <!-- 3 Architectural Stage Breakdown Cards with Custom Vector Icons & Word-by-Word Scroll Reveal -->
+      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div class="editorial-card" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="stage-card-head">
+              <div class="stage-icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+              </div>
+              <div>
+                <span class="eyebrow-label" style="margin-bottom: 2px;">LAYER 01 - EDGE SENSING</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.12rem; font-weight: 700;">Distributed 20-Node WSN Cluster</h3>
+              </div>
+            </div>
+            <p style="color: var(--slate-muted); font-size: 0.92rem;">
+              Twenty autonomous IoT micro-sensor nodes sample real-time environmental and clinical telemetry and broadcast packets to the Mobile Database Node (MDN) gateway.
+            </p>
+          </div>
+          <div class="scroll-code-snippet">
+            node_id = wsn_cluster.select_active_sensor(0, 19) ; sense_temp = sensor.read_ambient_celsius(17, 41) ; raw_packet = f"{node_id} {sense_temp}" ; mdn_gateway.ingest_packet(node_id, sense_temp, timestamp)
+          </div>
+        </div>
+
+        <div class="editorial-card" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="stage-card-head">
+              <div class="stage-icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+              </div>
+              <div>
+                <span class="eyebrow-label" style="margin-bottom: 2px;">LAYER 02 - CRYPTOGRAPHIC SEAL</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.12rem; font-weight: 700;">512-Bit SHA-512 Gateway Digest</h3>
+              </div>
+            </div>
+            <p style="color: var(--slate-muted); font-size: 0.92rem;">
+              Before any telemetry leaves the edge gateway, it is sealed with a 512-bit SHA-512 cryptographic signature so any cloud tampering triggers an instant hash mismatch.
+            </p>
+          </div>
+          <div class="scroll-code-snippet">
+            payload_bytes = f"{node_id} {sense_temp}".encode("utf-8") ; sha512_digest = hashlib.sha512(payload_bytes).hexdigest() ; sealed_frame = f"{node_id}#{sense_temp}#{timestamp}#{sha512_digest}"
+          </div>
+        </div>
+
+        <div class="editorial-card" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="stage-card-head">
+              <div class="stage-icon-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 21 7 21 17 12 22 3 17 3 7"/><polyline points="3 7 12 12 21 7"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
+              </div>
+              <div>
+                <span class="eyebrow-label" style="margin-bottom: 2px;">LAYER 03 - SMART CONTRACT LEDGER</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.12rem; font-weight: 700;">Role-Gated WSNSecurity.sol</h3>
+              </div>
+            </div>
+            <p style="color: var(--slate-muted); font-size: 0.92rem;">
+              Only authenticated operators registered in <code>WSNSecurity.sol</code> can unlock the Admin Security Console, trigger node simulations, or audit raw sensor blocks.
+            </p>
+          </div>
+          <div class="scroll-code-snippet">
+            tx_hash = wsn_contract.functions.setIOTData(sealed_frame).transact({"from": operator_wallet}) ; block_receipt = web3.eth.wait_for_transaction_receipt(tx_hash) ; assert block_receipt.status == 1
+          </div>
         </div>
       </section>
     </div>
@@ -1068,7 +1442,7 @@ a {
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>02 // AUTHENTICATED ADMIN COMMAND CENTER &amp; WSN SIMULATOR</span>
+          <span>02 - AUTHENTICATED ADMIN COMMAND CENTER &amp; WSN SIMULATOR</span>
         </div>
         <div class="eyebrow-right">
           CLEARANCE: FULL READ/WRITE · OPERATOR: <span id="sim-operator-label">AMIR</span>
@@ -1076,65 +1450,77 @@ a {
       </div>
 
       <!-- Admin Security Welcome Banner -->
-      <div class="editorial-card" style="border-left: 4px solid var(--burgundy); background-color: var(--bg-surface); padding: 24px 28px; margin-bottom: 28px;">
+      <div class="editorial-card" style="border-left: 4px solid var(--burgundy); padding: 22px 28px; margin-bottom: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div>
-            <span class="eyebrow-label" style="margin-bottom: 4px;">🛡️ RESTRICTED ADMIN VIEW UNLOCKED</span>
-            <h2 style="font-size: 1.45rem; font-weight: 800; color: var(--ink-dark);">
+            <span class="eyebrow-label" style="margin-bottom: 4px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              RESTRICTED ADMIN VIEW UNLOCKED
+            </span>
+            <h2 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--ink-dark);">
               Welcome, Administrator <span id="welcome-admin-name" style="color: var(--burgundy);">Amir</span>
             </h2>
-            <p style="font-size: 0.92rem; color: var(--slate-muted); margin-top: 4px;">
-              You are viewing the authenticated WSN Command Console. Public visitors cannot access this simulator, the tamper-detection lab, or the operator ACL table below.
+            <p style="font-size: 0.91rem; color: var(--slate-muted); margin-top: 4px;">
+              Click any IoT sensor node on the orbital topology below or press <strong>Start WSN Simulation</strong> to watch the highlighted running connection line and blinking temperature telemetry in real time.
             </p>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button type="button" onclick="switchTab('ledger')" class="btn-primary-editorial">Inspect Full Sensor Ledger ↗</button>
-            <button type="button" onclick="handleLogout()" class="btn-secondary-editorial">Lock &amp; Logout ↗</button>
+            <button type="button" onclick="switchTab('ledger')" class="btn-primary-editorial">
+              <span>Inspect Full Sensor Ledger ↗</span>
+            </button>
+            <button type="button" onclick="handleLogout()" class="btn-secondary-editorial">
+              <span>Lock &amp; Logout ↗</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <section class="metrics-strip" style="margin-bottom: 28px;">
+      <section class="metrics-strip" style="margin-bottom: 24px;">
         <div class="metric-item">
-          <div class="metric-label">01 / SIMULATION STATUS</div>
+          <div class="metric-label">01 - SIMULATION STATUS</div>
           <div class="metric-value accent" id="sim-state-text">READY</div>
           <div class="metric-sub" id="sim-sub-text">20 Embedded IoT Nodes Online</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">02 / TOTAL MINED BLOCKS</div>
+          <div class="metric-label">02 - TOTAL MINED BLOCKS</div>
           <div class="metric-value" id="metric-blocks">27</div>
           <div class="metric-sub">Network ID 5777 (Local RPC :9545)</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">03 / LEDGER INTEGRITY</div>
+          <div class="metric-label">03 - LEDGER INTEGRITY</div>
           <div class="metric-value" id="metric-integrity">100.0%</div>
           <div class="metric-sub" id="metric-readings">25 SHA-512 Verified Packets</div>
         </div>
         <div class="metric-item">
-          <div class="metric-label">04 / AVG COMMIT TIME</div>
+          <div class="metric-label">04 - AVG COMMIT TIME</div>
           <div class="metric-value" id="metric-latency">6.09 ms</div>
           <div class="metric-sub">WSNSecurity.setIOTData()</div>
         </div>
       </section>
 
-      <div class="editorial-card" style="padding: 20px 26px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div class="editorial-card" style="padding: 18px 24px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <button type="button" onclick="startWebSimulation()" class="btn-primary-editorial">
-            <span>▶ Start WSN Simulation</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Start WSN Simulation</span>
           </button>
           <button type="button" onclick="stopWebSimulation()" class="btn-secondary-editorial">
-            <span>■ Stop Simulation</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+            <span>Stop Simulation</span>
           </button>
           <button type="button" onclick="mineSingleStep()" class="btn-secondary-editorial">
-            <span>+ Sense &amp; Mine 1 Block</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Sense &amp; Mine 1 Block</span>
           </button>
         </div>
-        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <button type="button" onclick="simulateTamperAttack()" class="btn-danger-editorial">
-            <span>⚡ Simulate Cyber Tamper Attack</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Simulate Cyber Tamper Attack</span>
           </button>
           <button id="btn-restore" type="button" onclick="restoreTamperedNode()" class="btn-secondary-editorial" style="display: none;">
-            <span>🛡️ Restore &amp; Re-Verify Ledger</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Restore &amp; Re-Verify Ledger</span>
           </button>
         </div>
       </div>
@@ -1145,18 +1531,18 @@ a {
         <div class="canvas-panel">
           <div class="panel-header">
             <div>
-              <span class="eyebrow-label" style="margin-bottom: 2px;">01 // WIRELESS SENSOR NETWORK TOPOLOGY</span>
-              <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN)</h2>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">01 - DISTRIBUTED FIELD WSN TOPOLOGY (CLICK ANY IOT NODE)</span>
+              <h2 class="panel-title">20 Autonomous IoT Nodes → Mobile Database Node (MDN Gateway)</h2>
             </div>
-            <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO SENSE</span>
+            <span class="status-pill verified" id="active-node-badge">CLICK ANY NODE TO TRANSMIT</span>
           </div>
-          <canvas id="wsn-canvas" class="wsn-canvas-box" width="760" height="440"></canvas>
+          <canvas id="wsn-canvas" class="wsn-canvas-box" width="760" height="460"></canvas>
         </div>
 
         <div class="canvas-panel">
           <div class="panel-header">
             <div>
-              <span class="eyebrow-label" style="margin-bottom: 2px;">02 // REAL-TIME ON-CHAIN STREAM</span>
+              <span class="eyebrow-label" style="margin-bottom: 2px;">02 - REAL-TIME ON-CHAIN STREAM (CLICK BLOCK FOR RECEIPT)</span>
               <h2 class="panel-title">SHA-512 Transaction Log</h2>
             </div>
             <span class="status-pill verified">SHA-512 ENGINE LIVE</span>
@@ -1165,22 +1551,22 @@ a {
         </div>
       </section>
 
-      <section class="canvas-panel" style="margin-bottom: 32px;">
+      <section class="canvas-panel" style="margin-bottom: 28px;">
         <div class="panel-header">
           <div>
-            <span class="eyebrow-label" style="margin-bottom: 2px;">03 // PERFORMANCE BENCHMARK</span>
+            <span class="eyebrow-label" style="margin-bottom: 2px;">03 - PERFORMANCE BENCHMARK</span>
             <h2 class="panel-title">Blockchain Transaction Processed Time Graph (Sense Number vs. Commit Latency)</h2>
           </div>
-          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate-muted);">HIGH-RESOLUTION LATENCY SERIES</span>
+          <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">HIGH-RESOLUTION LATENCY SERIES</span>
         </div>
-        <canvas id="tx-chart" class="wsn-canvas-box" width="1200" height="280"></canvas>
+        <canvas id="tx-chart" class="wsn-chart-box" width="1200" height="280"></canvas>
       </section>
 
       <!-- Admin-Only Section: Registered On-Chain Operators Table -->
       <section class="editorial-card">
         <div class="ledger-results-header">
           <div>
-            <span class="eyebrow-label">04 // ADMIN-ONLY ACCESS CONTROL AUDIT</span>
+            <span class="eyebrow-label">04 - ADMIN-ONLY ACCESS CONTROL AUDIT</span>
             <h3 class="results-heading">Authorized Blockchain Operators (<code>WSNSecurity.getUser()</code>)</h3>
           </div>
           <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial" style="padding: 8px 14px;">+ Provision New Operator ↗</button>
@@ -1208,19 +1594,19 @@ a {
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>03 // ADMIN-RESTRICTED SENSOR TELEMETRY LEDGER</span>
+          <span>03 - ADMIN-RESTRICTED SENSOR TELEMETRY LEDGER</span>
         </div>
         <div class="eyebrow-right">
           Cryptographic verification via WSNSecurity.getIOTData()
         </div>
       </div>
 
-      <div class="editorial-card" style="padding: 24px 28px; margin-bottom: 24px;">
+      <div class="editorial-card" style="padding: 22px 28px; margin-bottom: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             <span class="eyebrow-label" style="margin-bottom: 0;">CHOOSE IOT SENSOR ID:</span>
-            <select id="ledger-filter-select" onchange="filterLedger(this.value)" class="form-select" style="width: 240px; padding: 9px 12px;">
-              <option value="ALL">ALL NODES (IOT-0 – IOT-19)</option>
+            <select id="ledger-filter-select" onchange="filterLedger(this.value)" class="form-select" style="width: 250px; padding: 9px 12px;">
+              <option value="ALL">ALL NODES (IOT-0 to IOT-19)</option>
               <option value="0">IOT-0</option><option value="1">IOT-1</option><option value="2">IOT-2</option><option value="3">IOT-3</option><option value="4">IOT-4</option>
               <option value="5">IOT-5</option><option value="6">IOT-6</option><option value="7">IOT-7</option><option value="8">IOT-8</option><option value="9">IOT-9</option>
               <option value="10">IOT-10</option><option value="11">IOT-11</option><option value="12">IOT-12</option><option value="13">IOT-13</option><option value="14">IOT-14</option>
@@ -1229,8 +1615,7 @@ a {
           </div>
           <div style="display: flex; gap: 12px;">
             <button type="button" onclick="mineSingleStep(); renderLedgerTable();" class="btn-primary-editorial" style="padding: 9px 18px;">
-              <span>+ Mine New Sensor Block</span>
-              <span>↗</span>
+              <span>+ Mine New Sensor Block ↗</span>
             </button>
             <button type="button" onclick="switchTab('simulator')" class="btn-secondary-editorial" style="padding: 9px 16px;">
               <span>Back to Admin Console ↗</span>
@@ -1243,7 +1628,7 @@ a {
       <div class="editorial-card">
         <div class="ledger-results-header">
           <div>
-            <span class="eyebrow-label">03 // FILTERED LEDGER STREAM</span>
+            <span class="eyebrow-label">03 - FILTERED LEDGER STREAM (CLICK ANY ROW TO INSPECT SHA-512 RECEIPT)</span>
             <h3 class="results-heading">Telemetry Records for <em id="ledger-filter-title">All 20 WSN Nodes</em></h3>
           </div>
           <div class="results-count" id="ledger-count-badge">0 Records</div>
@@ -1270,7 +1655,7 @@ a {
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>01 // ROLE-GATED BLOCKCHAIN AUTHENTICATION</span>
+          <span>01 - ROLE-GATED BLOCKCHAIN AUTHENTICATION</span>
         </div>
         <div class="eyebrow-right">
           On-Chain Verification via WSNSecurity.getUser()
@@ -1280,7 +1665,10 @@ a {
       <div class="auth-wrapper">
         <div class="editorial-card">
           <div class="auth-header">
-            <span class="eyebrow-label">RESTRICTED COMMAND CONSOLE</span>
+            <span class="eyebrow-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              RESTRICTED COMMAND CONSOLE
+            </span>
             <h1 class="auth-title">Admin &amp; Operator Login</h1>
             <p class="auth-subtitle">Authenticate to unlock the Admin Security Audit Console, Live WSN Simulator, and Sensor Ledger.</p>
           </div>
@@ -1293,77 +1681,189 @@ a {
             <label class="form-label">Cryptographic Passkey</label>
             <input id="login-pass" class="form-input" type="password" value="amir123" />
           </div>
-          <div style="background-color: var(--bg-elevated); padding: 12px 14px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">
-            <strong>🔓 ADMIN PRIVILEGES UNLOCKED UPON LOGIN:</strong><br/>
-            • Full 20-Node WSN Simulator &amp; Live Latency Graph<br/>
+          <div style="background-color: var(--bg-elevated); border-radius: 12px; padding: 12px 14px; margin-bottom: 20px; font-family: var(--font-mono); font-size: 0.74rem; color: var(--slate-muted);">
+            <strong style="display:inline-flex;align-items:center;gap:6px;color:var(--ink-dark);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              ADMIN PRIVILEGES UNLOCKED UPON LOGIN:
+            </strong><br/>
+            • Full 20-Node Orbital WSN Simulator &amp; Blinking Telemetry Stream<br/>
             • SHA-512 Tamper-Attack Simulation &amp; Security Audit Lab<br/>
-            • On-Chain Registered Operators Directory &amp; Raw Sensor Ledger
+            • On-Chain Registered Operators Directory &amp; Clickable Block Receipt Ledger
           </div>
-          <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
-            <button type="button" onclick="handleLogin()" class="btn-primary-editorial">🔓 Authenticate &amp; Unlock Admin Console ↗</button>
-            <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial">Register Operator ↗</button>
+          <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+            <button type="button" onclick="handleLogin()" class="btn-primary-editorial">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              <span>Authenticate &amp; Unlock Console ↗</span>
+            </button>
+            <button type="button" onclick="quickDemoUnlock()" class="btn-secondary-editorial" style="border-color: var(--burgundy); color: var(--burgundy);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>1-Click Demo Admin Unlock</span>
+            </button>
+            <button type="button" onclick="switchTab('signup')" class="btn-secondary-editorial">
+              <span>Register Operator ↗</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ================= TAB 5: SIGNUP ================= -->
+    <!-- ================= TAB 5: SIGNUP / REGISTER OPERATOR ================= -->
     <div id="tab-signup" class="tab-section">
       <div class="eyebrow-bar">
         <div class="eyebrow-left">
           <span class="burgundy-dot"></span>
-          <span>02 // ON-CHAIN OPERATOR IDENTITY PROVISIONING</span>
+          <span>04 - ON-CHAIN OPERATOR IDENTITY PROVISIONING</span>
         </div>
         <div class="eyebrow-right">
           Commits to WSNSecurity.addUser()
         </div>
       </div>
 
-      <div class="auth-wrapper" style="max-width: 600px;">
+      <div class="auth-wrapper" style="max-width: 620px;">
         <div class="editorial-card">
           <div class="auth-header">
-            <span class="eyebrow-label">SMART CONTRACT ACL REGISTRATION</span>
-            <h1 class="auth-title">Register New Operator</h1>
-            <p class="auth-subtitle">Commits operator credentials to WSNSecurity.addUser() on the blockchain.</p>
+            <span class="eyebrow-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              SMART CONTRACT ACL REGISTRATION
+            </span>
+            <h1 class="auth-title">Register New WSN Operator</h1>
+            <p class="auth-subtitle">Commits operator credentials and cryptographic keypair clearance to WSNSecurity.addUser() on the Ethereum ledger.</p>
           </div>
           <div id="signup-alert"></div>
           <div class="form-group">
             <label class="form-label">Operator Username</label>
-            <input id="su-user" class="form-input" type="text" placeholder="e.g. amir_sec_admin" />
+            <input id="su-user" class="form-input" type="text" placeholder="e.g. amir_sec_admin" oninput="updateOperatorKeypairGate()" />
           </div>
           <div class="form-group">
             <label class="form-label">Passkey / Password</label>
-            <input id="su-pass" class="form-input" type="password" placeholder="Create operator password" />
+            <input id="su-pass" class="form-input" type="password" placeholder="Create operator password" oninput="updateOperatorKeypairGate()" />
           </div>
           <div class="form-group">
             <label class="form-label">Contact Number</label>
-            <input id="su-phone" class="form-input" type="text" placeholder="e.g. 9059173902" />
+            <input id="su-phone" class="form-input" type="text" placeholder="e.g. 9059173902" oninput="updateOperatorKeypairGate()" />
           </div>
           <div class="form-group">
             <label class="form-label">Official Email ID</label>
-            <input id="su-email" class="form-input" type="email" placeholder="e.g. amir@techwithamir.com" />
+            <input id="su-email" class="form-input" type="email" placeholder="e.g. amir@techwithamir.com" oninput="updateOperatorKeypairGate()" />
           </div>
           <div class="form-group">
             <label class="form-label">Department / Node Location</label>
-            <input id="su-addr" class="form-input" type="text" placeholder="e.g. CSE Dept, Lords Institute, Hyderabad" />
+            <input id="su-addr" class="form-input" type="text" placeholder="e.g. CSE Dept, Lords Institute, Hyderabad" oninput="updateOperatorKeypairGate()" />
           </div>
+
+          <!-- Live Cryptographic Keypair & Node Clearance Gate -->
+          <div class="keypair-gate-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-family:var(--font-mono); font-size:0.7rem; font-weight:700; color:#34D399; letter-spacing:0.08em;">
+                LIVE ETHEREUM OPERATOR KEYPAIR &amp; ACL PREVIEW
+              </span>
+              <span class="status-pill verified" style="background:rgba(16,185,129,0.2); color:#34D399;">SOLIDITY ACL READY</span>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:0.73rem; color:#CBD5E1; line-height:1.6;">
+              <div>Derived Wallet Address : <strong id="kp-wallet-preview" style="color:#FBBF24;">0x9A4F81C2E07B3D54A18C6E90F2B4D71E83A5C612</strong></div>
+              <div>Smart Contract Method  : <span style="color:#38BDF8;">WSNSecurity.addUser(string memory _userData)</span></div>
+              <div>Assigned Node Clearance: <span style="color:#34D399;">LEVEL-5 (ALL 20 WSN NODES + SHA-512 AUDIT)</span></div>
+            </div>
+          </div>
+
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button type="button" onclick="handleSignup()" class="btn-primary-editorial">Commit Identity to Blockchain ↗</button>
-            <button type="button" onclick="switchTab('login')" class="btn-secondary-editorial">Proceed to Admin Login ↗</button>
+            <button type="button" onclick="handleSignup()" class="btn-primary-editorial">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Commit Identity to Blockchain ↗</span>
+            </button>
+            <button type="button" onclick="switchTab('login')" class="btn-secondary-editorial">
+              <span>Proceed to Admin Login ↗</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
 
     <footer class="site-footer">
-      <div>SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN TECHNOLOGY</div>
-      <div>MOHD AMIR ALI (160920733019) · B.E. CSE MAJOR PROJECT</div>
+      <div>BLOCKCHAIN WSN - SECURE CLOUD · SECURING IOT DATA WITH BLOCKCHAIN</div>
+      <div>MOHD AMIR ALI (160920733019) · <a href="https://techwithamir.com" target="_blank" style="text-decoration: underline;">TECHWITHAMIR.COM ↗</a></div>
     </footer>
 
   </main>
 
+  <!-- ================= BLOCK & SHA-512 CRYPTOGRAPHIC RECEIPT MODAL ================= -->
+  <div id="block-receipt-modal" class="bc-modal-backdrop" onclick="if(event.target===this) closeBlockReceiptModal()">
+    <div class="bc-modal-window">
+      <div class="bc-modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="pulse-dot"></span>
+          <span style="font-family:var(--font-mono); font-size:0.76rem; font-weight:700; letter-spacing:0.08em; color:#34D399;">
+            ON-CHAIN BLOCK &amp; SHA-512 CRYPTOGRAPHIC RECEIPT
+          </span>
+        </div>
+        <button type="button" onclick="closeBlockReceiptModal()" style="background:rgba(255,255,255,0.1); border:none; color:#FFF; padding:5px 12px; border-radius:999px; font-family:var(--font-mono); font-size:0.74rem; cursor:pointer;">
+          ✕ CLOSE
+        </button>
+      </div>
+      <div class="bc-modal-body">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; font-family:var(--font-mono); font-size:0.75rem;">
+          <div style="background:#131C2E; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="color:#94A3B8; font-size:0.66rem;">SENSOR NODE &amp; READING</div>
+            <div id="bm-node-temp" style="font-size:1.25rem; font-weight:700; color:#FBBF24; margin-top:3px;">IOT-3 · 31°C</div>
+          </div>
+          <div style="background:#131C2E; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+            <div style="color:#94A3B8; font-size:0.66rem;">TIMESTAMP &amp; CONTRACT</div>
+            <div id="bm-timestamp" style="font-size:0.86rem; font-weight:700; color:#38BDF8; margin-top:5px;">2024/05/02-01:20:35</div>
+          </div>
+        </div>
+        <div style="background:#070B12; border:1px solid rgba(16,185,129,0.35); border-radius:12px; padding:14px; font-family:var(--font-mono); font-size:0.73rem; margin-bottom:14px;">
+          <div style="color:#34D399; font-weight:700; margin-bottom:4px;">STORED ON-CHAIN 512-BIT SHA-512 SIGNATURE:</div>
+          <div id="bm-hash" style="color:#E2E8F0; word-break:break-all; line-height:1.55;">--</div>
+        </div>
+        <div style="background:#131C2E; border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px 14px; font-family:var(--font-mono); font-size:0.73rem; color:#CBD5E1; margin-bottom:16px;">
+          <div>Solidity Contract : <span style="color:#FBBF24;">0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620</span> (Network 5777)</div>
+          <div>Method Executed   : <span style="color:#38BDF8;">WSNSecurity.setIOTData(string memory _iotData)</span></div>
+          <div>Consensus Status  : <span style="color:#34D399; font-weight:700;">100% IMMUTABLE SHA-512 MATCH VERIFIED</span></div>
+        </div>
+        <button type="button" onclick="closeBlockReceiptModal()" class="btn-primary-editorial" style="width:100%; justify-content:center; background:#059669; border-color:#059669;">
+          <span>Close Receipt Inspector</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 5-SECOND AUTO-CLOSING OPERATOR REGISTRATION MODAL ================= -->
+  <div id="op-enroll-modal" class="bc-modal-backdrop" onclick="if(event.target===this) closeOpEnrollModal()">
+    <div class="bc-modal-window" style="max-width: 560px;">
+      <div class="bc-modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="pulse-dot"></span>
+          <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; letter-spacing:0.08em; color:#34D399;">
+            ON-CHAIN OPERATOR COMMITTED TO WSNSECURITY.SOL
+          </span>
+        </div>
+        <button type="button" onclick="closeOpEnrollModal()" style="background:rgba(255,255,255,0.1); border:none; color:#FFF; padding:5px 12px; border-radius:999px; font-family:var(--font-mono); font-size:0.74rem; cursor:pointer;">
+          ✕ CLOSE
+        </button>
+      </div>
+      <div class="bc-modal-body">
+        <div style="font-family:var(--font-mono); font-size:0.7rem; color:#38BDF8; margin-bottom:4px;">ETHEREUM SMART CONTRACT RECEIPT</div>
+        <div id="opm-name" style="font-family:var(--font-display); font-size:1.35rem; font-weight:700; color:#FFFFFF; margin-bottom:4px;">Operator Provisioned</div>
+        <div id="opm-meta" style="font-family:var(--font-mono); font-size:0.74rem; color:#94A3B8; margin-bottom:14px;">Location &amp; Contact</div>
+        <div style="background:#070B12; border:1px solid rgba(245,158,11,0.4); border-radius:12px; padding:12px 14px; font-family:var(--font-mono); font-size:0.73rem; margin-bottom:14px;">
+          <div style="color:#FBBF24; font-weight:700; margin-bottom:4px;">ASSIGNED ETHEREUM OPERATOR ADDRESS &amp; TX HASH:</div>
+          <div id="opm-hash" style="color:#E2E8F0; word-break:break-all;">0x9A4F...</div>
+        </div>
+        <div style="width:100%; height:7px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden; margin-bottom:10px;">
+          <div id="opm-bar" style="height:100%; width:100%; background:linear-gradient(90deg, #10B981 0%, #06B6D4 100%); transition:width 0.1s linear;"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:0.72rem; color:#94A3B8;">
+          <span id="opm-countdown">Auto-closing &amp; launching simulator in 5.0s...</span>
+          <button type="button" onclick="closeOpEnrollModal()" class="btn-primary-editorial" style="padding:8px 16px; background:#059669; border-color:#059669; font-size:0.75rem;">
+            Launch Simulator Now ↗
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const INITIAL_DATA = {"summary": {"contract_address": "0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620", "network_id": "5777", "account": "0x25aE4b043bc61acC9A67AfE16eE595C12c9b46D6", "rpc_url": "http://127.0.0.1:9545", "total_blocks": 27, "total_readings": 25, "total_users": 1, "verified_count": 25, "integrity_pct": 100.0, "avg_tx_ms": 6.09, "avg_temp": 28.6, "transaction_times": [0.003598, 0.004136, 0.008537, 0.008652, 0.007814, 0.007581, 0.008454, 0.002538, 0.007007, 0.006065, 0.006067, 0.002844, 0.007764, 0.002413, 0.008632, 0.00819, 0.006043, 0.005489, 0.005328, 0.00792, 0.007147, 0.005037, 0.004507, 0.008747, 0.0018], "recent_blocks": [{"block_number": 26, "timestamp": "2026/10/15-02:28:38", "method": "setIOTData", "tx_hash": "0xbceb093969e0eb21ae851ca92c0f3d1d1cf978809349fe2026182f530b570bf7", "previous_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "block_hash": "0x7cbd020e0bfcfc33700d731fa6fc51ea82e20b835218c532e76e271372f66740", "gas_used": 47060, "tx_time_sec": 0.0018, "node_id": 7, "temperature": 22, "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "summary": "IOT-7 sensed 22\u00b0C (SHA-512 verified)"}, {"block_number": 25, "timestamp": "2024/05/02-01:20:35", "method": "setIOTData", "node_id": 3, "temperature": 31, "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "tx_hash": "0x715614b69a7726c908843314cb306ce10ca21b8a5ccbb3995b98e80c98a3d264", "previous_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "block_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "gas_used": 50584, "tx_time_sec": 0.008747, "summary": "IOT-3 sensed 31\u00b0C (SHA-512 verified)"}, {"block_number": 24, "timestamp": "2024/05/02-01:19:50", "method": "setIOTData", "node_id": 2, "temperature": 33, "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "tx_hash": "0x1adb673eb2036f470ccdceaf62a2eab8bfd3c3f50737c3a77855a23c9025ce88", "previous_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "block_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "gas_used": 50584, "tx_time_sec": 0.004507, "summary": "IOT-2 sensed 33\u00b0C (SHA-512 verified)"}, {"block_number": 23, "timestamp": "2024/05/02-01:19:05", "method": "setIOTData", "node_id": 1, "temperature": 39, "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "tx_hash": "0x2e4069ceb422e2afbac580c25772a792a6e1ae3c35f68b82f59177aa9666b1dd", "previous_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "block_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "gas_used": 50584, "tx_time_sec": 0.005037, "summary": "IOT-1 sensed 39\u00b0C (SHA-512 verified)"}, {"block_number": 22, "timestamp": "2024/05/02-01:18:20", "method": "setIOTData", "node_id": 0, "temperature": 38, "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "tx_hash": "0x898de20fff8bb62e83a8d0a8383c59eb7a4c19ea419c9aceb03c1f2d4c92651b", "previous_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "block_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "gas_used": 50584, "tx_time_sec": 0.007147, "summary": "IOT-0 sensed 38\u00b0C (SHA-512 verified)"}, {"block_number": 21, "timestamp": "2024/05/02-01:17:35", "method": "setIOTData", "node_id": 19, "temperature": 26, "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "tx_hash": "0x01f636102f24e7d2ff62bcf2e33b3704bd45b85f0e36ea86681aa1d5ae5c40d5", "previous_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "block_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "gas_used": 50600, "tx_time_sec": 0.00792, "summary": "IOT-19 sensed 26\u00b0C (SHA-512 verified)"}, {"block_number": 20, "timestamp": "2024/05/02-01:16:50", "method": "setIOTData", "node_id": 18, "temperature": 30, "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "tx_hash": "0xec6c0353608a485a0953569979f30d1ca668739ccf07551468acf66e3ab14664", "previous_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "block_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "gas_used": 50600, "tx_time_sec": 0.005328, "summary": "IOT-18 sensed 30\u00b0C (SHA-512 verified)"}, {"block_number": 19, "timestamp": "2024/05/02-01:16:05", "method": "setIOTData", "node_id": 17, "temperature": 37, "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "tx_hash": "0xa4a2a901e8762753ca47f11d3714d4c42eee2b415841c4dc24c0b453cd814277", "previous_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "block_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "gas_used": 50600, "tx_time_sec": 0.005489, "summary": "IOT-17 sensed 37\u00b0C (SHA-512 verified)"}, {"block_number": 18, "timestamp": "2024/05/02-01:15:20", "method": "setIOTData", "node_id": 16, "temperature": 24, "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "tx_hash": "0x17e8f28273490626fa3e639ee63f35d588bfa204c66900bebb25302c5f1df509", "previous_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "block_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "gas_used": 50600, "tx_time_sec": 0.006043, "summary": "IOT-16 sensed 24\u00b0C (SHA-512 verified)"}, {"block_number": 17, "timestamp": "2024/05/02-01:14:35", "method": "setIOTData", "node_id": 15, "temperature": 35, "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "tx_hash": "0x7a93d24e4d997f2459398fddf046e21637eac9771748cd8d3c0bed352aca3b1e", "previous_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "block_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "gas_used": 50600, "tx_time_sec": 0.00819, "summary": "IOT-15 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 16, "timestamp": "2024/05/02-01:13:50", "method": "setIOTData", "node_id": 14, "temperature": 23, "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "tx_hash": "0x80beb984dd8636ef24eeab5fee37dd8712dfed98c33add769b8626571ac10d6d", "previous_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "block_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "gas_used": 50600, "tx_time_sec": 0.008632, "summary": "IOT-14 sensed 23\u00b0C (SHA-512 verified)"}, {"block_number": 15, "timestamp": "2024/05/02-01:13:05", "method": "setIOTData", "node_id": 13, "temperature": 29, "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "tx_hash": "0x827f30b0d60bb0aaf98cb6d4de5d9cf151bb0aa065264d6e594d19ef27bca6fa", "previous_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "block_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "gas_used": 50600, "tx_time_sec": 0.002413, "summary": "IOT-13 sensed 29\u00b0C (SHA-512 verified)"}, {"block_number": 14, "timestamp": "2024/05/02-01:12:20", "method": "setIOTData", "node_id": 12, "temperature": 35, "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "tx_hash": "0x65cadc1395c42e17882e31430d0852420938843361d865c4ad8fa45db2a137d4", "previous_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "block_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "gas_used": 50600, "tx_time_sec": 0.007764, "summary": "IOT-12 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 13, "timestamp": "2024/05/02-01:11:35", "method": "setIOTData", "node_id": 11, "temperature": 20, "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "tx_hash": "0x94576e6e6bd1bc7eafc1856abf96f841f48a7ca4c69cd0701c8f48776b4b9065", "previous_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "block_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "gas_used": 50600, "tx_time_sec": 0.002844, "summary": "IOT-11 sensed 20\u00b0C (SHA-512 verified)"}, {"block_number": 12, "timestamp": "2024/05/02-01:10:50", "method": "setIOTData", "node_id": 10, "temperature": 20, "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "tx_hash": "0x5d97ce59c3191e7fe94b21f5acd7882a0056405574dd3377c97a3beb4ee0ba2a", "previous_hash": "0x688adb35909b1fe96f97e1ff7edd7d23b829586732dac59c6b74fc83a8b4631b", "block_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "gas_used": 50600, "tx_time_sec": 0.006067, "summary": "IOT-10 sensed 20\u00b0C (SHA-512 verified)"}], "nodes": [{"id": 0, "label": "IOT-0", "x": 53, "y": 362, "zone": "Smart Home Living", "last_temp": 38, "last_time": "2024/05/02-01:18:20", "last_hash": "ca2b855e1c1f9cc2\u202634a089f37c9f", "verified": true}, {"id": 1, "label": "IOT-1", "x": 380, "y": 114, "zone": "ICU Telemetry", "last_temp": 39, "last_time": "2024/05/02-01:19:05", "last_hash": "8c1c0e22945dcb7d\u20264cdca985e6a6", "verified": true}, {"id": 2, "label": "IOT-2", "x": 202, "y": 312, "zone": "Env Air Quality", "last_temp": 33, "last_time": "2024/05/02-01:19:50", "last_hash": "61096dffe488b7aa\u202605c96b8df55e", "verified": true}, {"id": 3, "label": "IOT-3", "x": 357, "y": 254, "zone": "Thermal Grid", "last_temp": 31, "last_time": "2024/05/02-01:20:35", "last_hash": "c51cdfbf5df8d7d7\u2026d4b7e0fbd8ac", "verified": true}, {"id": 4, "label": "IOT-4", "x": 199, "y": 184, "zone": "Edge Gateway", "last_temp": 35, "last_time": "2024/05/02-01:06:20", "last_hash": "b3263ed4819f300b\u20265af84d68f090", "verified": true}, {"id": 5, "label": "IOT-5", "x": 642, "y": 181, "zone": "Smart Home Living", "last_temp": 18, "last_time": "2024/05/02-01:07:05", "last_hash": "6230a2ee0f3fa731\u20262c1f14f75cf1", "verified": true}, {"id": 6, "label": "IOT-6", "x": 224, "y": 93, "zone": "ICU Telemetry", "last_temp": 27, "last_time": "2024/05/02-01:07:50", "last_hash": "217096e35759f339\u20261a58166fe460", "verified": true}, {"id": 7, "label": "IOT-7", "x": 297, "y": 157, "zone": "Env Air Quality", "last_temp": 22, "last_time": "2026/10/15-02:28:38", "last_hash": "b675a294feb38f27\u20265772c894595f", "verified": true}, {"id": 8, "label": "IOT-8", "x": 54, "y": 179, "zone": "Thermal Grid", "last_temp": 32, "last_time": "2024/05/02-01:09:20", "last_hash": "9b4cac2aba1fd8b9\u20268b98df39c069", "verified": true}, {"id": 9, "label": "IOT-9", "x": 670, "y": 394, "zone": "Edge Gateway", "last_temp": 24, "last_time": "2024/05/02-01:10:05", "last_hash": "7b667d0137bcb94c\u2026327c24c7cd9a", "verified": true}, {"id": 10, "label": "IOT-10", "x": 694, "y": 80, "zone": "Smart Home Living", "last_temp": 20, "last_time": "2024/05/02-01:10:50", "last_hash": "e7f715a0efe7b3cd\u202602494cf73826", "verified": true}, {"id": 11, "label": "IOT-11", "x": 497, "y": 319, "zone": "ICU Telemetry", "last_temp": 20, "last_time": "2024/05/02-01:11:35", "last_hash": "ef4166ddec66ec20\u2026e1cb1c438e43", "verified": true}, {"id": 12, "label": "IOT-12", "x": 269, "y": 281, "zone": "Env Air Quality", "last_temp": 35, "last_time": "2024/05/02-01:12:20", "last_hash": "3c70aa936de03766\u2026df42668df6b3", "verified": true}, {"id": 13, "label": "IOT-13", "x": 381, "y": 401, "zone": "Thermal Grid", "last_temp": 29, "last_time": "2024/05/02-01:13:05", "last_hash": "1c3b6a7b97b07197\u20268627ed95d4b4", "verified": true}, {"id": 14, "label": "IOT-14", "x": 552, "y": 403, "zone": "Edge Gateway", "last_temp": 23, "last_time": "2024/05/02-01:13:50", "last_hash": "1e833023c1f3d782\u2026e3524a60b309", "verified": true}, {"id": 15, "label": "IOT-15", "x": 469, "y": 173, "zone": "Smart Home Living", "last_temp": 35, "last_time": "2024/05/02-01:14:35", "last_hash": "17b3821a07350a01\u2026f39233c0b191", "verified": true}, {"id": 16, "label": "IOT-16", "x": 587, "y": 138, "zone": "ICU Telemetry", "last_temp": 24, "last_time": "2024/05/02-01:15:20", "last_hash": "96e84a8273968b69\u20268efa6f4d34dd", "verified": true}, {"id": 17, "label": "IOT-17", "x": 682, "y": 326, "zone": "Env Air Quality", "last_temp": 37, "last_time": "2024/05/02-01:16:05", "last_hash": "13b0bd63ecbecfbb\u202615adcf99422b", "verified": true}, {"id": 18, "label": "IOT-18", "x": 252, "y": 371, "zone": "Thermal Grid", "last_temp": 30, "last_time": "2024/05/02-01:16:50", "last_hash": "23b1ac648fd72869\u20267fc0e5af2254", "verified": true}, {"id": 19, "label": "IOT-19", "x": 473, "y": 397, "zone": "Edge Gateway", "last_temp": 26, "last_time": "2024/05/02-01:17:35", "last_hash": "d2ae5e283a2fb429\u2026b976360f7acd", "verified": true}]}, "records": [{"record_index": 25, "iot_id": "7", "label": "IOT-7", "temperature": 22, "timestamp": "2026/10/15-02:28:38", "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "sha512_short": "b675a294feb38f27\u20265772c894595f", "verified": true}, {"record_index": 24, "iot_id": "3", "label": "IOT-3", "temperature": 31, "timestamp": "2024/05/02-01:20:35", "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "sha512_short": "c51cdfbf5df8d7d7\u2026d4b7e0fbd8ac", "verified": true}, {"record_index": 23, "iot_id": "2", "label": "IOT-2", "temperature": 33, "timestamp": "2024/05/02-01:19:50", "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "sha512_short": "61096dffe488b7aa\u202605c96b8df55e", "verified": true}, {"record_index": 22, "iot_id": "1", "label": "IOT-1", "temperature": 39, "timestamp": "2024/05/02-01:19:05", "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "sha512_short": "8c1c0e22945dcb7d\u20264cdca985e6a6", "verified": true}, {"record_index": 21, "iot_id": "0", "label": "IOT-0", "temperature": 38, "timestamp": "2024/05/02-01:18:20", "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "sha512_short": "ca2b855e1c1f9cc2\u202634a089f37c9f", "verified": true}, {"record_index": 20, "iot_id": "19", "label": "IOT-19", "temperature": 26, "timestamp": "2024/05/02-01:17:35", "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "sha512_short": "d2ae5e283a2fb429\u2026b976360f7acd", "verified": true}, {"record_index": 19, "iot_id": "18", "label": "IOT-18", "temperature": 30, "timestamp": "2024/05/02-01:16:50", "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "sha512_short": "23b1ac648fd72869\u20267fc0e5af2254", "verified": true}, {"record_index": 18, "iot_id": "17", "label": "IOT-17", "temperature": 37, "timestamp": "2024/05/02-01:16:05", "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "sha512_short": "13b0bd63ecbecfbb\u202615adcf99422b", "verified": true}, {"record_index": 17, "iot_id": "16", "label": "IOT-16", "temperature": 24, "timestamp": "2024/05/02-01:15:20", "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "sha512_short": "96e84a8273968b69\u20268efa6f4d34dd", "verified": true}, {"record_index": 16, "iot_id": "15", "label": "IOT-15", "temperature": 35, "timestamp": "2024/05/02-01:14:35", "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "sha512_short": "17b3821a07350a01\u2026f39233c0b191", "verified": true}, {"record_index": 15, "iot_id": "14", "label": "IOT-14", "temperature": 23, "timestamp": "2024/05/02-01:13:50", "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "sha512_short": "1e833023c1f3d782\u2026e3524a60b309", "verified": true}, {"record_index": 14, "iot_id": "13", "label": "IOT-13", "temperature": 29, "timestamp": "2024/05/02-01:13:05", "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "sha512_short": "1c3b6a7b97b07197\u20268627ed95d4b4", "verified": true}, {"record_index": 13, "iot_id": "12", "label": "IOT-12", "temperature": 35, "timestamp": "2024/05/02-01:12:20", "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "sha512_short": "3c70aa936de03766\u2026df42668df6b3", "verified": true}, {"record_index": 12, "iot_id": "11", "label": "IOT-11", "temperature": 20, "timestamp": "2024/05/02-01:11:35", "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "sha512_short": "ef4166ddec66ec20\u2026e1cb1c438e43", "verified": true}, {"record_index": 11, "iot_id": "10", "label": "IOT-10", "temperature": 20, "timestamp": "2024/05/02-01:10:50", "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "sha512_short": "e7f715a0efe7b3cd\u202602494cf73826", "verified": true}, {"record_index": 10, "iot_id": "9", "label": "IOT-9", "temperature": 24, "timestamp": "2024/05/02-01:10:05", "sha512": "7b667d0137bcb94ce4be395c0e2a424882345af38ccbfff9f674aff384cdd3fcbc53c520e08444c2200aa8b86bf7edcdf0b17e15aa72d3aee8c4327c24c7cd9a", "sha512_short": "7b667d0137bcb94c\u2026327c24c7cd9a", "verified": true}, {"record_index": 9, "iot_id": "8", "label": "IOT-8", "temperature": 32, "timestamp": "2024/05/02-01:09:20", "sha512": "9b4cac2aba1fd8b9009f22eb140bb84f5500da7fca17b6eb32961353d1a5f2429087bca532c0aa401b807f344610ab3f1b37337d67748fcfddec8b98df39c069", "sha512_short": "9b4cac2aba1fd8b9\u20268b98df39c069", "verified": true}, {"record_index": 8, "iot_id": "7", "label": "IOT-7", "temperature": 26, "timestamp": "2024/05/02-01:08:35", "sha512": "c76bd75a5ba170592438b68caa9fe62f0038976c198b75e976f6fc4fbb7137c18ac76da06f3fb93dbfa7f442907b7b0174fa9a0015cde0639f2bef10bd75c33f", "sha512_short": "c76bd75a5ba17059\u2026ef10bd75c33f", "verified": true}, {"record_index": 7, "iot_id": "6", "label": "IOT-6", "temperature": 27, "timestamp": "2024/05/02-01:07:50", "sha512": "217096e35759f339f456a6fb62fdfe7e8d3690cafa9ca81da82427d9603eb061c7d104f48424d93de18b3825b9ba85e95b8d23cdfbe6e1533e0f1a58166fe460", "sha512_short": "217096e35759f339\u20261a58166fe460", "verified": true}, {"record_index": 6, "iot_id": "5", "label": "IOT-5", "temperature": 18, "timestamp": "2024/05/02-01:07:05", "sha512": "6230a2ee0f3fa731c253bf2429168b97d0234d672311e9077295d9f78699e0097adf8a0fa73b601df019c454df68f7601ee835636879cff8ef282c1f14f75cf1", "sha512_short": "6230a2ee0f3fa731\u20262c1f14f75cf1", "verified": true}, {"record_index": 5, "iot_id": "4", "label": "IOT-4", "temperature": 35, "timestamp": "2024/05/02-01:06:20", "sha512": "b3263ed4819f300b9e87692e188d5a7481a6619ea8cc3979a3d3221facc2e45336a74f86bcdb6cdae221a5af5426d770c996f5c9f07b5fca57065af84d68f090", "sha512_short": "b3263ed4819f300b\u20265af84d68f090", "verified": true}, {"record_index": 4, "iot_id": "3", "label": "IOT-3", "temperature": 18, "timestamp": "2024/05/02-01:05:35", "sha512": "b95819e32dd9851ce73b52e8b00edaaf07d2340e3f23ff5a4884ad5cc6af2a9d6efb1af047d0231cd0f026d29ba89b1265b83c563dbd5453d1ff475d55c5cc31", "sha512_short": "b95819e32dd9851c\u2026475d55c5cc31", "verified": true}, {"record_index": 3, "iot_id": "2", "label": "IOT-2", "temperature": 36, "timestamp": "2024/05/02-01:04:50", "sha512": "fa0dff63ba80542322a903e83e33f564c9712ccb1287d61f4d8c82c9d367d257955f1a0a7a882f3df869660a6a5648739927dc9c4eef727e2d1dabe3393546a4", "sha512_short": "fa0dff63ba805423\u2026abe3393546a4", "verified": true}, {"record_index": 2, "iot_id": "1", "label": "IOT-1", "temperature": 22, "timestamp": "2024/05/02-01:04:05", "sha512": "6495ae3a057240b0d267ac7042346d98b7c40eea9c71c73df5a6788b3199a8604b3a3c9602221d93a1f051f61a0335e080e0e416eeaa6407fc513f4a726112bc", "sha512_short": "6495ae3a057240b0\u20263f4a726112bc", "verified": true}, {"record_index": 1, "iot_id": "0", "label": "IOT-0", "temperature": 36, "timestamp": "2024/05/02-01:03:20", "sha512": "f234e75671c5e27ee5bca1ef3d775fea5c2e6b9c4af7186f797685063b253d4eb22e41a8f4d899f7f3dd4bc3ac95c0ed945a5aac99833eb6efac526fe0103281", "sha512_short": "f234e75671c5e27e\u2026526fe0103281", "verified": true}], "users": [{"username": "Amir", "password": "amir123", "phone": "9059173902", "email": "mohdamirali@gmail.com", "address": "Himayath Sagar, Hyderabad"}]};
+    const INITIAL_DATA = {"summary": {"contract_address": "0x745978a62d1e4293AF3EA7e03Ed5e81CC8397620", "network_id": "5777", "account": "0x25aE4b043bc61acC9A67AfE16eE595C12c9b46D6", "rpc_url": "http://127.0.0.1:9545", "total_blocks": 27, "total_readings": 25, "total_users": 1, "verified_count": 25, "integrity_pct": 100.0, "avg_tx_ms": 6.09, "avg_temp": 28.6, "transaction_times": [0.003598, 0.004136, 0.008537, 0.008652, 0.007814, 0.007581, 0.008454, 0.002538, 0.007007, 0.006065, 0.006067, 0.002844, 0.007764, 0.002413, 0.008632, 0.00819, 0.006043, 0.005489, 0.005328, 0.00792, 0.007147, 0.005037, 0.004507, 0.008747, 0.0018], "recent_blocks": [{"block_number": 26, "timestamp": "2026/10/15-02:28:38", "method": "setIOTData", "tx_hash": "0xbceb093969e0eb21ae851ca92c0f3d1d1cf978809349fe2026182f530b570bf7", "previous_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "block_hash": "0x7cbd020e0bfcfc33700d731fa6fc51ea82e20b835218c532e76e271372f66740", "gas_used": 47060, "tx_time_sec": 0.0018, "node_id": 7, "temperature": 22, "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "summary": "IOT-7 sensed 22\u00b0C (SHA-512 verified)"}, {"block_number": 25, "timestamp": "2024/05/02-01:20:35", "method": "setIOTData", "node_id": 3, "temperature": 31, "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "tx_hash": "0x715614b69a7726c908843314cb306ce10ca21b8a5ccbb3995b98e80c98a3d264", "previous_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "block_hash": "0xc2e443136eb7fe453632580728a66345352a65a6e28ce35c8ceeda417832b283", "gas_used": 50584, "tx_time_sec": 0.008747, "summary": "IOT-3 sensed 31\u00b0C (SHA-512 verified)"}, {"block_number": 24, "timestamp": "2024/05/02-01:19:50", "method": "setIOTData", "node_id": 2, "temperature": 33, "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "tx_hash": "0x1adb673eb2036f470ccdceaf62a2eab8bfd3c3f50737c3a77855a23c9025ce88", "previous_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "block_hash": "0x7019592f3f5f77e7bf6a49f6f2a9d1b8ac8b951c1a3664b87927e53f4936989e", "gas_used": 50584, "tx_time_sec": 0.004507, "summary": "IOT-2 sensed 33\u00b0C (SHA-512 verified)"}, {"block_number": 23, "timestamp": "2024/05/02-01:19:05", "method": "setIOTData", "node_id": 1, "temperature": 39, "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "tx_hash": "0x2e4069ceb422e2afbac580c25772a792a6e1ae3c35f68b82f59177aa9666b1dd", "previous_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "block_hash": "0x0d7d80e524194d207e095591e649b73efd365777a15938b0a7488d8aa2d482a3", "gas_used": 50584, "tx_time_sec": 0.005037, "summary": "IOT-1 sensed 39\u00b0C (SHA-512 verified)"}, {"block_number": 22, "timestamp": "2024/05/02-01:18:20", "method": "setIOTData", "node_id": 0, "temperature": 38, "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "tx_hash": "0x898de20fff8bb62e83a8d0a8383c59eb7a4c19ea419c9aceb03c1f2d4c92651b", "previous_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "block_hash": "0xeeeb2091f81bf75f8c4719da23e77151512329b35f35d82362e3bfeb6104b47f", "gas_used": 50584, "tx_time_sec": 0.007147, "summary": "IOT-0 sensed 38\u00b0C (SHA-512 verified)"}, {"block_number": 21, "timestamp": "2024/05/02-01:17:35", "method": "setIOTData", "node_id": 19, "temperature": 26, "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "tx_hash": "0x01f636102f24e7d2ff62bcf2e33b3704bd45b85f0e36ea86681aa1d5ae5c40d5", "previous_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "block_hash": "0xd2a78703392ee49c8bad90022147db259c838d97008d4b818e07ffdf9df5da2d", "gas_used": 50600, "tx_time_sec": 0.00792, "summary": "IOT-19 sensed 26\u00b0C (SHA-512 verified)"}, {"block_number": 20, "timestamp": "2024/05/02-01:16:50", "method": "setIOTData", "node_id": 18, "temperature": 30, "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "tx_hash": "0xec6c0353608a485a0953569979f30d1ca668739ccf07551468acf66e3ab14664", "previous_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "block_hash": "0x00317342fd7e9162c9a9909e07f1b57867120a62d5553c34c9658df38718f909", "gas_used": 50600, "tx_time_sec": 0.005328, "summary": "IOT-18 sensed 30\u00b0C (SHA-512 verified)"}, {"block_number": 19, "timestamp": "2024/05/02-01:16:05", "method": "setIOTData", "node_id": 17, "temperature": 37, "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "tx_hash": "0xa4a2a901e8762753ca47f11d3714d4c42eee2b415841c4dc24c0b453cd814277", "previous_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "block_hash": "0x8b0e9bcc624f4de78d4c9a76621b8e19fc21a36ebf0761c132a1890cb4a17cee", "gas_used": 50600, "tx_time_sec": 0.005489, "summary": "IOT-17 sensed 37\u00b0C (SHA-512 verified)"}, {"block_number": 18, "timestamp": "2024/05/02-01:15:20", "method": "setIOTData", "node_id": 16, "temperature": 24, "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "tx_hash": "0x17e8f28273490626fa3e639ee63f35d588bfa204c66900bebb25302c5f1df509", "previous_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "block_hash": "0xbdc3c99abe62f2ea574a5812d8025b286215e876fd0756622d7ffc13c4277c36", "gas_used": 50600, "tx_time_sec": 0.006043, "summary": "IOT-16 sensed 24\u00b0C (SHA-512 verified)"}, {"block_number": 17, "timestamp": "2024/05/02-01:14:35", "method": "setIOTData", "node_id": 15, "temperature": 35, "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "tx_hash": "0x7a93d24e4d997f2459398fddf046e21637eac9771748cd8d3c0bed352aca3b1e", "previous_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "block_hash": "0x913830ac7fb4722aef71792c5218916ae751fc9120be0a208f779f0a4193e3c0", "gas_used": 50600, "tx_time_sec": 0.00819, "summary": "IOT-15 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 16, "timestamp": "2024/05/02-01:13:50", "method": "setIOTData", "node_id": 14, "temperature": 23, "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "tx_hash": "0x80beb984dd8636ef24eeab5fee37dd8712dfed98c33add769b8626571ac10d6d", "previous_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "block_hash": "0xa2a43ef177f96c19830c13edb3bbe13c71dc18833cc997fdb4b0b5fca188535a", "gas_used": 50600, "tx_time_sec": 0.008632, "summary": "IOT-14 sensed 23\u00b0C (SHA-512 verified)"}, {"block_number": 15, "timestamp": "2024/05/02-01:13:05", "method": "setIOTData", "node_id": 13, "temperature": 29, "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "tx_hash": "0x827f30b0d60bb0aaf98cb6d4de5d9cf151bb0aa065264d6e594d19ef27bca6fa", "previous_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "block_hash": "0x456d975b42cf2a6ef564832d2d6a77c7c8da9d12f915ccaa3954d828ecb9acaf", "gas_used": 50600, "tx_time_sec": 0.002413, "summary": "IOT-13 sensed 29\u00b0C (SHA-512 verified)"}, {"block_number": 14, "timestamp": "2024/05/02-01:12:20", "method": "setIOTData", "node_id": 12, "temperature": 35, "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "tx_hash": "0x65cadc1395c42e17882e31430d0852420938843361d865c4ad8fa45db2a137d4", "previous_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "block_hash": "0x8bcf943d896b9c3f82490d99393a5e89022502cbbfc100d4ad6f8ba4366b82ec", "gas_used": 50600, "tx_time_sec": 0.007764, "summary": "IOT-12 sensed 35\u00b0C (SHA-512 verified)"}, {"block_number": 13, "timestamp": "2024/05/02-01:11:35", "method": "setIOTData", "node_id": 11, "temperature": 20, "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "tx_hash": "0x94576e6e6bd1bc7eafc1856abf96f841f48a7ca4c69cd0701c8f48776b4b9065", "previous_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "block_hash": "0x69b477a256e0f505512574319bac1bea61a04d05b464e93d8795ac25227588ff", "gas_used": 50600, "tx_time_sec": 0.002844, "summary": "IOT-11 sensed 20\u00b0C (SHA-512 verified)"}, {"block_number": 12, "timestamp": "2024/05/02-01:10:50", "method": "setIOTData", "node_id": 10, "temperature": 20, "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "tx_hash": "0x5d97ce59c3191e7fe94b21f5acd7882a0056405574dd3377c97a3beb4ee0ba2a", "previous_hash": "0x688adb35909b1fe96f97e1ff7edd7d23b829586732dac59c6b74fc83a8b4631b", "block_hash": "0xcd6ee71a8eafa7dc9e0ed2dc1f2a4214693c1716af447d507e1115e47c9850e2", "gas_used": 50600, "tx_time_sec": 0.006067, "summary": "IOT-10 sensed 20\u00b0C (SHA-512 verified)"}], "nodes": [{"id": 0, "label": "IOT-0", "x": 78, "y": 68, "zone": "Smart Home Living", "last_temp": 38, "last_time": "2024/05/02-01:18:20", "last_hash": "ca2b855e1c1f9cc2...34a089f37c9f", "verified": true}, {"id": 1, "label": "IOT-1", "x": 204, "y": 58, "zone": "ICU Clinical Telemetry", "last_temp": 39, "last_time": "2024/05/02-01:19:05", "last_hash": "8c1c0e22945dcb7d...4cdca985e6a6", "verified": true}, {"id": 2, "label": "IOT-2", "x": 332, "y": 54, "zone": "Environmental Air Grid", "last_temp": 33, "last_time": "2024/05/02-01:19:50", "last_hash": "61096dffe488b7aa...05c96b8df55e", "verified": true}, {"id": 3, "label": "IOT-3", "x": 472, "y": 62, "zone": "Industrial Thermal Core", "last_temp": 31, "last_time": "2024/05/02-01:20:35", "last_hash": "c51cdfbf5df8d7d7...d4b7e0fbd8ac", "verified": true}, {"id": 4, "label": "IOT-4", "x": 606, "y": 56, "zone": "Edge Gateway Cluster", "last_temp": 35, "last_time": "2024/05/02-01:06:20", "last_hash": "b3263ed4819f300b...5af84d68f090", "verified": true}, {"id": 5, "label": "IOT-5", "x": 696, "y": 108, "zone": "Smart Home Living", "last_temp": 18, "last_time": "2024/05/02-01:07:05", "last_hash": "6230a2ee0f3fa731...2c1f14f75cf1", "verified": true}, {"id": 6, "label": "IOT-6", "x": 128, "y": 146, "zone": "ICU Clinical Telemetry", "last_temp": 27, "last_time": "2024/05/02-01:07:50", "last_hash": "217096e35759f339...1a58166fe460", "verified": true}, {"id": 7, "label": "IOT-7", "x": 248, "y": 134, "zone": "Environmental Air Grid", "last_temp": 22, "last_time": "2026/10/15-02:28:38", "last_hash": "b675a294feb38f27...5772c894595f", "verified": true}, {"id": 8, "label": "IOT-8", "x": 524, "y": 138, "zone": "Industrial Thermal Core", "last_temp": 32, "last_time": "2024/05/02-01:09:20", "last_hash": "9b4cac2aba1fd8b9...8b98df39c069", "verified": true}, {"id": 9, "label": "IOT-9", "x": 638, "y": 188, "zone": "Edge Gateway Cluster", "last_temp": 24, "last_time": "2024/05/02-01:10:05", "last_hash": "7b667d0137bcb94c...327c24c7cd9a", "verified": true}, {"id": 10, "label": "IOT-10", "x": 68, "y": 228, "zone": "Smart Home Living", "last_temp": 20, "last_time": "2024/05/02-01:10:50", "last_hash": "e7f715a0efe7b3cd...02494cf73826", "verified": true}, {"id": 11, "label": "IOT-11", "x": 196, "y": 224, "zone": "ICU Clinical Telemetry", "last_temp": 20, "last_time": "2024/05/02-01:11:35", "last_hash": "ef4166ddec66ec20...e1cb1c438e43", "verified": true}, {"id": 12, "label": "IOT-12", "x": 558, "y": 242, "zone": "Environmental Air Grid", "last_temp": 35, "last_time": "2024/05/02-01:12:20", "last_hash": "3c70aa936de03766...df42668df6b3", "verified": true}, {"id": 13, "label": "IOT-13", "x": 702, "y": 278, "zone": "Industrial Thermal Core", "last_temp": 29, "last_time": "2024/05/02-01:13:05", "last_hash": "1c3b6a7b97b07197...8627ed95d4b4", "verified": true}, {"id": 14, "label": "IOT-14", "x": 112, "y": 326, "zone": "Edge Gateway Cluster", "last_temp": 23, "last_time": "2024/05/02-01:13:50", "last_hash": "1e833023c1f3d782...e3524a60b309", "verified": true}, {"id": 15, "label": "IOT-15", "x": 244, "y": 318, "zone": "Smart Home Living", "last_temp": 35, "last_time": "2024/05/02-01:14:35", "last_hash": "17b3821a07350a01...f39233c0b191", "verified": true}, {"id": 16, "label": "IOT-16", "x": 492, "y": 328, "zone": "ICU Clinical Telemetry", "last_temp": 24, "last_time": "2024/05/02-01:15:20", "last_hash": "96e84a8273968b69...8efa6f4d34dd", "verified": true}, {"id": 17, "label": "IOT-17", "x": 618, "y": 348, "zone": "Environmental Air Grid", "last_temp": 37, "last_time": "2024/05/02-01:16:05", "last_hash": "13b0bd63ecbecfbb...15adcf99422b", "verified": true}, {"id": 18, "label": "IOT-18", "x": 168, "y": 408, "zone": "Industrial Thermal Core", "last_temp": 30, "last_time": "2024/05/02-01:16:50", "last_hash": "23b1ac648fd72869...7fc0e5af2254", "verified": true}, {"id": 19, "label": "IOT-19", "x": 364, "y": 404, "zone": "Edge Gateway Cluster", "last_temp": 26, "last_time": "2024/05/02-01:17:35", "last_hash": "d2ae5e283a2fb429...b976360f7acd", "verified": true}]}, "records": [{"record_index": 25, "iot_id": "7", "label": "IOT-7", "temperature": 22, "timestamp": "2026/10/15-02:28:38", "sha512": "b675a294feb38f273a69bdd8f5e31c1b1dddb7c532bb8307b63c36390c341a2598b79f7aa52a0bd49c34a2a946ebdc0bf93f5eddf081bb00fd2c5772c894595f", "sha512_short": "b675a294feb38f27\u20265772c894595f", "verified": true}, {"record_index": 24, "iot_id": "3", "label": "IOT-3", "temperature": 31, "timestamp": "2024/05/02-01:20:35", "sha512": "c51cdfbf5df8d7d78f7f5d7193d7bc3edd08a63dd98c2d2ed2059aa1ed1e20f150519304013e894a3323c8b687c34e54cd8a450a64efaead21a8d4b7e0fbd8ac", "sha512_short": "c51cdfbf5df8d7d7\u2026d4b7e0fbd8ac", "verified": true}, {"record_index": 23, "iot_id": "2", "label": "IOT-2", "temperature": 33, "timestamp": "2024/05/02-01:19:50", "sha512": "61096dffe488b7aad9a421650655bc9f01bcbf241e342d28e1374cf8c600b4106fabae1a9c6e943f05236450dd863d64dacfa89dd415065cb80e05c96b8df55e", "sha512_short": "61096dffe488b7aa\u202605c96b8df55e", "verified": true}, {"record_index": 22, "iot_id": "1", "label": "IOT-1", "temperature": 39, "timestamp": "2024/05/02-01:19:05", "sha512": "8c1c0e22945dcb7d1ae813517de7eadd94edb3b6a7688c8fa967a48f17669ca539568f5d5062a5510cedf18794cf8fbd7597ca8bec4709b7df8b4cdca985e6a6", "sha512_short": "8c1c0e22945dcb7d\u20264cdca985e6a6", "verified": true}, {"record_index": 21, "iot_id": "0", "label": "IOT-0", "temperature": 38, "timestamp": "2024/05/02-01:18:20", "sha512": "ca2b855e1c1f9cc2beed40ebeab9e79bae6d33cacfb2753e8db20bb3f8a86015b88fda24b4837ffe339e5c726afeabec633d6b5c0dd84e9ad66034a089f37c9f", "sha512_short": "ca2b855e1c1f9cc2\u202634a089f37c9f", "verified": true}, {"record_index": 20, "iot_id": "19", "label": "IOT-19", "temperature": 26, "timestamp": "2024/05/02-01:17:35", "sha512": "d2ae5e283a2fb429b81b936e4723b9299b759bee2de6b85632fb62c920604de6f4134d0884ee3aa3f075807a0365ba0bd40957da622c9038439cb976360f7acd", "sha512_short": "d2ae5e283a2fb429\u2026b976360f7acd", "verified": true}, {"record_index": 19, "iot_id": "18", "label": "IOT-18", "temperature": 30, "timestamp": "2024/05/02-01:16:50", "sha512": "23b1ac648fd72869afeeb17c8417b20d98c3a623d9a658053d47e82aa51d4eeae788bac51aa58f4aa3572ea34441288bd385d44b5a755d630f247fc0e5af2254", "sha512_short": "23b1ac648fd72869\u20267fc0e5af2254", "verified": true}, {"record_index": 18, "iot_id": "17", "label": "IOT-17", "temperature": 37, "timestamp": "2024/05/02-01:16:05", "sha512": "13b0bd63ecbecfbb7af330a87eaf8795e4c89330f5b9069ae6fde06f2d3862c68606cc8c098d1f0520796d46ce3e2c0dd5f4b7c29b497fbd6f6b15adcf99422b", "sha512_short": "13b0bd63ecbecfbb\u202615adcf99422b", "verified": true}, {"record_index": 17, "iot_id": "16", "label": "IOT-16", "temperature": 24, "timestamp": "2024/05/02-01:15:20", "sha512": "96e84a8273968b697875576295230708a9b60d7f507284e6c63a285f10720e03b5ab030d53ff81053ec225f345632da7a029ebc1724406f472928efa6f4d34dd", "sha512_short": "96e84a8273968b69\u20268efa6f4d34dd", "verified": true}, {"record_index": 16, "iot_id": "15", "label": "IOT-15", "temperature": 35, "timestamp": "2024/05/02-01:14:35", "sha512": "17b3821a07350a012268983b6bf4b3272b7e6eec9c0ddd8b6bceff84f99299dc0b8ee4dbae5ac24d702680cf6fe2cc964aaa622c6d29973b2de5f39233c0b191", "sha512_short": "17b3821a07350a01\u2026f39233c0b191", "verified": true}, {"record_index": 15, "iot_id": "14", "label": "IOT-14", "temperature": 23, "timestamp": "2024/05/02-01:13:50", "sha512": "1e833023c1f3d782bc3bfbf89ce0e0169d83b0d58a604a5426ae4ced9ecbda528b9234f724f4e1adb6f63da598730a8e55e06f0c2110bf86ef4ce3524a60b309", "sha512_short": "1e833023c1f3d782\u2026e3524a60b309", "verified": true}, {"record_index": 14, "iot_id": "13", "label": "IOT-13", "temperature": 29, "timestamp": "2024/05/02-01:13:05", "sha512": "1c3b6a7b97b07197f8db08b5076fb0c0aae7853de3b6bd79c2c3cd316459e529abb93298ad4a1400365ee6248ed62d49866f329a7d5076d2553e8627ed95d4b4", "sha512_short": "1c3b6a7b97b07197\u20268627ed95d4b4", "verified": true}, {"record_index": 13, "iot_id": "12", "label": "IOT-12", "temperature": 35, "timestamp": "2024/05/02-01:12:20", "sha512": "3c70aa936de0376641188f51832eb7b2edeabdce937e9cd4fbe7ae152822cba7493916c3b080fe7425bfdd8e69d17a1cdb68331a6948036ac604df42668df6b3", "sha512_short": "3c70aa936de03766\u2026df42668df6b3", "verified": true}, {"record_index": 12, "iot_id": "11", "label": "IOT-11", "temperature": 20, "timestamp": "2024/05/02-01:11:35", "sha512": "ef4166ddec66ec20e9189bfe340b89aae7e7c70dbefd8429914254f20e1b1d23c7f37d9361dd13b893f7d4d0b14c056385bb36953d61214a6cc6e1cb1c438e43", "sha512_short": "ef4166ddec66ec20\u2026e1cb1c438e43", "verified": true}, {"record_index": 11, "iot_id": "10", "label": "IOT-10", "temperature": 20, "timestamp": "2024/05/02-01:10:50", "sha512": "e7f715a0efe7b3cdaefa20f38ef22e1ce61ba3c2d95cc4c0fd124e0d698c7125efb951047c05d3a8ee3d52b1488f1e12e67d85e55f4b99aab94402494cf73826", "sha512_short": "e7f715a0efe7b3cd\u202602494cf73826", "verified": true}, {"record_index": 10, "iot_id": "9", "label": "IOT-9", "temperature": 24, "timestamp": "2024/05/02-01:10:05", "sha512": "7b667d0137bcb94ce4be395c0e2a424882345af38ccbfff9f674aff384cdd3fcbc53c520e08444c2200aa8b86bf7edcdf0b17e15aa72d3aee8c4327c24c7cd9a", "sha512_short": "7b667d0137bcb94c\u2026327c24c7cd9a", "verified": true}, {"record_index": 9, "iot_id": "8", "label": "IOT-8", "temperature": 32, "timestamp": "2024/05/02-01:09:20", "sha512": "9b4cac2aba1fd8b9009f22eb140bb84f5500da7fca17b6eb32961353d1a5f2429087bca532c0aa401b807f344610ab3f1b37337d67748fcfddec8b98df39c069", "sha512_short": "9b4cac2aba1fd8b9\u20268b98df39c069", "verified": true}, {"record_index": 8, "iot_id": "7", "label": "IOT-7", "temperature": 26, "timestamp": "2024/05/02-01:08:35", "sha512": "c76bd75a5ba170592438b68caa9fe62f0038976c198b75e976f6fc4fbb7137c18ac76da06f3fb93dbfa7f442907b7b0174fa9a0015cde0639f2bef10bd75c33f", "sha512_short": "c76bd75a5ba17059\u2026ef10bd75c33f", "verified": true}, {"record_index": 7, "iot_id": "6", "label": "IOT-6", "temperature": 27, "timestamp": "2024/05/02-01:07:50", "sha512": "217096e35759f339f456a6fb62fdfe7e8d3690cafa9ca81da82427d9603eb061c7d104f48424d93de18b3825b9ba85e95b8d23cdfbe6e1533e0f1a58166fe460", "sha512_short": "217096e35759f339\u20261a58166fe460", "verified": true}, {"record_index": 6, "iot_id": "5", "label": "IOT-5", "temperature": 18, "timestamp": "2024/05/02-01:07:05", "sha512": "6230a2ee0f3fa731c253bf2429168b97d0234d672311e9077295d9f78699e0097adf8a0fa73b601df019c454df68f7601ee835636879cff8ef282c1f14f75cf1", "sha512_short": "6230a2ee0f3fa731\u20262c1f14f75cf1", "verified": true}, {"record_index": 5, "iot_id": "4", "label": "IOT-4", "temperature": 35, "timestamp": "2024/05/02-01:06:20", "sha512": "b3263ed4819f300b9e87692e188d5a7481a6619ea8cc3979a3d3221facc2e45336a74f86bcdb6cdae221a5af5426d770c996f5c9f07b5fca57065af84d68f090", "sha512_short": "b3263ed4819f300b\u20265af84d68f090", "verified": true}, {"record_index": 4, "iot_id": "3", "label": "IOT-3", "temperature": 18, "timestamp": "2024/05/02-01:05:35", "sha512": "b95819e32dd9851ce73b52e8b00edaaf07d2340e3f23ff5a4884ad5cc6af2a9d6efb1af047d0231cd0f026d29ba89b1265b83c563dbd5453d1ff475d55c5cc31", "sha512_short": "b95819e32dd9851c\u2026475d55c5cc31", "verified": true}, {"record_index": 3, "iot_id": "2", "label": "IOT-2", "temperature": 36, "timestamp": "2024/05/02-01:04:50", "sha512": "fa0dff63ba80542322a903e83e33f564c9712ccb1287d61f4d8c82c9d367d257955f1a0a7a882f3df869660a6a5648739927dc9c4eef727e2d1dabe3393546a4", "sha512_short": "fa0dff63ba805423\u2026abe3393546a4", "verified": true}, {"record_index": 2, "iot_id": "1", "label": "IOT-1", "temperature": 22, "timestamp": "2024/05/02-01:04:05", "sha512": "6495ae3a057240b0d267ac7042346d98b7c40eea9c71c73df5a6788b3199a8604b3a3c9602221d93a1f051f61a0335e080e0e416eeaa6407fc513f4a726112bc", "sha512_short": "6495ae3a057240b0\u20263f4a726112bc", "verified": true}, {"record_index": 1, "iot_id": "0", "label": "IOT-0", "temperature": 36, "timestamp": "2024/05/02-01:03:20", "sha512": "f234e75671c5e27ee5bca1ef3d775fea5c2e6b9c4af7186f797685063b253d4eb22e41a8f4d899f7f3dd4bc3ac95c0ed945a5aac99833eb6efac526fe0103281", "sha512_short": "f234e75671c5e27e\u2026526fe0103281", "verified": true}], "users": [{"username": "Amir", "password": "amir123", "phone": "9059173902", "email": "mohdamirali@gmail.com", "address": "Himayath Sagar, Hyderabad"}]};
     let appSummary = INITIAL_DATA.summary;
     let allRecords = INITIAL_DATA.records;
     let allUsers = INITIAL_DATA.users;
@@ -1372,14 +1872,40 @@ a {
     let currentTab = "overview";
     let currentFilter = "ALL";
     let simInterval = null;
-    let activeNodeId = null;
+    let activeNodeId = 3; // Highlight IOT-3 initially so running connection line & blinking temp are immediately visible
+    let lastTxTimestamp = performance.now();
     let tamperedNodeId = null;
     let currentRoundNode = 0;
+    let opEnrollTimer = null;
+    let sandboxTampered = false;
+
+    // Inline Vector SVG Icon Factory (Replaces all emojis)
+    function svgIcon(name, size = 13) {
+      const attrs = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" class="inline-svg-icon"`;
+      switch (name) {
+        case "lock":
+          return `<svg ${attrs}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
+        case "unlock":
+          return `<svg ${attrs}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>`;
+        case "shield":
+          return `<svg ${attrs}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>`;
+        case "ledger":
+          return `<svg ${attrs}><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>`;
+        case "radio":
+          return `<svg ${attrs}><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49"></path></svg>`;
+        default:
+          return `<svg ${attrs}><circle cx="12" cy="12" r="9"></circle></svg>`;
+      }
+    }
 
     function renderNavigation() {
       const nav = document.getElementById("dynamic-navbar");
       const topBar = document.getElementById("admin-top-bar");
       const heroActions = document.getElementById("hero-dynamic-actions");
+
+      const lockBadge = isAdminLoggedIn
+        ? `<span class="nav-lock-tag unlocked">${svgIcon('unlock', 10)} READY</span>`
+        : `<span class="nav-lock-tag">${svgIcon('lock', 10)} ADMIN</span>`;
 
       if (isAdminLoggedIn) {
         topBar.style.display = "block";
@@ -1389,29 +1915,29 @@ a {
 
         nav.innerHTML = `
           <a onclick="switchTab('overview')" class="nav-link ${currentTab === 'overview' ? 'active' : ''}">System Overview</a>
-          <a onclick="switchTab('simulator')" class="nav-link ${currentTab === 'simulator' ? 'active' : ''}">🛡️ Admin Console &amp; Simulator</a>
-          <a onclick="switchTab('ledger')" class="nav-link ${currentTab === 'ledger' ? 'active' : ''}">🗄️ Sensor Ledger</a>
-          <a onclick="switchTab('signup')" class="nav-link ${currentTab === 'signup' ? 'active' : ''}">Provision Operator</a>
-          <a onclick="handleLogout()" class="nav-cta admin-active">● Admin: ${currentOperator} (Logout) <span>↗</span></a>
+          <a onclick="switchTab('simulator')" class="nav-link ${currentTab === 'simulator' ? 'active' : ''}">WSN Simulator ${lockBadge}</a>
+          <a onclick="switchTab('ledger')" class="nav-link ${currentTab === 'ledger' ? 'active' : ''}">Sensor Ledger ${lockBadge}</a>
+          <a onclick="switchTab('signup')" class="nav-link ${currentTab === 'signup' ? 'active' : ''}">Register Operator</a>
+          <a onclick="handleLogout()" class="nav-cta admin-active">${svgIcon('unlock', 13)} <span>ADMIN: ${currentOperator.toUpperCase()}</span> <span>↗</span></a>
         `;
         if (heroActions) {
           heroActions.innerHTML = `
-            <a onclick="switchTab('simulator')" class="btn-primary-editorial"><span>🛡️ Open Admin Command Console</span><span>↗</span></a>
-            <a onclick="switchTab('ledger')" class="btn-secondary-editorial"><span>Inspect Sensor Ledger</span><span>↗</span></a>
+            <a onclick="switchTab('simulator')" class="btn-primary-editorial">${svgIcon('shield', 15)} <span>Open WSN Command Simulator</span><span>↗</span></a>
+            <a onclick="switchTab('ledger')" class="btn-secondary-editorial">${svgIcon('ledger', 15)} <span>Inspect On-Chain Sensor Ledger</span><span>↗</span></a>
           `;
         }
       } else {
         topBar.style.display = "none";
         nav.innerHTML = `
           <a onclick="switchTab('overview')" class="nav-link ${currentTab === 'overview' ? 'active' : ''}">System Overview</a>
-          <a onclick="requireLogin('simulator')" class="nav-link">WSN Simulator <span class="nav-lock-tag">🔒 ADMIN</span></a>
-          <a onclick="requireLogin('ledger')" class="nav-link">Sensor Ledger <span class="nav-lock-tag">🔒 ADMIN</span></a>
+          <a onclick="requireLogin('simulator')" class="nav-link ${currentTab === 'simulator' ? 'active' : ''}">WSN Simulator ${lockBadge}</a>
+          <a onclick="requireLogin('ledger')" class="nav-link ${currentTab === 'ledger' ? 'active' : ''}">Sensor Ledger ${lockBadge}</a>
           <a onclick="switchTab('signup')" class="nav-link ${currentTab === 'signup' ? 'active' : ''}">Register Operator</a>
-          <a onclick="switchTab('login')" class="nav-cta">🔒 Admin Login <span>↗</span></a>
+          <a onclick="switchTab('login')" class="nav-cta ${currentTab === 'login' ? 'login-tab-active' : ''}">${svgIcon('lock', 13)} <span>ADMIN LOGIN</span> <span>↗</span></a>
         `;
         if (heroActions) {
           heroActions.innerHTML = `
-            <a onclick="switchTab('login')" class="btn-primary-editorial"><span>🔒 Login as Admin to Launch Simulator</span><span>↗</span></a>
+            <a onclick="switchTab('login')" class="btn-primary-editorial">${svgIcon('lock', 15)} <span>Login as Admin to Launch Simulator</span><span>↗</span></a>
             <a onclick="switchTab('signup')" class="btn-secondary-editorial"><span>Register New Operator</span><span>↗</span></a>
           `;
         }
@@ -1419,9 +1945,16 @@ a {
     }
 
     function requireLogin(intendedTab) {
+      window.pendingTargetTab = intendedTab || "simulator";
       document.getElementById("login-alert").innerHTML =
-        `<div class="alert-banner">🔒 <strong>Administrator Authentication Required:</strong> Please log in below to unlock the Admin Security Console, Live WSN Simulator, and Sensor Ledger.</div>`;
+        `<div class="alert-banner">${svgIcon('lock', 14)} <strong>Administrator Authentication Required:</strong> Log in below (Demo: <code>Amir</code> / <code>amir123</code>) or click <strong>1-Click Demo Admin Unlock</strong> to access the Live WSN Simulator and Sensor Ledger.</div>`;
       switchTab("login");
+    }
+
+    function quickDemoUnlock() {
+      document.getElementById("login-user").value = "Amir";
+      document.getElementById("login-pass").value = "amir123";
+      handleLogin();
     }
 
     function switchTab(tabId) {
@@ -1436,9 +1969,9 @@ a {
       renderNavigation();
 
       if (tabId === "simulator") {
-        drawTopology();
         drawTransactionGraph();
         renderOperatorsTable();
+        renderLogStream();
       } else if (tabId === "ledger") {
         renderLedgerTable();
       }
@@ -1453,7 +1986,9 @@ a {
         isAdminLoggedIn = true;
         currentOperator = found ? found.username : "Amir";
         document.getElementById("login-alert").innerHTML = "";
-        switchTab("simulator");
+        const nextTab = window.pendingTargetTab || "simulator";
+        window.pendingTargetTab = null;
+        switchTab(nextTab);
       } else {
         document.getElementById("login-alert").innerHTML =
           `<div class="alert-banner danger">Invalid credentials. Try default Admin account: <strong>Amir</strong> / <strong>amir123</strong></div>`;
@@ -1466,12 +2001,24 @@ a {
       switchTab("overview");
     }
 
+    function updateOperatorKeypairGate() {
+      const u = (document.getElementById("su-user").value || "amir").trim();
+      const a = (document.getElementById("su-addr").value || "Hyderabad").trim();
+      let hex = "0x";
+      for (let i = 0; i < 40; i++) {
+        const v = (u.charCodeAt(i % u.length) * (i + 11) + a.charCodeAt(i % a.length) * 7) % 16;
+        hex += v.toString(16).toUpperCase();
+      }
+      const el = document.getElementById("kp-wallet-preview");
+      if (el) el.innerText = hex;
+    }
+
     function handleSignup() {
       const u = document.getElementById("su-user").value.trim();
       const p = document.getElementById("su-pass").value;
       const ph = document.getElementById("su-phone").value.trim() || "9059173902";
       const em = document.getElementById("su-email").value.trim() || (u + "@wsnchain.io");
-      const ad = document.getElementById("su-addr").value.trim() || "CSE Lab, Hyderabad";
+      const ad = document.getElementById("su-addr").value.trim() || "CSE Lab, Osmania University";
       if (!u || !p) {
         document.getElementById("signup-alert").innerHTML =
           `<div class="alert-banner danger">Please enter both an operator username and password.</div>`;
@@ -1479,10 +2026,41 @@ a {
       }
       allUsers.push({ username: u, password: p, phone: ph, email: em, address: ad });
       appSummary.total_blocks += 1;
+      isAdminLoggedIn = true;
+      currentOperator = u;
       updateCounters();
       renderOperatorsTable();
-      document.getElementById("signup-alert").innerHTML =
-        `<div class="alert-banner">● Operator <strong>"${u}"</strong> committed to WSNSecurity.sol (Block #${appSummary.total_blocks - 1}). You can now log in with this account!</div>`;
+      renderNavigation();
+
+      const walletHex = document.getElementById("kp-wallet-preview").innerText;
+      document.getElementById("opm-name").innerText = `Operator: ${u} (Block #${appSummary.total_blocks - 1})`;
+      document.getElementById("opm-meta").innerText = `${ad} · ${em} · ${ph}`;
+      document.getElementById("opm-hash").innerText = walletHex;
+
+      const modal = document.getElementById("op-enroll-modal");
+      modal.classList.add("open");
+      const bar = document.getElementById("opm-bar");
+      const cd = document.getElementById("opm-countdown");
+      let rem = 5000;
+      bar.style.width = "100%";
+      if (opEnrollTimer) clearInterval(opEnrollTimer);
+      opEnrollTimer = setInterval(() => {
+        rem -= 100;
+        bar.style.width = Math.max(0, (rem / 5000) * 100) + "%";
+        cd.innerText = `Auto-closing & launching simulator in ${(Math.max(0, rem) / 1000).toFixed(1)}s...`;
+        if (rem <= 0) {
+          closeOpEnrollModal();
+        }
+      }, 100);
+    }
+
+    function closeOpEnrollModal() {
+      if (opEnrollTimer) {
+        clearInterval(opEnrollTimer);
+        opEnrollTimer = null;
+      }
+      document.getElementById("op-enroll-modal").classList.remove("open");
+      switchTab("simulator");
     }
 
     function renderOperatorsTable() {
@@ -1518,84 +2096,286 @@ a {
       return h;
     }
 
+    // =========================================================================
+    // LIVE SHA-512 CRYPTOGRAPHIC AVALANCHE & CLOUD TAMPER SANDBOX (TAB 1)
+    // =========================================================================
+    async function updateShaSandbox() {
+      const nodeEl = document.getElementById("sb-node-select");
+      const tempEl = document.getElementById("sb-temp-slider");
+      if (!nodeEl || !tempEl) return;
+      const nid = nodeEl.value;
+      const baseTemp = parseInt(tempEl.value, 10);
+      document.getElementById("sb-temp-label").innerText = baseTemp + "°C";
+
+      const cleanStr = `${nid} ${baseTemp}`;
+      const cleanHash = await sha512Hex(cleanStr);
+
+      if (!sandboxTampered) {
+        document.getElementById("sb-packet-str").innerHTML =
+          `Payload: <span style="color:#34D399;">"${cleanStr}"</span> → WSNSecurity.setIOTData("${nid}#${baseTemp}#SHA512")`;
+        document.getElementById("sb-avalanche-pct").innerText = "Avalanche Bit Flip: 0.0% (Authentic)";
+        document.getElementById("sb-avalanche-pct").style.color = "#34D399";
+        document.getElementById("sb-contract-verdict").innerText = "WSNSecurity.sol: ACCEPTED";
+        document.getElementById("sb-contract-verdict").style.color = "#34D399";
+        const pill = document.getElementById("sandbox-status-pill");
+        pill.className = "status-pill verified";
+        pill.style.background = "rgba(16,185,129,0.2)";
+        pill.style.color = "#34D399";
+        pill.innerText = "● ON-CHAIN DIGEST MATCH (100% VALID)";
+        document.getElementById("sb-hash-output").innerHTML = `<span style="color:#34D399;">${cleanHash}</span>`;
+      } else {
+        const forgedTemp = baseTemp + 71; // Simulated cloud injection
+        const forgedStr = `${nid} ${forgedTemp}`;
+        const forgedHash = await sha512Hex(forgedStr);
+        let diffChars = 0;
+        let highlightedHtml = "";
+        for (let i = 0; i < forgedHash.length; i++) {
+          if (forgedHash[i] !== cleanHash[i]) {
+            diffChars++;
+            highlightedHtml += `<span style="color:#FB7185; font-weight:700; text-decoration:underline;">${forgedHash[i]}</span>`;
+          } else {
+            highlightedHtml += `<span style="color:#64748B;">${forgedHash[i]}</span>`;
+          }
+        }
+        const flipPct = ((diffChars / 128) * 100).toFixed(1);
+        document.getElementById("sb-packet-str").innerHTML =
+          `Tampered Cloud Payload: <span style="color:#FB7185;">"${forgedStr}" (Altered from ${baseTemp}°C)</span>`;
+        document.getElementById("sb-avalanche-pct").innerText = `Avalanche Bit Flip: ${flipPct}% (${diffChars}/128 hex chars mutated)`;
+        document.getElementById("sb-avalanche-pct").style.color = "#FB7185";
+        document.getElementById("sb-contract-verdict").innerText = "WSNSecurity.sol: REJECTED (HASH MISMATCH)";
+        document.getElementById("sb-contract-verdict").style.color = "#FB7185";
+        const pill = document.getElementById("sandbox-status-pill");
+        pill.className = "status-pill tampered";
+        pill.style.background = "rgba(225,29,72,0.22)";
+        pill.style.color = "#FB7185";
+        pill.innerText = "CLOUD TAMPER DETECTED & BLOCKED";
+        document.getElementById("sb-hash-output").innerHTML = highlightedHtml;
+      }
+    }
+
+    function toggleSandboxTamper() {
+      sandboxTampered = !sandboxTampered;
+      const btn = document.getElementById("sandbox-tamper-btn");
+      if (sandboxTampered) {
+        btn.innerHTML = `<span>Restore Authentic Sensor Payload</span>`;
+      } else {
+        btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Simulate 1-Bit Cloud Tamper</span>`;
+      }
+      updateShaSandbox();
+    }
+
+    // =========================================================================
+    // TAB 2: CONTINUOUS 60FPS WSN FIELD TOPOLOGY SIMULATOR
+    //        (Organic Scattered Field + High-Opacity Flowing Green Lines + Blinking Temp!)
+    // =========================================================================
     const wsnCanvas = document.getElementById("wsn-canvas");
     const wsnCtx = wsnCanvas.getContext("2d");
     const chartCanvas = document.getElementById("tx-chart");
     const chartCtx = chartCanvas.getContext("2d");
+    let simAnimTick = 0;
 
-    function drawTopology() {
+    function renderWSNSimulatorFrame(now) {
+      simAnimTick += 0.035;
       const nodesData = appSummary.nodes || [];
       const w = wsnCanvas.width;
       const h = wsnCanvas.height;
       wsnCtx.clearRect(0, 0, w, h);
 
-      const hubX = w / 2;
-      const hubY = h / 2;
+      const hubX = 380;
+      const hubY = 230;
 
-      nodesData.forEach(n => {
+      // Subtle architectural blueprint grid inside dark simulator canvas
+      wsnCtx.strokeStyle = "rgba(16, 185, 129, 0.06)";
+      wsnCtx.lineWidth = 1;
+      for (let gx = 40; gx < w; gx += 40) {
+        wsnCtx.beginPath(); wsnCtx.moveTo(gx, 0); wsnCtx.lineTo(gx, h); wsnCtx.stroke();
+      }
+      for (let gy = 40; gy < h; gy += 40) {
+        wsnCtx.beginPath(); wsnCtx.moveTo(0, gy); wsnCtx.lineTo(w, gy); wsnCtx.stroke();
+      }
+
+      const blinkOn = Math.sin(simAnimTick * 5.2) > -0.15;
+      const pulseAlpha = 0.55 + (Math.sin(simAnimTick * 5.2) + 1) * 0.22;
+
+      // 1. Draw peer-to-peer neighbor mesh links with visible flowing green/cyan dashes
+      for (let i = 0; i < nodesData.length; i++) {
+        for (let j = i + 1; j < nodesData.length; j++) {
+          const d = Math.hypot(nodesData[i].x - nodesData[j].x, nodesData[i].y - nodesData[j].y);
+          if (d < 155) {
+            wsnCtx.save();
+            wsnCtx.beginPath();
+            wsnCtx.moveTo(nodesData[i].x, nodesData[i].y);
+            wsnCtx.lineTo(nodesData[j].x, nodesData[j].y);
+            wsnCtx.strokeStyle = "rgba(16, 185, 129, 0.34)";
+            wsnCtx.lineWidth = 1.2;
+            wsnCtx.setLineDash([6, 6]);
+            wsnCtx.lineDashOffset = -(simAnimTick * 16 + i * 3);
+            wsnCtx.stroke();
+            wsnCtx.restore();
+          }
+        }
+      }
+
+      // 2. Draw all node-to-MDN Gateway links with vivid flowing green dash transitions
+      nodesData.forEach((n, idx) => {
         const isActive = (n.id === activeNodeId);
         const isTampered = (n.id === tamperedNodeId);
+
+        wsnCtx.save();
         wsnCtx.beginPath();
         wsnCtx.moveTo(n.x, n.y);
         wsnCtx.lineTo(hubX, hubY);
+
         if (isTampered) {
-          wsnCtx.strokeStyle = "rgba(200, 30, 50, 0.85)";
-          wsnCtx.lineWidth = 2.5;
-          wsnCtx.setLineDash([3, 3]);
+          wsnCtx.strokeStyle = "#F43F5E";
+          wsnCtx.lineWidth = 3.4;
+          wsnCtx.setLineDash([10, 6]);
+          wsnCtx.lineDashOffset = -simAnimTick * 45;
+          wsnCtx.shadowColor = "#F43F5E";
+          wsnCtx.shadowBlur = 14;
+          wsnCtx.stroke();
         } else if (isActive) {
-          wsnCtx.strokeStyle = "rgba(13, 116, 99, 0.75)";
-          wsnCtx.lineWidth = 2.2;
-          wsnCtx.setLineDash([]);
+          wsnCtx.strokeStyle = "#10B981";
+          wsnCtx.lineWidth = 3.4;
+          wsnCtx.setLineDash([10, 6]);
+          wsnCtx.lineDashOffset = -simAnimTick * 50;
+          wsnCtx.shadowColor = "#10B981";
+          wsnCtx.shadowBlur = 16;
+          wsnCtx.stroke();
+
+          for (let p = 0; p < 2; p++) {
+            const frac = ((simAnimTick * 0.78 + p * 0.5) % 1);
+            const px = n.x + (hubX - n.x) * frac;
+            const py = n.y + (hubY - n.y) * frac;
+            wsnCtx.beginPath();
+            wsnCtx.arc(px, py, 4.8, 0, Math.PI * 2);
+            wsnCtx.fillStyle = "#FBBF24";
+            wsnCtx.shadowColor = "#FBBF24";
+            wsnCtx.shadowBlur = 12;
+            wsnCtx.fill();
+          }
         } else {
-          wsnCtx.strokeStyle = "rgba(15, 28, 36, 0.12)";
-          wsnCtx.lineWidth = 1;
-          wsnCtx.setLineDash([4, 4]);
+          // Higher-visibility green flowing connection lines for all idle nodes
+          wsnCtx.strokeStyle = "rgba(16, 185, 129, 0.42)";
+          wsnCtx.lineWidth = 1.35;
+          wsnCtx.setLineDash([6, 6]);
+          wsnCtx.lineDashOffset = -(simAnimTick * 18 + idx * 4);
+          wsnCtx.stroke();
         }
-        wsnCtx.stroke();
+        wsnCtx.restore();
       });
-      wsnCtx.setLineDash([]);
+
+      // 3. Draw Central MDN Gateway Hub (Spaciously separated from all 20 scattered IoT nodes)
+      wsnCtx.save();
+      wsnCtx.beginPath();
+      wsnCtx.arc(hubX, hubY, 40, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "rgba(16, 185, 129, 0.14)";
+      wsnCtx.fill();
 
       wsnCtx.beginPath();
-      wsnCtx.arc(hubX, hubY, 27, 0, Math.PI * 2);
-      wsnCtx.fillStyle = "#0F1C24";
+      wsnCtx.arc(hubX, hubY, 31, 0, Math.PI * 2);
+      wsnCtx.fillStyle = "#0B1324";
       wsnCtx.fill();
-      wsnCtx.lineWidth = 2.5;
-      wsnCtx.strokeStyle = "#0D7463";
+      wsnCtx.lineWidth = 2.8;
+      wsnCtx.strokeStyle = (tamperedNodeId !== null) ? "#F43F5E" : "#10B981";
       wsnCtx.stroke();
 
-      wsnCtx.fillStyle = "#5EEAD4";
-      wsnCtx.font = "700 9px JetBrains Mono, monospace";
+      wsnCtx.fillStyle = "#34D399";
+      wsnCtx.font = "700 10px JetBrains Mono, monospace";
       wsnCtx.textAlign = "center";
-      wsnCtx.fillText("MDN", hubX, hubY - 2);
-      wsnCtx.fillStyle = "#F7FBFA";
-      wsnCtx.font = "500 7.5px JetBrains Mono, monospace";
+      wsnCtx.fillText("MDN", hubX, hubY - 3);
+      wsnCtx.fillStyle = "#F8FAFC";
+      wsnCtx.font = "600 8px JetBrains Mono, monospace";
       wsnCtx.fillText("GATEWAY", hubX, hubY + 9);
 
+      if (activeNodeId !== null) {
+        const activeNodeObj = nodesData.find(x => x.id === activeNodeId);
+        const rxTemp = activeNodeObj && activeNodeObj.last_temp ? activeNodeObj.last_temp : 29;
+        const badgeW = 152, badgeH = 20;
+        wsnCtx.fillStyle = blinkOn ? "rgba(16, 185, 129, 0.96)" : "rgba(11, 19, 36, 0.94)";
+        wsnCtx.beginPath();
+        wsnCtx.roundRect(hubX - badgeW / 2, hubY - 56, badgeW, badgeH, 4);
+        wsnCtx.fill();
+        wsnCtx.strokeStyle = "#34D399";
+        wsnCtx.lineWidth = 1.3;
+        wsnCtx.stroke();
+
+        wsnCtx.fillStyle = blinkOn ? "#06101E" : "#34D399";
+        wsnCtx.font = "700 9px JetBrains Mono, monospace";
+        wsnCtx.fillText(`RX IOT-${activeNodeId}: ${rxTemp}°C SEALED`, hubX, hubY - 43);
+      }
+      wsnCtx.restore();
+
+      // 4. Draw all 20 Scattered IoT Sensor Nodes + Blinking Temperature Callout
       nodesData.forEach(n => {
         const isActive = (n.id === activeNodeId);
         const isTampered = (n.id === tamperedNodeId);
-        const radius = (isActive || isTampered) ? 19 : 15;
+        const radius = (isActive || isTampered) ? 17 : 13.5;
+
+        wsnCtx.save();
         if (isActive || isTampered) {
           wsnCtx.beginPath();
-          wsnCtx.arc(n.x, n.y, radius + 7, 0, Math.PI * 2);
-          wsnCtx.fillStyle = isTampered ? "rgba(200, 30, 50, 0.22)" : "rgba(13, 116, 99, 0.18)";
+          wsnCtx.arc(n.x, n.y, radius + 8 + Math.sin(simAnimTick * 6) * 3, 0, Math.PI * 2);
+          wsnCtx.fillStyle = isTampered
+            ? `rgba(244, 63, 94, ${pulseAlpha * 0.48})`
+            : `rgba(16, 185, 129, ${pulseAlpha * 0.48})`;
           wsnCtx.fill();
         }
+
         wsnCtx.beginPath();
         wsnCtx.arc(n.x, n.y, radius, 0, Math.PI * 2);
-        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
+        wsnCtx.fillStyle = isTampered ? "#E11D48" : (isActive ? "#10B981" : "#111C2D");
         wsnCtx.fill();
+        wsnCtx.lineWidth = (isActive || isTampered) ? 2.4 : 1.6;
+        wsnCtx.strokeStyle = isTampered ? "#FDA4AF" : (isActive ? "#A7F3D0" : "#10B981");
+        wsnCtx.stroke();
 
-        wsnCtx.fillStyle = "#F7FBFA";
+        wsnCtx.fillStyle = (isActive && !isTampered) ? "#06101E" : "#F8FAFC";
         wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
         wsnCtx.textAlign = "center";
         wsnCtx.fillText(String(n.id), n.x, n.y + 3.5);
 
-        wsnCtx.fillStyle = isTampered ? "#C81E32" : (isActive ? "#0D7463" : "#0F1C24");
-        wsnCtx.font = (isActive || isTampered) ? "700 10.5px Inter, sans-serif" : "600 9.5px Inter, sans-serif";
-        const tempSuffix = isTampered ? " (TAMPER!)" : ((n.last_temp !== null && n.last_temp !== undefined) ? ` (${n.last_temp}°C)` : "");
-        wsnCtx.fillText(`IOT-${n.id}${tempSuffix}`, n.x, n.y - radius - 6);
+        const tempVal = (n.last_temp !== null && n.last_temp !== undefined) ? `${n.last_temp}°C` : "28°C";
+
+        if (isTampered) {
+          const bw = 114, bh = 20;
+          const bx = n.x - bw / 2, by = n.y - radius - 26;
+          wsnCtx.fillStyle = blinkOn ? "#E11D48" : "#1F1224";
+          wsnCtx.beginPath();
+          wsnCtx.roundRect(bx, by, bw, bh, 4);
+          wsnCtx.fill();
+          wsnCtx.strokeStyle = "#FB7185";
+          wsnCtx.lineWidth = 1.2;
+          wsnCtx.stroke();
+          wsnCtx.fillStyle = "#FFFFFF";
+          wsnCtx.font = "700 9px JetBrains Mono, monospace";
+          wsnCtx.fillText(`IOT-${n.id} · 99°C TAMPER`, n.x, by + 13.5);
+        } else if (isActive) {
+          const bw = 106, bh = 20;
+          const bx = n.x - bw / 2, by = n.y - radius - 26;
+          wsnCtx.fillStyle = blinkOn ? "#F59E0B" : "#0B1324";
+          wsnCtx.beginPath();
+          wsnCtx.roundRect(bx, by, bw, bh, 4);
+          wsnCtx.fill();
+          wsnCtx.strokeStyle = "#FBBF24";
+          wsnCtx.lineWidth = 1.4;
+          wsnCtx.stroke();
+          wsnCtx.fillStyle = blinkOn ? "#06101E" : "#FBBF24";
+          wsnCtx.font = "700 9.5px JetBrains Mono, monospace";
+          wsnCtx.fillText(`IOT-${n.id} ● ${tempVal}`, n.x, by + 13.5);
+        } else {
+          wsnCtx.fillStyle = "#E2E8F0";
+          wsnCtx.font = "600 9px JetBrains Mono, monospace";
+          wsnCtx.fillText(`IOT-${n.id} (${tempVal})`, n.x, n.y - radius - 6);
+        }
+        wsnCtx.restore();
       });
+
+      requestAnimationFrame(renderWSNSimulatorFrame);
+    }
+
+    function drawTopology() {
+      // Handled continuously by renderWSNSimulatorFrame(now) at 60fps
     }
 
     function drawTransactionGraph() {
@@ -1610,7 +2390,7 @@ a {
       const maxVal = txTimes.length ? Math.max(...txTimes) * 1.2 : 0.01;
       const minVal = 0;
 
-      chartCtx.strokeStyle = "#CBDAD7";
+      chartCtx.strokeStyle = "#DDD9CE";
       chartCtx.lineWidth = 1;
       for (let i = 0; i <= 4; i++) {
         const y = padT + plotH - (i / 4) * plotH;
@@ -1620,7 +2400,7 @@ a {
         chartCtx.stroke();
 
         const val = minVal + (i / 4) * (maxVal - minVal);
-        chartCtx.fillStyle = "#4A606A";
+        chartCtx.fillStyle = "#475569";
         chartCtx.font = "500 10px JetBrains Mono, monospace";
         chartCtx.textAlign = "right";
         chartCtx.fillText((val * 1000).toFixed(2) + " ms", padL - 10, y + 3);
@@ -1635,24 +2415,24 @@ a {
         if (idx === 0) chartCtx.moveTo(x, y);
         else chartCtx.lineTo(x, y);
       });
-      chartCtx.strokeStyle = "#0D7463";
-      chartCtx.lineWidth = 2.4;
+      chartCtx.strokeStyle = "#059669";
+      chartCtx.lineWidth = 2.6;
       chartCtx.stroke();
 
       txTimes.forEach((val, idx) => {
         const x = padL + (idx / Math.max(txTimes.length - 1, 1)) * plotW;
         const y = padT + plotH - ((val - minVal) / Math.max(maxVal - minVal, 1e-6)) * plotH;
         chartCtx.beginPath();
-        chartCtx.arc(x, y, 4, 0, Math.PI * 2);
-        chartCtx.fillStyle = "#0D7463";
+        chartCtx.arc(x, y, 4.2, 0, Math.PI * 2);
+        chartCtx.fillStyle = "#059669";
         chartCtx.fill();
-        chartCtx.strokeStyle = "#F7FBFA";
+        chartCtx.strokeStyle = "#FFFFFF";
         chartCtx.lineWidth = 1.5;
         chartCtx.stroke();
       });
 
-      chartCtx.fillStyle = "#0F1C24";
-      chartCtx.font = "600 11px JetBrains Mono, monospace";
+      chartCtx.fillStyle = "#0F172A";
+      chartCtx.font = "700 11px JetBrains Mono, monospace";
       chartCtx.textAlign = "center";
       chartCtx.fillText(`SENSE TRANSACTION SEQUENCE (LAST ${txTimes.length} BLOCKS)`, padL + plotW / 2, h - 10);
     }
@@ -1660,20 +2440,33 @@ a {
     function renderLogStream() {
       const blocks = appSummary.recent_blocks || [];
       const box = document.getElementById("tx-log");
-      box.innerHTML = blocks.map(b => {
+      if (!box) return;
+      box.innerHTML = blocks.map((b, idx) => {
         const latencyMs = b.tx_time_sec ? (b.tx_time_sec * 1000).toFixed(2) + " ms" : "3.20 ms";
-        const hashStr = (b.sha512 || b.block_hash || "").substring(0, 44) + "…";
+        const fullHash = b.sha512 || b.block_hash || "";
+        const hashStr = fullHash.substring(0, 44) + "...";
         return `
-          <div class="tx-log-item">
+          <div class="tx-log-item" onclick="openBlockReceiptModal('BLOCK #${b.block_number}', '${(b.summary || '').replace(/'/g, '')}', '${b.timestamp}', '${fullHash}')">
             <div class="tx-head">
               <span>BLOCK #${b.block_number} · ${b.method}</span>
-              <span>${latencyMs}</span>
+              <span style="color:#FBBF24;">${latencyMs}</span>
             </div>
-            <div style="color: #0F1C24; margin-bottom: 3px;">${b.summary || ""} (${b.timestamp})</div>
-            <div class="tx-hash">SHA-512 / Hash: ${hashStr}</div>
+            <div style="color: #F8FAFC; margin-bottom: 3px;">${b.summary || ""} (${b.timestamp})</div>
+            <div class="tx-hash">SHA-512: ${hashStr}</div>
           </div>
         `;
       }).join("");
+    }
+
+    function openBlockReceiptModal(nodeLabel, summaryOrTemp, ts, sha512) {
+      document.getElementById("bm-node-temp").innerText = `${nodeLabel} · ${summaryOrTemp}`;
+      document.getElementById("bm-timestamp").innerText = ts;
+      document.getElementById("bm-hash").innerText = sha512;
+      document.getElementById("block-receipt-modal").classList.add("open");
+    }
+
+    function closeBlockReceiptModal() {
+      document.getElementById("block-receipt-modal").classList.remove("open");
     }
 
     function simulateTamperAttack() {
@@ -1681,14 +2474,13 @@ a {
       const alertBox = document.getElementById("tamper-alert-box");
       alertBox.style.display = "block";
       alertBox.innerHTML =
-        "<strong>▲ SECURITY ALERT — UNAUTHORIZED PACKET MODIFICATION DETECTED ON NODE IOT-3!</strong><br/>" +
-        "Injected Payload: <code>3#99°C</code> | Expected On-Chain SHA-512 Digest: <code>f83c91a4...92b1</code> | Computed Digest: <code>01d47e22...88a0</code> (MISMATCH — BLOCK REJECTED BY CONSENSUS)";
+        "<strong>SECURITY ALERT - UNAUTHORIZED PACKET MODIFICATION DETECTED ON NODE IOT-3!</strong><br/>" +
+        "Injected Payload: <code>3#99°C</code> | Expected On-Chain SHA-512 Digest: <code>f83c91a4...92b1</code> | Computed Digest: <code>01d47e22...88a0</code> (MISMATCH - BLOCK REJECTED BY CONSENSUS)";
       document.getElementById("metric-integrity").innerText = "96.2% (ALERT)";
-      document.getElementById("metric-integrity").style.color = "#C81E32";
+      document.getElementById("metric-integrity").style.color = "#E11D48";
       document.getElementById("active-node-badge").className = "status-pill tampered";
-      document.getElementById("active-node-badge").innerText = "▲ TAMPER BLOCKED ON IOT-3";
+      document.getElementById("active-node-badge").innerText = "TAMPER BLOCKED ON IOT-3";
       document.getElementById("btn-restore").style.display = "inline-flex";
-      drawTopology();
     }
 
     function restoreTamperedNode() {
@@ -1699,7 +2491,6 @@ a {
       document.getElementById("active-node-badge").className = "status-pill verified";
       document.getElementById("active-node-badge").innerText = "● LEDGER RESTORED & VERIFIED";
       document.getElementById("btn-restore").style.display = "none";
-      drawTopology();
     }
 
     function updateCounters() {
@@ -1715,6 +2506,7 @@ a {
       const targetNode = (forcedNodeId !== null) ? forcedNodeId : (currentRoundNode % 20);
       currentRoundNode = (targetNode + 1) % 20;
       activeNodeId = targetNode;
+      lastTxTimestamp = performance.now();
 
       const temp = Math.floor(Math.random() * (41 - 17 + 1)) + 17;
       const now = new Date();
@@ -1757,12 +2549,11 @@ a {
 
       if (tamperedNodeId === null) {
         document.getElementById("active-node-badge").innerText =
-          `LIVE: IOT-${targetNode} → ${temp}°C (BLOCK #${newBlockNum})`;
+          `TX ACTIVE: IOT-${targetNode} → ${temp}°C (BLOCK #${newBlockNum})`;
       }
 
       updateCounters();
       renderLogStream();
-      drawTopology();
       drawTransactionGraph();
     }
 
@@ -1771,7 +2562,7 @@ a {
       document.getElementById("sim-state-text").innerText = "RUNNING";
       document.getElementById("sim-sub-text").innerText = "Broadcasting SHA-512 sensor blocks...";
       mineSingleStep();
-      simInterval = setInterval(() => mineSingleStep(), 1200);
+      simInterval = setInterval(() => mineSingleStep(), 1250);
     }
 
     function stopWebSimulation() {
@@ -1779,13 +2570,11 @@ a {
         clearInterval(simInterval);
         simInterval = null;
       }
-      activeNodeId = null;
       document.getElementById("sim-state-text").innerText = "PAUSED";
       document.getElementById("sim-sub-text").innerText = "Ledger state synced & verified.";
       if (tamperedNodeId === null) {
-        document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED";
+        document.getElementById("active-node-badge").innerText = "SIMULATION PAUSED (CLICK ANY NODE)";
       }
-      drawTopology();
     }
 
     function filterLedger(val) {
@@ -1806,7 +2595,7 @@ a {
 
       const tbody = document.getElementById("ledger-tbody");
       tbody.innerHTML = filtered.map(r => `
-        <tr>
+        <tr class="ledger-row" onclick="openBlockReceiptModal('${r.label}', '${r.temperature}°C', '${r.timestamp}', '${r.sha512}')">
           <td class="mono-cell"><strong>${r.label}</strong></td>
           <td class="temp-cell"><span class="temp-val">${r.temperature}°C</span></td>
           <td class="mono-cell">${r.timestamp}</td>
@@ -1838,7 +2627,9 @@ a {
       }
     });
 
-    // Homepage Interactive Cyber-Mesh Constellation
+    // =========================================================================
+    // TAB 1: HOMEPAGE SCATTERED FIELD CYBER-MESH WITH HIGH-OPACITY FLOWING GREEN LINES
+    // =========================================================================
     (function initCyberWeb() {
       const canvas = document.getElementById("cyber-web-canvas");
       if (!canvas) return;
@@ -1846,24 +2637,32 @@ a {
       const statusEl = document.getElementById("mesh-hover-status");
       const W = canvas.width;
       const H = canvas.height;
+      const centerX = W / 2;
+      const centerY = H / 2;
       const mouse = { x: -999, y: -999, active: false };
       const pulses = [];
-      const nodes = [];
-      const hashes = ["0x8f3a..c91e", "0x4d12..a70b", "0x9c4e..e112", "0x1b77..f04a", "0x6e09..d38c", "0x3a91..b82d"];
+      const hashes = ["0x8f3a...c91e", "0x4d12...a70b", "0x9c4e...e112", "0x1b77...f04a", "0x6e09...d38c", "0x3a91...b82d"];
 
-      for (let i = 0; i < 18; i++) {
-        const angle = (i / 18) * Math.PI * 2;
-        const radius = 58 + (i % 3) * 34;
-        nodes.push({
-          id: i,
-          x: W / 2 + Math.cos(angle) * radius * 1.35,
-          y: H / 2 + Math.sin(angle) * radius * 0.82,
-          vx: (Math.random() - 0.5) * 0.55,
-          vy: (Math.random() - 0.5) * 0.55,
-          hash: hashes[i % hashes.length],
-          temp: 20 + (i % 15)
-        });
-      }
+      // Organically scattered, non-circular field placement for 20 IoT nodes on 600x310 canvas
+      // Guaranteed >= 54px inter-node spacing and >= 78px clearance from SHA-512 MDN CORE (300, 155)
+      const fieldAnchors = [
+        [56, 44],   [154, 38],  [264, 34],  [378, 40],  [482, 36],
+        [554, 72],  [98, 104],  [196, 94],  [412, 98],  [506, 128],
+        [48, 168],  [148, 166], [446, 174], [556, 198], [86, 236],
+        [188, 228], [392, 234], [492, 254], [134, 282], [292, 276]
+      ];
+
+      const nodes = fieldAnchors.map((pt, i) => ({
+        id: i,
+        ax: pt[0],
+        ay: pt[1],
+        x: pt[0],
+        y: pt[1],
+        phaseX: i * 1.37,
+        phaseY: i * 2.11,
+        hash: hashes[i % hashes.length],
+        temp: 21 + (i % 16)
+      }));
 
       canvas.addEventListener("mousemove", (e) => {
         const rect = canvas.getBoundingClientRect();
@@ -1873,121 +2672,168 @@ a {
       });
       canvas.addEventListener("mouseleave", () => {
         mouse.active = false;
-        statusEl.innerText = "MOVE CURSOR TO INSPECT · CLICK TO PULSE";
+        statusEl.innerText = "20 WSN NODES ACTIVE · SHA-512 STREAM";
       });
       canvas.addEventListener("click", (e) => {
         const rect = canvas.getBoundingClientRect();
         pulses.push({
           x: (e.clientX - rect.left) * (W / rect.width),
           y: (e.clientY - rect.top) * (H / rect.height),
-          r: 6,
+          r: 8,
           alpha: 1.0
         });
-        statusEl.innerText = "⚡ BROADCASTING SHA-512 VERIFICATION PULSE...";
+        statusEl.innerText = "BROADCASTING SHA-512 VERIFICATION WAVE...";
       });
 
       let tick = 0;
       function animate() {
-        tick += 0.02;
+        tick += 0.024;
         ctx.clearRect(0, 0, W, H);
-        const centerX = W / 2, centerY = H / 2;
 
-        nodes.forEach(n => {
-          n.x += n.vx; n.y += n.vy;
-          if (n.x < 28 || n.x > W - 28) n.vx *= -1;
-          if (n.y < 24 || n.y > H - 24) n.vy *= -1;
-        });
-
-        for (let i = 0; i < nodes.length; i++) {
-          const dCenter = Math.hypot(nodes[i].x - centerX, nodes[i].y - centerY);
-          if (dCenter < 170) {
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(centerX, centerY);
-            ctx.strokeStyle = "rgba(13, 116, 99, 0.14)";
-            ctx.lineWidth = 1;
-            ctx.stroke();
-
-            const t = ((tick * 0.6 + i * 0.17) % 1);
-            ctx.beginPath();
-            ctx.arc(nodes[i].x + (centerX - nodes[i].x) * t, nodes[i].y + (centerY - nodes[i].y) * t, 2, 0, Math.PI * 2);
-            ctx.fillStyle = "#0D7463";
-            ctx.fill();
-          }
-          for (let j = i + 1; j < nodes.length; j++) {
-            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-            if (dist < 115) {
-              ctx.beginPath();
-              ctx.moveTo(nodes[i].x, nodes[i].y);
-              ctx.lineTo(nodes[j].x, nodes[j].y);
-              ctx.strokeStyle = `rgba(15, 28, 36, ${(1 - dist / 115) * 0.35})`;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-            }
-          }
+        // Subtle technical grid on canvas
+        ctx.strokeStyle = "rgba(16, 185, 129, 0.06)";
+        ctx.lineWidth = 1;
+        for (let gx = 30; gx < W; gx += 35) {
+          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
         }
+        for (let gy = 30; gy < H; gy += 35) {
+          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+        }
+
+        // Gentle organic float around each scattered field anchor (maintains spacing!)
+        nodes.forEach((n) => {
+          n.x = n.ax + Math.sin(tick * 0.9 + n.phaseX) * 5.5;
+          n.y = n.ay + Math.cos(tick * 0.8 + n.phaseY) * 4.5;
+        });
 
         let hoveredNode = null;
         if (mouse.active) {
           nodes.forEach(n => {
-            const dMouse = Math.hypot(n.x - mouse.x, n.y - mouse.y);
-            if (dMouse < 130) {
-              ctx.beginPath();
-              ctx.moveTo(mouse.x, mouse.y);
-              ctx.lineTo(n.x, n.y);
-              ctx.strokeStyle = `rgba(13, 116, 99, ${(1 - dMouse / 130) * 0.75})`;
-              ctx.lineWidth = 1.4;
-              ctx.stroke();
-              if (dMouse < 35) hoveredNode = n;
+            if (Math.hypot(n.x - mouse.x, n.y - mouse.y) < 26) {
+              hoveredNode = n;
             }
           });
           if (hoveredNode) {
-            statusEl.innerText = `INSPECTING IOT-${hoveredNode.id} | ${hoveredNode.temp}°C | SHA512: ${hoveredNode.hash}`;
+            statusEl.innerText = `IOT-${hoveredNode.id} | ${hoveredNode.temp}°C | SHA-512: ${hoveredNode.hash}`;
           }
         }
 
+        // 1. Draw Peer-to-Peer Scattered Mesh Edges with High-Visibility Flowing Green/Cyan Lines
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dist = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+            if (dist < 138) {
+              const isEdgeHov = hoveredNode && (hoveredNode.id === nodes[i].id || hoveredNode.id === nodes[j].id);
+              const alpha = isEdgeHov ? 0.95 : Math.max(0.36, (1 - dist / 138) * 0.68);
+              ctx.save();
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = isEdgeHov
+                ? `rgba(52, 211, 153, ${alpha})`
+                : `rgba(16, 185, 129, ${alpha})`;
+              ctx.lineWidth = isEdgeHov ? 2.2 : 1.35;
+              ctx.setLineDash([7, 5]);
+              ctx.lineDashOffset = -(tick * (isEdgeHov ? 46 : 22) + i * 4);
+              ctx.stroke();
+              ctx.restore();
+            }
+          }
+        }
+
+        // 2. Draw Direct Links into Central SHA-512 Core with High-Opacity Flowing Green Lines + Packets
+        nodes.forEach((n, idx) => {
+          const isNodeHov = hoveredNode && hoveredNode.id === n.id;
+          const distCenter = Math.hypot(n.x - centerX, n.y - centerY);
+          if (distCenter < 195 || isNodeHov || idx % 2 === 0) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(centerX, centerY);
+            ctx.strokeStyle = isNodeHov
+              ? "rgba(52, 211, 153, 0.98)"
+              : "rgba(16, 185, 129, 0.56)";
+            ctx.lineWidth = isNodeHov ? 2.5 : 1.5;
+            ctx.setLineDash([8, 5]);
+            ctx.lineDashOffset = -(tick * (isNodeHov ? 54 : 26) + idx * 5);
+            ctx.stroke();
+            ctx.restore();
+
+            // Flowing packet particle gliding into SHA-512 Core
+            const t = ((tick * (isNodeHov ? 0.95 : 0.48) + idx * 0.13) % 1);
+            const px = n.x + (centerX - n.x) * t;
+            const py = n.y + (centerY - n.y) * t;
+            ctx.beginPath();
+            ctx.arc(px, py, isNodeHov ? 3.5 : 2.3, 0, Math.PI * 2);
+            ctx.fillStyle = isNodeHov ? "#FBBF24" : "#34D399";
+            ctx.fill();
+          }
+        });
+
+        // 3. Draw Click Verification Ripples
         for (let p = pulses.length - 1; p >= 0; p--) {
           const pulse = pulses[p];
-          pulse.r += 3.2; pulse.alpha -= 0.022;
-          if (pulse.alpha <= 0) { pulses.splice(p, 1); continue; }
+          pulse.r += 3.4;
+          pulse.alpha -= 0.02;
+          if (pulse.alpha <= 0) {
+            pulses.splice(p, 1);
+            continue;
+          }
           ctx.beginPath();
           ctx.arc(pulse.x, pulse.y, pulse.r, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(13, 116, 99, ${pulse.alpha})`;
-          ctx.lineWidth = 2;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${pulse.alpha})`;
+          ctx.lineWidth = 2.2;
           ctx.stroke();
         }
 
+        // 4. Draw All 20 Scattered Field IoT Sensor Nodes
         nodes.forEach(n => {
           const isHov = (hoveredNode && hoveredNode.id === n.id);
+          ctx.save();
+          if (isHov) {
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, 14, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(16, 185, 129, 0.30)";
+            ctx.fill();
+          }
           ctx.beginPath();
-          ctx.arc(n.x, n.y, isHov ? 7 : 4.5, 0, Math.PI * 2);
-          ctx.fillStyle = isHov ? "#0D7463" : "#0F1C24";
+          ctx.arc(n.x, n.y, isHov ? 7.8 : 5.6, 0, Math.PI * 2);
+          ctx.fillStyle = isHov ? "#10B981" : (n.id % 3 === 0 ? "#06B6D4" : "#0F172A");
           ctx.fill();
-          ctx.strokeStyle = "#F7FBFA";
-          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = isHov ? "#FBBF24" : "#34D399";
+          ctx.lineWidth = 1.7;
           ctx.stroke();
 
-          ctx.fillStyle = isHov ? "#0D7463" : "#4A606A";
-          ctx.font = isHov ? "700 9px JetBrains Mono, monospace" : "500 8px JetBrains Mono, monospace";
+          ctx.fillStyle = isHov ? "#FBBF24" : "#E2E8F0";
+          ctx.font = isHov ? "700 9.5px JetBrains Mono, monospace" : "600 8px JetBrains Mono, monospace";
           ctx.textAlign = "center";
-          ctx.fillText(`IOT-${n.id}`, n.x, n.y - 8);
+          ctx.fillText(isHov ? `IOT-${n.id} (${n.temp}°C)` : `IOT-${n.id}`, n.x, n.y - (isHov ? 11 : 8.5));
+          ctx.restore();
         });
 
+        // 5. Draw Central SHA-512 Cryptographic Core Hub
         ctx.save();
         ctx.translate(centerX, centerY);
         ctx.beginPath();
         for (let k = 0; k < 6; k++) {
           const a = (k * Math.PI) / 3 - Math.PI / 6;
-          if (k === 0) ctx.moveTo(Math.cos(a) * 28, Math.sin(a) * 28);
-          else ctx.lineTo(Math.cos(a) * 28, Math.sin(a) * 28);
+          if (k === 0) ctx.moveTo(Math.cos(a) * 35, Math.sin(a) * 35);
+          else ctx.lineTo(Math.cos(a) * 35, Math.sin(a) * 35);
         }
         ctx.closePath();
-        ctx.fillStyle = "#0F1C24"; ctx.fill();
-        ctx.lineWidth = 2; ctx.strokeStyle = "#0D7463"; ctx.stroke();
-        ctx.fillStyle = "#5EEAD4"; ctx.font = "700 8px JetBrains Mono, monospace"; ctx.textAlign = "center";
+        ctx.fillStyle = "#090F1B";
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "#10B981";
+        ctx.stroke();
+
+        ctx.fillStyle = "#34D399";
+        ctx.font = "700 8.5px JetBrains Mono, monospace";
+        ctx.textAlign = "center";
         ctx.fillText("SHA-512", 0, -2);
-        ctx.fillStyle = "#F7FBFA"; ctx.font = "500 7px JetBrains Mono, monospace";
-        ctx.fillText("CORE", 0, 8);
+        ctx.fillStyle = "#FBBF24";
+        ctx.font = "600 7.5px JetBrains Mono, monospace";
+        ctx.fillText("MDN CORE", 0, 9);
         ctx.restore();
 
         requestAnimationFrame(animate);
@@ -1995,13 +2841,46 @@ a {
       animate();
     })();
 
+    // =========================================================================
+    // WORD-BY-WORD SCROLL REVEAL FOR STAGE CODE SNIPPETS (Replays on Scroll!)
+    // =========================================================================
+    function initScrollWordByWordCodeReveal() {
+      const blocks = document.querySelectorAll(".scroll-code-snippet");
+      blocks.forEach((block) => {
+        const rawText = block.textContent.trim();
+        const tokens = rawText.split(/\s+/);
+        block.innerHTML = tokens.map((t, idx) =>
+          `<span class="code-word-token" style="transition-delay: ${idx * 52}ms">${t}</span>`
+        ).join(" ");
+      });
+
+      if ("IntersectionObserver" in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+            } else {
+              // Reset when scrolled out of view so scrolling down always plays the word-by-word transition!
+              entry.target.classList.remove("revealed");
+            }
+          });
+        }, { threshold: 0.25, rootMargin: "0px 0px -40px 0px" });
+        blocks.forEach(b => obs.observe(b));
+      } else {
+        blocks.forEach(b => b.classList.add("revealed"));
+      }
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
       renderNavigation();
+      updateCounters();
       renderLogStream();
-      drawTopology();
-      drawTransactionGraph();
-      renderLedgerTable();
       renderOperatorsTable();
+      renderLedgerTable();
+      drawTransactionGraph();
+      updateShaSandbox();
+      initScrollWordByWordCodeReveal();
+      requestAnimationFrame(renderWSNSimulatorFrame);
     });
   </script>
 </body>

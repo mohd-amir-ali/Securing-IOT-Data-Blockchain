@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==============================================================================
-# AMIR ALI — Securing IoT Data in the Cloud with Blockchain Technology
+# AMIR ALI  -  Securing IoT Data in the Cloud with Blockchain Technology
 # One-Command macOS / Linux Launcher (Port 5050 to avoid macOS AirPlay on 5000)
 # ==============================================================================
 

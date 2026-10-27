@@ -77,7 +77,7 @@ def build_records_table_html(iot_id: str) -> str:
     if not records:
         return (
             f'<div class="empty-state">'
-            f'<div class="eyebrow-label">03 // QUERY RESULT — {filter_title}</div>'
+            f'<div class="eyebrow-label">03 // QUERY RESULT  -  {filter_title}</div>'
             f'<h4>No sensor blocks found for {filter_title} yet.</h4>'
             f'<p>Use the Admin WSN Simulator to generate and mine new SHA-512 sensor transactions.</p>'
             f'</div>'
@@ -223,7 +223,7 @@ try:
             return render_page(
                 "Login.html",
                 active_page="login",
-                msg="🔒 Administrator Authentication Required — Please log in to unlock the WSN Simulator & Security Console.",
+                msg="🔒 Administrator Authentication Required  -  Please log in to unlock the WSN Simulator & Security Console.",
             )
         return render_page("UserScreen.html", active_page="simulator", msg=f"Authenticated as {uname}")
 
@@ -233,7 +233,7 @@ try:
             return render_page(
                 "Login.html",
                 active_page="login",
-                msg="🔒 Administrator Authentication Required — Please log in to query the WSN Sensor Ledger.",
+                msg="🔒 Administrator Authentication Required  -  Please log in to query the WSN Sensor Ledger.",
             )
         return render_page("AccessData.html", active_page="ledger", msg="")
 
@@ -275,7 +275,7 @@ try:
             return render_page(
                 "Login.html",
                 active_page="login",
-                msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+                msg="🔒 Administrator Authentication Required  -  Please log in to inspect sensor telemetry.",
             )
         iot_id = request.form.get("t1", request.args.get("t1", "ALL"))
         output = build_records_table_html(iot_id)
@@ -377,7 +377,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
                     render_page(
                         "Login.html",
                         active_page="login",
-                        msg="🔒 Administrator Authentication Required — Please log in to unlock the WSN Simulator & Security Console.",
+                        msg="🔒 Administrator Authentication Required  -  Please log in to unlock the WSN Simulator & Security Console.",
                     )
                 )
             else:
@@ -388,7 +388,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
                     render_page(
                         "Login.html",
                         active_page="login",
-                        msg="🔒 Administrator Authentication Required — Please log in to query the WSN Sensor Ledger.",
+                        msg="🔒 Administrator Authentication Required  -  Please log in to query the WSN Sensor Ledger.",
                     )
                 )
             else:
@@ -399,7 +399,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
                     render_page(
                         "Login.html",
                         active_page="login",
-                        msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+                        msg="🔒 Administrator Authentication Required  -  Please log in to inspect sensor telemetry.",
                     )
                 )
             else:
@@ -474,7 +474,7 @@ class FallbackWebHandler(BaseHTTPRequestHandler):
                     render_page(
                         "Login.html",
                         active_page="login",
-                        msg="🔒 Administrator Authentication Required — Please log in to inspect sensor telemetry.",
+                        msg="🔒 Administrator Authentication Required  -  Please log in to inspect sensor telemetry.",
                     )
                 )
             else:
@@ -489,7 +489,7 @@ def run_server(host: str = "127.0.0.1", port: int = 5050):
     rpc_status = ensure_local_rpc_server(9545)
     summary = bridge.get_dashboard_summary()
     print("=" * 72)
-    print("  WSN-CHAIN // SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN")
+    print("  BLOCKCHAIN WSN - SECURING IOT DATA IN THE CLOUD WITH BLOCKCHAIN")
     print("=" * 72)
     print(f"  [Blockchain] {rpc_status}")
     print(f"  [Contract]   {summary['contract_address']} (Network ID: {summary['network_id']})")

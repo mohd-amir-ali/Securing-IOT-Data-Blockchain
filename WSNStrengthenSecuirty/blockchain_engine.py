@@ -432,7 +432,7 @@ class BlockchainBridge:
                 **n,
                 "last_temp": last_rec["temperature"] if last_rec else None,
                 "last_time": last_rec["timestamp"] if last_rec else "Awaiting sense",
-                "last_hash": last_rec["sha512_short"] if last_rec else "—",
+                "last_hash": last_rec["sha512_short"] if last_rec else " - ",
                 "verified": last_rec["verified"] if last_rec else True,
             })
 

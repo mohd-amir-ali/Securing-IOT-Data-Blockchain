@@ -18,5 +18,10 @@ env/
 .vscode/
 .idea/
 
+# Local private developer handbook & helper scripts (kept locally, not uploaded to GitHub)
+Project_Tutorial_Guide.html
+PROJECT_GUIDE_AND_TUTORIAL.md
+Push_To_GitHub.command
+
 # Temporary runtime files
 *.tmp

@@ -409,141 +409,141 @@
     {
       "id": 0,
       "label": "IOT-0",
-      "x": 53,
-      "y": 362,
+      "x": 78,
+      "y": 68,
       "zone": "Smart Home Living"
     },
     {
       "id": 1,
       "label": "IOT-1",
-      "x": 380,
-      "y": 114,
+      "x": 204,
+      "y": 58,
       "zone": "ICU Telemetry"
     },
     {
       "id": 2,
       "label": "IOT-2",
-      "x": 202,
-      "y": 312,
+      "x": 332,
+      "y": 54,
       "zone": "Env Air Quality"
     },
     {
       "id": 3,
       "label": "IOT-3",
-      "x": 357,
-      "y": 254,
+      "x": 472,
+      "y": 62,
       "zone": "Thermal Grid"
     },
     {
       "id": 4,
       "label": "IOT-4",
-      "x": 199,
-      "y": 184,
+      "x": 606,
+      "y": 56,
       "zone": "Edge Gateway"
     },
     {
       "id": 5,
       "label": "IOT-5",
-      "x": 642,
-      "y": 181,
+      "x": 696,
+      "y": 108,
       "zone": "Smart Home Living"
     },
     {
       "id": 6,
       "label": "IOT-6",
-      "x": 224,
-      "y": 93,
+      "x": 128,
+      "y": 146,
       "zone": "ICU Telemetry"
     },
     {
       "id": 7,
       "label": "IOT-7",
-      "x": 297,
-      "y": 157,
+      "x": 248,
+      "y": 134,
       "zone": "Env Air Quality"
     },
     {
       "id": 8,
       "label": "IOT-8",
-      "x": 54,
-      "y": 179,
+      "x": 524,
+      "y": 138,
       "zone": "Thermal Grid"
     },
     {
       "id": 9,
       "label": "IOT-9",
-      "x": 670,
-      "y": 394,
+      "x": 638,
+      "y": 188,
       "zone": "Edge Gateway"
     },
     {
       "id": 10,
       "label": "IOT-10",
-      "x": 694,
-      "y": 80,
+      "x": 68,
+      "y": 228,
       "zone": "Smart Home Living"
     },
     {
       "id": 11,
       "label": "IOT-11",
-      "x": 497,
-      "y": 319,
+      "x": 196,
+      "y": 224,
       "zone": "ICU Telemetry"
     },
     {
       "id": 12,
       "label": "IOT-12",
-      "x": 269,
-      "y": 281,
+      "x": 558,
+      "y": 242,
       "zone": "Env Air Quality"
     },
     {
       "id": 13,
       "label": "IOT-13",
-      "x": 381,
-      "y": 401,
+      "x": 702,
+      "y": 278,
       "zone": "Thermal Grid"
     },
     {
       "id": 14,
       "label": "IOT-14",
-      "x": 552,
-      "y": 403,
+      "x": 112,
+      "y": 326,
       "zone": "Edge Gateway"
     },
     {
       "id": 15,
       "label": "IOT-15",
-      "x": 469,
-      "y": 173,
+      "x": 244,
+      "y": 318,
       "zone": "Smart Home Living"
     },
     {
       "id": 16,
       "label": "IOT-16",
-      "x": 587,
-      "y": 138,
+      "x": 492,
+      "y": 328,
       "zone": "ICU Telemetry"
     },
     {
       "id": 17,
       "label": "IOT-17",
-      "x": 682,
-      "y": 326,
+      "x": 618,
+      "y": 348,
       "zone": "Env Air Quality"
     },
     {
       "id": 18,
       "label": "IOT-18",
-      "x": 252,
-      "y": 371,
+      "x": 168,
+      "y": 408,
       "zone": "Thermal Grid"
     },
     {
       "id": 19,
       "label": "IOT-19",
-      "x": 473,
-      "y": 397,
+      "x": 364,
+      "y": 404,
       "zone": "Edge Gateway"
     }
   ]
